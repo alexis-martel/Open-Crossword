@@ -294,7 +294,7 @@ function populateInfo(obj) {
 
 }
 
-let puzzle = new Puzzle("../data/crossword.json");
+let puzzle = new Puzzle("https://github.com/alexis-martel/Open-Crossword/blob/da94017c08aa038694eef9df1f4019d4f11faea9/data/crossword.json");
 
 document.addEventListener("keyup", (e) => {
 
