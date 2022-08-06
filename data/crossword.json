@@ -1,0 +1,34 @@
+{
+  "clues": {
+    "Across": {
+      "1": "Possesses",
+      "2": "What an interrupted owl might say?",
+      "3": "With [4-Down], expected verdict to a wedding",
+      "4": "See [3-Across]",
+      "5": "Boat pole"
+    },
+    "Down": {
+      "3": "\"I think __ ready!\"",
+      "6": "Western part of the globe (Abbr.)",
+      "7": "Accepts visually",
+      "8": "Inner chimney coating"
+    }
+  },
+  "grid": [
+    [[1, "o", "cell"], [6, "w", "cell"], [7, "n", "cell"], [8, "s", "cell"]],
+    [[false, false, "block"], [2, "h", "cell"], [false, "o", "cell"], [false, "o", "cell"]],
+    [[3, "i", "cell"], [false, false, "block"], [4, "d", "cell"], [false, "o", "cell"]],
+    [[5, "m", "cell"], [false, "a", "cell"], [false, "s", "cell"], [false, "t", "cell"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "Title": "Mini Crossword #1",
+    "Author": "Alexis Martel",
+    "Description": "A small 4x4 crossword",
+    "Tags": [
+      "mini"
+    ],
+    "Date Published": "2022-07-9",
+    "Language": "eng"
+  }
+}

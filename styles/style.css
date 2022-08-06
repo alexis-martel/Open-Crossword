@@ -1,0 +1,119 @@
+html {
+    background-color: lightcoral;
+}
+
+canvas {
+    padding: 0;
+}
+
+hr {
+    border: 1px solid black;
+}
+
+header {
+    z-index: 1; /* Stay on top */
+}
+
+footer {
+}
+
+header h1 {
+    display: inline;
+}
+
+button {
+    border: 1px solid black;
+    background-color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightblue;
+}
+
+button.disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
+.info-container {
+    min-width: 200px;
+    padding: 5px;
+}
+
+.control-button-container {
+}
+
+.game-view {
+    display: flex;
+}
+
+.clue-label {
+    text-decoration: none;
+}
+
+.clue-text {
+    display: block;
+    font-weight: bold;
+}
+
+.clue-text:hover {
+    background-color: lightblue;
+}
+
+.info-label {
+    font-weight: bold;
+}
+
+.grid-container {
+    display: grid;
+    border: 1px solid black;
+}
+
+.puzzle-square {
+    width: 75px;
+    height: 75px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.puzzle-square-clue {
+    position: absolute;
+    padding-left: 1px;
+    padding-top: 1px;
+}
+
+.puzzle-square-text {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.cell {
+    font-size: 20px;
+}
+
+.block {
+    background-color: black;
+}
+
+.invisible {
+    background-color: transparent;
+    border: none;
+}
+
+.cell:hover, .cell.highlighted {
+    background-color: lightblue;
+    cursor: text;
+}
+
+.cell:active, .cell.selected {
+    background-color: lightgreen;
+}
