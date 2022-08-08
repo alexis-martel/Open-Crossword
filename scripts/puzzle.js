@@ -17,7 +17,9 @@ class Puzzle {
             .then((data) => populate(data));
 
         this.squares = []; // Stores all squares in the puzzle
+        this.clues = []; // Stores all clues in the puzzle
         this.selectedSquare = null; // Stores the selected square
+        this.selectedClue = null; // Stores the selected clue
     }
 }
 
@@ -60,10 +62,10 @@ class PuzzleSquare {
             this.answer = this.answer.toUpperCase();
             this.element.onclick = () => {
                 this.select();
-                checkPuzzle();
             }
         }
     }
+
     select() {
         for (const square of puzzle.squares) {
             square.deselect();
@@ -72,11 +74,66 @@ class PuzzleSquare {
         this.element.classList.add("selected");
         puzzle.selectedSquare = this;
 
+        if (this.clue) {
+            for (const clue of puzzle.clues) {
+                if (clue.number == this.clue) {
+                    clue.select();
+                }
+            }
+        }
+
     }
+
     deselect() {
         this.selected = false;
         this.element.classList.remove("selected");
         puzzle.selectedSquare = undefined;
+    }
+}
+
+class PuzzleClue {
+    constructor(clueTag, direction, clueText, parentElement) {
+        this.element = document.createElement("li");
+        this.element.classList.add("clue");
+        this.tagElement = document.createElement("span");
+        this.tagElement.classList.add("clue-tag");
+        this.textElement = document.createElement("span");
+        this.textElement.classList.add("clue-text");
+
+        this.tagElement.textContent = clueTag;
+        this.textElement.textContent = clueText;
+
+        parentElement.appendChild(this.element);
+        this.element.appendChild(this.tagElement);
+        this.element.appendChild(this.textElement);
+
+        this.number = clueTag;
+        this.direction = direction;
+        this.content = clueText;
+        this.selected = false;
+        this.element.onclick = (event) => {
+            this.select();
+        }
+    }
+
+    select() {
+        for (const clue of puzzle.clues) {
+            clue.deselect();
+        }
+        this.element.classList.add("selected");
+        puzzle.selectedClue = this;
+
+        for (const square of puzzle.squares) {
+            if (square.clue == this.number) {
+                square.select();
+            }
+        }
+    }
+
+    deselect() {
+        this.selected = false;
+        this.element.classList.remove("selected");
+        puzzle.selectedClue = undefined;
     }
 }
 
@@ -165,7 +222,7 @@ function resetPuzzle() {
 function sharePuzzle() {
     if (navigator.share) {
         navigator.share({
-            title: "Play crossword puzzle", url: 'window.location.href'
+            title: "OpenCrossword", url: window.location.href
         }).catch(console.error);
     } else {
         console.error("Your browser does not support the WebShare API");
@@ -238,29 +295,25 @@ function populateClues(obj) {
     infoContainer.appendChild(acrossLabel);
     acrossLabel.textContent = "Across";
 
+    let acrossClues = document.createElement("menu");
+    acrossClues.classList.add("clue-list");
+    infoContainer.appendChild(acrossClues);
+
     for (const [clueTag, clueText] of Object.entries(obj["clues"]["Across"])) {
-
-        let clueTextbox = document.createElement("a");
-        clueTextbox.classList.add("clue-text");
-        clueTextbox.href = "#"; // Change this to JS function later
-
-        infoContainer.appendChild(clueTextbox);
-        clueTextbox.innerHTML = `<span class="clue-label">${clueTag}: </span>${clueText}`;
-
+        puzzle.clues.push(new PuzzleClue(clueTag, "across", clueText, acrossClues));
     }
 
     let downLabel = document.createElement("h2");
     downLabel.classList.add("info-header");
     infoContainer.appendChild(downLabel);
     downLabel.textContent = "Down";
+
+    let downClues = document.createElement("menu");
+    acrossClues.classList.add("clue-list");
+    infoContainer.appendChild(downClues);
+
     for (const [clueTag, clueText] of Object.entries(obj["clues"]["Down"])) {
-
-        let clueTextbox = document.createElement("a");
-        clueTextbox.classList.add("clue-text");
-        clueTextbox.href = "#"; // Change this to JS function later
-
-        infoContainer.appendChild(clueTextbox);
-        clueTextbox.innerHTML = `<span class="clue-label">${clueTag}: </span>${clueText}`;
+        puzzle.clues.push(new PuzzleClue(clueTag, "down", clueText, downClues));
     }
 
 }

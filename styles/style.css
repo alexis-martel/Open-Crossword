@@ -50,17 +50,25 @@ button.disabled {
     display: flex;
 }
 
-.clue-label {
-    text-decoration: none;
+.clue-tag {
+    font-weight: bold;
+    padding-right: 3px;
 }
 
 .clue-text {
-    display: block;
-    font-weight: bold;
 }
 
-.clue-text:hover {
+.clue {
+    display: block;
+    cursor: pointer;
+}
+
+.clue:hover {
     background-color: lightblue;
+}
+
+.clue:active, .clue.selected {
+    background-color: lightgreen;
 }
 
 .info-label {
