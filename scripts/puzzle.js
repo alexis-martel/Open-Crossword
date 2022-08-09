@@ -20,6 +20,25 @@ class Puzzle {
         this.clues = []; // Stores all clues in the puzzle
         this.selectedSquare = null; // Stores the selected square
         this.selectedClue = null; // Stores the selected clue
+        this.selectionDirection = "across"; // Stores the direction of the selection ("across" or "down")
+    }
+
+    selectNextSquare() {
+        // Selects the next square in the puzzle
+        if (this.selectionDirection === "across") {
+            this.selectSquare(this.selectedSquare.x + 1, this.selectedSquare.y);
+        } else if (this.selectionDirection === "down") {
+            this.selectSquare(this.selectedSquare.x, this.selectedSquare.y + 1);
+        }
+    }
+
+    selectSquare(x, y) {
+        // Selects the square at the given x and y coordinates
+        for (const square of this.squares) {
+            if (square.x === x && square.y === y) {
+                square.select();
+            }
+        }
     }
 }
 
@@ -61,7 +80,15 @@ class PuzzleSquare {
             this.textElement.classList.add("puzzle-square-text");
             this.answer = this.answer.toUpperCase();
             this.element.onclick = () => {
+                if (this.selected) {
+                    if (puzzle.selectionDirection === "across") {
+                        puzzle.selectionDirection = "down";
+                    } else if (puzzle.selectionDirection === "down") {
+                        puzzle.selectionDirection = "across";
+                    }
+                }
                 this.select();
+
             }
         }
     }
@@ -69,14 +96,25 @@ class PuzzleSquare {
     select() {
         for (const square of puzzle.squares) {
             square.deselect();
+            square.element.classList.remove("highlighted");
         }
         this.selected = true;
         this.element.classList.add("selected");
         puzzle.selectedSquare = this;
 
+
+        // Highlight all squares in the same row or column as the selected square
+        for (const square of puzzle.squares) {
+            if (square.y === this.y && puzzle.selectionDirection === "across" && square.style === "cell") {
+                square.element.classList.add("highlighted");
+            } else if (square.x === this.x && puzzle.selectionDirection === "down" && square.style === "cell") {
+                square.element.classList.add("highlighted");
+            }
+        }
+
         if (this.clue) {
             for (const clue of puzzle.clues) {
-                if (clue.number == this.clue) {
+                if (clue.number === this.clue && this.style === "cell" && puzzle.selectionDirection === clue.direction) {
                     clue.select();
                 }
             }
@@ -107,7 +145,7 @@ class PuzzleClue {
         this.element.appendChild(this.tagElement);
         this.element.appendChild(this.textElement);
 
-        this.number = clueTag;
+        this.number = parseInt(clueTag);
         this.direction = direction;
         this.content = clueText;
         this.selected = false;
@@ -124,7 +162,7 @@ class PuzzleClue {
         puzzle.selectedClue = this;
 
         for (const square of puzzle.squares) {
-            if (square.clue == this.number) {
+            if (square.clue === this.number && square.style === "cell") {
                 square.select();
             }
         }
@@ -247,7 +285,6 @@ function displayPuzzle(obj) {
         squareY++;
         squareX = 0;
     }
-
 }
 
 // Check if the puzzle is solved
@@ -362,6 +399,7 @@ document.addEventListener("keyup", (e) => {
         return
     } else {
         puzzle.selectedSquare.textElement.textContent = pressedKey.toUpperCase();
+        puzzle.selectNextSquare();
     }
     checkPuzzle();
 })
