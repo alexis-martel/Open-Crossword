@@ -183,35 +183,40 @@ function displayControlButtons() {
 
     let verifyButton = document.createElement("button");
     controlButtons.appendChild(verifyButton);
-    verifyButton.textContent = "Verify";
+    verifyButton.textContent = "done";
+    verifyButton.classList.add("material-icons");
     verifyButton.onclick = function () {
         verifyPuzzle();
     }
 
     let revealButton = document.createElement("button");
     controlButtons.appendChild(revealButton);
-    revealButton.textContent = "Reveal";
+    revealButton.textContent = "visibility";
+    revealButton.classList.add("material-icons");
     revealButton.onclick = function () {
         revealPuzzle();
     }
 
     let pauseButton = document.createElement("button");
     controlButtons.appendChild(pauseButton);
-    pauseButton.textContent = "Pause";
+    pauseButton.textContent = "pause";
+    pauseButton.classList.add("material-icons");
     pauseButton.onclick = function () {
         pauseGame();
     }
 
     let resetButton = document.createElement("button");
     controlButtons.appendChild(resetButton);
-    resetButton.textContent = "Reset";
+    resetButton.textContent = "restart_alt";
+    resetButton.classList.add("material-icons");
     resetButton.onclick = function () {
         resetPuzzle();
     }
 
     let shareButton = document.createElement("button");
     controlButtons.appendChild(shareButton);
-    shareButton.textContent = "Share";
+    shareButton.textContent = "ios_share";
+    shareButton.classList.add("material-icons");
     shareButton.onclick = function () {
         sharePuzzle();
     }
