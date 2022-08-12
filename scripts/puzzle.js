@@ -160,6 +160,7 @@ class PuzzleClue {
         }
         this.element.classList.add("selected");
         puzzle.selectedClue = this;
+        puzzle.selectionDirection = this.direction;
 
         for (const square of puzzle.squares) {
             if (square.clue === this.number && square.style === "cell") {
