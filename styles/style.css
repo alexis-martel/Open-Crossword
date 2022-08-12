@@ -41,7 +41,7 @@ header h1 {
 }
 
 button {
-    appearance: none;
+    padding: 1px;
     border: 1px solid var(--text-color);
     background-color: var(--bg-color);
     cursor: pointer;
