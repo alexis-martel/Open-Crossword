@@ -390,7 +390,7 @@ function populateInfo(obj) {
 
 }
 
-let puzzle = new Puzzle("https://raw.githubusercontent.com/alexis-martel/Open-Crossword/da94017c08aa038694eef9df1f4019d4f11faea9/data/crossword.json");
+let puzzle = new Puzzle("https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/crossword.json");
 
 document.addEventListener("keyup", (e) => {
 
