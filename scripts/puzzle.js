@@ -239,9 +239,11 @@ function verifyPuzzle() {
 
 // Reveals all squares
 function revealPuzzle() {
-    for (const square of puzzle.squares) {
-        if (square.style === "cell") {
-            square.textElement.textContent = square.answer;
+    if (window.confirm("Are you sure you want to reveal the puzzle?")) {
+        for (const square of puzzle.squares) {
+            if (square.style === "cell") {
+                square.textElement.textContent = square.answer;
+            }
         }
     }
     checkPuzzle();
