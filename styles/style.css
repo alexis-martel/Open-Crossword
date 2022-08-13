@@ -129,9 +129,15 @@ address a {
 }
 
 .puzzle-square-text {
-    display: inline-block;
     font-size: 50px;
     font-weight: bold;
+    width: 1em;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .cell {

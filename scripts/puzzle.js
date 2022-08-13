@@ -75,7 +75,9 @@ class PuzzleSquare {
             this.clueElement.textContent = this.clue;
         }
         if (this.answer) {
-            this.textElement = document.createElement("span")
+            this.textElement = document.createElement("input");
+            this.textElement.type = "text";
+            this.textElement.maxLength = 1;
             this.element.appendChild(this.textElement);
             this.textElement.classList.add("puzzle-square-text");
             this.answer = this.answer.toUpperCase();
@@ -100,6 +102,7 @@ class PuzzleSquare {
         }
         this.selected = true;
         this.element.classList.add("selected");
+        this.textElement.focus();
         puzzle.selectedSquare = this;
 
 
@@ -229,8 +232,8 @@ function displayControlButtons() {
 function verifyPuzzle() {
     for (const square of puzzle.squares) {
         if (square.style === "cell") {
-            if (square.textElement.textContent !== square.answer) {
-                square.textElement.textContent = undefined;
+            if (square.textElement.value.toUpperCase() !== square.answer.toUpperCase()) {
+                square.textElement.value = "";
             }
         }
     }
@@ -242,7 +245,7 @@ function revealPuzzle() {
     if (window.confirm("Are you sure you want to reveal the puzzle?")) {
         for (const square of puzzle.squares) {
             if (square.style === "cell") {
-                square.textElement.textContent = square.answer;
+                square.textElement.value = square.answer;
             }
         }
     }
@@ -258,7 +261,7 @@ function pauseGame() {
 function resetPuzzle() {
     for (const square of puzzle.squares) {
         if (square.style === "cell") {
-            square.textElement.textContent = undefined;
+            square.textElement.value = "";
         }
     }
 
@@ -300,24 +303,27 @@ function checkPuzzle() {
     let solved = true;
     let full = true;
     for (const square of puzzle.squares) {
-        if (square.style === "cell" && square.textElement.textContent !== square.answer) {
+        if (square.style === "cell" && square.textElement.value.toUpperCase() !== square.answer.toUpperCase()) {
             solved = false;
         }
-        if (square.style === "cell" && square.textElement.textContent === "") {
+        if (square.style === "cell" && square.textElement.value === "") {
             full = false;
         }
     }
     if (solved) {
         showSolvedScreen();
     } else if (full === true) {
-        window.alert("Puzzle not solved."); // Only show alert if every square is not filled
+        showNotSolvedScreen(); // Only show alert if every square is not filled
     }
 }
 
 // Display a "game over" alert
 function showSolvedScreen() {
     window.alert("Puzzle solved!");
+}
 
+function showNotSolvedScreen() {
+    window.alert("Puzzle not solved.");
 }
 
 const infoContainer = document.createElement("div")
@@ -394,19 +400,27 @@ function populateInfo(obj) {
 
 let puzzle = new Puzzle("https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/crossword.json");
 
+document.addEventListener("keydown", (e) => {
+
+    let pressedKey = String(e.key);
+    // Clear contents of the textbox on new keypress
+    let found = pressedKey.match(/[a-z]/gi)
+    if (!found || found.length > 1) {
+        return;
+    } else {
+        console.log("deleted")
+        puzzle.selectedSquare.textElement.value = "";
+    }
+})
+
 document.addEventListener("keyup", (e) => {
 
-    let pressedKey = String(e.key)
-    if (pressedKey === "Backspace") {
-        puzzle.selectedSquare.textElement.textContent = undefined;
-        return
-    }
+    let pressedKey = String(e.key);
 
     let found = pressedKey.match(/[a-z]/gi)
     if (!found || found.length > 1) {
-        return
+        return;
     } else {
-        puzzle.selectedSquare.textElement.textContent = pressedKey.toUpperCase();
         puzzle.selectNextSquare();
     }
     checkPuzzle();
