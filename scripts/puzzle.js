@@ -158,6 +158,11 @@ class PuzzleClue {
         this.selected = false;
         this.element.onclick = (event) => {
             this.select();
+            for (const square of puzzle.squares) {
+                if (square.clue === this.number && square.style === "cell") {
+                    square.select();
+                }
+            }
         }
     }
 
@@ -168,12 +173,6 @@ class PuzzleClue {
         this.element.classList.add("selected");
         puzzle.selectedClue = this;
         puzzle.selectionDirection = this.direction;
-
-        for (const square of puzzle.squares) {
-            if (square.clue === this.number && square.style === "cell") {
-                square.select();
-            }
-        }
     }
 
     deselect() {
