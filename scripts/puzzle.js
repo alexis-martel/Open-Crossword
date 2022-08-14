@@ -78,6 +78,10 @@ class PuzzleSquare {
             this.textElement = document.createElement("input");
             this.textElement.type = "text";
             this.textElement.maxLength = 1;
+            this.textElement.spellcheck = false;
+            this.textElement.setAttribute("autocorrect", "off");
+            this.textElement.setAttribute("autocomplete", "off");
+            this.textElement.setAttribute("autocapitalize", "characters");
             this.element.appendChild(this.textElement);
             this.textElement.classList.add("puzzle-square-text");
             this.answer = this.answer.toUpperCase();

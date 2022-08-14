@@ -138,6 +138,11 @@ address a {
     outline: none;
     caret-color: transparent;
     font-family: "Times New Roman", Times, serif;
+    color: var(--text-color);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .cell {
