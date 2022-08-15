@@ -42,10 +42,11 @@ header h1 {
 }
 
 button {
-    padding: 1px;
+    padding: 2px;
     border: 1px solid var(--text-color);
     background-color: var(--bg-color);
     cursor: pointer;
+    margin: 3px;
 }
 
 button:hover {
@@ -56,8 +57,16 @@ address a {
     color: var(--text-color);
 }
 
+.stopwatch {
+    font-family: "Times New Roman", Times, serif;
+    font-size: initial;
+    vertical-align: 6px;
+}
+
 .info-container {
-    min-width: 200px;
+    padding: 5px;
+}
+.puzzle-container {
     padding: 5px;
 }
 
@@ -101,7 +110,6 @@ address a {
 
 .grid-container {
     display: grid;
-    margin: 5px;
     border: 1px solid var(--text-color);
 }
 

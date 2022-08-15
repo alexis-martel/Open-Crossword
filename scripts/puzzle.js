@@ -204,14 +204,6 @@ function displayControlButtons() {
         revealPuzzle();
     }
 
-    let pauseButton = document.createElement("button");
-    controlButtons.appendChild(pauseButton);
-    pauseButton.textContent = "pause";
-    pauseButton.classList.add("material-icons");
-    pauseButton.onclick = function () {
-        pauseGame();
-    }
-
     let resetButton = document.createElement("button");
     controlButtons.appendChild(resetButton);
     resetButton.textContent = "restart_alt";
@@ -226,6 +218,19 @@ function displayControlButtons() {
     shareButton.classList.add("material-icons");
     shareButton.onclick = function () {
         sharePuzzle();
+    }
+
+    let pauseButton = document.createElement("button");
+    controlButtons.appendChild(pauseButton);
+    let stopwatch = document.createElement("span");
+    stopwatch.classList.add("stopwatch");
+    stopwatch.id = "stopwatch";
+    pauseButton.textContent = "pause";
+    stopwatch.textContent = "0:00 Coming Soon";
+    pauseButton.classList.add("material-icons");
+    pauseButton.appendChild(stopwatch);
+    pauseButton.onclick = function () {
+        pauseGame();
     }
 }
 
@@ -262,9 +267,11 @@ function pauseGame() {
 
 // Clears all squares
 function resetPuzzle() {
-    for (const square of puzzle.squares) {
-        if (square.style === "cell") {
-            square.textElement.value = "";
+    if (window.confirm("Are you sure you want to reset the puzzle?")) {
+        for (const square of puzzle.squares) {
+            if (square.style === "cell") {
+                square.textElement.value = "";
+            }
         }
     }
 
@@ -428,3 +435,14 @@ document.addEventListener("keyup", (e) => {
     }
     checkPuzzle();
 })
+
+const puzzleStopwatch = setInterval(incrementStopwatchTime, 1000);
+let stopwatchTime = 0;
+
+function incrementStopwatchTime() {
+    document.getElementById("stopwatch").textContent = stopwatchTime++;
+}
+
+function pauseStopwatch() {
+    clearInterval(puzzleStopwatch);
+}
