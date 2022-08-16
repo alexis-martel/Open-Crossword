@@ -433,8 +433,6 @@ Number.prototype.toHumanReadable = function () {
     }
 }
 
-let puzzle = new Puzzle("https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/crossword.json");
-
 document.addEventListener("keydown", (e) => {
 
     let pressedKey = String(e.key);
@@ -469,3 +467,8 @@ function incrementStopwatchTime() {
 function endStopwatch() {
     clearInterval(puzzle.puzzleStopwatch);
 }
+
+let params = new URLSearchParams(document.location.search);
+let puzzleID = params.get("p").toString();
+let puzzleURL = "https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/" + puzzleID + ".json";
+let puzzle = new Puzzle(puzzleURL);

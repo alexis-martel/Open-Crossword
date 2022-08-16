@@ -57,7 +57,7 @@ button:hover {
     background-color: var(--highlight-color);
 }
 
-address a {
+a {
     color: var(--text-color);
 }
 

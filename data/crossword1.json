@@ -1,0 +1,41 @@
+{
+  "clues": {
+    "Across": {
+      "1": "Peu commun",
+      "2": "À l'aise sur la planète bleue",
+      "3": "Note entre Ré et Fa",
+      "4": "_i_les é__s (Prix médiéval élevé)",
+      "5": "Désert d'Afrique du nord",
+      "6": "«___ vous plaît!»",
+      "7": "Opposé de NO"
+    },
+    "Down": {
+      "1": "Dieter ____ (Designer industriel)",
+      "8": "Façon de propulser un bateau",
+      "9": "Dans un épisode de Seinfeld, George triche sur un de ces tests",
+      "10": "Livre de cartes",
+      "11": "Abondant et varié",
+      "12": "Relation entre deux quantités (Abbr.)",
+      "13": "Ceci et ____"
+    }
+  },
+  "grid": [
+    [[8, "r", "cell"], [false, false, "block"], [false, false, "block"], [1, "r", "cell"], [10, "a", "cell"], [11, "r", "cell"], [12, "e", "cell"], [false, false, "block"], [13, "c", "cell"]],
+    [[2, "a", "cell"], [9, "q", "cell"], [false, "u", "cell"], [false, "a", "cell"], [false, "t", "cell"], [false, "i", "cell"], [false, "q", "cell"], [false, "u", "cell"], [false, "e", "cell"]],
+    [[3, "m", "cell"], [false, "i", "cell"], [false, false, "block"], [4, "m", "cell"], [false, "l", "cell"], [false, "c", "cell"], [false, "u", "cell"], [false, false, "block"], [false, "l", "cell"]],
+    [[false, "e", "cell"], [false, false, "block"], [false, false, "block"], [5, "s", "cell"], [false, "a", "cell"], [false, "h", "cell"], [false, "a", "cell"], [false, "r", "cell"], [false, "a", "cell"]],
+    [[6, "s", "cell"], [false, "i", "cell"], [false, "l", "cell"], [false, false, "block"], [7, "s", "cell"], [false, "e", "cell"], [false, false, "block"], [false, false, "block"], [false, false, "block"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "Title": "Mot Croisé Sans Thème",
+    "Author": "Alexis Martel",
+    "Description": "Un mot croisé sans thème de taille moyenne",
+    "Tags": [
+
+    ],
+    "Size": "M",
+    "Date Published": "2022-08-16",
+    "Language": "fra"
+  }
+}
