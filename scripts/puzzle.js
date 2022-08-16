@@ -21,6 +21,8 @@ class Puzzle {
         this.selectedSquare = null; // Stores the selected square
         this.selectedClue = null; // Stores the selected clue
         this.selectionDirection = "across"; // Stores the direction of the selection ("across" or "down")
+        this.puzzleStopwatch = setInterval(incrementStopwatchTime, 1000);
+        this.puzzleSeconds = 0;
     }
 
     selectNextSquare() {
@@ -152,11 +154,11 @@ class PuzzleClue {
         this.element.appendChild(this.tagElement);
         this.element.appendChild(this.textElement);
 
-        this.number = parseInt(clueTag);
+        this.number = parseInt(clueTag, 10);
         this.direction = direction;
         this.content = clueText;
         this.selected = false;
-        this.element.onclick = (event) => {
+        this.element.onclick = () => {
             this.select();
             for (const square of puzzle.squares) {
                 if (square.clue === this.number && square.style === "cell") {
@@ -192,7 +194,7 @@ function displayControlButtons() {
     controlButtons.appendChild(verifyButton);
     verifyButton.textContent = "done";
     verifyButton.classList.add("material-icons");
-    verifyButton.onclick = function () {
+    verifyButton.onclick = () => {
         verifyPuzzle();
     }
 
@@ -200,7 +202,7 @@ function displayControlButtons() {
     controlButtons.appendChild(revealButton);
     revealButton.textContent = "visibility";
     revealButton.classList.add("material-icons");
-    revealButton.onclick = function () {
+    revealButton.onclick = () => {
         revealPuzzle();
     }
 
@@ -208,7 +210,7 @@ function displayControlButtons() {
     controlButtons.appendChild(resetButton);
     resetButton.textContent = "restart_alt";
     resetButton.classList.add("material-icons");
-    resetButton.onclick = function () {
+    resetButton.onclick = () => {
         resetPuzzle();
     }
 
@@ -216,7 +218,7 @@ function displayControlButtons() {
     controlButtons.appendChild(shareButton);
     shareButton.textContent = "ios_share";
     shareButton.classList.add("material-icons");
-    shareButton.onclick = function () {
+    shareButton.onclick = () => {
         sharePuzzle();
     }
 
@@ -226,10 +228,10 @@ function displayControlButtons() {
     stopwatch.classList.add("stopwatch");
     stopwatch.id = "stopwatch";
     pauseButton.textContent = "pause";
-    stopwatch.textContent = "0:00 Coming Soon";
+    stopwatch.textContent = "00:00";
     pauseButton.classList.add("material-icons");
     pauseButton.appendChild(stopwatch);
-    pauseButton.onclick = function () {
+    pauseButton.onclick = () => {
         pauseGame();
     }
 }
@@ -273,6 +275,7 @@ function resetPuzzle() {
                 square.textElement.value = "";
             }
         }
+        puzzle.puzzleSeconds = 0;
     }
 
 }
@@ -329,7 +332,8 @@ function checkPuzzle() {
 
 // Display a "game over" alert
 function showSolvedScreen() {
-    window.alert("Puzzle solved!");
+    endStopwatch();
+    window.alert(`Congratulations! You solved the puzzle in ${document.getElementById("stopwatch").textContent} seconds.`);
 }
 
 function showNotSolvedScreen() {
@@ -402,10 +406,31 @@ function populateInfo(obj) {
 
         let infoTextbox = document.createElement("dd");
         infoTextbox.classList.add("info-text");
-        infoTextbox.textContent = infoText;
+        infoTextbox.textContent = infoText.toString();
         infoList.appendChild(infoTextbox);
     }
 
+}
+
+Number.prototype.toHumanReadable = function () {
+    let hours = Math.floor(this / 3600);
+    let minutes = Math.floor((this - (hours * 3600)) / 60);
+    let seconds = this - (hours * 3600) - (minutes * 60);
+
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    if (hours > 0) {
+    return hours + ':' + minutes + ':' + seconds;
+    } else {
+        return minutes + ':' + seconds;
+    }
 }
 
 let puzzle = new Puzzle("https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/crossword.json");
@@ -416,7 +441,7 @@ document.addEventListener("keydown", (e) => {
     // Clear contents of the textbox on new keypress
     let found = pressedKey.match(/[a-z]/gi)
     if (!found || found.length > 1) {
-        return;
+
     } else {
         console.log("deleted")
         puzzle.selectedSquare.textElement.value = "";
@@ -436,13 +461,11 @@ document.addEventListener("keyup", (e) => {
     checkPuzzle();
 })
 
-const puzzleStopwatch = setInterval(incrementStopwatchTime, 1000);
-let stopwatchTime = 0;
-
 function incrementStopwatchTime() {
-    document.getElementById("stopwatch").textContent = stopwatchTime++;
+    document.getElementById("stopwatch").textContent = puzzle.puzzleSeconds.toHumanReadable();
+    puzzle.puzzleSeconds += 1;
 }
 
-function pauseStopwatch() {
-    clearInterval(puzzleStopwatch);
+function endStopwatch() {
+    clearInterval(puzzle.puzzleStopwatch);
 }

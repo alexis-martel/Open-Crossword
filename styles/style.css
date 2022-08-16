@@ -16,10 +16,14 @@
     }
 }
 
+:root {
+    --main-font: "Times New Roman", Times, serif;
+}
+
 html {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: "Times New Roman", Times, serif;
+    font-family: var(--main-font);
 }
 
 canvas {
@@ -58,7 +62,8 @@ address a {
 }
 
 .stopwatch {
-    font-family: "Times New Roman", Times, serif;
+    font-family: var(--main-font);
+    font-variant-numeric: tabular-nums;
     font-size: initial;
     vertical-align: 6px;
 }
@@ -145,7 +150,7 @@ address a {
     border: none;
     outline: none;
     caret-color: transparent;
-    font-family: "Times New Roman", Times, serif;
+    font-family: var(--main-font);
     color: var(--text-color);
     -webkit-user-select: none;
     -moz-user-select: none;
