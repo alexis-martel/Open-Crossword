@@ -1,6 +1,6 @@
 {
   "clues": {
-    "Across": {
+    "across": {
       "1": "Peu commun",
       "2": "À l'aise sur la planète bleue",
       "3": "Note entre Ré et Fa",
@@ -9,7 +9,7 @@
       "6": "«___ vous plaît!»",
       "7": "Opposé de NO"
     },
-    "Down": {
+    "down": {
       "1": "Dieter ____ (Designer industriel)",
       "8": "Façon de propulser un bateau",
       "9": "Dans un épisode de Seinfeld, George triche sur un de ces tests",
@@ -28,14 +28,14 @@
   ],
   "color-scheme": {},
   "info": {
-    "Title": "Mot Croisé Sans Thème",
-    "Author": "Alexis Martel",
-    "Description": "Un mot croisé sans thème de taille moyenne",
-    "Tags": [
+    "title": "Mot Croisé Sans Thème",
+    "author": "Alexis Martel",
+    "description": "Un mot croisé sans thème de taille moyenne",
+    "tags": [
 
     ],
-    "Size": "M",
-    "Date Published": "2022-08-16",
-    "Language": "fra"
+    "size": "M",
+    "date_published": "2022-08-16",
+    "language": "fra"
   }
 }

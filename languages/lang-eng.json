@@ -1,0 +1,15 @@
+{
+    "across_label": "Across",
+    "down_label": "Down",
+    "info_label": "Info",
+    "title_label": "Title",
+    "author_label": "Author",
+    "description_label": "Description",
+    "tags_label": "Tags",
+    "size_label": "Size",
+    "date_published_label": "Date Published",
+    "language_label": "Language",
+    "reveal_confirm": "Are you sure you want to reveal the puzzle?",
+    "reset_confirm": "Are you sure you want to reset the puzzle?",
+    "pause_text": "Pause"
+}

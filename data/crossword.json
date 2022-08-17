@@ -1,13 +1,13 @@
 {
   "clues": {
-    "Across": {
+    "across": {
       "1": "Possesses",
       "2": "What an interrupted owl might say?",
       "3": "With [4-Across], expected verdict to a wedding",
       "4": "See [3-Across]",
       "5": "Boat pole"
     },
-    "Down": {
+    "down": {
       "3": "\"I think __ ready!\"",
       "6": "Western part of the globe (Abbr.)",
       "7": "Accepts visually",
@@ -22,14 +22,14 @@
   ],
   "color-scheme": {},
   "info": {
-    "Title": "Mini Crossword #1",
-    "Author": "Alexis Martel",
-    "Description": "A small 4x4 crossword",
-    "Tags": [
+    "title": "Mini Crossword #1",
+    "author": "Alexis Martel",
+    "description": "A small 4x4 crossword",
+    "tags": [
       "mini"
     ],
-    "Size": "S",
-    "Date Published": "2022-07-9",
-    "Language": "eng"
+    "size": "S",
+    "date_published": "2022-07-9",
+    "language": "eng"
   }
 }

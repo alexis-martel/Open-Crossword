@@ -184,6 +184,20 @@ class PuzzleClue {
     }
 }
 
+class InfoItem {
+    constructor(title, text, parentElement) {
+        this.descriptionTermElement = document.createElement("dt");
+        this.descriptionTermElement.classList.add("info-label")
+        this.descriptionTermElement.textContent = title;
+        this.descriptionDetailElement = document.createElement("dd");
+        this.descriptionDetailElement.classList.add("info-text");
+        this.descriptionDetailElement.textContent = text;
+        parentElement.appendChild(this.descriptionTermElement);
+        parentElement.appendChild(this.descriptionDetailElement);
+    }
+
+}
+
 // Display the control buttons beneath the puzzle grid (e.g. "Check", "Reveal", "Pause", "Reset", "Share", "Settings")
 function displayControlButtons() {
     let controlButtons = document.createElement("span");
@@ -364,7 +378,7 @@ function populateClues(obj) {
     acrossClues.classList.add("clue-list");
     infoContainer.appendChild(acrossClues);
 
-    for (const [clueTag, clueText] of Object.entries(obj["clues"]["Across"])) {
+    for (const [clueTag, clueText] of Object.entries(obj["clues"]["across"])) {
         puzzle.clues.push(new PuzzleClue(clueTag, "across", clueText, acrossClues));
     }
 
@@ -377,7 +391,7 @@ function populateClues(obj) {
     acrossClues.classList.add("clue-list");
     infoContainer.appendChild(downClues);
 
-    for (const [clueTag, clueText] of Object.entries(obj["clues"]["Down"])) {
+    for (const [clueTag, clueText] of Object.entries(obj["clues"]["down"])) {
         puzzle.clues.push(new PuzzleClue(clueTag, "down", clueText, downClues));
     }
 
@@ -397,18 +411,14 @@ function populateInfo(obj) {
     infoList.classList.add("puzzle-info");
     infoContainer.appendChild(infoList)
 
-    for (const [infoTag, infoText] of Object.entries(obj["info"])) {
+    new InfoItem("Title", obj["info"]["title"], infoList); // Title
+    new InfoItem("Author", obj["info"]["author"], infoList); // Author
+    new InfoItem("Description", obj["info"]["description"], infoList); // Description
+    new InfoItem("Tags", obj["info"]["tags"], infoList); // Tags
+    new InfoItem("Size", obj["info"]["size"], infoList); // Size
+    new InfoItem("Date Published", obj["info"]["date_published"], infoList); // Date Published
+    new InfoItem("Language", obj["info"]["language"], infoList); // Language
 
-        let infoLabel = document.createElement("dt");
-        infoLabel.classList.add("info-label");
-        infoLabel.textContent = infoTag;
-        infoList.appendChild(infoLabel);
-
-        let infoTextbox = document.createElement("dd");
-        infoTextbox.classList.add("info-text");
-        infoTextbox.textContent = infoText.toString();
-        infoList.appendChild(infoTextbox);
-    }
 
 }
 
@@ -427,7 +437,7 @@ Number.prototype.toHumanReadable = function () {
         seconds = "0" + seconds;
     }
     if (hours > 0) {
-    return hours + ':' + minutes + ':' + seconds;
+        return hours + ':' + minutes + ':' + seconds;
     } else {
         return minutes + ':' + seconds;
     }
@@ -441,7 +451,6 @@ document.addEventListener("keydown", (e) => {
     if (!found || found.length > 1) {
 
     } else {
-        console.log("deleted")
         puzzle.selectedSquare.textElement.value = "";
     }
 })
