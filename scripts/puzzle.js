@@ -488,5 +488,5 @@ function endStopwatch() {
 
 let params = new URLSearchParams(document.location.search);
 let puzzleID = params.get("p").toString();
-let puzzleURL = "https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/puzzles" + puzzleID + ".json";
+let puzzleURL = "https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/puzzles/" + puzzleID + ".json";
 let puzzle = new Puzzle(puzzleURL);
