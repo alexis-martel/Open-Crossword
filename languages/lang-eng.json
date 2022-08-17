@@ -6,6 +6,7 @@
     "author_label": "Author",
     "description_label": "Description",
     "tags_label": "Tags",
+    "empty_label": "None",
     "size_label": "Size",
     "date_published_label": "Date Published",
     "language_label": "Language",

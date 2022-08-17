@@ -9,6 +9,8 @@ const gridContainer = document.createElement("div");
 gridContainer.classList.add("grid-container");
 puzzleContainer.appendChild(gridContainer);
 
+const language = getLanguageData("languages/lang-eng.json");
+
 class Puzzle {
     constructor(url) {
         // Fetch puzzle data from url
@@ -198,6 +200,13 @@ class InfoItem {
 
 }
 
+// Get the language data from the specified URL
+async function getLanguageData(url) {
+    const request = new Request(url);
+    const response = await fetch(request);
+    return await response.json();
+}
+
 // Display the control buttons beneath the puzzle grid (e.g. "Check", "Reveal", "Pause", "Reset", "Share", "Settings")
 function displayControlButtons() {
     let controlButtons = document.createElement("span");
@@ -266,7 +275,7 @@ function verifyPuzzle() {
 
 // Reveals all squares
 function revealPuzzle() {
-    if (window.confirm("Are you sure you want to reveal the puzzle?")) {
+    if (window.confirm(language.reveal_confirm)) {
         for (const square of puzzle.squares) {
             if (square.style === "cell") {
                 square.textElement.value = square.answer;
