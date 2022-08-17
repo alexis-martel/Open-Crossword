@@ -167,8 +167,12 @@ a {
 }
 
 .invisible {
+    background-color: var(--text-color);
+/*
+    TODO: Make invisible squares style appropriately
     background-color: transparent;
     border: none;
+ */
 }
 
 .cell:hover, .cell.highlighted {

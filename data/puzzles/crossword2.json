@@ -1,0 +1,42 @@
+{
+  "clues": {
+    "across": {
+      "1": "Poisson-_____ (Inimicus Didactylus)",
+      "2": "Se dit d'un sable mousseux",
+      "3": "Mer __ de Chine Méridionale",
+      "4": "Points de rencontre entre un fleuve et un océan",
+      "5": "Suruméraire (Abbr.) [Mode de reproduction des plusieurs espèces aquatiques]",
+      "6": "Spirale de mer?"
+    },
+    "down": {
+      "1": "Aloïs _______, nageur du Bénin",
+      "7": "Créatures marines gélatineuses",
+      "8": "Il y en a cinq",
+      "9": "Comme le corps du blobfish",
+      "10": "Poisson maigre d'eau salée",
+      "11": "Village français près du Rhin"
+    }
+  },
+  "grid": [
+    [[false, false, "invisible"], [1, "d", "cell"], [false, "e", "cell"], [7, "m", "cell"], [8, "o", "cell"], [9, "n", "cell"], [false, false, "block"], [false, false, "block"], [11, "m", "cell"], [false, false, "invisible"], [false, false, "invisible"]],
+    [[false, false, "invisible"], [false, "a", "cell"], [false, false, "block"], [2, "e", "cell"], [false, "c", "cell"], [false, "u", "cell"], [10, "m", "cell"], [false, "e", "cell"], [false, "u", "cell"], [false, "x", "cell"], [false, false, "invisible"]],
+    [[false, false, "invisible"], [false, "n", "cell"], [false, false, "block"], [3, "d", "cell"], [false, "e", "cell"], [false, false, "block"], [false, "e", "cell"], [false, false, "block"], [false, "s", "cell"], [false, false, "invisible"], [false, false, "invisible"]],
+    [[4, "e", "cell"], [false, "s", "cell"], [false, "t", "cell"], [false, "u", "cell"], [false, "a", "cell"], [false, "i", "cell"], [false, "r", "cell"], [false, "e", "cell"], [false, "s", "cell"], [false, false, "invisible"], [false, false, "invisible"]],
+    [[false, false, "invisible"], [false, "o", "cell"], [false, false, "block"], [5, "s", "cell"], [false, "n", "cell"], [false, false, "block"], [false, "l", "cell"], [false, false, "block"], [false, "i", "cell"], [false, false, "invisible"], [false, false, "invisible"]],
+    [[false, false, "invisible"], [false, "u", "cell"], [false, false, "block"], [6, "e", "cell"], [false, "s", "cell"], [false, "c", "cell"], [false, "a", "cell"], [false, "r", "cell"], [false, "g", "cell"], [false, "o", "cell"], [false, "t", "cell"]],
+    [[false, false, "invisible"], [false, false, "invisible"], [false, false, "invisible"], [false, "s", "cell"], [false, false, "invisible"], [false, false, "invisible"], [false, "n", "cell"], [false, false, "invisible"], [false, false, "invisible"], [false, false, "invisible"], [false, false, "invisible"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "title": "Mot Croisé Aquatique",
+    "author": "Alexis Martel",
+    "description": "Plongez sous l'eau en complétant ce mot croisé comprenant exclusivement des indices aquatiques",
+    "tags": [
+      "themed",
+      "aquatic"
+    ],
+    "size": "M",
+    "date_published": "2022-08-17",
+    "language": "fra"
+  }
+}

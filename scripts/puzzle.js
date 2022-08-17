@@ -69,7 +69,7 @@ class PuzzleSquare {
             this.element.classList.add("cell");
         }
         if (this.style === "invisible") {
-            this.element.classList.add("invisible");
+            this.element.classList.add("invisible", "block");
         }
 
         if (this.clue) {
@@ -275,7 +275,7 @@ function verifyPuzzle() {
 
 // Reveals all squares
 function revealPuzzle() {
-    if (window.confirm(language.reveal_confirm)) {
+    if (window.confirm("Are you sure you want to reveal the puzzle?")) {
         for (const square of puzzle.squares) {
             if (square.style === "cell") {
                 square.textElement.value = square.answer;
@@ -488,5 +488,5 @@ function endStopwatch() {
 
 let params = new URLSearchParams(document.location.search);
 let puzzleID = params.get("p").toString();
-let puzzleURL = "https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/" + puzzleID + ".json";
+let puzzleURL = "https://raw.githubusercontent.com/alexis-martel/Open-Crossword/master/data/puzzles" + puzzleID + ".json";
 let puzzle = new Puzzle(puzzleURL);

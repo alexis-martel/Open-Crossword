@@ -26,7 +26,8 @@
     "author": "Alexis Martel",
     "description": "A small 4x4 crossword",
     "tags": [
-      "mini"
+      "mini",
+      "unthemed"
     ],
     "size": "S",
     "date_published": "2022-07-9",
