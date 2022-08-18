@@ -46,15 +46,22 @@ header h1 {
 }
 
 button {
-    padding: 2px;
+    padding: 1px;
+    margin: 3px;
+    font-family: var(--main-font);
+    font-size: initial;
     border: 1px solid var(--text-color);
     background-color: var(--bg-color);
     cursor: pointer;
-    margin: 3px;
 }
 
 button:hover {
     background-color: var(--highlight-color);
+}
+
+button img {
+    display: inline;
+    vertical-align: middle;
 }
 
 a {
@@ -62,10 +69,8 @@ a {
 }
 
 .stopwatch {
-    font-family: var(--main-font);
-    font-variant-numeric: tabular-nums;
-    font-size: initial;
-    vertical-align: 6px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .info-container {
@@ -73,9 +78,6 @@ a {
 }
 .puzzle-container {
     padding: 5px;
-}
-
-.control-button-container {
 }
 
 .game-view {

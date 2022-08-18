@@ -110,8 +110,11 @@ class PuzzleSquare {
         }
         this.selected = true;
         this.element.classList.add("selected");
-        this.textElement.focus();
         puzzle.selectedSquare = this;
+        if (this.style === "block" || this.style === "block") {
+            puzzle.selectNextSquare();
+        }
+        this.textElement.focus();
 
 
         // Highlight all squares in the same row or column as the selected square
@@ -203,7 +206,7 @@ class InfoItem {
 class controlButton {
     constructor(title, iconPath, parentElement) {
         this.element = document.createElement("button");
-        this.element.classList.add("control-button");
+        this.element.title = title;
         this.element.innerHTML = `<img
     src=${iconPath}
     alt=${title}
