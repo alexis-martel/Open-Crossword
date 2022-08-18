@@ -78,10 +78,6 @@ a {
 .control-button-container {
 }
 
-.material-icons {
-    color: var(--text-color);
-}
-
 .game-view {
     display: flex;
 }

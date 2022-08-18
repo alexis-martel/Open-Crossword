@@ -200,6 +200,19 @@ class InfoItem {
 
 }
 
+class controlButton {
+    constructor(title, iconPath, parentElement) {
+        this.element = document.createElement("button");
+        this.element.classList.add("control-button");
+        this.element.innerHTML = `<img
+    src=${iconPath}
+    alt=${title}
+    height="25"
+    width="25" />`
+        parentElement.appendChild(this.element);
+    }
+}
+
 // Get the language data from the specified URL
 async function getLanguageData(url) {
     const request = new Request(url);
@@ -209,52 +222,37 @@ async function getLanguageData(url) {
 
 // Display the control buttons beneath the puzzle grid (e.g. "Check", "Reveal", "Pause", "Reset", "Share", "Settings")
 function displayControlButtons() {
-    let controlButtons = document.createElement("span");
+    let controlButtons = document.createElement("nav");
     controlButtons.classList.add("control-button-container");
     puzzleContainer.appendChild(controlButtons);
 
-    let verifyButton = document.createElement("button");
-    controlButtons.appendChild(verifyButton);
-    verifyButton.textContent = "done";
-    verifyButton.classList.add("material-icons");
-    verifyButton.onclick = () => {
+    let verifyButton = new controlButton("Verify", "images/verify_glyph.svg", controlButtons);
+    verifyButton.element.onclick = () => {
         verifyPuzzle();
     }
 
-    let revealButton = document.createElement("button");
-    controlButtons.appendChild(revealButton);
-    revealButton.textContent = "visibility";
-    revealButton.classList.add("material-icons");
-    revealButton.onclick = () => {
+    let revealButton = new controlButton("Reveal", "images/reveal_glyph.svg", controlButtons);
+    revealButton.element.onclick = () => {
         revealPuzzle();
     }
 
-    let resetButton = document.createElement("button");
-    controlButtons.appendChild(resetButton);
-    resetButton.textContent = "restart_alt";
-    resetButton.classList.add("material-icons");
-    resetButton.onclick = () => {
+    let resetButton = new controlButton("Reset", "images/reset_glyph.svg", controlButtons);
+    resetButton.element.onclick = () => {
         resetPuzzle();
     }
 
-    let shareButton = document.createElement("button");
-    controlButtons.appendChild(shareButton);
-    shareButton.textContent = "ios_share";
-    shareButton.classList.add("material-icons");
-    shareButton.onclick = () => {
+    let shareButton = new controlButton("Share", "images/share_glyph.svg", controlButtons);
+    shareButton.element.onclick = () => {
         sharePuzzle();
     }
 
-    let pauseButton = document.createElement("button");
-    controlButtons.appendChild(pauseButton);
+    let pauseButton = new controlButton("Pause", "images/pause_glyph.svg", controlButtons);
     let stopwatch = document.createElement("span");
     stopwatch.classList.add("stopwatch");
     stopwatch.id = "stopwatch";
-    pauseButton.textContent = "pause";
     stopwatch.textContent = "00:00";
-    pauseButton.classList.add("material-icons");
-    pauseButton.appendChild(stopwatch);
-    pauseButton.onclick = () => {
+    pauseButton.element.appendChild(stopwatch);
+    pauseButton.element.onclick = () => {
         pauseGame();
     }
 }
