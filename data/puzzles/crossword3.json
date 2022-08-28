@@ -1,0 +1,38 @@
+{
+  "clues": {
+    "across": {
+      "1": "Web feed now considered obsolete",
+      "2": "Expressions of unrequested details in text messages",
+      "3": "Evade, dodge",
+      "4": "Anatomical cavity",
+      "5": "Pronoun"
+    },
+    "down": {
+      "1": "Data types for enumerations in many C-family languages",
+      "6": "British slang for \"drug party\"",
+      "7": "Irish punk band formed in 1975",
+      "8": "Handle of a dagger",
+      "9": "Opposite of NW"
+    }
+  },
+  "grid": [
+    [[6, "h", "cell"], [false, false, "block"], [1, "s", "cell"], [8, "s", "cell"], [false, "r", "cell"]],
+    [[2, "s", "cell"], [7, "i", "cell"], [false, "m", "cell"], [false, "t", "cell"], [false, false, "block"]],
+    [[3, "e", "cell"], [false, "d", "cell"], [false, "u", "cell"], [false, "l", "cell"], [9, "e", "cell"]],
+    [[4, "s", "cell"], [false, "u", "cell"], [false, "n", "cell"], [false, "i", "cell"], [false, "s", "cell"]],
+    [[false, false, "block"], [5, "r", "cell"], [false, "e", "cell"], [false, "h", "cell"], [false, false, "block"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "title": "Enter the Mirror",
+    "author": "Alexis Martel",
+    "description": "In this puzzle, \"Across\" is from left to right, and \"Down\" is \"up\"",
+    "tags": [
+      "mini",
+      "mirrored"
+    ],
+    "size": "S",
+    "date_published": "2022-07-28",
+    "language": "eng"
+  }
+}
