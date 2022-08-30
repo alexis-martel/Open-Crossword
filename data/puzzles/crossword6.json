@@ -1,0 +1,36 @@
+{
+  "clues": {
+    "across": {
+      "1": "Band member Cheng of Horsegirl",
+      "2": "Love, in Spanish",
+      "3": "Appellation",
+      "4": "Whichever"
+    },
+    "down": {
+      "1": "Affectionate alternative to \"grandmother\"",
+      "5": "Middle-eastern country",
+      "6": "Band member Croft of The xx",
+      "7": "Present tense of \"to be\" with a plural subject"
+    }
+  },
+  "grid": [
+    [[1, "n", "cell"], [5, "o", "cell"], [6, "r", "cell"], [7, "a", "cell"]],
+    [[2, "a", "cell"], [false, "m", "cell"], [false, "o", "cell"], [false, "r", "cell"]],
+    [[3, "n", "cell"], [false, "a", "cell"], [false, "m", "cell"], [false, "e", "cell"]],
+    [[4, "a", "cell"], [false, "n", "cell"], [false, "y", "cell"], [false, false, "block"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "title": "Mini #4",
+    "author": "Alexis Martel",
+    "description": "A small 4x4 crossword",
+    "tags": [
+      "mini",
+      "unthemed",
+      "music"
+    ],
+    "size": "S",
+    "date_published": "2022-07-9",
+    "language": "eng"
+  }
+}

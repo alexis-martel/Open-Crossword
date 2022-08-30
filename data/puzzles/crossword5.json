@@ -1,0 +1,38 @@
+{
+  "clues": {
+    "across": {
+      "1": "The ___ of War",
+      "2": "Elongated sea creature",
+      "3": "Paleologism for \"decorate\"",
+      "4": "What a homeless fish has?",
+      "5": "What Jay Gatsby is"
+    },
+    "down": {
+      "1": "First word of a popular video game's name",
+      "6": "Court decision that allows a convict to remain free pending the trial",
+      "7": "Not relaxed",
+      "8": "Video game company that owns \"The Sims\"",
+      "9": "Fold"
+    }
+  },
+  "grid": [
+    [[1, "a", "cell"], [false, "r", "cell"], [7, "t", "cell"], [false, false, "block"], [9, "p", "cell"]],
+    [[false, "m", "cell"], [false, false, "block"], [2, "e", "cell"], [false, "e", "cell"], [false, "l", "cell"]],
+    [[3, "o", "cell"], [6, "r", "cell"], [false, "n", "cell"], [false, false, "block"], [false, "e", "cell"]],
+    [[4, "n", "cell"], [false, "o", "cell"], [false, "s", "cell"], [8, "e", "cell"], [false, "a", "cell"]],
+    [[5, "g", "cell"], [false, "r", "cell"], [false, "e", "cell"], [false, "a", "cell"], [false, "t", "cell"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "title": "Mini #3",
+    "author": "Alexis Martel",
+    "description": "A small 5x5 crossword",
+    "tags": [
+      "mini",
+      "unthemed"
+    ],
+    "size": "S",
+    "date_published": "2022-07-28",
+    "language": "eng"
+  }
+}

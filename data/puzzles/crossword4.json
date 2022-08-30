@@ -1,0 +1,37 @@
+{
+  "clues": {
+    "across": {
+      "1": "Note entre do et mi",
+      "2": "Pierre dure",
+      "3": "Caniculaire",
+      "4": "Lieux",
+      "5": "Programme universitaire où l'utilité de NAND est enseignée (Abbr.)"
+    },
+    "down": {
+      "1": "Nom de plusieurs listes de lecture pour des amis",
+      "2": "Rongeurs",
+      "6": "Son pouvant être suivre une période de rire intense",
+      "7": "L'invention préhistorique par excellence",
+      "8": "Rondelles contenant de l'information binaire"
+    }
+  },
+  "grid": [
+    [[1, "r", "cell"], [false, "e", "cell"], [false, false, "block"], [7, "r", "cell"], [false, false, "block"]],
+    [[false, "e", "cell"], [false, false, "block"], [2, "r", "cell"], [false, "o", "cell"], [8, "c", "cell"]],
+    [[3, "c", "cell"], [6, "h", "cell"], [false, "a", "cell"], [false, "u", "cell"], [false, "d", "cell"]],
+    [[4, "s", "cell"], [false, "i", "cell"], [false, "t", "cell"], [false, "e", "cell"], [false, "s", "cell"]],
+    [[false, false, "block"], [5, "c", "cell"], [false, "s", "cell"], [false, false, "block"], [false, false, "block"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "title": "Mini #2",
+    "author": "Alexis Martel",
+    "description": "Un petit mot croisé 5x5",
+    "tags": [
+      "mini"
+    ],
+    "size": "S",
+    "date_published": "2022-07-29",
+    "language": "fra"
+  }
+}
