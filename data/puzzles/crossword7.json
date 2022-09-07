@@ -1,0 +1,63 @@
+{
+  "clues": {
+    "across": {
+      "1": "The pinnacle of portable cuisine",
+      "2": "It can be quick",
+      "3": "🖤🐮",
+      "4": "[See 22-Down]",
+      "5": "London airport code",
+      "6": "Actress Thurman",
+      "7": "@",
+      "8": "Red jolly fellow",
+      "9": "Prefix indicating error",
+      "10": "Opposite of HI",
+      "11": "The region at the top of a map (Abbr.)",
+      "12": "Charged particle",
+      "13": "More thorough alternative to a CT scan",
+      "14": "Bandmate Cheng of Horsegirl",
+      "15": "One of the \"to be\" verbs in spanish",
+      "16": "Irish death spirit"
+    },
+    "down": {
+      "1": "Setback",
+      "2": "Possible ingredient of [1-Across]",
+      "17": "Artist Warhol",
+      "18": "Je suis ____ (Boris Vian hit song)",
+      "19": "Experience close to death (Abbr.)",
+      "20": "Egyptian deity",
+      "21": "Be a ____ ___ (toxic bro culture)",
+      "22": "With [4-Across], director of The French Dispatch",
+      "23": "Negative \"or\"",
+      "24": "Bye!",
+      "25": "Suffix meaning \"sort of\"",
+      "26": "Male scam artist",
+      "27": "Repeated thrice, the signature exclamation of [8-Across]",
+      "28": "Response to a teacher calling your name"
+
+    }
+  },
+  "grid": [
+    [[false, false, "block"], [1, "s", "cell"], [17, "a", "cell"], [19, "n", "cell"], [false, "d", "cell"], [22, "w", "cell"], [24, "i", "cell"], [26, "c", "cell"], [27, "h", "cell"]],
+    [[2, "s", "cell"], [false, "a", "cell"], [false, "n", "cell"], [false, "d", "cell"], [false, false, "block"], [3, "e", "cell"], [false, "m", "cell"], [false, "o", "cell"], [false, "o", "cell"]],
+    [[4, "a", "cell"], [false, "n", "cell"], [false, "d", "cell"], [false, "e", "cell"], [21, "r", "cell"], [false, "s", "cell"], [false, "o", "cell"], [false, "n", "cell"], [false, false, "block"]],
+    [[5, "l", "cell"], [false, "c", "cell"], [false, "y", "cell"], [false, false, "block"], [false, "e", "cell"], [false, false, "block"], [6, "u", "cell"], [false, "m", "cell"], [false, "a", "cell"]],
+    [[7, "a", "cell"], [false, "t", "cell"], [false, false, "block"], [8, "s", "cell"], [false, "a", "cell"], [23, "n", "cell"], [false, "t", "cell"], [false, "a", "cell"], [false, false, "block"]],
+    [[9, "m", "cell"], [false, "i", "cell"], [18, "s", "cell"], [false, false, "block"], [10, "l", "cell"], [false, "o", "cell"], [false, false, "block"], [11, "n", "cell"], [28, "h", "cell"]],
+    [[12, "i", "cell"], [false, "o", "cell"], [false, "n", "cell"], [false, false, "block"], [13, "m", "cell"], [false, "r", "cell"], [25, "i", "cell"], [false, false, "block"], [false, "e", "cell"]],
+    [[false, false, "block"], [14, "n", "cell"], [false, "o", "cell"], [20, "r", "cell"], [false, "a", "cell"], [false, false, "block"], [15, "s", "cell"], [false, "e", "cell"], [false, "r", "cell"]],
+    [[false, false, "block"], [false, false, "block"], [16, "b", "cell"], [false, "a", "cell"], [false, "n", "cell"], [false, "s", "cell"], [false, "h", "cell"], [false, "e", "cell"], [false, "e", "cell"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "title": "Unthemed Crossword",
+    "author": "Alexis Martel",
+    "description": "A medium 9x9 crossword",
+    "tags": [
+      "medium",
+      "unthemed"
+    ],
+    "size": "M",
+    "date_published": "2022-09-06",
+    "language": "eng"
+  }
+}
