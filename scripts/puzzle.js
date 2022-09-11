@@ -30,9 +30,39 @@ class Puzzle {
     selectNextSquare() {
         // Selects the next square in the puzzle
         if (this.selectionDirection === "across") {
-            this.selectSquare(this.selectedSquare.x + 1, this.selectedSquare.y);
+            // Check if the next square is a cell
+            for (const square of this.squares) {
+                if (square.x === this.selectedSquare.x + 1 && square.y === this.selectedSquare.y && square.style === "cell") {
+                    square.select();
+                    return;
+                } else if (square.x === this.selectedSquare.x + 1 && square.y === this.selectedSquare.y && square.style === "block") {
+                    // Select the next cell
+                    for (const square of this.squares) {
+                        if (square.x > this.selectedSquare.x && square.y === this.selectedSquare.y && square.style === "cell") {
+                            square.select();
+                            return;
+                        }
+                    }
+                }
+            }
         } else if (this.selectionDirection === "down") {
-            this.selectSquare(this.selectedSquare.x, this.selectedSquare.y + 1);
+
+            // Check if the next square is a cell
+            for (const square of this.squares) {
+                if (square.y === this.selectedSquare.y + 1 && square.x === this.selectedSquare.x && square.style === "cell") {
+                    square.select();
+                    return;
+                } else if (square.y === this.selectedSquare.y + 1 && square.x === this.selectedSquare.x && square.style === "block") {
+                    // Select the next cell
+                    for (const square of this.squares) {
+                        if (square.y > this.selectedSquare.y && square.x === this.selectedSquare.x && square.style === "cell") {
+                            square.select();
+                            return;
+                        }
+                    }
+                }
+            }
+
         }
     }
 
@@ -111,9 +141,6 @@ class PuzzleSquare {
         this.selected = true;
         this.element.classList.add("selected");
         puzzle.selectedSquare = this;
-        if (this.style === "block" || this.style === "block") {
-            puzzle.selectNextSquare();
-        }
         this.textElement.focus();
 
 
