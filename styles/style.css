@@ -26,10 +26,6 @@ html {
     font-family: var(--main-font);
 }
 
-canvas {
-    padding: 0;
-}
-
 hr {
     height: 2px;
     border: none;
@@ -47,6 +43,7 @@ header h1 {
     display: inline;
     vertical-align: middle;
 }
+
 header img {
     display: inline;
     vertical-align: middle;
@@ -58,7 +55,7 @@ header a {
 }
 
 button {
-    padding: 1px;
+    padding: 2px;
     margin: 3px 3px 0 0;
     font-family: var(--main-font);
     font-size: initial;
@@ -80,6 +77,24 @@ a {
     color: var(--text-color);
 }
 
+.puzzle-browser {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.puzzle-browser tr {
+    padding: 5px;
+    border: 2px solid var(--text-color);
+}
+
+.puzzle-browser tr:hover {
+    background-color: var(--highlight-color);
+}
+
+.puzzle-browser tr:active {
+     background-color: var(--selection-color);
+ }
+
 .stopwatch {
     display: inline-block;
     vertical-align: middle;
@@ -89,6 +104,7 @@ a {
     margin-left: 10px;
     padding: 0;
 }
+
 .puzzle-container {
     padding: 0;
 }
@@ -126,15 +142,15 @@ a {
 
 .grid-container {
     display: grid;
-    border: 1px solid var(--text-color);
+    grid-gap: 2px;
 }
 
 .puzzle-square {
+    box-shadow: 0 0 0 2px var(--text-color);
     display: inline-block;
     width: 75px;
     height: 75px;
     padding: 2px;
-    border: 2px solid var(--text-color);
     color: var(--text-color);
     background-color: var(--bg-color);
     -webkit-user-select: none;
@@ -152,6 +168,29 @@ a {
     top: 3px;
 }
 
+
+.cell {
+    font-size: 20px;
+    cursor: text;
+}
+
+.block {
+    background-color: var(--text-color);
+}
+
+.invisible {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.cell:hover, .cell.highlighted {
+    background-color: var(--highlight-color);
+}
+
+.cell:active, .cell.selected {
+    background-color: var(--selection-color);
+}
+
 .puzzle-square-text {
     font-size: 50px;
     font-weight: bold;
@@ -167,30 +206,4 @@ a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-.cell {
-    font-size: 20px;
-}
-
-.block {
-    background-color: var(--text-color);
-}
-
-.invisible {
-    background-color: var(--text-color);
-/*
-    TODO: Make invisible squares style appropriately
-    background-color: transparent;
-    border: none;
- */
-}
-
-.cell:hover, .cell.highlighted {
-    background-color: var(--highlight-color);
-    cursor: text;
-}
-
-.cell:active, .cell.selected {
-    background-color: var(--selection-color);
 }
