@@ -1,0 +1,39 @@
+{
+  "clues": {
+    "across": {
+      "1": "Place where judo is taught",
+      "2": "Prefix for environment",
+      "3": "Goodbye _____ (2003 movie)",
+      "4": "NATO alphabet \"T\"",
+      "5": "Actress Taylor-Joy"
+    },
+    "down": {
+      "1": "NATO alphabet \"D\"",
+      "6": "Arabelle's Wordle starting word",
+      "7": "Greenwood of Radiohead",
+      "8": "Quebec grocery store chain",
+      "9": "__ man's land"
+    }
+  },
+  "grid": [
+    [[1, "d", "cell"], [6, "o", "cell"], [7, "j", "cell"], [8, "o", "cell"], [false, false, "block"]],
+    [[2, "e", "cell"], [false, "c", "cell"], [false, "o", "cell"], [false, false, "block"], [false, false, "block"]],
+    [[3, "l", "cell"], [false, "e", "cell"], [false, "n", "cell"], [8, "i", "cell"], [9, "n", "cell"]],
+    [[4, "t", "cell"], [false, "a", "cell"], [false, "n", "cell"], [false, "g", "cell"], [false, "o", "cell"]],
+    [[5, "a", "cell"], [false, "n", "cell"], [false, "y", "cell"], [false, "a", "cell"], [false, false, "block"]]
+  ],
+  "color-scheme": {},
+  "info": {
+    "title": "Aramini #1",
+    "author": "Arabelle Fellinger",
+    "description": "An unthemed mini puzzle",
+    "tags": [
+      "mini",
+      "mirrored",
+      "unthemed"
+    ],
+    "size": "S",
+    "date_published": "2022-09-14",
+    "language": "eng"
+  }
+}
