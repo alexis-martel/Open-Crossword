@@ -396,12 +396,10 @@ infoContainer.classList.add("info-container")
 document.getElementById("game-view").appendChild(infoContainer);
 
 async function populate(obj) {
+    displayPuzzle(obj);
     populateClues(obj);
     populateInfo(obj);
-    displayPuzzle(obj);
     displayControlButtons();
-
-
 }
 
 function populateClues(obj) {
@@ -446,13 +444,34 @@ function populateInfo(obj) {
 
     let infoList = document.createElement("dl");
     infoList.classList.add("puzzle-info");
-    infoContainer.appendChild(infoList)
+    infoContainer.appendChild(infoList);
+
+    // Set the puzzle's descriptive size (e.g. "Extra Small", "Small", "Medium", "Large", "Extra Large")
+    let sizeName = "Error";
+    switch (true) {
+        case(puzzle.squares.length <= 9):
+            sizeName = "Extra Small";
+            break;
+        case(puzzle.squares.length <= 36 && puzzle.squares.length > 9):
+            sizeName = "Small";
+            break;
+        case(puzzle.squares.length <= 81 && puzzle.squares.length > 36):
+            sizeName = "Medium";
+            break;
+        case(puzzle.squares.length <= 144 && puzzle.squares.length > 81):
+            sizeName = "Large";
+            break;
+        case(puzzle.squares.length > 144):
+            sizeName = "Extra Large";
+            break;
+
+    }
 
     new InfoItem("Title", obj["info"]["title"], infoList); // Title
     new InfoItem("Author", obj["info"]["author"], infoList); // Author
     new InfoItem("Description", obj["info"]["description"], infoList); // Description
     new InfoItem("Tags", obj["info"]["tags"], infoList); // Tags
-    new InfoItem("Size", obj["info"]["size"], infoList); // Size
+    new InfoItem("Size", sizeName, infoList); // Size
     new InfoItem("Date Published", obj["info"]["date_published"], infoList); // Date Published
     new InfoItem("Language", obj["info"]["language"], infoList); // Language
 
