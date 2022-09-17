@@ -456,7 +456,8 @@ function populateInfo(obj) {
     new InfoItem("Date Published", obj["info"]["date_published"], infoList); // Date Published
     new InfoItem("Language", obj["info"]["language"], infoList); // Language
 
-
+    // Set the page's title to the puzzle's title
+    document.title = `${obj["info"]["title"]} - OpenCrossword`;
 }
 
 Number.prototype.toHumanReadable = function () {
