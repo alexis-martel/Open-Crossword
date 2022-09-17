@@ -384,7 +384,7 @@ function checkPuzzle() {
 // Display a "game over" alert
 function showSolvedScreen() {
     endStopwatch();
-    window.alert(`Congratulations! You solved the puzzle in ${document.getElementById("stopwatch").textContent} seconds.`);
+    window.alert(`Congratulations! You solved the puzzle in ${document.getElementById("stopwatch").textContent}!`);
 }
 
 function showNotSolvedScreen() {
@@ -423,7 +423,7 @@ function populateClues(obj) {
     downLabel.textContent = "Down";
 
     let downClues = document.createElement("menu");
-    acrossClues.classList.add("clue-list");
+    downClues.classList.add("clue-list");
     infoContainer.appendChild(downClues);
 
     for (const [clueTag, clueText] of Object.entries(obj["clues"]["down"])) {

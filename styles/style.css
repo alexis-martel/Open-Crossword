@@ -18,6 +18,7 @@
 
 :root {
     --main-font: "Times New Roman", Times, serif;
+    color-scheme: light dark;
 }
 
 html {
@@ -52,6 +53,7 @@ header img {
 
 header a {
     text-decoration: none;
+    display: inline-block;
 }
 
 button {
@@ -61,6 +63,7 @@ button {
     font-size: initial;
     border: 2px solid var(--text-color);
     background-color: var(--bg-color);
+    color: var(--text-color);
     cursor: pointer;
 }
 
@@ -80,10 +83,10 @@ a {
 .puzzle-browser {
     border-collapse: collapse;
     width: 100%;
+    padding: 5px;
 }
 
 .puzzle-browser tr {
-    padding: 5px;
     border: 2px solid var(--text-color);
 }
 
@@ -113,12 +116,13 @@ a {
     display: flex;
 }
 
-.clue-tag {
-    font-weight: bold;
-    padding-right: 3px;
+.clue-list {
+    padding-inline-start: 10px;
 }
 
-.clue-text {
+.clue-tag {
+    font-weight: bold;
+    margin-right: 5px;
 }
 
 .clue {
@@ -138,6 +142,11 @@ a {
 
 .info-label {
     font-weight: bold;
+}
+
+.info-text {
+    margin-inline-start: 10px;
+    margin-block-end: 10px;
 }
 
 .grid-container {
