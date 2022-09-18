@@ -15,12 +15,96 @@
     }
   },
   "grid": [
-    [[1, "o", "cell"], [6, "w", "cell"], [7, "n", "cell"], [8, "s", "cell"]],
-    [[false, false, "block"], [2, "h", "cell"], [false, "o", "cell"], [false, "o", "cell"]],
-    [[3, "i", "cell"], [false, false, "block"], [4, "d", "cell"], [false, "o", "cell"]],
-    [[5, "m", "cell"], [false, "a", "cell"], [false, "s", "cell"], [false, "t", "cell"]]
+    [
+      [
+        1,
+        "o",
+        "cell"
+      ],
+      [
+        6,
+        "w",
+        "cell"
+      ],
+      [
+        7,
+        "n",
+        "cell"
+      ],
+      [
+        8,
+        "s",
+        "cell"
+      ]
+    ],
+    [
+      [
+        false,
+        false,
+        "block"
+      ],
+      [
+        2,
+        "h",
+        "cell"
+      ],
+      [
+        false,
+        "o",
+        "cell"
+      ],
+      [
+        false,
+        "o",
+        "cell"
+      ]
+    ],
+    [
+      [
+        3,
+        "i",
+        "cell"
+      ],
+      [
+        false,
+        false,
+        "block"
+      ],
+      [
+        4,
+        "d",
+        "cell"
+      ],
+      [
+        false,
+        "o",
+        "cell"
+      ]
+    ],
+    [
+      [
+        5,
+        "m",
+        "cell"
+      ],
+      [
+        false,
+        "a",
+        "cell"
+      ],
+      [
+        false,
+        "s",
+        "cell"
+      ],
+      [
+        false,
+        "t",
+        "cell"
+      ]
+    ]
   ],
-  "color-scheme": {},
+  "colour-scheme": {},
   "info": {
     "title": "Mini #1",
     "author": "Alexis Martel",
