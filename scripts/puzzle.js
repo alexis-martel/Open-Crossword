@@ -171,7 +171,7 @@ class PuzzleSquare {
 }
 
 class PuzzleClue {
-    constructor(clueTag, direction, clueText, parentElement) {
+    constructor(clueTag, direction, clueHTML, parentElement) {
         this.element = document.createElement("li");
         this.element.classList.add("clue");
         this.tagElement = document.createElement("span");
@@ -180,7 +180,7 @@ class PuzzleClue {
         this.textElement.classList.add("clue-text");
 
         this.tagElement.textContent = clueTag;
-        this.textElement.textContent = clueText;
+        this.textElement.innerHTML = clueHTML;
 
         parentElement.appendChild(this.element);
         this.element.appendChild(this.tagElement);
@@ -188,7 +188,6 @@ class PuzzleClue {
 
         this.number = parseInt(clueTag, 10);
         this.direction = direction;
-        this.content = clueText;
         this.selected = false;
         this.element.onclick = () => {
             this.select();

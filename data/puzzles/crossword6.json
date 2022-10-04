@@ -1,7 +1,7 @@
 {
   "clues": {
     "across": {
-      "1": "Band member Cheng of Horsegirl",
+      "1": "Band member Cheng of <cite>Horsegirl</cite>",
       "2": "Love, in Spanish",
       "3": "Appellation",
       "4": "Whichever"
@@ -9,7 +9,7 @@
     "down": {
       "1": "Affectionate alternative to \"grandmother\"",
       "5": "Middle-eastern country",
-      "6": "Band member Croft of The xx",
+      "6": "Band member Croft of <cite>The xx</cite>",
       "7": "Present tense of \"to be\" with a plural subject"
     }
   },
