@@ -27,9 +27,11 @@
 <a href="https://github.com/alexis-martel/Open-Crossword" target="_blank" rel="noopener noreferrer">Check out the GitHub
     repository</a>
 <h2>Puzzles</h2>
-
+<button id="shuffle-button" title="Select a random puzzle"><img alt="Random" height="25" src="images/random_glyph.svg"
+                                                                width="25">Shuffle
+</button>
 <table class="puzzle-browser">
-    <tr style="background-color: var(--foreground-colour);
+    <tr id="puzzle-browser-header" style="background-color: var(--foreground-colour);
     color: var(--background-colour);
     font-weight: bold;
     text-align: left;">
@@ -103,5 +105,6 @@
 </footer>
 
 <script src="scripts/colour.js"></script>
+<script src="scripts/shuffle.js"></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+"use strict";
+
 let colourSchemes = {
     "white": {"background": "#FFFAF0", "foreground": "#000000FF", "selection": "#B4D7FF", "highlight": "#DCDCDD"},
     "blue": {"background": "#0077ff", "foreground": "#000000FF", "selection": "#62acff", "highlight": "#0166E1FF"},

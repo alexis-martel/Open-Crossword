@@ -44,7 +44,7 @@ header a {
 
 button {
     padding: 2px;
-    margin: 3px 3px 0 0;
+    margin: 3px 3px 3px 0;
     font-family: var(--main-font);
     font-size: initial;
     border: 2px solid var(--foreground-colour);
