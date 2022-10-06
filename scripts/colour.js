@@ -6,7 +6,12 @@ let colourSchemes = {
     "red": {"background": "#ff4f4f", "foreground": "#000000FF", "selection": "#ff6f6f", "highlight": "#c93f3f"},
     "yellow": {"background": "#ffdb00", "foreground": "#000000FF", "selection": "#ffeb80", "highlight": "#e8c400"},
     "purple": {"background": "#7b49ff", "foreground": "#000000FF", "selection": "#926aff", "highlight": "#613ace"},
-    "solarized": {"background": "#fdf6e3", "foreground": "#000000FF", "selection": "#2aa198", "highlight": "#eee8d5"}
+    "solarized-light": {
+        "background": "#fdf6e3",
+        "foreground": "#000000FF",
+        "selection": "#93a1a1",
+        "highlight": "#eee8d5"
+    }
 };
 
 // Choose a random colour scheme
