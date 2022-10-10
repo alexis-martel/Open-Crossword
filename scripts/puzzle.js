@@ -489,7 +489,7 @@ function populateInfo(obj) {
     new InfoItem("Language", obj["info"]["language"], infoList); // Language
 
     // Set the page's title to the puzzle's title
-    document.title = `${obj["info"]["title"]} - OpenCrossword`;
+    document.title = `${obj["info"]["title"]}, by ${obj["info"]["author"]} - OpenCrossword`;
 }
 
 Number.prototype.toHumanReadable = function () {
