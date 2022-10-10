@@ -136,11 +136,6 @@ a {
     background-color: var(--selection-colour);
 }
 
-.info-container {
-    overflow: scroll;
-    height: inherit;
-}
-
 .info-label {
     font-weight: bold;
 }
