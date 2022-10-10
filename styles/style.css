@@ -5,7 +5,13 @@
     --highlight-colour: #DCDCDD;
     --main-font: "Times New Roman", Times, serif;
     --main-border-width: 2px;
-    color-scheme: light;
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        filter: invert(1);
+    }
 }
 
 body {

@@ -1,18 +1,12 @@
 "use strict";
 
-let lightColourSchemes = {
-    "white": {"background": "#FFFAF0", "foreground": "red", "selection": "#B4D7FF", "highlight": "#DCDCDD"},
-    "blue": {"background": "#0077ff", "foreground": "#000000FF", "selection": "#62acff", "highlight": "#0166E1FF"},
-    "red": {"background": "#ff4f4f", "foreground": "#000000FF", "selection": "#ff6f6f", "highlight": "#c93f3f"},
-    "yellow": {"background": "#ffdb00", "foreground": "#000000FF", "selection": "#ffeb80", "highlight": "#e8c400"},
-    "purple": {"background": "#7b49ff", "foreground": "#000000FF", "selection": "#926aff", "highlight": "#613ace"},
-    "solarized-light": {
-        "background": "#fdf6e3",
-        "foreground": "#000000FF",
-        "selection": "#93a1a1",
-        "highlight": "#eee8d5"
-    }
+const lightColourSchemes = {
+    "black": {"background": "#FFFAF0", "foreground": "#000000FF", "selection": "#b9b9b9", "highlight": "#e8e8e8"},
+    "blue": {"background": "#FFFAF0", "foreground": "#006def", "selection": "#b0c4ef", "highlight": "#dae4ec"},
+    "red": {"background": "#FFFAF0", "foreground": "#ff0000", "selection": "#fd6e6e", "highlight": "#ffecec"},
+    "green": {"background": "#FFFAF0", "foreground": "#399300", "selection": "#b5ff8e", "highlight": "#b5ffc7"}
 };
+
 
 // Choose a random colour scheme
 const randomProperty = function (obj) {
@@ -20,7 +14,8 @@ const randomProperty = function (obj) {
     return obj[keys[keys.length * Math.random() << 0]];
 };
 
-let colours = randomProperty(lightColourSchemes);
+let colours;
+colours = randomProperty(lightColourSchemes);
 
 document.body.style.setProperty("--background-colour", `${colours["background"]}`);
 document.body.style.setProperty("--foreground-colour", `${colours["foreground"]}`);
