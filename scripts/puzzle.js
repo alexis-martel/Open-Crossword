@@ -230,16 +230,30 @@ class InfoItem {
 }
 
 class controlButton {
-    constructor(title, iconPath, parentElement) {
+    constructor(title, icon, parentElement) {
         this.element = document.createElement("button");
         this.element.title = title;
-        this.element.innerHTML = `<img
-    src=${iconPath}
-    alt=${title}
-    height="25"
-    width="25" />`
+        this.element.innerHTML = icon;
         parentElement.appendChild(this.element);
     }
+}
+
+const icon = {
+    "pauseSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+    <path d="M28.25 38V10H36v28ZM12 38V10h7.75v28Z"/>
+</svg>`,
+    "resetSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+    <path d="M24 44q-3.75 0-7.025-1.4-3.275-1.4-5.725-3.85Q8.8 36.3 7.4 33.025 6 29.75 6 26h3q0 6.25 4.375 10.625T24 41q6.25 0 10.625-4.375T39 26q0-6.25-4.25-10.625T24.25 11H23.1l3.65 3.65-2.05 2.1-7.35-7.35 7.35-7.35 2.05 2.05-3.9 3.9H24q3.75 0 7.025 1.4 3.275 1.4 5.725 3.85 2.45 2.45 3.85 5.725Q42 22.25 42 26q0 3.75-1.4 7.025-1.4 3.275-3.85 5.725-2.45 2.45-5.725 3.85Q27.75 44 24 44Z"/>
+</svg>`,
+    "revealSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+    <path d="M24 31.5q3.55 0 6.025-2.475Q32.5 26.55 32.5 23q0-3.55-2.475-6.025Q27.55 14.5 24 14.5q-3.55 0-6.025 2.475Q15.5 19.45 15.5 23q0 3.55 2.475 6.025Q20.45 31.5 24 31.5Zm0-2.9q-2.35 0-3.975-1.625T18.4 23q0-2.35 1.625-3.975T24 17.4q2.35 0 3.975 1.625T29.6 23q0 2.35-1.625 3.975T24 28.6Zm0 9.4q-7.3 0-13.2-4.15Q4.9 29.7 2 23q2.9-6.7 8.8-10.85Q16.7 8 24 8q7.3 0 13.2 4.15Q43.1 16.3 46 23q-2.9 6.7-8.8 10.85Q31.3 38 24 38Zm0-15Zm0 12q6.05 0 11.125-3.275T42.85 23q-2.65-5.45-7.725-8.725Q30.05 11 24 11t-11.125 3.275Q7.8 17.55 5.1 23q2.7 5.45 7.775 8.725Q17.95 35 24 35Z"/>
+</svg>`,
+    "shareSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+    <path d="M11 46q-1.2 0-2.1-.9Q8 44.2 8 43V17.55q0-1.2.9-2.1.9-.9 2.1-.9h8.45v3H11V43h26V17.55h-8.55v-3H37q1.2 0 2.1.9.9.9.9 2.1V43q0 1.2-.9 2.1-.9.9-2.1.9Zm11.45-15.35V7.8l-4.4 4.4-2.15-2.15L23.95 2 32 10.05l-2.15 2.15-4.4-4.4v22.85Z"/>
+</svg>`,
+    "verifySVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+    <path d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/>
+</svg>`
 }
 
 // Get the language data from the specified URL
@@ -255,27 +269,27 @@ function displayControlButtons() {
     controlButtons.classList.add("control-button-container");
     puzzleContainer.appendChild(controlButtons);
 
-    let verifyButton = new controlButton("Verify", "images/verify_glyph.svg", controlButtons);
+    let verifyButton = new controlButton("Verify", icon["verifySVG"], controlButtons);
     verifyButton.element.onclick = () => {
         verifyPuzzle();
     }
 
-    let revealButton = new controlButton("Reveal", "images/reveal_glyph.svg", controlButtons);
+    let revealButton = new controlButton("Reveal", icon["revealSVG"], controlButtons);
     revealButton.element.onclick = () => {
         revealPuzzle();
     }
 
-    let resetButton = new controlButton("Reset", "images/reset_glyph.svg", controlButtons);
+    let resetButton = new controlButton("Reset", icon["resetSVG"], controlButtons);
     resetButton.element.onclick = () => {
         resetPuzzle();
     }
 
-    let shareButton = new controlButton("Share", "images/share_glyph.svg", controlButtons);
+    let shareButton = new controlButton("Share", icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
         sharePuzzle();
     }
 
-    let pauseButton = new controlButton("Pause", "images/pause_glyph.svg", controlButtons);
+    let pauseButton = new controlButton("Pause", icon["pauseSVG"], controlButtons);
     let stopwatch = document.createElement("span");
     stopwatch.classList.add("stopwatch");
     stopwatch.id = "stopwatch";

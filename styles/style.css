@@ -4,6 +4,7 @@
     --selection-colour: #B4D7FF;
     --highlight-colour: #DCDCDD;
     --main-font: "Times New Roman", Times, serif;
+    --main-border-width: 2px;
     color-scheme: light;
 }
 
@@ -31,7 +32,11 @@ header h1 {
     vertical-align: middle;
 }
 
-header img {
+header svg {
+    height: 50px;
+    width: 50px;
+    fill: var(--foreground-colour);
+    stroke: var(--foreground-colour);
     display: inline;
     vertical-align: middle;
     margin-right: 10px;
@@ -47,7 +52,7 @@ button {
     margin: 3px 3px 3px 0;
     font-family: var(--main-font);
     font-size: initial;
-    border: 2px solid var(--foreground-colour);
+    border: var(--main-border-width) solid var(--foreground-colour);
     background-color: var(--background-colour);
     color: var(--foreground-colour);
     cursor: pointer;
@@ -57,7 +62,11 @@ button:hover {
     background-color: var(--highlight-colour);
 }
 
-button img {
+button svg {
+    fill: var(--foreground-colour);
+    stroke: var(--foreground-colour);
+    width: 22px;
+    height: 22px;
     display: inline;
     vertical-align: middle;
 }
@@ -73,7 +82,8 @@ a {
 }
 
 .puzzle-browser tr {
-    border: 2px solid var(--foreground-colour);
+    border: var(--main-border-width) solid var(--foreground-colour);
+    height: 30px;
 }
 
 .puzzle-browser tr:hover {
@@ -126,6 +136,11 @@ a {
     background-color: var(--selection-colour);
 }
 
+.info-container {
+    overflow: scroll;
+    height: inherit;
+}
+
 .info-label {
     font-weight: bold;
 }
@@ -141,11 +156,11 @@ a {
 }
 
 .puzzle-square {
-    box-shadow: 0 0 0 2px var(--foreground-colour);
+    box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
     display: inline-block;
     width: 75px;
     height: 75px;
-    padding: 2px;
+    padding: var(--main-border-width);
     color: var(--foreground-colour);
     background-color: var(--background-colour);
     -webkit-user-select: none;

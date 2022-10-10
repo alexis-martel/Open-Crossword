@@ -1,7 +1,7 @@
 "use strict";
 
-let colourSchemes = {
-    "white": {"background": "#FFFAF0", "foreground": "#000000FF", "selection": "#B4D7FF", "highlight": "#DCDCDD"},
+let lightColourSchemes = {
+    "white": {"background": "#FFFAF0", "foreground": "red", "selection": "#B4D7FF", "highlight": "#DCDCDD"},
     "blue": {"background": "#0077ff", "foreground": "#000000FF", "selection": "#62acff", "highlight": "#0166E1FF"},
     "red": {"background": "#ff4f4f", "foreground": "#000000FF", "selection": "#ff6f6f", "highlight": "#c93f3f"},
     "yellow": {"background": "#ffdb00", "foreground": "#000000FF", "selection": "#ffeb80", "highlight": "#e8c400"},
@@ -20,7 +20,7 @@ const randomProperty = function (obj) {
     return obj[keys[keys.length * Math.random() << 0]];
 };
 
-let colours = randomProperty(colourSchemes);
+let colours = randomProperty(lightColourSchemes);
 
 document.body.style.setProperty("--background-colour", `${colours["background"]}`);
 document.body.style.setProperty("--foreground-colour", `${colours["foreground"]}`);
