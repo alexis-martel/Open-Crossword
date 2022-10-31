@@ -229,7 +229,7 @@ class InfoItem {
 
 }
 
-class controlButton {
+class ControlButton {
     constructor(title, icon, parentElement) {
         this.element = document.createElement("button");
         this.element.title = title;
@@ -269,27 +269,27 @@ function displayControlButtons() {
     controlButtons.classList.add("control-button-container");
     puzzleContainer.appendChild(controlButtons);
 
-    let verifyButton = new controlButton("Verify", icon["verifySVG"], controlButtons);
+    let verifyButton = new ControlButton("Verify", icon["verifySVG"], controlButtons);
     verifyButton.element.onclick = () => {
         verifyPuzzle();
     }
 
-    let revealButton = new controlButton("Reveal", icon["revealSVG"], controlButtons);
+    let revealButton = new ControlButton("Reveal", icon["revealSVG"], controlButtons);
     revealButton.element.onclick = () => {
         revealPuzzle();
     }
 
-    let resetButton = new controlButton("Reset", icon["resetSVG"], controlButtons);
+    let resetButton = new ControlButton("Reset", icon["resetSVG"], controlButtons);
     resetButton.element.onclick = () => {
         resetPuzzle();
     }
 
-    let shareButton = new controlButton("Share", icon["shareSVG"], controlButtons);
+    let shareButton = new ControlButton("Share", icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
         sharePuzzle();
     }
 
-    let pauseButton = new controlButton("Pause", icon["pauseSVG"], controlButtons);
+    let pauseButton = new ControlButton("Pause", icon["pauseSVG"], controlButtons);
     let stopwatch = document.createElement("span");
     stopwatch.classList.add("stopwatch");
     stopwatch.id = "stopwatch";
@@ -361,7 +361,7 @@ function displayPuzzle(obj) {
     let squareX = 0; // x-coordinate of the current square
     let squareY = 0; // y-coordinate of the current square
 
-    gridContainer.style.gridTemplateColumns = `repeat(${obj["grid"][1].length}, 1fr)`;
+    gridContainer.style.gridTemplateColumns = `repeat(${obj["grid"][1].length}, 75px)`;
     // TODO: Set gridTemplateColumns to the maximum number of columns in the grid
 
     for (const i of obj["grid"]) {

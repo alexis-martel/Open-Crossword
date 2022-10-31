@@ -1,11 +1,28 @@
 :root {
-    --background-colour: #FFFAF0FF;
-    --foreground-colour: #000000FF;
-    --selection-colour: #B4D7FF;
-    --highlight-colour: #DCDCDD;
     --main-font: "Times New Roman", Times, serif;
     --main-border-width: 2px;
-    color-scheme: light;
+    --empty-clue-list-text: "No clues";
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-colour: #FFFAF0FF;
+        --foreground-colour: #006def;
+        --selection-colour: #B4D7FF;
+        --highlight-colour: #DCDCDD;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-colour: #012c37;
+        --foreground-colour: #FFFAF0FF;
+        --selection-colour: #004dad;
+        --highlight-colour: #3f3f3f;
+        --main-font: "Times New Roman", Times, serif;
+        --main-border-width: 2px;
+    }
 }
 
 body {
@@ -71,8 +88,18 @@ button svg {
     vertical-align: middle;
 }
 
+button a {
+    text-decoration: none;
+}
+
 a {
     color: var(--foreground-colour);
+}
+
+input[type="text"], input[type="email"], input[type="number"], textarea, select {
+    font-family: var(--main-font);
+    font-size: initial;
+    resize: none;
 }
 
 .puzzle-browser {
@@ -148,6 +175,8 @@ a {
 .grid-container {
     display: grid;
     grid-gap: 2px;
+    height: min-content;
+    width: min-content;
 }
 
 .puzzle-square {
@@ -211,4 +240,89 @@ a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.oc-builder-ui-container {
+    position: sticky;
+    z-index: 2147483647;
+    top: 0;
+    left: 0;
+    background-color: var(--background-colour);
+}
+
+.oc-builder-puzzle-container {
+    display: flex;
+}
+
+.oc-builder-grid-container {
+    display: grid;
+    grid-gap: 2px;
+    height: min-content;
+    width: min-content;
+}
+
+.oc-builder-info-container {
+    margin-left: 10px;
+}
+
+.oc-builder-puzzle-square {
+    box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    color: var(--foreground-colour);
+    background-color: var(--background-colour);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    position: relative;
+}
+
+.oc-builder-puzzle-square:hover {
+    background-color: var(--highlight-colour);
+}
+
+.oc-builder-puzzle-square.selected {
+    background-color: var(--selection-colour);
+}
+
+.oc-builder-cell {
+}
+
+.oc-builder-block {
+    background-color: var(--foreground-colour);
+}
+
+.oc-builder-invisible {
+    background-color: var(--selection-colour);
+}
+
+.oc-builder-clue-list:empty:before {
+    content: var(--empty-clue-list-text);
+}
+
+.oc-builder-clue {
+    display: flex;
+}
+
+.oc-builder-clue-number-input {
+    width: 15%;
+}
+
+.oc-builder-clue-text-input {
+    width: 85%;
+}
+
+.oc-builder-info-input {
+    width: 100%;
+}
+
+.oc-builder-clue-input {
+    width: 90%;
+}
+
+.oc-builder-answer-input {
+    width: 90%;
 }

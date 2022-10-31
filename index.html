@@ -15,8 +15,6 @@
     <meta content="https://alexis-martel.github.io/Open-Crossword/index.html" property="og:url"/>
     <meta content="images/opengraph-image.jpg" property="og:image"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="floralWhite" media="(prefers-color-scheme: light)" name="theme-color"/>
-    <meta content="black" media="(prefers-color-scheme: dark)" name="theme-color"/>
 </head>
 
 <body>
@@ -46,7 +44,8 @@
     <hr>
 </header>
 <p>An open-source crossword platform for every cruciverbalist.</p>
-<a href="https://github.com/alexis-martel/Open-Crossword" target="_blank" rel="noopener noreferrer">Check out the GitHub
+<a href="https://github.com/alexis-martel/Open-Crossword" rel="noopener noreferrer nofollow" target="_blank">Check out
+    the GitHub
     repository</a>
 <h1>Puzzles</h1>
 <button id="shuffle-button" title="Select a random puzzle">
@@ -54,6 +53,13 @@
         <path d="M29.05 40.5v-3h6.25l-9.2-9.15 2.1-2.15 9.3 9.2v-6.35h3V40.5Zm-19.45 0-2.1-2.15 27.9-27.9h-6.35v-3H40.5V18.9h-3v-6.3Zm10.15-18.7L7.5 9.6l2.15-2.15 12.25 12.2Z"/>
     </svg>
     Shuffle
+</button>
+<button title="Create a new puzzle"><a href="compose.html">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/>
+    </svg>
+    New Puzzle
+</a>
 </button>
 <table class="puzzle-browser">
     <tr id="puzzle-browser-header" style="background-color: var(--foreground-colour);
@@ -123,13 +129,12 @@
 <footer>
     <address>
         Site design © 2022 Alexis Martel. All rights reserved. This page is licensed under a <a
-            href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="noopener noreferrer">GPLv3
+            href="https://www.gnu.org/licenses/gpl-3.0.en.html" rel="noopener noreferrer nofollow" target="_blank">GPLv3
         license</a>. Please report any issues on <a href="https://github.com/alexis-martel/Open-Crossword/issues"
-                                                    target="_blank" rel="noopener noreferrer">GitHub</a>.
+                                                    rel="noopener noreferrer nofollow" target="_blank">GitHub</a>.
     </address>
 </footer>
 
-<script src="scripts/colour.js"></script>
 <script src="scripts/shuffle.js"></script>
 </body>
 </html>
