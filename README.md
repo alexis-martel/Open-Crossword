@@ -6,12 +6,12 @@
 
 - Play crosswords on your computer, tablet, or phone
 - Browse a list of crosswords authored by the creators of OpenCrossword
+- Make your own crosswords with a simple, intuitive interface
 
 ## Roadmap
 
 - Play local JSON puzzle files
 - Better mobile support
-- Puzzle builder
 - Serverless share system
 
 ## Documentation
