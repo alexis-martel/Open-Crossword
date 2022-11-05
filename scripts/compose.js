@@ -231,6 +231,7 @@ class PuzzleInfo {
         this.element = document.createElement("div");
         this.labelElement = document.createElement("label");
         this.labelElement.textContent = label;
+        this.labelElement.classList.add("oc-builder-info-input-label");
         this.inputElement = document.createElement("input");
         this.inputElement.classList.add("oc-builder-info-input");
         this.inputElement.type = type;
@@ -343,6 +344,7 @@ function displayInfo() {
 
     let descriptionInputLabel = document.createElement("label");
     descriptionInputLabel.textContent = "Description";
+    descriptionInputLabel.classList.add("oc-builder-info-input-label");
     myPuzzle.descriptionInput = document.createElement("textarea");
     myPuzzle.descriptionInput.classList.add("oc-builder-info-input");
     myPuzzle.descriptionInput.placeholder = "Puzzle description";
