@@ -113,9 +113,26 @@ class Grid {
         this.obj["info"]["language"] = myPuzzle.languageInput.value;
 
 
-        console.log(this.downClues);
         // Output the object to the console
-        console.log(JSON.stringify(this.obj));
+        this.data = JSON.stringify(this.obj);
+    }
+
+    createDataLink() {
+        // Creates a link string containing the puzzle data in the "d" parameter
+        this.generate();
+        return `solve.html?d=${encodeURIComponent(this.data)}`;
+    }
+
+    downloadJSON() {
+        // Creates a JSON file containing the puzzle data
+        this.generate();
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(this.data);
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", "puzzle.json");
+        document.body.appendChild(downloadAnchorNode);
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
     }
 }
 
@@ -259,8 +276,10 @@ const icon = {
     "squareInvisibleSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m16.8 33.3 7.2-7.2 7.2 7.2 2.1-2.1-7.2-7.2 7.2-7.2-2.1-2.1-7.2 7.2-7.2-7.2-2.1 2.1 7.2 7.2-7.2 7.2ZM9 42q-1.2 0-2.1-.9Q6 40.2 6 39V9q0-1.2.9-2.1Q7.8 6 9 6h30q1.2 0 2.1.9.9.9.9 2.1v30q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h30V9H9v30ZM9 9v30V9Z"/></svg>`,
     "squareEditSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M9 47.4q-1.2 0-2.1-.9-.9-.9-.9-2.1v-30q0-1.2.9-2.1.9-.9 2.1-.9h20.25l-3 3H9v30h30V27l3-3v20.4q0 1.2-.9 2.1-.9.9-2.1.9Zm15-18Zm9.1-17.6 2.15 2.1L21 28.1v4.3h4.25l14.3-14.3 2.1 2.1L26.5 35.4H18v-8.5Zm8.55 8.4-8.55-8.4 5-5q.85-.85 2.125-.85t2.125.9l4.2 4.25q.85.9.85 2.125t-.9 2.075Z"/></svg>`,
     "downloadPuzzleSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11 40q-1.2 0-2.1-.9Q8 38.2 8 37v-7.15h3V37h26v-7.15h3V37q0 1.2-.9 2.1-.9.9-2.1.9Zm13-7.65-9.65-9.65 2.15-2.15 6 6V8h3v18.55l6-6 2.15 2.15Z"/></svg>`,
+    "sharePuzzleSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11 46q-1.2 0-2.1-.9Q8 44.2 8 43V17.55q0-1.2.9-2.1.9-.9 2.1-.9h8.45v3H11V43h26V17.55h-8.55v-3H37q1.2 0 2.1.9.9.9.9 2.1V43q0 1.2-.9 2.1-.9.9-2.1.9Zm11.45-15.35V7.8l-4.4 4.4-2.15-2.15L23.95 2 32 10.05l-2.15 2.15-4.4-4.4v22.85Z"/></svg>`,
     "addSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/></svg>`,
     "removeSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M10 25.5v-3h28v3Z"/></svg>`,
+    "playSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M16 37.85v-28l22 14Zm3-14Zm0 8.55 13.45-8.55L19 15.3Z"/></svg>`
 }
 
 function populateToolBar() {
@@ -269,9 +288,7 @@ function populateToolBar() {
     UIContainer.appendChild(document.createElement("hr"));
     let makeCellButton = new ControlButton("Make cell", icon["squareCellSVG"], toolBarElement);
     makeCellButton.element.onclick = () => {
-
         myPuzzle.selectedSquare.makeCell();
-
     }
     let makeBlockButton = new ControlButton("Make block", icon["squareBlockSVG"], toolBarElement);
     makeBlockButton.element.onclick = () => {
@@ -281,10 +298,30 @@ function populateToolBar() {
     makeInvisibleButton.element.onclick = () => {
         myPuzzle.selectedSquare.makeInvisible();
     }
-    let downloadPuzzleButton = new ControlButton("Download puzzle", icon["downloadPuzzleSVG"], toolBarElement);
+    let sharePuzzleButton = new ControlButton("Share puzzle", icon["sharePuzzleSVG"], toolBarElement);
+    sharePuzzleButton.element.onclick = () => {
+        displayShareDialog();
+    }
+    let downloadPuzzleButton = new ControlButton("Download puzzle JSON file", icon["downloadPuzzleSVG"], toolBarElement);
     downloadPuzzleButton.element.onclick = () => {
-        myPuzzle.generate();
-        window.alert("Puzzle data in console");
+        myPuzzle.downloadJSON();
+    }
+    let playPuzzleButton = new ControlButton("Play puzzle in new tab", icon["playSVG"], toolBarElement);
+    playPuzzleButton.element.onclick = () => {
+        window.open(myPuzzle.createDataLink(), '_blank');
+    }
+}
+
+function displayShareDialog() {
+    myPuzzle.generate();
+    if (navigator.share) {
+        navigator.share({
+            title: `${myPuzzle.obj["info"]["title"]}, by ${myPuzzle.obj["info"]["author"]} - OpenCrossword`,
+            url: myPuzzle.createDataLink()
+        }).catch(console.error);
+    } else {
+        console.error("Your browser does not support the WebShare API");
+        // TODO: Show alternate share menu
     }
 }
 
