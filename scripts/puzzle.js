@@ -347,8 +347,16 @@ function sharePuzzle() {
             title: "OpenCrossword", url: window.location.href
         }).catch(console.error);
     } else {
-        console.error("Your browser does not support the WebShare API");
-        // TODO: Show alternate share menu
+        navigator.clipboard.writeText(window.location.href).then(
+            () => {
+                /* clipboard successfully set */
+                window.alert("Link copied to clipboard");
+            },
+            () => {
+                /* clipboard write failed */
+                window.alert("Failed to copy link to clipboard");
+            }
+        );
     }
 }
 
