@@ -320,7 +320,7 @@ function displayShareDialog() {
             url: myPuzzle.createDataLink()
         }).catch(console.error);
     } else {
-        navigator.clipboard.writeText(window.location.href).then(
+        navigator.clipboard.writeText(myPuzzle.createDataLink()).then(
             () => {
                 /* clipboard successfully set */
                 window.alert("Link copied to clipboard");
