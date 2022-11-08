@@ -1,24 +1,19 @@
 # [OpenCrossword](https://alexis-martel.github.io/Open-Crossword/)
 
-### Open-source crossword puzzle platform, focused on design and ease of use.
+## An open-source crossword platform for every cruciverbalist.
 
-## Features
+### Features
 
 - Play crosswords on your computer, tablet, or phone
 - Browse a list of crosswords authored by the creators of OpenCrossword
 - Make your own crosswords with a simple, intuitive interface
+- Share your puzzles with anyone with a simple link
 
-## Roadmap
-
-- Play local JSON puzzle files
-- Better mobile support
-- Serverless share system
-
-## Documentation
+### Documentation
 
 - [GitHub Wiki](https://github.com/alexis-martel/Open-Crossword/wiki)
 
-## Feedback
+### Feedback
 
 - Please report any issues or feature requests on
   our [GitHub issue tracker](https://github.com/alexis-martel/Open-Crossword/issues). We'd love to hear from you!
