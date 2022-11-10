@@ -73,11 +73,15 @@ class Grid {
             for (let j = 0; j < this.width; j++) {
                 if (this.squares[i * this.width + j].type === "cell") {
                     // Add the current square's letter to the current row
-                    this.obj["grid"][i].push([parseInt(this.squares[i * this.width + j].clueNumberInput.value, 10), this.squares[i * this.width + j].answerInput.value.toLowerCase(), this.squares[i * this.width + j].type]);
+                    this.obj["grid"][i].push({
+                        "clueNumber": parseInt(this.squares[i * this.width + j].clueNumberInput.value, 10),
+                        "answer": this.squares[i * this.width + j].answerInput.value.toLowerCase(),
+                        "type": "cell"
+                    });
                 } else if (this.squares[i * this.width + j].type === "block") {
-                    this.obj["grid"][i].push([false, false, "block"]);
+                    this.obj["grid"][i].push({"type": "block"});
                 } else if (this.squares[i * this.width + j].type === "invisible") {
-                    this.obj["grid"][i].push([false, false, "invisible"]);
+                    this.obj["grid"][i].push({"type": "invisible"});
                 }
             }
 

@@ -13,11 +13,12 @@ const language = getLanguageData("languages/lang-eng.json");
 
 class Puzzle {
     constructor(url) {
-        // Fetch puzzle data from url
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => populate(data));
-
+        if (url) {
+            // Fetch puzzle data from url
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => populate(data));
+        }
         this.squares = []; // Stores all squares in the puzzle
         this.clues = []; // Stores all clues in the puzzle
         this.selectedSquare = null; // Stores the selected square
@@ -347,16 +348,13 @@ function sharePuzzle() {
             title: "OpenCrossword", url: window.location.href
         }).catch(console.error);
     } else {
-        navigator.clipboard.writeText(window.location.href).then(
-            () => {
-                /* clipboard successfully set */
-                window.alert("Link copied to clipboard");
-            },
-            () => {
-                /* clipboard write failed */
-                window.alert("Failed to copy link to clipboard");
-            }
-        );
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            /* clipboard successfully set */
+            window.alert("Link copied to clipboard");
+        }, () => {
+            /* clipboard write failed */
+            window.alert("Failed to copy link to clipboard");
+        });
     }
 }
 
@@ -366,17 +364,17 @@ function displayPuzzle(obj) {
     let squareY = 0; // y-coordinate of the current square
 
     gridContainer.style.gridTemplateColumns = `repeat(${obj["grid"][0].length}, 75px)`;
-    // TODO: Set gridTemplateColumns to the maximum number of columns in the grid
 
     for (const i of obj["grid"]) {
 
         for (const j of i) {
-            puzzle.squares.push(new PuzzleSquare(squareX, squareY, j[2], j[0], j[1]));
+            puzzle.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"]));
             squareX++;
         }
         squareY++;
         squareX = 0;
     }
+    console.log(puzzle.squares);
 }
 
 // Check if the puzzle is solved
@@ -560,7 +558,6 @@ if (params.has("p")) {
     puzzle = new Puzzle(puzzleURL);
 } else if (params.has("d")) {
     let puzzleData = params.get("d").toString();
-    puzzle = new Puzzle("");
-    console.log(puzzleData);
+    puzzle = new Puzzle();
     populate(JSON.parse(puzzleData));
 }
