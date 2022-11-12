@@ -1,0 +1,117 @@
+{
+  "clues": {
+    "across": {
+      "1": "Exhaustive, angry explanation",
+      "2": "2019 Pakistani Urdu series starring Shahzad Sheikh",
+      "3": "Mix",
+      "4": "<cite>The Beatles</cite> fifth studio album"
+    },
+    "down": {
+      "1": "Poison ivy might give you one",
+      "5": "Before, in Spanish",
+      "6": "It gets hammered down",
+      "7": "Heavy-duty cloth"
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "t",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 2,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 4,
+        "answer": "h",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "p",
+        "type": "cell"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #7",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "A small 4x4 crossword",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2022-11-12",
+    "language": "en"
+  }
+}

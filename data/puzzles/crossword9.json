@@ -1,0 +1,115 @@
+{
+  "clues": {
+    "across": {
+      "1": "Michael’s father, in <cite>The Godfather</cite>",
+      "2": "“Let’s do it”",
+      "3": "Gun pellets, for short",
+      "4": "Author Harper of <cite>To Kill a Mockingbird</cite>"
+    },
+    "down": {
+      "1": "Small cylindrical container for fluids",
+      "5": "Obvious response to “Who are you?”",
+      "6": "You are wasting it",
+      "7": "Alternative music’s Yoko"
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "v",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "o",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 2,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 4,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #5",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "A small 4x4 crossword",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2022-11-12",
+    "language": "en"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "clues": {
+    "across": {
+      "1": "Lil ___ X",
+      "2": "Musician Brian of <cite>Music for Airports</cite>",
+      "3": "Water wall"
+    },
+    "down": {
+      "1": "Flanders of <cite>The Simpsons</cite>",
+      "4": "Japanese air line",
+      "5": "Musician Jay of <cite>Anak Ko</cite>"
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 4,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "s",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 2,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "d",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #8",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "A small 3x3 crossword",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2022-11-12",
+    "language": "en"
+  }
+}

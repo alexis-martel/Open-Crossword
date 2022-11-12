@@ -1,0 +1,113 @@
+{
+  "clues": {
+    "across": {
+      "1": "Camera’s sensitivity to light (Abbr.)",
+      "2": "Con job",
+      "3": "Prefix meaning “one trillion”",
+      "4": "<cite>“It’s a ___ to kill a mockingbird”</cite>"
+    },
+    "down": {
+      "1": "Freezes",
+      "2": "Prefix to Lawrence, Petersburg, or Patrick (Abbr.)",
+      "5": "Traditional Indian garment",
+      "6": "Middle-eastern country"
+    }
+  },
+  "grid": [
+    [
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 1,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "o",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 2,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 4,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #6",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "A small 4x4 crossword",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2022-11-12",
+    "language": "en"
+  }
+}
