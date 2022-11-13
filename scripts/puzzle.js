@@ -374,7 +374,6 @@ function displayPuzzle(obj) {
         squareY++;
         squareX = 0;
     }
-    console.log(puzzle.squares);
 }
 
 // Check if the puzzle is solved

@@ -21,239 +21,217 @@
   },
   "grid": [
     [
-      [
-        8,
-        "r",
-        "cell"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        1,
-        "r",
-        "cell"
-      ],
-      [
-        10,
-        "a",
-        "cell"
-      ],
-      [
-        11,
-        "r",
-        "cell"
-      ],
-      [
-        12,
-        "e",
-        "cell"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        13,
-        "c",
-        "cell"
-      ]
+      {
+        "clueNumber": 8,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 1,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 10,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 11,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 12,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 13,
+        "answer": "c",
+        "type": "cell"
+      }
     ],
     [
-      [
-        2,
-        "a",
-        "cell"
-      ],
-      [
-        9,
-        "q",
-        "cell"
-      ],
-      [
-        false,
-        "u",
-        "cell"
-      ],
-      [
-        false,
-        "a",
-        "cell"
-      ],
-      [
-        false,
-        "t",
-        "cell"
-      ],
-      [
-        false,
-        "i",
-        "cell"
-      ],
-      [
-        false,
-        "q",
-        "cell"
-      ],
-      [
-        false,
-        "u",
-        "cell"
-      ],
-      [
-        false,
-        "e",
-        "cell"
-      ]
+      {
+        "clueNumber": 2,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 9,
+        "answer": "q",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "u",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "q",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "u",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      }
     ],
     [
-      [
-        3,
-        "m",
-        "cell"
-      ],
-      [
-        false,
-        "i",
-        "cell"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        4,
-        "m",
-        "cell"
-      ],
-      [
-        false,
-        "l",
-        "cell"
-      ],
-      [
-        false,
-        "c",
-        "cell"
-      ],
-      [
-        false,
-        "u",
-        "cell"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        false,
-        "l",
-        "cell"
-      ]
+      {
+        "clueNumber": 3,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 4,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "u",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      }
     ],
     [
-      [
-        false,
-        "e",
-        "cell"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        5,
-        "s",
-        "cell"
-      ],
-      [
-        false,
-        "a",
-        "cell"
-      ],
-      [
-        false,
-        "h",
-        "cell"
-      ],
-      [
-        false,
-        "a",
-        "cell"
-      ],
-      [
-        false,
-        "r",
-        "cell"
-      ],
-      [
-        false,
-        "a",
-        "cell"
-      ]
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "h",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      }
     ],
     [
-      [
-        6,
-        "s",
-        "cell"
-      ],
-      [
-        false,
-        "i",
-        "cell"
-      ],
-      [
-        false,
-        "l",
-        "cell"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        7,
-        "s",
-        "cell"
-      ],
-      [
-        false,
-        "e",
-        "cell"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ],
-      [
-        false,
-        false,
-        "block"
-      ]
+      {
+        "clueNumber": 6,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      }
     ]
   ],
   "colour-scheme": {},
