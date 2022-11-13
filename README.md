@@ -9,6 +9,10 @@
 - Make your own crosswords with a simple, intuitive interface
 - Share your puzzles with anyone with a simple link
 
+### How to submit a crossword
+
+- See the [wiki page](https://github.com/alexis-martel/Open-Crossword/wiki/Submit-a-Crossword)
+
 ### Documentation
 
 - [GitHub Wiki](https://github.com/alexis-martel/Open-Crossword/wiki)
