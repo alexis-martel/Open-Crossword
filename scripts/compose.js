@@ -165,7 +165,7 @@ class PuzzleSquare {
 
         // Append two <input type="text"> elements to the cell and a checkbox
         this.clueNumberInput = document.createElement("input");
-        this.clueNumberInput.type = "text";
+        this.clueNumberInput.type = "number";
         this.clueNumberInput.placeholder = "#";
         this.clueNumberInput.classList.add("oc-builder-clue-input");
 
