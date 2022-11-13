@@ -202,6 +202,10 @@ a {
     cursor: text;
 }
 
+.circled {
+    background-color: lightcoral;
+}
+
 .block {
     background-color: var(--foreground-colour);
 }

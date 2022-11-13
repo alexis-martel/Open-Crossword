@@ -73,11 +73,19 @@ class Grid {
             for (let j = 0; j < this.width; j++) {
                 if (this.squares[i * this.width + j].type === "cell") {
                     // Add the current square's letter to the current row
-                    this.obj["grid"][i].push({
-                        "clueNumber": parseInt(this.squares[i * this.width + j].clueNumberInput.value, 10),
-                        "answer": this.squares[i * this.width + j].answerInput.value.toLowerCase(),
-                        "type": "cell"
-                    });
+                    if (this.squares[i * this.width + j].circledInput.checked) {
+                        this.obj["grid"][i].push({
+                            "clueNumber": parseInt(this.squares[i * this.width + j].clueNumberInput.value, 10),
+                            "answer": this.squares[i * this.width + j].answerInput.value.toLowerCase(),
+                            "type": "circled-cell"
+                        });
+                    } else {
+                        this.obj["grid"][i].push({
+                            "clueNumber": parseInt(this.squares[i * this.width + j].clueNumberInput.value, 10),
+                            "answer": this.squares[i * this.width + j].answerInput.value.toLowerCase(),
+                            "type": "cell"
+                        });
+                    }
                 } else if (this.squares[i * this.width + j].type === "block") {
                     this.obj["grid"][i].push({"type": "block"});
                 } else if (this.squares[i * this.width + j].type === "invisible") {
@@ -324,16 +332,13 @@ function displayShareDialog() {
             url: myPuzzle.createDataLink()
         }).catch(console.error);
     } else {
-        navigator.clipboard.writeText(myPuzzle.createDataLink()).then(
-            () => {
-                /* clipboard successfully set */
-                window.alert("Link copied to clipboard");
-            },
-            () => {
-                /* clipboard write failed */
-                window.alert("Failed to copy link to clipboard");
-            }
-        );
+        navigator.clipboard.writeText(myPuzzle.createDataLink()).then(() => {
+            /* clipboard successfully set */
+            window.alert("Link copied to clipboard");
+        }, () => {
+            /* clipboard write failed */
+            window.alert("Failed to copy link to clipboard");
+        });
     }
 }
 
