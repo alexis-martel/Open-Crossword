@@ -1,0 +1,161 @@
+{
+  "clues": {
+    "across": {
+      "1": "British author Virginia",
+      "6": "Point maximum in judo",
+      "7": "Oven ____",
+      "8": "Then, in French",
+      "9": "Christian health organization with a catchy theme song"
+    },
+    "down": {
+      "1": "Adjective to describe Greg Heffley",
+      "2": "Drug extracted from poppy seeds",
+      "3": "Branch of physics studying light and its properties",
+      "4": "Lots of, for short",
+      "5": "Function key"
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "w",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 2,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 3,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 4,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "f",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 6,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "p",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "p",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 7,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      }
+    ],
+    [
+      {
+        "clueNumber": 8,
+        "answer": "p",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "u",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      }
+    ],
+    [
+      {
+        "clueNumber": 9,
+        "answer": "y",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Aramini #2",
+    "author": "Arabelle Fellinger",
+    "contact": "",
+    "description": "An unthemed mini puzzle",
+    "tags": [
+      "mini",
+      "unthemed"
+    ],
+    "date_published": "2022-11-12",
+    "language": "en"
+  }
+}
