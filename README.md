@@ -4,9 +4,9 @@
 
 ### Features
 
-- Play crosswords on your computer, tablet, or phone
+- Play and create crosswords on your computer, tablet, or phone
 - Browse a list of crosswords authored by the creators of OpenCrossword
-- Make your own crosswords with a simple, intuitive interface
+- Compose your own crosswords with a simple, intuitive interface
 - Share your puzzles with anyone with a simple link
 
 ### How to submit a crossword
