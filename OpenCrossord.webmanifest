@@ -12,6 +12,6 @@
     "categories": ["games", "education", "entertainment", "social"],
     "lang": "en-US",
     "display": "standalone",
-    "start_url": "/",
+    "start_url": "/Open-Crossword/",
     "background_color": "#fffaf0"
 }
