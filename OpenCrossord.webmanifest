@@ -1,0 +1,17 @@
+{
+    "name": "OpenCrossword Suite",
+    "short_name": "OpenCrossword",
+    "description": "An open-source crossword platform for every cruciverbalist.",
+    "icons": [
+        {
+          "src": "/apple-touch-icon.png",
+          "sizes": "180x180",
+          "type": "image/png"
+        }
+        ],
+    "categories": ["games", "education", "entertainment", "social"],
+    "lang": "en-US",
+    "display": "standalone",
+    "start_url": "/",
+    "background_color": "#fffaf0"
+}
