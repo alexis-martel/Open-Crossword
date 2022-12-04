@@ -560,7 +560,7 @@ let puzzle;
 
 if (params.has("p")) {
     let puzzleID = params.get("p").toString();
-    let puzzleURL = `../data/puzzles/${puzzleID}.json`;
+    let puzzleURL = `{{ site.baseurl }}/data/puzzles/${puzzleID}.json`;
     puzzle = new Puzzle(puzzleURL);
 } else if (params.has("d")) {
     let puzzleData = params.get("d").toString();
