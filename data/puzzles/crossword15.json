@@ -1,0 +1,115 @@
+{
+  "clues": {
+    "across": {
+      "1": "Dramatis Personae",
+      "2": "Not a-near",
+      "3": "Other way of writing NW",
+      "4": "Do this before leaving"
+    },
+    "down": {
+      "1": "Summon",
+      "5": "<cite>Bob Ross</cite> hairstyle",
+      "6": "Last day of the week (Abbr.)",
+      "7": "<cite>Star ____</cite>"
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "t",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 2,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "f",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 4,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "k",
+        "type": "cell"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #9",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "A small 4x4 crossword",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2022-12-13",
+    "language": "en"
+  }
+}
