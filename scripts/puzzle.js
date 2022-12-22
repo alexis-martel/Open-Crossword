@@ -75,6 +75,41 @@ class Puzzle {
             }
         }
     }
+
+    backCheck() {
+        // Checks if the selected square does not have a number
+            for (const clue of puzzle.clues) {
+                if (!(clue.number === this.selectedSquare.clue && puzzle.selectionDirection === clue.direction)) {
+                    // Check if any previous squares has a clue
+                    if (this.selectionDirection === "across") {
+                        let rowSquares = this.squares.filter(square => square.y === this.selectedSquare.y);
+                        for (let i = rowSquares.indexOf(this.selectedSquare); i >= 0; i--) {
+                            if (rowSquares[i].clue) {
+                                for (const clue of puzzle.clues) {
+                                    if (clue.number === rowSquares[i].clue && puzzle.selectionDirection === clue.direction) {
+                                        clue.select();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else if (this.selectionDirection === "down") {
+                        let rowSquares = this.squares.filter(square => square.x === this.selectedSquare.x);
+                        for (let i = rowSquares.indexOf(this.selectedSquare); i >= 0; i--) {
+                            if (rowSquares[i].clue) {
+                                for (const clue of puzzle.clues) {
+                                    if (clue.number === rowSquares[i].clue && puzzle.selectionDirection === clue.direction) {
+                                        clue.select();
+                                        return;
+                                    }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -163,7 +198,7 @@ class PuzzleSquare {
                 }
             }
         }
-
+        puzzle.backCheck();
     }
 
     deselect() {
