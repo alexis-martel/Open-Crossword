@@ -18,7 +18,7 @@
     :root {
         --background-colour: #012c37;
         --foreground-colour: #FFFAF0FF;
-        --selection-colour: #004dad;
+        --selection-colour: #1b538a;
         --highlight-colour: #3f3f3f;
         --main-font: "Times New Roman", Times, serif;
         --main-border-width: 2px;
@@ -70,7 +70,7 @@ button {
     font-family: var(--main-font);
     font-size: initial;
     border: var(--main-border-width) solid var(--foreground-colour);
-    background-color: var(--background-colour);
+    background-color: transparent;
     color: var(--foreground-colour);
     cursor: pointer;
 }
@@ -171,6 +171,31 @@ a {
     grid-gap: 2px;
     height: min-content;
     width: min-content;
+}
+
+.oc-clue-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: var(--selection-colour);
+    cursor: pointer;
+    margin: 0;
+    text-align: center;
+    font-size: large;
+}
+
+.oc-clue-bar-number-direction {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.oc-clue-bar-control-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
 }
 
 .puzzle-square {

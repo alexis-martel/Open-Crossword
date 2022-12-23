@@ -78,31 +78,30 @@ class Puzzle {
 
     backCheck() {
         // Checks if the selected square does not have a number
-            for (const clue of puzzle.clues) {
-                if (!(clue.number === this.selectedSquare.clue && puzzle.selectionDirection === clue.direction)) {
-                    // Check if any previous squares has a clue
-                    if (this.selectionDirection === "across") {
-                        let rowSquares = this.squares.filter(square => square.y === this.selectedSquare.y);
-                        for (let i = rowSquares.indexOf(this.selectedSquare); i >= 0; i--) {
-                            if (rowSquares[i].clue) {
-                                for (const clue of puzzle.clues) {
-                                    if (clue.number === rowSquares[i].clue && puzzle.selectionDirection === clue.direction) {
-                                        clue.select();
-                                        return;
-                                    }
+        for (const clue of puzzle.clues) {
+            if (!(clue.number === this.selectedSquare.clue && puzzle.selectionDirection === clue.direction)) {
+                // Check if any previous squares has a clue
+                if (this.selectionDirection === "across") {
+                    let rowSquares = this.squares.filter(square => square.y === this.selectedSquare.y);
+                    for (let i = rowSquares.indexOf(this.selectedSquare); i >= 0; i--) {
+                        if (rowSquares[i].clue) {
+                            for (const clue of puzzle.clues) {
+                                if (clue.number === rowSquares[i].clue && puzzle.selectionDirection === clue.direction) {
+                                    clue.select();
+                                    return;
                                 }
                             }
                         }
-                    } else if (this.selectionDirection === "down") {
-                        let rowSquares = this.squares.filter(square => square.x === this.selectedSquare.x);
-                        for (let i = rowSquares.indexOf(this.selectedSquare); i >= 0; i--) {
-                            if (rowSquares[i].clue) {
-                                for (const clue of puzzle.clues) {
-                                    if (clue.number === rowSquares[i].clue && puzzle.selectionDirection === clue.direction) {
-                                        clue.select();
-                                        return;
-                                    }
-
+                    }
+                } else if (this.selectionDirection === "down") {
+                    let rowSquares = this.squares.filter(square => square.x === this.selectedSquare.x);
+                    for (let i = rowSquares.indexOf(this.selectedSquare); i >= 0; i--) {
+                        if (rowSquares[i].clue) {
+                            for (const clue of puzzle.clues) {
+                                if (clue.number === rowSquares[i].clue && puzzle.selectionDirection === clue.direction) {
+                                    clue.select();
+                                    return;
+                                }
                             }
                         }
                     }
@@ -210,6 +209,8 @@ class PuzzleSquare {
 
 class PuzzleClue {
     constructor(clueTag, direction, clueHTML, parentElement) {
+        this.HTMLContent = clueHTML;
+
         this.element = document.createElement("li");
         this.element.classList.add("clue");
         this.tagElement = document.createElement("span");
@@ -244,6 +245,7 @@ class PuzzleClue {
         this.element.classList.add("selected");
         puzzle.selectedClue = this;
         puzzle.selectionDirection = this.direction;
+        clueBar.displayClue()
     }
 
     deselect() {
@@ -276,23 +278,66 @@ class ControlButton {
     }
 }
 
+class ClueBar {
+    constructor(parentElement) {
+        this.element = document.createElement("nav");
+        this.element.classList.add("oc-clue-bar");
+        this.clueContentWrapper = document.createElement("span");
+        this.controlWrapper = document.createElement("nav");
+        this.controlWrapper.classList.add("oc-clue-bar-control-wrapper");
+        parentElement.appendChild(this.element);
+        this.element.appendChild(this.clueContentWrapper);
+        this.element.appendChild(this.controlWrapper);
+
+        this.previousButton = new ControlButton("Next Clue", icon["chevronPreviousSVG"], this.controlWrapper);
+        this.previousButton.element.onclick = () => {
+            // Select the previous clue in the list
+            if (puzzle.clues.indexOf(puzzle.selectedClue) - 1 >= 0) {
+                puzzle.clues[puzzle.clues.indexOf(puzzle.selectedClue) - 1].element.click();
+            } else {
+                puzzle.clues[puzzle.clues.length - 1].element.click();
+            }
+        }
+        this.nextButton = new ControlButton("Next Clue", icon["chevronNextSVG"], this.controlWrapper);
+        this.nextButton.element.onclick = () => {
+            // Select the next clue in the list
+            if (puzzle.clues.indexOf(puzzle.selectedClue) + 1 < puzzle.clues.length) {
+                puzzle.clues[puzzle.clues.indexOf(puzzle.selectedClue) + 1].element.click();
+            } else {
+                puzzle.clues[0].element.click();
+            }
+        }
+
+        this.clueContentWrapper.onclick = () => {
+            if (puzzle.selectionDirection === "across") {
+                puzzle.selectionDirection = "down";
+            } else if (puzzle.selectionDirection === "down") {
+                puzzle.selectionDirection = "across";
+            }
+            // Refresh grid
+            puzzle.selectedSquare.select();
+        }
+    }
+
+    displayClue() {
+        if (!puzzle.selectedClue) {
+            this.element.style.display = "none";
+        } else {
+            this.element.style.display = "block";
+            this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number}-${puzzle.selectedClue.direction.toCapitalized()}</span> ${puzzle.selectedClue.HTMLContent}`;
+        }
+    }
+}
+
 const icon = {
-    "pauseSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-    <path d="M28.25 38V10H36v28ZM12 38V10h7.75v28Z"/>
-</svg>`,
-    "resetSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-    <path d="M24 44q-3.75 0-7.025-1.4-3.275-1.4-5.725-3.85Q8.8 36.3 7.4 33.025 6 29.75 6 26h3q0 6.25 4.375 10.625T24 41q6.25 0 10.625-4.375T39 26q0-6.25-4.25-10.625T24.25 11H23.1l3.65 3.65-2.05 2.1-7.35-7.35 7.35-7.35 2.05 2.05-3.9 3.9H24q3.75 0 7.025 1.4 3.275 1.4 5.725 3.85 2.45 2.45 3.85 5.725Q42 22.25 42 26q0 3.75-1.4 7.025-1.4 3.275-3.85 5.725-2.45 2.45-5.725 3.85Q27.75 44 24 44Z"/>
-</svg>`,
-    "revealSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-    <path d="M24 31.5q3.55 0 6.025-2.475Q32.5 26.55 32.5 23q0-3.55-2.475-6.025Q27.55 14.5 24 14.5q-3.55 0-6.025 2.475Q15.5 19.45 15.5 23q0 3.55 2.475 6.025Q20.45 31.5 24 31.5Zm0-2.9q-2.35 0-3.975-1.625T18.4 23q0-2.35 1.625-3.975T24 17.4q2.35 0 3.975 1.625T29.6 23q0 2.35-1.625 3.975T24 28.6Zm0 9.4q-7.3 0-13.2-4.15Q4.9 29.7 2 23q2.9-6.7 8.8-10.85Q16.7 8 24 8q7.3 0 13.2 4.15Q43.1 16.3 46 23q-2.9 6.7-8.8 10.85Q31.3 38 24 38Zm0-15Zm0 12q6.05 0 11.125-3.275T42.85 23q-2.65-5.45-7.725-8.725Q30.05 11 24 11t-11.125 3.275Q7.8 17.55 5.1 23q2.7 5.45 7.775 8.725Q17.95 35 24 35Z"/>
-</svg>`,
-    "shareSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-    <path d="M11 46q-1.2 0-2.1-.9Q8 44.2 8 43V17.55q0-1.2.9-2.1.9-.9 2.1-.9h8.45v3H11V43h26V17.55h-8.55v-3H37q1.2 0 2.1.9.9.9.9 2.1V43q0 1.2-.9 2.1-.9.9-2.1.9Zm11.45-15.35V7.8l-4.4 4.4-2.15-2.15L23.95 2 32 10.05l-2.15 2.15-4.4-4.4v22.85Z"/>
-</svg>`,
-    "verifySVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-    <path d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/>
-</svg>`,
-    "circleSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48""><path d="M24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/></svg>`
+    "pauseSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M28.25 38V10H36v28ZM12 38V10h7.75v28Z"/></svg>`,
+    "resetSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M24 44q-3.75 0-7.025-1.4-3.275-1.4-5.725-3.85Q8.8 36.3 7.4 33.025 6 29.75 6 26h3q0 6.25 4.375 10.625T24 41q6.25 0 10.625-4.375T39 26q0-6.25-4.25-10.625T24.25 11H23.1l3.65 3.65-2.05 2.1-7.35-7.35 7.35-7.35 2.05 2.05-3.9 3.9H24q3.75 0 7.025 1.4 3.275 1.4 5.725 3.85 2.45 2.45 3.85 5.725Q42 22.25 42 26q0 3.75-1.4 7.025-1.4 3.275-3.85 5.725-2.45 2.45-5.725 3.85Q27.75 44 24 44Z"/></svg>`,
+    "revealSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M24 31.5q3.55 0 6.025-2.475Q32.5 26.55 32.5 23q0-3.55-2.475-6.025Q27.55 14.5 24 14.5q-3.55 0-6.025 2.475Q15.5 19.45 15.5 23q0 3.55 2.475 6.025Q20.45 31.5 24 31.5Zm0-2.9q-2.35 0-3.975-1.625T18.4 23q0-2.35 1.625-3.975T24 17.4q2.35 0 3.975 1.625T29.6 23q0 2.35-1.625 3.975T24 28.6Zm0 9.4q-7.3 0-13.2-4.15Q4.9 29.7 2 23q2.9-6.7 8.8-10.85Q16.7 8 24 8q7.3 0 13.2 4.15Q43.1 16.3 46 23q-2.9 6.7-8.8 10.85Q31.3 38 24 38Zm0-15Zm0 12q6.05 0 11.125-3.275T42.85 23q-2.65-5.45-7.725-8.725Q30.05 11 24 11t-11.125 3.275Q7.8 17.55 5.1 23q2.7 5.45 7.775 8.725Q17.95 35 24 35Z"/></svg>`,
+    "shareSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11 46q-1.2 0-2.1-.9Q8 44.2 8 43V17.55q0-1.2.9-2.1.9-.9 2.1-.9h8.45v3H11V43h26V17.55h-8.55v-3H37q1.2 0 2.1.9.9.9.9 2.1V43q0 1.2-.9 2.1-.9.9-2.1.9Zm11.45-15.35V7.8l-4.4 4.4-2.15-2.15L23.95 2 32 10.05l-2.15 2.15-4.4-4.4v22.85Z"/></svg>`,
+    "verifySVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/></svg>`,
+    "circleSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/></svg>`,
+    "chevronNextSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z"/></svg>`,
+    "chevronPreviousSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M28.05 36 16 23.95 28.05 11.9l2.15 2.15-9.9 9.9 9.9 9.9Z"/></svg>`,
 }
 
 // Get the language data from the specified URL
@@ -452,6 +497,7 @@ infoContainer.classList.add("info-container")
 document.getElementById("game-view").appendChild(infoContainer);
 
 async function populate(obj) {
+    clueBar = new ClueBar(puzzleContainer);
     displayPuzzle(obj);
     populateClues(obj);
     populateInfo(obj);
@@ -556,6 +602,10 @@ Number.prototype.toHumanReadable = function () {
     }
 }
 
+String.prototype.toCapitalized = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 document.addEventListener("keydown", (e) => {
 
     let pressedKey = String(e.key);
@@ -592,6 +642,7 @@ function endStopwatch() {
 
 let params = new URLSearchParams(document.location.search);
 let puzzle;
+let clueBar;
 
 if (params.has("p")) {
     let puzzleID = params.get("p").toString();
