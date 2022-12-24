@@ -548,7 +548,7 @@ function populateInfo(obj) {
     infoList.classList.add("puzzle-info");
     infoContainer.appendChild(infoList);
 
-    // Set the puzzle's descriptive size (e.g. "Extra Small", "Small", "Medium", "Large", "Extra Large")
+    // Set the puzzle's descriptive size (e.g., "Extra Small", "Small", "Medium", "Large", "Extra Large")
     let sizeName = "Error";
     switch (true) {
         case(puzzle.squares.length <= 9):
