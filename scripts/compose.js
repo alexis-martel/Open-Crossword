@@ -407,7 +407,7 @@ function displayInfo() {
     descriptionInputLabel.appendChild(myPuzzle.descriptionInput);
     infoForm.appendChild(descriptionInputLabel);
 
-    myPuzzle.tagsInput = new PuzzleInfo("Tags", "text", "Enter keywords associated with your puzzle, seperated by a comma (,) without trailing whitespace", "Puzzle tags (seperated by a comma)", infoForm);
+    myPuzzle.tagsInput = new PuzzleInfo("Tags", "text", "Enter keywords associated with your puzzle, seperated by a comma (,) with trailing whitespace", "Puzzle tags (seperated by a comma-space)", infoForm);
     myPuzzle.languageInput = document.createElement("select");
     myPuzzle.languageInput.options.add(new Option("English", "en"));
     myPuzzle.languageInput.options.add(new Option("French (UI support coming soon)", "fr"));
