@@ -41,9 +41,6 @@ header {
     z-index: 1; /* Stay on top */
 }
 
-footer {
-}
-
 header h1 {
     display: inline;
     vertical-align: middle;
@@ -96,81 +93,81 @@ a {
     color: var(--foreground-colour);
 }
 
-.puzzle-browser {
+.oc-puzzle-browser {
     border-collapse: collapse;
     width: 100%;
     padding: 5px;
 }
 
-.puzzle-browser tr {
+.oc-puzzle-browser tr {
     border: var(--main-border-width) solid var(--foreground-colour);
     height: 30px;
 }
 
-.puzzle-browser tr:hover {
+.oc-puzzle-browser tr:hover {
     background-color: var(--highlight-colour);
 }
 
-.puzzle-browser tr:active {
+.oc-puzzle-browser tr:active {
     background-color: var(--selection-colour);
 }
 
-.stopwatch {
+.oc-stopwatch {
     display: inline-block;
     vertical-align: middle;
 }
 
-.info-container {
+.oc-info-container {
     margin-left: 10px;
     padding: 0;
 }
 
-.puzzle-container {
+.oc-puzzle-container {
     padding: 0;
 }
 
 
-.clue-list {
+.oc-clue-list {
     padding-inline-start: 10px;
 }
 
-.clue-tag {
+.oc-clue-tag {
     font-weight: bold;
     margin-right: 5px;
 }
 
-.clue {
+.oc-clue {
     display: block;
     cursor: pointer;
     color: var(--foreground-colour);
     padding: 5px;
 }
 
-.clue:hover {
+.oc-clue:hover {
     background-color: var(--highlight-colour);
 }
 
-.clue:active, .clue.selected {
+.oc-clue:active, .oc-clue.selected {
     background-color: var(--selection-colour);
 }
 
-.info-label {
+.oc-info-label {
     font-weight: bold;
 }
 
-.info-text {
+.oc-info-text {
     margin-inline-start: 10px;
     margin-block-end: 10px;
 }
 
-.grid-container {
+.oc-grid-container {
     display: grid;
     grid-gap: 2px;
     height: min-content;
     width: min-content;
 }
 
-.game-view {
+.oc-game-view {
     display: flex;
     flex-wrap: wrap;
 }
@@ -199,7 +196,7 @@ a {
     margin-left: 10px;
 }
 
-.puzzle-square {
+.oc-puzzle-square {
     box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
     display: inline-block;
     width: 75px;
@@ -213,43 +210,42 @@ a {
     user-select: none;
     text-align: center;
     position: relative;
-
 }
 
-.puzzle-square-clue {
+.oc-puzzle-square-clue {
     position: absolute;
     left: 3px;
     top: 3px;
 }
 
 
-.cell {
+.oc-cell {
     font-size: 20px;
     cursor: text;
 }
 
-.circled {
+.oc-circled {
     background-color: lightcoral;
 }
 
-.block {
+.oc-block {
     background-color: var(--foreground-colour);
 }
 
-.invisible {
+.oc-invisible {
     background-color: transparent;
     box-shadow: none;
 }
 
-.cell:hover, .cell.highlighted {
+.oc-cell:hover, .oc-cell.highlighted {
     background-color: var(--highlight-colour);
 }
 
-.cell:active, .cell.selected {
+.oc-cell:active, .oc-cell.selected {
     background-color: var(--selection-colour);
 }
 
-.puzzle-square-text {
+.oc-puzzle-square-text {
     font-size: 50px;
     font-weight: bold;
     width: 1em;

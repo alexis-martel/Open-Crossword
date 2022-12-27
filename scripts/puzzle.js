@@ -1,12 +1,12 @@
 "use strict";
 
 const puzzleContainer = document.createElement("div");
-puzzleContainer.classList.add("puzzle-container");
-document.getElementById("game-view").appendChild(puzzleContainer);
-document.getElementById("game-view").classList.add("game-view");
+puzzleContainer.classList.add("oc-puzzle-container");
+document.getElementById("oc-game-view").appendChild(puzzleContainer);
+document.getElementById("oc-game-view").classList.add("oc-game-view");
 
 const gridContainer = document.createElement("div");
-gridContainer.classList.add("grid-container");
+gridContainer.classList.add("oc-grid-container");
 puzzleContainer.appendChild(gridContainer);
 
 const language = getLanguageData("languages/lang-eng.json");
@@ -116,33 +116,33 @@ class PuzzleSquare {
     constructor(x, y, style, clue, answer) {
         this.x = x; // x-coordinate
         this.y = y; // y-coordinate
-        this.style = style; // Style of the square (e.g. "cell", "block", "circled")
+        this.style = style; // Style of the square (e.g. "oc-cell", "oc-block", "oc-circled")
         this.clue = clue; // Clue of the square (Number)
         this.answer = answer // Answer of the square (Character)
         this.element = document.createElement("span");
-        this.element.classList.add("puzzle-square");
+        this.element.classList.add("oc-puzzle-square");
         gridContainer.appendChild(this.element);
         this.selected = false; // Whether the square is selected
 
         if (this.style === "block") {
-            this.element.classList.add("block");
+            this.element.classList.add("oc-block");
         }
         if (this.style === "circled-cell") {
-            this.element.classList.add("cell");
-            this.element.classList.add("circled");
+            this.element.classList.add("oc-cell");
+            this.element.classList.add("oc-circled");
 
         }
         if (this.style === "cell") {
-            this.element.classList.add("cell");
+            this.element.classList.add("oc-cell");
         }
         if (this.style === "invisible") {
-            this.element.classList.add("invisible", "block");
+            this.element.classList.add("oc-invisible", "oc-block");
         }
 
         if (this.clue) {
             this.clueElement = document.createElement("span");
             this.element.appendChild(this.clueElement);
-            this.clueElement.classList.add("puzzle-square-clue");
+            this.clueElement.classList.add("oc-puzzle-square-clue");
             this.clueElement.textContent = this.clue;
         }
         if (this.answer) {
@@ -154,7 +154,7 @@ class PuzzleSquare {
             this.textElement.setAttribute("autocomplete", "off");
             this.textElement.setAttribute("autocapitalize", "characters");
             this.element.appendChild(this.textElement);
-            this.textElement.classList.add("puzzle-square-text");
+            this.textElement.classList.add("oc-puzzle-square-text");
             this.answer = this.answer.toUpperCase();
             this.element.onclick = () => {
                 if (this.selected) {
@@ -212,9 +212,9 @@ class PuzzleClue {
         this.HTMLContent = clueHTML;
 
         this.element = document.createElement("li");
-        this.element.classList.add("clue");
+        this.element.classList.add("oc-clue");
         this.tagElement = document.createElement("span");
-        this.tagElement.classList.add("clue-tag");
+        this.tagElement.classList.add("oc-clue-tag");
         this.textElement = document.createElement("span");
         this.textElement.classList.add("clue-text");
 
@@ -258,10 +258,10 @@ class PuzzleClue {
 class InfoItem {
     constructor(title, text, parentElement) {
         this.descriptionTermElement = document.createElement("dt");
-        this.descriptionTermElement.classList.add("info-label")
+        this.descriptionTermElement.classList.add("oc-info-label")
         this.descriptionTermElement.textContent = title;
         this.descriptionDetailElement = document.createElement("dd");
-        this.descriptionDetailElement.classList.add("info-text");
+        this.descriptionDetailElement.classList.add("oc-info-text");
         this.descriptionDetailElement.textContent = text;
         parentElement.appendChild(this.descriptionTermElement);
         parentElement.appendChild(this.descriptionDetailElement);
@@ -375,8 +375,8 @@ function displayControlButtons() {
 
     let pauseButton = new ControlButton("Pause", icon["pauseSVG"], controlButtons);
     let stopwatch = document.createElement("span");
-    stopwatch.classList.add("stopwatch");
-    stopwatch.id = "stopwatch";
+    stopwatch.classList.add("oc-stopwatch");
+    stopwatch.id = "oc-stopwatch";
     stopwatch.textContent = "00:00";
     pauseButton.element.appendChild(stopwatch);
     pauseButton.element.onclick = () => {
@@ -485,7 +485,7 @@ function checkPuzzle() {
 // Display a "game over" alert
 function showSolvedScreen() {
     endStopwatch();
-    window.alert(`Congratulations! You solved the puzzle in ${document.getElementById("stopwatch").textContent}!`);
+    window.alert(`Congratulations! You solved the puzzle in ${document.getElementById("oc-stopwatch").textContent}!`);
 }
 
 function showNotSolvedScreen() {
@@ -493,8 +493,8 @@ function showNotSolvedScreen() {
 }
 
 const infoContainer = document.createElement("div")
-infoContainer.classList.add("info-container")
-document.getElementById("game-view").appendChild(infoContainer);
+infoContainer.classList.add("oc-info-container")
+document.getElementById("oc-game-view").appendChild(infoContainer);
 
 function populate(obj) {
     clueBar = new ClueBar(puzzleContainer);
@@ -515,7 +515,7 @@ function populateClues(obj) {
     acrossLabel.textContent = "Across";
 
     let acrossClues = document.createElement("menu");
-    acrossClues.classList.add("clue-list");
+    acrossClues.classList.add("oc-clue-list");
     infoContainer.appendChild(acrossClues);
 
     for (const [clueTag, clueText] of Object.entries(obj["clues"]["across"])) {
@@ -528,7 +528,7 @@ function populateClues(obj) {
     downLabel.textContent = "Down";
 
     let downClues = document.createElement("menu");
-    downClues.classList.add("clue-list");
+    downClues.classList.add("oc-clue-list");
     infoContainer.appendChild(downClues);
 
     for (const [clueTag, clueText] of Object.entries(obj["clues"]["down"])) {
@@ -635,7 +635,7 @@ document.addEventListener("keyup", (e) => {
 })
 
 function incrementStopwatchTime() {
-    document.getElementById("stopwatch").textContent = puzzle.puzzleSeconds.toHumanReadable();
+    document.getElementById("oc-stopwatch").textContent = puzzle.puzzleSeconds.toHumanReadable();
     puzzle.puzzleSeconds += 1;
 }
 

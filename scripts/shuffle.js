@@ -9,7 +9,7 @@ function shufflePuzzles() {
 // Choose a random <tr> element
     let rows = document.getElementsByTagName("tr");
     let randomRow = rows[Math.floor(Math.random() * rows.length)];
-    if (randomRow.id === "puzzle-browser-header") {
+    if (randomRow.id === "oc-puzzle-browser-header") {
         shufflePuzzles(); // Select a new row if the random row is the header
     }
 
