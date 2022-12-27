@@ -496,12 +496,15 @@ const infoContainer = document.createElement("div")
 infoContainer.classList.add("info-container")
 document.getElementById("game-view").appendChild(infoContainer);
 
-async function populate(obj) {
+function populate(obj) {
     clueBar = new ClueBar(puzzleContainer);
     displayPuzzle(obj);
     populateClues(obj);
     populateInfo(obj);
     displayControlButtons();
+
+    // Select the first clue
+    puzzle.clues[0].element.click();
 }
 
 function populateClues(obj) {
