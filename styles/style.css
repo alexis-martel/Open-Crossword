@@ -93,6 +93,34 @@ a {
     color: var(--foreground-colour);
 }
 
+.oc-featured-puzzles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.oc-featured-item {
+    border: var(--main-border-width) solid var(--foreground-colour);
+    padding: 20px;
+
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    width: min-content;
+}
+
+.oc-featured-item:hover {
+    background-color: var(--highlight-colour);
+}
+
+.oc-featured-item svg {
+    height: 100px;
+    width: 100px;
+    fill: var(--foreground-colour);
+    display: block;
+}
+
 .oc-puzzle-browser {
     border-collapse: collapse;
     width: 100%;

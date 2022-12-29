@@ -3,9 +3,9 @@
 <head>
     <base href="/Open-Crossword/"/>
     <meta charset="utf-8"/>
-    <title>OpenCrossword Suite</title>
+    <title>OpenCrossword</title>
     <link href="styles/style.css" rel="stylesheet"/>
-    <link href="apple-touch-icon.png?v=2" rel="apple-touch-icon"/>
+    <link href="apple-touch-icon.png" rel="apple-touch-icon"/>
     <link href="favicon.png?v=2" rel="icon"/>
     <meta content="Crosswords, Game, Words, Web, JavaScript, Open Source, Social" name="keywords"/>
     <meta content="Alexis Martel" name="author"/>
@@ -16,9 +16,10 @@
     <meta content="https://alexis-martel.github.io/Open-Crossword/index.html" property="og:url"/>
     <meta content="images/opengraph-image.jpg" property="og:image"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="#FFFAF0FF" media="(prefers-color-scheme: light)" name="theme-color">
+    <meta content="#012c37" media="(prefers-color-scheme: dark)" name="theme-color">
     <link href="OpenCrossword.webmanifest" rel="manifest">
 </head>
-
 <body>
 <header>
     <a href="index.html">
@@ -36,39 +37,66 @@
     </a>
     <hr>
 </header>
-<p>An open-source crossword platform for every cruciverbalist.</p>
+<h2>Featured</h2>
+<nav class="oc-featured-puzzles">
+    <a class="oc-featured-item" href="solve.html?p=crossword13">
+        <svg viewBox="0 0 745 745" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5,0C5.6,0,0,5.6,0,12.5v360v360c0,6.9,5.6,12.5,12.5,12.5h360h360c6.9,0,12.5-5.6,12.5-12.5v-360v-360C745,5.6,739.4,0,732.5,0h-360H12.5z M25,25h335v335H25V25z M385,385h335v335H385V385z"/>
+        </svg>
+        <h3>Aramini #2</h3>
+        <p>Arabelle Fellinger</p>
+    </a>
+    <a class="oc-featured-item" href="solve.html?p=crossword14">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 745 745">
+            <path d="M12.5,0C5.6,0,0,5.6,0,12.5v180v180v180v180c0,6.9,5.6,12.5,12.5,12.5h180h180h180h180c6.9,0,12.5-5.6,12.5-12.5v-180v-180v-180v-180C745,5.6,739.4,0,732.5,0h-180h-180h-180H12.5z M205,25h155v155H205V25z M385,25h155v155H385V25z M565,25h155v155H565V25z M25,205h155v155H25V205z M205,205h155v155H205V205z M565,205h155v155H565V205z M25,385h155v155H25V385z M385,385h155v155H385V385z M565,385h155v155H565V385z M25,565h155v155H25V565z M205,565h155v155H205V565z M385,565h155v155H385V565z"/>
+        </svg>
+        <h3>Summer Reading</h3>
+        <p>Alexis Martel</p>
+    </a>
+    <a class="oc-featured-item" href="solve.html?p=crossword7">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 745 745">
+            <path d="M12.5,0C5.6,0,0,5.6,0,12.5v240v240v240c0,6.9,5.6,12.5,12.5,12.5h240h240h240c6.9,0,12.5-5.6,12.5-12.5v-240v-240v-240C745,5.6,739.4,0,732.5,0h-240h-240H12.5z M25,25h215v215H25V25zM505,25h215v215H505V25zM265,265h215v215H265V265z M25,505h215v215H25V505z M505,505h215v215H505V505z"/>
+        </svg>
+        <h3>Unthemed Crossword</h3>
+        <p>Alexis Martel</p>
+    </a>
+</nav>
+<hr>
+<p>OpenCrossword is an open-source cruciverbalist platform.</p>
 <a href="https://github.com/alexis-martel/Open-Crossword" rel="noopener noreferrer nofollow" target="_blank">Check out
     the GitHub
     repository</a>
-<h1>Puzzles</h1>
-<button id="shuffle-button" title="Select a random puzzle">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path d="M29.05 40.5v-3h6.25l-9.2-9.15 2.1-2.15 9.3 9.2v-6.35h3V40.5Zm-19.45 0-2.1-2.15 27.9-27.9h-6.35v-3H40.5V18.9h-3v-6.3Zm10.15-18.7L7.5 9.6l2.15-2.15 12.25 12.2Z"/>
-    </svg>
-    Shuffle
-</button>
-<button title="Create a new puzzle"><a href="compose.html">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/>
-    </svg>
-    New Puzzle
-</a>
-</button>
-<button id="upload-button" title="Select files to open in a new tab">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11 44q-1.2 0-2.1-.9Q8 42.2 8 41V7q0-1.2.9-2.1Q9.8 4 11 4h17l12 12v13.5h-3V18H26V7H11v34h20.5v3Zm32.9.05-6.4-6.4v6.25h-3V32.5h11.4v3h-6.3l6.4 6.4ZM11 41V7v34Z"/>
-    </svg>
-    Open file
-</button>
-<button title="Learn how to submit a puzzle"><a
-        href="https://github.com/alexis-martel/Open-Crossword/wiki/Submit-a-Crossword"
-        rel="noopener noreferrer nofollow" target="_blank">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24.2 35.65q.8 0 1.35-.55t.55-1.35q0-.8-.55-1.35t-1.35-.55q-.8 0-1.35.55t-.55 1.35q0 .8.55 1.35t1.35.55Zm-1.75-7.3h2.95q0-1.3.325-2.375T27.75 23.5q1.55-1.3 2.2-2.55.65-1.25.65-2.75 0-2.65-1.725-4.25t-4.575-1.6q-2.45 0-4.325 1.225T17.25 16.95l2.65 1q.55-1.4 1.65-2.175 1.1-.775 2.6-.775 1.7 0 2.75.925t1.05 2.375q0 1.1-.65 2.075-.65.975-1.9 2.025-1.5 1.3-2.225 2.575-.725 1.275-.725 3.375ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/>
-    </svg>
-    How to Submit
-</a>
-</button>
+<h2>All Puzzles</h2>
+<nav>
+    <button id="shuffle-button" title="Select a random puzzle">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M29.05 40.5v-3h6.25l-9.2-9.15 2.1-2.15 9.3 9.2v-6.35h3V40.5Zm-19.45 0-2.1-2.15 27.9-27.9h-6.35v-3H40.5V18.9h-3v-6.3Zm10.15-18.7L7.5 9.6l2.15-2.15 12.25 12.2Z"/>
+        </svg>
+        Shuffle
+    </button>
+    <button title="Create a new puzzle"><a href="compose.html">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/>
+        </svg>
+        New Puzzle
+    </a>
+    </button>
+    <button id="upload-button" title="Select a file to open">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 44q-1.2 0-2.1-.9Q8 42.2 8 41V7q0-1.2.9-2.1Q9.8 4 11 4h17l12 12v13.5h-3V18H26V7H11v34h20.5v3Zm32.9.05-6.4-6.4v6.25h-3V32.5h11.4v3h-6.3l6.4 6.4ZM11 41V7v34Z"/>
+        </svg>
+        Open file
+    </button>
+    <button title="Learn how to submit a puzzle"><a
+            href="https://github.com/alexis-martel/Open-Crossword/wiki/Submit-a-Crossword"
+            rel="noopener noreferrer nofollow" target="_blank">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.2 35.65q.8 0 1.35-.55t.55-1.35q0-.8-.55-1.35t-1.35-.55q-.8 0-1.35.55t-.55 1.35q0 .8.55 1.35t1.35.55Zm-1.75-7.3h2.95q0-1.3.325-2.375T27.75 23.5q1.55-1.3 2.2-2.55.65-1.25.65-2.75 0-2.65-1.725-4.25t-4.575-1.6q-2.45 0-4.325 1.225T17.25 16.95l2.65 1q.55-1.4 1.65-2.175 1.1-.775 2.6-.775 1.7 0 2.75.925t1.05 2.375q0 1.1-.65 2.075-.65.975-1.9 2.025-1.5 1.3-2.225 2.575-.725 1.275-.725 3.375ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/>
+        </svg>
+        How to Submit
+    </a>
+    </button>
+</nav>
 <table class="oc-puzzle-browser">
     <tr id="oc-puzzle-browser-header" style="background-color: var(--foreground-colour);
     color: var(--background-colour);
