@@ -1,0 +1,160 @@
+{
+  "clues": {
+    "across": {
+      "1": "You can ride one in <cite>The Legend of Zelda: Breath of the Wild</cite>",
+      "2": "New \"space\" for immersive games (Abbr.)",
+      "3": "Recent trend in visually stunning games (Abbr.)",
+      "4": "Red cap wearer",
+      "5": "Simple conditional statement, in most programming languages",
+      "6": "Word that follows \"3, 2, 1...\" in many racing games",
+      "7": "Sonic's friend has two of them, for one"
+    },
+    "down": {
+      "8": "First word of the <cite>NES</cite>'s Japanese name",
+      "9": "You can ride one in <cite>Super Mario Party</cite>",
+      "10": "[4-Across]'s brother",
+      "11": "Evil crocodile in the <cite>Donkey Kong</cite> series"
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 8,
+        "answer": "f",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 1,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 10,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 11,
+        "answer": "k",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 2,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 9,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 3,
+        "answer": "u",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 4,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 5,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "f",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "g",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #10",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "A small 5x5 crossword",
+    "tags": [
+      "mini",
+      " video games"
+    ],
+    "date_published": "2023-01-01",
+    "language": "en"
+  }
+}

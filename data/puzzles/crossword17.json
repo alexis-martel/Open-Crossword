@@ -1,0 +1,133 @@
+{
+  "clues": {
+    "across": {
+      "1": "\"Public\" remark, in theatre",
+      "2": "<cite>S__ so Lovely</cite> (<cite>Beach House</cite> song)",
+      "3": "Standard batteries for the <cite>SONY Walkman</cite>",
+      "4": "Vintage"
+    },
+    "down": {
+      "1": "Cracked open, as a door",
+      "5": "What <cite>Apple</cite> could call its headwear?",
+      "6": "\"Honey!\"",
+      "7": " <cite>Exxon-Mobil</cite> trade name that sounds like \"SO\""
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "d",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "e",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": null,
+        "answer": "j",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 2,
+        "answer": "h",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 3,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 4,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #11",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": " A small 5x4 crossword",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2023-01-01",
+    "language": "en"
+  }
+}
