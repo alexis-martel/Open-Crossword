@@ -1,0 +1,113 @@
+{
+  "clues": {
+    "across": {
+      "1": "Une habileté à réagir de façon propice dans une situation spontanée",
+      "2": "<cite>Tove __</cite>",
+      "3": "Film d'Irene Villamor sorti en 2019",
+      "4": "Genre pour <cite>Eminem</cite>"
+    },
+    "down": {
+      "1": "Pièce d'échec dans les coins",
+      "5": "« Do ré mi fa sol __ si do »",
+      "6": "Applaudir, en anglais",
+      "7": "Répété deux fois, synonyme affectueux pour « oncle »"
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "t",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 2,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "u",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 4,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "p",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #15",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "Un petit mot croisé 4x4",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2023-01-10",
+    "language": "fr"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "clues": {
+    "across": {
+      "1": "Précurseur du beau temps",
+      "2": "Outil de géolocalisation palindromique",
+      "3": "Adresse Internet",
+      "4": "« N'attends pas que je __ fâche »",
+      "5": "Touche de la calculatrice utile en trigonométrie",
+      "6": "Chaîne de stations d'essence populaires au Canada"
+    },
+    "down": {
+      "1": "Trophée de pêche",
+      "7": "Crayon, en espagnol",
+      "8": "L'ancêtre du luth occidental (mot arabe)",
+      "9": "Axe perpendiculaire à E-O",
+      "10": "« Je suis, » en anglais",
+      "11": "Verbe « être » à la deuxième personne du singulier, en espagnol (au présent)"
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "p",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 8,
+        "answer": "u",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 10,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 11,
+        "answer": "e",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 2,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "d",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "p",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 4,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 5,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 9,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 6,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #14",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "Un petit mot croisé 5x5",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2023-01-10",
+    "language": "fr"
+  }
+}
