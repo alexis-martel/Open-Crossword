@@ -1,0 +1,631 @@
+{
+  "clues": {
+    "across": {
+      "1": "Screen type of old TV sets (Abbr.)",
+      "2": "Tramar Lacel Dillard's stage first name",
+      "3": "Word appropriately spelled backwards",
+      "4": "First name of Bill Cosby's son",
+      "5": "\"They ____ and went\"",
+      "6": "Bank terminal (Abbr.)",
+      "7": "Manufacturer of calculators",
+      "8": "Some ambulance technicians (Abbr.)",
+      "9": "Tops of Freudian icebergs",
+      "10": "Water rings protecting a castle",
+      "11": "Epoch",
+      "12": "What [1-Across], [6-Across], [8-Across], [17-Across], [3-Down], and [33-Down] have in common",
+      "13": "Actress Watson",
+      "14": "The Finnish equivalent to <cite>PBS</cite> or <cite>CBC</cite>",
+      "15": "Text editor part of the <cite>GNU</cite> operating system",
+      "16": "Barney from <cite>The Simpsons</cite> has a distinctive one",
+      "17": "One can populate your <cite>Wallet</cite> app (Abbr.)",
+      "18": "Letter before \"gi\"",
+      "19": "Snake-like fish",
+      "20": "The carpet of the forest",
+      "21": "<cite>PBS</cite> show <cite>A Moveable _____</cite>",
+      "22": "Actress Hathaway",
+      "23": "Tasikmalya, Indonesia airport code",
+      "24": "American feminist and philosopher Noddings"
+    },
+    "down": {
+      "1": "Canadian vehicle insurance group",
+      "2": "Big meal",
+      "3": "Many motorized toys (Abbr.)",
+      "13": "Famous basketball head coach and referee Charley",
+      "25": "Possibly, perhaps",
+      "26": "Poker lie",
+      "27": "Recall",
+      "28": "Uncalled for quivering movement",
+      "29": "Ireland is its main producer",
+      "30": "British slang for \"thank you\"",
+      "31": "Letter between \"are\" and \"tee\"",
+      "32": "Prone to liquefaction",
+      "33": "<cite>SNL</cite> and <cite>A Late Show</cite> genre (Abbr.)",
+      "34": "@",
+      "35": "\"The next round's __ __\"",
+      "36": "A diamond, for one",
+      "37": "One could be cooking in the kitchen or in the troposphere",
+      "38": "It's \"live from New York\" weekly",
+      "39": "Asimov, Newton or Su, for one",
+      "40": "Opposite of NW"
+    }
+  },
+  "grid": [
+    [
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 1,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 27,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 28,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 2,
+        "answer": "f",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 33,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 35,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 4,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 37,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      }
+    ],
+    [
+      {
+        "clueNumber": 5,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 39,
+        "answer": "i",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 8,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 30,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 9,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 36,
+        "answer": "g",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 25,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 10,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 11,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 12,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 26,
+        "answer": "b",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "b",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 13,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 14,
+        "answer": "y",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 15,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 32,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 34,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "c",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": null,
+        "answer": "c",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 16,
+        "answer": "b",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "u",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 29,
+        "answer": "p",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 17,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "k",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      }
+    ],
+    [
+      {
+        "clueNumber": 18,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "f",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 19,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 31,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 20,
+        "answer": "m",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "o",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 38,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 40,
+        "answer": "s",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 21,
+        "answer": "f",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 22,
+        "answer": "a",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 23,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "y",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 24,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Unthemed Crossword #2",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "A medium 11x11 crossword",
+    "tags": [
+      "medium",
+      "unthemed"
+    ],
+    "date_published": "2023-01-12",
+    "language": "en"
+  }
+}
