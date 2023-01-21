@@ -12,10 +12,12 @@ const gridContainer = document.createElement("form");
 gridContainer.classList.add("oc-builder-grid-container");
 puzzleContainer.appendChild(gridContainer);
 
+let myPuzzle;
+
 class Grid {
-    constructor() {
-        this.width = parseInt(window.prompt("Enter the width of your puzzle grid"), 10)
-        this.height = parseInt(window.prompt("Enter the height of your puzzle grid"), 10)
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
 
         this.selectedSquare = null;
         this.acrossClues = [];
@@ -420,7 +422,35 @@ function displayInfo() {
     infoForm.lastChild.appendChild(myPuzzle.languageInput);
 }
 
-// Populate the toolbar, then initialize the grid and clues
-populateToolBar();
-let myPuzzle = new Grid();
-displayInfo();
+function populate(gridWidth, gridHeight) {
+    // Populate the toolbar, then initialize the grid and clues
+    populateToolBar();
+    myPuzzle = new Grid(gridWidth, gridHeight);
+    displayInfo();
+}
+
+function showSplashScreen () {
+    let splashScreen = document.createElement("dialog");
+    splashScreen.classList.add("oc-builder-splash-screen");
+    document.getElementById("oc-build-view").appendChild(splashScreen);
+    let splashScreenTitle = document.createElement("h1");
+    splashScreenTitle.textContent = "New Puzzle";
+    splashScreen.appendChild(splashScreenTitle);
+    let gridDimensionsForm = document.createElement("form");
+    gridDimensionsForm.method = "dialog";
+    let gridWidthInput = new PuzzleInfo("Grid width", "number", "Enter the number of squares wide you want your puzzle to be", "", gridDimensionsForm);
+    let gridHeightInput = new PuzzleInfo("Grid height", "number", "Enter the number of squares tall you want your puzzle to be", "", gridDimensionsForm);
+    let gridCreateButton = new PuzzleInfo(null, "submit", "Create a new puzzle", null, gridDimensionsForm);
+    gridCreateButton.inputElement.value = "Create";
+
+    gridDimensionsForm.onsubmit = (event) => {
+        event.preventDefault();
+        splashScreen.close();
+        populate(parseInt(gridWidthInput.inputElement.value, 10), parseInt(gridHeightInput.inputElement.value, 10));
+    }
+
+    splashScreen.appendChild(gridDimensionsForm);
+    splashScreen.showModal();
+}
+
+showSplashScreen();

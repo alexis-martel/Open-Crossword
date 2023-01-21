@@ -61,7 +61,7 @@ header a {
     display: inline-block;
 }
 
-button {
+button, input[type="button"], input[type="submit"] {
     padding: 2px;
     margin: 3px 3px 3px 0;
     font-family: var(--main-font);
@@ -72,7 +72,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
     background-color: var(--highlight-colour);
 }
 
@@ -129,7 +129,6 @@ a {
 
 .oc-puzzle-browser tr {
     border: var(--main-border-width) solid var(--foreground-colour);
-    height: 30px;
 }
 
 .oc-puzzle-browser tr:hover {
@@ -138,6 +137,10 @@ a {
 
 .oc-puzzle-browser tr:active {
     background-color: var(--selection-colour);
+}
+
+.oc-puzzle-browser td, .oc-puzzle-browser th {
+    padding: 5px;
 }
 
 .oc-stopwatch {
@@ -288,6 +291,12 @@ a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.oc-builder-splash-screen {
+    border: var(--main-border-width) solid var(--foreground-colour);
+    background-color: var(--background-colour);
+    color: var(--foreground-colour);
 }
 
 .oc-builder-ui-container {
