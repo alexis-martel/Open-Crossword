@@ -76,6 +76,10 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
     background-color: var(--highlight-colour);
 }
 
+button:active, input[type="button"]:active, input[type="submit"]:active {
+    background-color: var(--selection-colour);
+}
+
 button svg {
     fill: var(--foreground-colour);
     stroke: var(--foreground-colour);
