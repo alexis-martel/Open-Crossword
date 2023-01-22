@@ -114,6 +114,10 @@ a {
     background-color: var(--highlight-colour);
 }
 
+.oc-featured-item:active {
+    background-color: var(--selection-colour);
+}
+
 .oc-featured-item svg {
     height: 100px;
     width: 100px;
