@@ -262,7 +262,7 @@ class InfoItem {
         this.descriptionTermElement.textContent = title;
         this.descriptionDetailElement = document.createElement("dd");
         this.descriptionDetailElement.classList.add("oc-info-text");
-        this.descriptionDetailElement.textContent = text;
+        this.descriptionDetailElement.innerHTML = text;
         parentElement.appendChild(this.descriptionTermElement);
         parentElement.appendChild(this.descriptionDetailElement);
     }
