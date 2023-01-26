@@ -240,7 +240,6 @@ a {
     display: inline-block;
     width: 75px;
     height: 75px;
-    padding: var(--main-border-width);
     color: var(--foreground-colour);
     background-color: var(--background-colour);
     -webkit-user-select: none;
