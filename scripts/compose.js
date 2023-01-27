@@ -600,5 +600,23 @@ String.prototype.toQueryString = function () {
     // Remove all characters that precede "?"
     return this.substring(this.indexOf("?"));
 }
+let params = new URLSearchParams(document.location.search);
+if (params.has("l")) {
+    let targetURL = params.get("l").toString().toQueryString();
+    let targetParams = new URLSearchParams(targetURL);
+    if (targetParams.has("p")) {
+        // Fetch the object data from the puzzle URL
+        let fileURL = `${document.baseURI}data/puzzles/${targetParams.get("p").toString()}.json`;
+        fetch(fileURL)
+            .then((response) => response.json())
+            .then((object) => populateGrid(object));
+    }
+    if (targetParams.has("d")) {
+        // Fetch the object data from the data URL
+        populateGrid(JSON.parse(targetParams.get("d").toString()));
+    }
 
-showSplashScreen();
+} else {
+    showSplashScreen();
+
+}
