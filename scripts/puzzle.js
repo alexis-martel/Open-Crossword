@@ -150,6 +150,7 @@ class PuzzleSquare {
             this.textElement.type = "text";
             this.textElement.maxLength = 1;
             this.textElement.spellcheck = false;
+            this.textElement.enterKeyHint = "next";
             this.textElement.setAttribute("autocorrect", "off");
             this.textElement.setAttribute("autocomplete", "off");
             this.textElement.setAttribute("autocapitalize", "characters");

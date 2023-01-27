@@ -13,13 +13,47 @@ gridContainer.classList.add("oc-builder-grid-container");
 puzzleContainer.appendChild(gridContainer);
 
 let myPuzzle;
+let selectedSquare;
 
 class Grid {
-    constructor(width, height) {
-        this.width = width;
-        this.height = height;
+    constructor(width, height, obj) {
+        this.squares = [];
+        if (obj) {
+            // Create a grid filled in with `obj` data (ignores `width` and `height`)
+            this.width = obj["grid"][0].length;
+            this.height = obj["grid"].length;
+            for (let i = 0; i < this.height; i++) {
+                for (let j = 0; j < this.width; j++) {
+                    let square = new PuzzleSquare(i, j);
+                    // Check the obj for the corresponding square's data
+                    if (obj["grid"][i][j]["type"] === "cell") {
+                        square.makeCell();
+                        square.answerInput.value = obj["grid"][i][j]["answer"];
+                        square.clueNumberInput.value = obj["grid"][i][j]["clueNumber"];
+                    }
+                    if (obj["grid"][i][j]["type"] === "block") {
+                        square.makeBlock();
+                    }
+                    if (obj["grid"][i][j]["type"] === "invisible") {
+                        square.makeInvisible();
+                    }
+                    this.squares.push(square);
+                }
+            }
+        } else {
+            // Create a new empty grid
+            this.width = width;
+            this.height = height;
+            for (let i = 0; i < this.width; i++) {
+                for (let j = 0; j < this.height; j++) {
+                    let square = new PuzzleSquare(j, i);
+                    this.squares.push(square);
+                    square.makeCell();
+                }
+            }
+        }
 
-        this.selectedSquare = null;
+
         this.acrossClues = [];
         this.downClues = [];
         gridContainer.style.gridTemplateColumns = `repeat(${this.width}, 75px)`;
@@ -27,12 +61,6 @@ class Grid {
             gridContainer.textContent = "Invalid grid size";
         }
 
-        this.squares = [];
-        for (let i = 0; i < this.width; i++) {
-            for (let j = 0; j < this.height; j++) {
-                this.squares.push(new PuzzleSquare(j, i));
-            }
-        }
     }
 
     selectSquare(x, y) {
@@ -113,7 +141,7 @@ class Grid {
         this.obj["info"]["description"] = myPuzzle.descriptionInput.value;
 
         // Set the "tags" key-value pair
-        this.obj["info"]["tags"] = myPuzzle.tagsInput.inputElement.value.split(",");
+        this.obj["info"]["tags"] = myPuzzle.tagsInput.inputElement.value.split(", ");
 
         // Set the "date_published" key-value pair
         let today = new Date();
@@ -226,13 +254,13 @@ class PuzzleSquare {
         }
         this.selected = true;
         this.element.classList.add("selected");
-        myPuzzle.selectedSquare = this;
+        selectedSquare = this;
     }
 
     deselect() {
         this.selected = false;
         this.element.classList.remove("selected");
-        myPuzzle.selectedSquare = undefined;
+        selectedSquare = undefined;
     }
 }
 
@@ -259,7 +287,6 @@ class PuzzleClue {
 
 class PuzzleInfo {
     constructor(label, type, title, placeholder, parentElement) {
-        this.element = document.createElement("div");
         this.labelElement = document.createElement("label");
         this.labelElement.textContent = label;
         this.labelElement.classList.add("oc-builder-info-input-label");
@@ -270,8 +297,7 @@ class PuzzleInfo {
         this.inputElement.title = title;
         this.inputElement.required = true;
         this.labelElement.appendChild(this.inputElement);
-        this.element.appendChild(this.labelElement);
-        parentElement.appendChild(this.element);
+        parentElement.appendChild(this.labelElement);
     }
 }
 
@@ -302,15 +328,15 @@ function populateToolBar() {
     UIContainer.appendChild(document.createElement("hr"));
     let makeCellButton = new ControlButton("Make cell", icon["squareCellSVG"], toolBarElement);
     makeCellButton.element.onclick = () => {
-        myPuzzle.selectedSquare.makeCell();
+        selectedSquare.makeCell();
     }
     let makeBlockButton = new ControlButton("Make block", icon["squareBlockSVG"], toolBarElement);
     makeBlockButton.element.onclick = () => {
-        myPuzzle.selectedSquare.makeBlock();
+        selectedSquare.makeBlock();
     }
     let makeInvisibleButton = new ControlButton("Make invisible", icon["squareInvisibleSVG"], toolBarElement);
     makeInvisibleButton.element.onclick = () => {
-        myPuzzle.selectedSquare.makeInvisible();
+        selectedSquare.makeInvisible();
     }
     let sharePuzzleButton = new ControlButton("Share puzzle", icon["sharePuzzleSVG"], toolBarElement);
     sharePuzzleButton.element.onclick = () => {
@@ -344,7 +370,7 @@ function displayShareDialog() {
     }
 }
 
-function displayInfo() {
+function displayInfo(obj) {
     // Display a PuzzleClue for each direction (i.e. "Across", "Down"), with a button to add a clue
     let infoContainer = document.createElement("div");
     infoContainer.classList.add("oc-builder-info-container");
@@ -420,37 +446,159 @@ function displayInfo() {
     infoForm.appendChild(document.createElement("label"));
     infoForm.lastChild.textContent = "Language";
     infoForm.lastChild.appendChild(myPuzzle.languageInput);
+
+    if (obj) {
+        // Load the clues and info from `obj`
+        myPuzzle.titleInput.inputElement.value = obj["info"]["title"];
+        myPuzzle.authorInput.inputElement.value = obj["info"]["author"];
+        myPuzzle.contactInput.inputElement.value = obj["info"]["contact"];
+        myPuzzle.descriptionInput.value = obj["info"]["description"];
+        for (let tag of obj["info"]["tags"]) {
+            myPuzzle.tagsInput.inputElement.value += tag + ", ";
+        }
+        myPuzzle.tagsInput.inputElement.value = myPuzzle.tagsInput.inputElement.value.slice(0, -2);
+        myPuzzle.languageInput.value = obj["info"]["language"];
+        for (const [clueTag, clueText] of Object.entries(obj["clues"]["across"])) {
+            let clue = new PuzzleClue("across", acrossClues);
+            clue.textElement.value = clueText.toString();
+            clue.numberElement.value = clueTag;
+            myPuzzle.acrossClues.push(clue);
+
+        }
+        for (const [clueTag, clueText] of Object.entries(obj["clues"]["down"])) {
+            let clue = new PuzzleClue("across", downClues);
+            clue.textElement.value = clueText.toString();
+            clue.numberElement.value = clueTag;
+            myPuzzle.downClues.push(clue);
+
+        }
+    }
 }
 
-function populate(gridWidth, gridHeight) {
+function populateNewGrid(gridWidth, gridHeight) {
     // Populate the toolbar, then initialize the grid and clues
     populateToolBar();
     myPuzzle = new Grid(gridWidth, gridHeight);
     displayInfo();
 }
 
-function showSplashScreen () {
+function populateGrid(obj) {
+    // Fill in a grid with object data
+    populateToolBar();
+    let gridWidth = null;
+    let gridWeight = null;
+    myPuzzle = new Grid(gridWidth, gridWeight, obj);
+    displayInfo(obj);
+}
+
+function showSplashScreen() {
     let splashScreen = document.createElement("dialog");
     splashScreen.classList.add("oc-builder-splash-screen");
     document.getElementById("oc-build-view").appendChild(splashScreen);
     let splashScreenTitle = document.createElement("h1");
     splashScreenTitle.textContent = "New Puzzle";
     splashScreen.appendChild(splashScreenTitle);
+
     let gridDimensionsForm = document.createElement("form");
     gridDimensionsForm.method = "dialog";
-    let gridWidthInput = new PuzzleInfo("Grid width", "number", "Enter the number of squares wide you want your puzzle to be", "", gridDimensionsForm);
-    let gridHeightInput = new PuzzleInfo("Grid height", "number", "Enter the number of squares tall you want your puzzle to be", "", gridDimensionsForm);
+    let gridWidthInput = new PuzzleInfo("Grid Width", "number", "Enter the width of your puzzle", "", gridDimensionsForm);
+    let gridHeightInput = new PuzzleInfo("Grid Height", "number", "Enter the height of your puzzle", "", gridDimensionsForm);
     let gridCreateButton = new PuzzleInfo(null, "submit", "Create a new puzzle", null, gridDimensionsForm);
     gridCreateButton.inputElement.value = "Create";
+    let openGridButton = new PuzzleInfo(null, "button", "Open an existing puzzle", null, gridDimensionsForm);
+    openGridButton.inputElement.value = "Open…";
+    gridDimensionsForm.appendChild(document.createElement("hr"));
+    let cancelButton = new PuzzleInfo(null, "button", "Return to homepage", null, gridDimensionsForm);
+    cancelButton.inputElement.value = "Cancel";
+
+    openGridButton.inputElement.onclick = () => {
+        splashScreen.close();
+        showOpenDialog()
+    }
+
+    cancelButton.inputElement.onclick = () => {
+        splashScreen.close();
+        window.location.href = document.baseURI;
+    }
+
 
     gridDimensionsForm.onsubmit = (event) => {
         event.preventDefault();
         splashScreen.close();
-        populate(parseInt(gridWidthInput.inputElement.value, 10), parseInt(gridHeightInput.inputElement.value, 10));
+        populateNewGrid(parseInt(gridWidthInput.inputElement.value, 10), parseInt(gridHeightInput.inputElement.value, 10));
     }
 
     splashScreen.appendChild(gridDimensionsForm);
     splashScreen.showModal();
+}
+
+function showOpenDialog() {
+    let openGridDialog = document.createElement("dialog");
+    openGridDialog.classList.add("oc-builder-splash-screen");
+    document.getElementById("oc-build-view").appendChild(openGridDialog);
+    let openDialogTitle = document.createElement("h1");
+    openDialogTitle.textContent = "Open Puzzle";
+    openGridDialog.appendChild(openDialogTitle);
+
+    let openGridForm = document.createElement("form");
+    openGridForm.method = "dialog";
+    let sourceSelector = document.createElement("select");
+    sourceSelector.options.add(new Option("Load From File", "file"));
+    sourceSelector.options.add(new Option("Load From Link", "url"));
+    openGridForm.appendChild(sourceSelector);
+    let loadInputArea = document.createElement("div");
+    openGridForm.appendChild(loadInputArea);
+    sourceSelector.onchange = (event) => {
+        event.preventDefault();
+        loadInputArea.innerHTML = "";
+
+        if (sourceSelector.value === "file") {
+            let fileInput = new PuzzleInfo("File", "file", "Select a file to load", "", loadInputArea);
+            fileInput.inputElement.accept = ".json";
+            fileInput.inputElement.multiple = false;
+            fileInput.inputElement.id = "file-input";
+        }
+        if (sourceSelector.value === "url") {
+            let urlInput = new PuzzleInfo("URL", "url", "Enter a puzzle URL to load", "", loadInputArea);
+            urlInput.inputElement.id = "url-input";
+        }
+    }
+    let gridCreateButton = new PuzzleInfo(null, "submit", "Open Puzzle", null, openGridForm);
+    gridCreateButton.inputElement.value = "Open";
+    sourceSelector.onchange(new Event("change"));
+
+    openGridForm.onsubmit = (event) => {
+        event.preventDefault();
+        if (sourceSelector.value === "file") {
+            // Get the object data from the JSON file
+            document.getElementById("file-input").files[0].text().then((fileContent) => {
+                populateGrid(JSON.parse(fileContent));
+            });
+        }
+        if (sourceSelector.value === "url") {
+            let params = new URLSearchParams(document.getElementById("url-input").value.toQueryString());
+            if (params.has("p")) {
+                // Fetch the object data from the puzzle URL
+                let fileURL = `${document.baseURI}data/puzzles/${params.get("p").toString()}.json`;
+                fetch(fileURL)
+                    .then((response) => response.json())
+                    .then((object) => populateGrid(object));
+            }
+            if (params.has("d")) {
+                // Fetch the object data from the data URL
+                populateGrid(JSON.parse(params.get("d").toString()));
+            }
+        }
+        openGridDialog.close();
+    }
+
+    openGridDialog.appendChild(openGridForm);
+    openGridDialog.showModal();
+}
+
+String.prototype.toQueryString = function () {
+    // Remove all characters that precede "?"
+    return this.substring(this.indexOf("?"));
 }
 
 showSplashScreen();
