@@ -23,4 +23,4 @@
 - Please report any issues or feature requests on our [GitHub issue tracker](https://github.com/alexis-martel/Open-Crossword/issues). We'd love to hear from you!
 
 ### About
-OpenCrossword was first created on the evening of July 9, 2022, while I was bored at my grandma's house.
+OpenCrossword was first created on the evening of July 9, 2022, while I was bored at my grandma's house. Its goal now is to become the standard crossword editing program and file format.
