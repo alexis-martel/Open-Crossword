@@ -31,6 +31,12 @@ class Grid {
                         square.answerInput.value = obj["grid"][i][j]["answer"];
                         square.clueNumberInput.value = obj["grid"][i][j]["clueNumber"];
                     }
+                    if (obj["grid"][i][j]["type"] === "circled-cell") {
+                        square.makeCell();
+                        square.answerInput.value = obj["grid"][i][j]["answer"];
+                        square.clueNumberInput.value = obj["grid"][i][j]["clueNumber"];
+                        square.circledInput.checked = true;
+                    }
                     if (obj["grid"][i][j]["type"] === "block") {
                         square.makeBlock();
                     }
