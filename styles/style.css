@@ -11,6 +11,7 @@
         --foreground-colour: #006def;
         --selection-colour: #B4D7FF;
         --highlight-colour: #DCDCDD;
+        --error-colour: #ff5959;
     }
 }
 
@@ -20,8 +21,7 @@
         --foreground-colour: #FFFAF0FF;
         --selection-colour: #1b538a;
         --highlight-colour: #3f3f3f;
-        --main-font: "Times New Roman", Times, serif;
-        --main-border-width: 2px;
+        --error-colour: #d50000;
     }
 }
 
@@ -260,6 +260,9 @@ a {
 .oc-cell {
     font-size: 20px;
     cursor: text;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .oc-circled {
@@ -294,10 +297,26 @@ a {
     caret-color: transparent;
     font-family: var(--main-font);
     color: var(--foreground-colour);
+    text-align: center;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.oc-cell-invalid {
+    position: relative;
+}
+.oc-cell-invalid:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    right: 0;
+    width: 100%;
+    border-top: var(--main-border-width) solid;
+    border-color: var(--error-colour);
+    transform:rotate(-45deg);
 }
 
 .oc-builder-splash-screen {

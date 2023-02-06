@@ -399,8 +399,8 @@ function displayControlButtons() {
 function verifyPuzzle() {
     for (const square of puzzle.squares) {
         if (square.style === "cell") {
-            if (square.textElement.value.toUpperCase() !== square.answer.toUpperCase()) {
-                square.textElement.value = "";
+            if (square.textElement.value.toUpperCase() !== square.answer.toUpperCase() && square.textElement.value !== "") {
+                square.element.classList.add("oc-cell-invalid");
             }
         }
     }
@@ -638,6 +638,7 @@ document.addEventListener("keyup", (e) => {
     if (!found || found.length > 1) {
         return;
     } else {
+        puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
         puzzle.selectNextSquare();
     }
     checkPuzzle();
