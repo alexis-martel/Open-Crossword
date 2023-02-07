@@ -169,6 +169,12 @@ class PuzzleSquare {
 
             }
         }
+        if (this.textElement) {
+            this.textElement.oninput = () => {
+                puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
+                puzzle.selectNextSquare();
+            };
+        }
     }
 
     select() {
@@ -180,6 +186,7 @@ class PuzzleSquare {
         this.element.classList.add("selected");
         puzzle.selectedSquare = this;
         this.textElement.focus();
+        this.textElement.select(); // Select the entered text so it can be overwritten
 
 
         // Highlight all squares in the same row or column as the selected square
@@ -617,32 +624,6 @@ Number.prototype.toHumanReadable = function () {
 String.prototype.toCapitalized = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
-
-document.addEventListener("keydown", (e) => {
-
-    let pressedKey = String(e.key);
-    // Clear contents of the textbox on new keypress
-    let found = pressedKey.match(/[a-z]/gi)
-    if (!found || found.length > 1) {
-
-    } else {
-        puzzle.selectedSquare.textElement.value = "";
-    }
-})
-
-document.addEventListener("keyup", (e) => {
-
-    let pressedKey = String(e.key);
-
-    let found = pressedKey.match(/[a-z]/gi)
-    if (!found || found.length > 1) {
-        return;
-    } else {
-        puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
-        puzzle.selectNextSquare();
-    }
-    checkPuzzle();
-})
 
 function incrementStopwatchTime() {
     document.getElementById("oc-stopwatch").textContent = puzzle.puzzleSeconds.toHumanReadable();

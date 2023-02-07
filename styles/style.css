@@ -298,10 +298,10 @@ a {
     font-family: var(--main-font);
     color: var(--foreground-colour);
     text-align: center;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+}
+
+.oc-puzzle-square-text::selection {
+    background: transparent;
 }
 
 .oc-cell-invalid {
