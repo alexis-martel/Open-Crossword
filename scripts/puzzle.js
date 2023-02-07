@@ -403,6 +403,7 @@ function verifyPuzzle() {
 function revealPuzzle() {
     if (window.confirm("Are you sure you want to reveal the puzzle?")) {
         for (const square of puzzle.squares) {
+            square.element.classList.remove("oc-cell-invalid");
             if (square.style === "cell") {
                 square.textElement.value = square.answer;
             }
