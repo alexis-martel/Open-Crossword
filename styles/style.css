@@ -265,8 +265,13 @@ a {
     justify-content: center;
 }
 
-.oc-circled {
-    background-color: lightcoral;
+.oc-circled:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    border: var(--main-border-width) solid var(--foreground-colour);
+    border-radius: 50%;
 }
 
 .oc-block {
