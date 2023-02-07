@@ -265,7 +265,7 @@ a {
     justify-content: center;
 }
 
-.oc-circled:before {
+.oc-cell-circled::before {
     position: absolute;
     content: "";
     width: 100%;
@@ -312,7 +312,7 @@ a {
 .oc-cell-invalid {
     position: relative;
 }
-.oc-cell-invalid:after {
+.oc-cell-invalid::after {
     position: absolute;
     content: "";
     left: 0;

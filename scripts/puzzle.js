@@ -113,7 +113,7 @@ class PuzzleSquare {
         }
         if (circled) {
             this.element.classList.add("oc-cell");
-            this.element.classList.add("oc-circled");
+            this.element.classList.add("oc-cell-circled");
 
         }
         if (this.style === "cell") {
