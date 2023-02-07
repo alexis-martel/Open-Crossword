@@ -312,7 +312,7 @@ a {
 .oc-cell-invalid {
     position: relative;
 }
-.oc-cell-invalid:before {
+.oc-cell-invalid:after {
     position: absolute;
     content: "";
     left: 0;
