@@ -505,9 +505,6 @@ function populate(obj) {
     populateClues(obj);
     populateInfo(obj);
     displayControlButtons();
-
-    // Select the first clue
-    puzzle.clues[0].element.click();
 }
 
 function populateClues(obj) {
