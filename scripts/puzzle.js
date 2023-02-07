@@ -31,39 +31,23 @@ class Puzzle {
     selectNextSquare() {
         // Selects the next square in the puzzle
         if (this.selectionDirection === "across") {
-            // Check if the next square is a cell
-            for (const square of this.squares) {
-                if (square.x === this.selectedSquare.x + 1 && square.y === this.selectedSquare.y && square.style === "cell") {
-                    square.select();
-                    return;
-                } else if (square.x === this.selectedSquare.x + 1 && square.y === this.selectedSquare.y && square.style === "block") {
-                    // Select the next cell
-                    for (const square of this.squares) {
-                        if (square.x > this.selectedSquare.x && square.y === this.selectedSquare.y && square.style === "cell") {
-                            square.select();
-                            return;
-                        }
-                    }
-                }
+            // Filters the squares array to the same y value as the selected square and a larger x value
+            if (this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x).length === 0 || this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].style === ("block" || "invisible")) {
+                // Select next clue if array is empty or next square is a block/invisible square
+                clueBar.nextButton.element.click();
+            } else {
+                // Select next square if array is not empty and next square is not a block/invisible square
+                this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].select();
             }
         } else if (this.selectionDirection === "down") {
-
-            // Check if the next square is a cell
-            for (const square of this.squares) {
-                if (square.y === this.selectedSquare.y + 1 && square.x === this.selectedSquare.x && square.style === "cell") {
-                    square.select();
-                    return;
-                } else if (square.y === this.selectedSquare.y + 1 && square.x === this.selectedSquare.x && square.style === "block") {
-                    // Select the next cell
-                    for (const square of this.squares) {
-                        if (square.y > this.selectedSquare.y && square.x === this.selectedSquare.x && square.style === "cell") {
-                            square.select();
-                            return;
-                        }
-                    }
-                }
+            // Filters the squares array to the same x value as the selected square and a larger x value
+            if (this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y).length === 0 || this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].style === ("block" || "invisible")) {
+                // Select next clue if array is empty or next square is a block/invisible square
+                clueBar.nextButton.element.click();
+            } else {
+                // Select next square if array is not empty and next square is not a block/invisible square
+                this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].select();
             }
-
         }
     }
 
