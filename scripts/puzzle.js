@@ -422,6 +422,7 @@ function resetPuzzle() {
         for (const square of puzzle.squares) {
             if (square.style === "cell") {
                 square.textElement.value = "";
+                square.element.classList.remove("oc-cell-invalid");
             }
         }
         puzzle.puzzleSeconds = 0;
