@@ -97,10 +97,10 @@ class Puzzle {
 
 
 class PuzzleSquare {
-    constructor(x, y, style, clue, answer) {
+    constructor(x, y, style, clue, answer, circled) {
         this.x = x; // x-coordinate
         this.y = y; // y-coordinate
-        this.style = style; // Style of the square (e.g. "oc-cell", "oc-block", "oc-circled")
+        this.style = style; // Style of the square (e.g. "cell", "block", "invisible")
         this.clue = clue; // Clue of the square (Number)
         this.answer = answer // Answer of the square (Character)
         this.element = document.createElement("span");
@@ -111,7 +111,7 @@ class PuzzleSquare {
         if (this.style === "block") {
             this.element.classList.add("oc-block");
         }
-        if (this.style === "circled-cell") {
+        if (circled) {
             this.element.classList.add("oc-cell");
             this.element.classList.add("oc-circled");
 
@@ -458,7 +458,7 @@ function displayPuzzle(obj) {
     for (const i of obj["grid"]) {
 
         for (const j of i) {
-            puzzle.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"]));
+            puzzle.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"], j["circled"]));
             squareX++;
         }
         squareY++;

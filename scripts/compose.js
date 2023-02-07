@@ -113,7 +113,8 @@ class Grid {
                         this.obj["grid"][i].push({
                             "clueNumber": parseInt(this.squares[i * this.width + j].clueNumberInput.value, 10),
                             "answer": this.squares[i * this.width + j].answerInput.value.toLowerCase(),
-                            "type": "circled-cell"
+                            "type": "cell",
+                            "circled": true
                         });
                     } else {
                         this.obj["grid"][i].push({
