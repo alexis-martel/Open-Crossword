@@ -171,6 +171,7 @@ class PuzzleSquare {
         }
         if (this.textElement) {
             this.textElement.oninput = () => {
+                checkPuzzle();
                 puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
                 puzzle.selectNextSquare();
             };
