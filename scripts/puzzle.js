@@ -51,6 +51,17 @@ class Puzzle {
         }
     }
 
+    selectPreviousSquare() {
+        // Selects the previous square in the puzzle
+        if (this.selectionDirection === "across") {
+            // Filters the squares array to the same y value as the selected square and a smaller x value
+                this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].select();
+        } else if (this.selectionDirection === "down") {
+            // Filters the squares array to the same x value as the selected square and a smaller x value
+                this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].select();
+        }
+    }
+
     selectSquare(x, y) {
         // Selects the square at the given x and y coordinates
         for (const square of this.squares) {
@@ -154,10 +165,15 @@ class PuzzleSquare {
             }
         }
         if (this.textElement) {
-            this.textElement.oninput = () => {
+            this.textElement.oninput = (e) => {
+                if (!e.data) {
+                    // If the delete key is pressed, select the previous square
+                    puzzle.selectPreviousSquare();
+                } else {
+                    puzzle.selectNextSquare();
+                }
                 checkPuzzle();
                 puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
-                puzzle.selectNextSquare();
             };
         }
     }
