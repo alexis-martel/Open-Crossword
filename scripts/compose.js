@@ -625,5 +625,5 @@ if (params.has("l")) {
 
 } else {
     showSplashScreen();
-
 }
+console.info("%cStarted OpenCrossword Editor…", "font-family: \"Times New Roman\", Times, serif; font-weight: bold; font-size: 20px;");
