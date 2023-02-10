@@ -9,23 +9,104 @@ const gridContainer = document.createElement("div");
 gridContainer.classList.add("oc-grid-container");
 puzzleContainer.appendChild(gridContainer);
 
-const language = getLanguageData("languages/lang-eng.json");
-
 class Puzzle {
-    constructor(url) {
-        if (url) {
-            // Fetch puzzle data from url
-            fetch(url)
-                .then((response) => response.json())
-                .then((data) => populate(data));
-        }
+    constructor(obj) {
+        this.obj = obj;
         this.squares = []; // Stores all squares in the puzzle
         this.clues = []; // Stores all clues in the puzzle
         this.selectedSquare = null; // Stores the selected square
-        this.selectedClue = null; // Stores the selected clue
         this.selectionDirection = "across"; // Stores the direction of the selection ("across" or "down")
-        this.puzzleStopwatch = setInterval(incrementStopwatchTime, 1000);
-        this.puzzleSeconds = 0;
+        this.puzzleStopwatch = setInterval(incrementStopwatchTime, 1000); // Start the stopwatch
+        this.puzzleSeconds = 0; // Stores the seconds for which the puzzle has been running
+    }
+
+    populateGrid() {
+        // Populates `puzzleContainer` with a grid of squares
+        let squareX = 0; // x-coordinate of the current square
+        let squareY = 0; // y-coordinate of the current square
+
+        gridContainer.style.gridTemplateColumns = `repeat(${this.obj["grid"][0].length}, 75px)`;
+
+        for (const i of this.obj["grid"]) {
+            for (const j of i) {
+                puzzle.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"], j["circled"]));
+                squareX++;
+            }
+            squareY++;
+            squareX = 0;
+        }
+    }
+
+    populateClues() {
+        // Populates `infoContainer` with the puzzle's clues
+        let acrossLabel = document.createElement("h2");
+        acrossLabel.classList.add("info-header");
+        infoContainer.appendChild(acrossLabel);
+        acrossLabel.textContent = "Across";
+
+        let acrossClues = document.createElement("menu");
+        acrossClues.classList.add("oc-clue-list");
+        infoContainer.appendChild(acrossClues);
+
+        for (const [clueTag, clueText] of Object.entries(this.obj["clues"]["across"])) {
+            puzzle.clues.push(new PuzzleClue(clueTag, "across", clueText, acrossClues));
+        }
+
+        let downLabel = document.createElement("h2");
+        downLabel.classList.add("info-header");
+        infoContainer.appendChild(downLabel);
+        downLabel.textContent = "Down";
+
+        let downClues = document.createElement("menu");
+        downClues.classList.add("oc-clue-list");
+        infoContainer.appendChild(downClues);
+
+        for (const [clueTag, clueText] of Object.entries(this.obj["clues"]["down"])) {
+            puzzle.clues.push(new PuzzleClue(clueTag, "down", clueText, downClues));
+        }
+    }
+
+    populateInfo() {
+        // Populates `infoContainer` with information about the puzzle
+        let infoSeparator = document.createElement("hr");
+        infoSeparator.classList.add("info-separator");
+        infoContainer.appendChild(infoSeparator);
+
+        let infoLabel = document.createElement("h2");
+        infoLabel.classList.add("info-header");
+        infoContainer.appendChild(infoLabel);
+        infoLabel.textContent = "Info";
+
+        let infoList = document.createElement("dl");
+        infoList.classList.add("puzzle-info");
+        infoContainer.appendChild(infoList);
+
+        // Set the puzzle's descriptive size (e.g., "Extra Small", "Small", "Medium", "Large", "Extra Large")
+        let sizeName;
+        if (puzzle.squares.length <= 9) {
+            sizeName = "Extra Small";
+        } else if (puzzle.squares.length <= 36 && puzzle.squares.length > 9) {
+            sizeName = "Small";
+        } else if (puzzle.squares.length <= 81 && puzzle.squares.length > 36) {
+            sizeName = "Medium";
+        } else if (puzzle.squares.length <= 144 && puzzle.squares.length > 81) {
+            sizeName = "Large";
+        } else if (puzzle.squares.length > 144) {
+            sizeName = "Extra Large";
+        } else {
+            sizeName = "Error";
+        }
+
+        new InfoItem("Title", this.obj["info"]["title"], infoList); // Title
+        new InfoItem("Author", this.obj["info"]["author"], infoList); // Author
+        new InfoItem("Description", this.obj["info"]["description"], infoList); // Description
+        new InfoItem("Tags", this.obj["info"]["tags"], infoList); // Tags
+        new InfoItem("Size", sizeName, infoList); // Size
+        new InfoItem("Date Published", this.obj["info"]["date_published"], infoList); // Date Published
+        new InfoItem("Language", this.obj["info"]["language"], infoList); // Language
+
+        // Set the page's title to the puzzle's title
+        document.title = `${this.obj["info"]["title"]}, by ${this.obj["info"]["author"]} - OpenCrossword`;
     }
 
     selectNextSquare() {
@@ -55,19 +136,10 @@ class Puzzle {
         // Selects the previous square in the puzzle
         if (this.selectionDirection === "across") {
             // Filters the squares array to the same y value as the selected square and a smaller x value
-                this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].select();
+            this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].select();
         } else if (this.selectionDirection === "down") {
             // Filters the squares array to the same x value as the selected square and a smaller x value
-                this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].select();
-        }
-    }
-
-    selectSquare(x, y) {
-        // Selects the square at the given x and y coordinates
-        for (const square of this.squares) {
-            if (square.x === x && square.y === y) {
-                square.select();
-            }
+            this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].select();
         }
     }
 
@@ -106,7 +178,6 @@ class Puzzle {
     }
 }
 
-
 class PuzzleSquare {
     constructor(x, y, style, clue, answer, circled) {
         this.x = x; // x-coordinate
@@ -125,7 +196,6 @@ class PuzzleSquare {
         if (circled) {
             this.element.classList.add("oc-cell");
             this.element.classList.add("oc-cell-circled");
-
         }
         if (this.style === "cell") {
             this.element.classList.add("oc-cell");
@@ -161,7 +231,6 @@ class PuzzleSquare {
                     }
                 }
                 this.select();
-
             }
         }
         if (this.textElement) {
@@ -179,7 +248,9 @@ class PuzzleSquare {
     }
 
     select() {
+        // Makes this square the current selection
         for (const square of puzzle.squares) {
+            // Deselect all squares
             square.deselect();
             square.element.classList.remove("highlighted");
         }
@@ -188,7 +259,6 @@ class PuzzleSquare {
         puzzle.selectedSquare = this;
         this.textElement.focus();
         this.textElement.select(); // Select the entered text so it can be overwritten
-
 
         // Highlight all squares in the same row or column as the selected square
         for (const square of puzzle.squares) {
@@ -219,21 +289,17 @@ class PuzzleSquare {
 class PuzzleClue {
     constructor(clueTag, direction, clueHTML, parentElement) {
         this.HTMLContent = clueHTML;
-
         this.element = document.createElement("li");
         this.element.classList.add("oc-clue");
         this.tagElement = document.createElement("span");
         this.tagElement.classList.add("oc-clue-tag");
         this.textElement = document.createElement("span");
         this.textElement.classList.add("clue-text");
-
         this.tagElement.textContent = clueTag;
         this.textElement.innerHTML = clueHTML;
-
-        parentElement.appendChild(this.element);
         this.element.appendChild(this.tagElement);
         this.element.appendChild(this.textElement);
-
+        parentElement.appendChild(this.element);
         this.number = parseInt(clueTag, 10);
         this.direction = direction;
         this.selected = false;
@@ -275,7 +341,6 @@ class InfoItem {
         parentElement.appendChild(this.descriptionTermElement);
         parentElement.appendChild(this.descriptionDetailElement);
     }
-
 }
 
 class ControlButton {
@@ -316,15 +381,13 @@ class ClueBar {
                 puzzle.clues[0].element.click();
             }
         }
-
         this.clueContentWrapper.onclick = () => {
             if (puzzle.selectionDirection === "across") {
                 puzzle.selectionDirection = "down";
             } else if (puzzle.selectionDirection === "down") {
                 puzzle.selectionDirection = "across";
             }
-            // Refresh grid
-            puzzle.selectedSquare.select();
+            puzzle.selectedSquare.select(); // Refresh grid
         }
     }
 
@@ -350,15 +413,8 @@ const icon = {
     "specialSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m19.2 36.4-4.75-10.45L4 21.2l10.45-4.75L19.2 6l4.75 10.45L34.4 21.2l-10.45 4.75ZM36.4 42l-2.35-5.25-5.25-2.35 5.25-2.4 2.35-5.2 2.4 5.2 5.2 2.4-5.2 2.35Z"/></svg>`
 }
 
-// Get the language data from the specified URL
-async function getLanguageData(url) {
-    const request = new Request(url);
-    const response = await fetch(request);
-    return await response.json();
-}
-
-// Display the control buttons beneath the puzzle grid (e.g. "Check", "Reveal", "Pause", "Reset", "Share", "Settings")
 function displayControlButtons() {
+    // Display the control buttons beneath the puzzle grid (e.g. "Check", "Reveal", "Pause", "Reset", "Share", "Settings")
     let controlButtons = document.createElement("nav");
     controlButtons.classList.add("control-button-container");
     puzzleContainer.appendChild(controlButtons);
@@ -367,29 +423,24 @@ function displayControlButtons() {
     verifyButton.element.onclick = () => {
         verifyPuzzle();
     }
-
     let revealButton = new ControlButton("Reveal", icon["revealSVG"], controlButtons);
     revealButton.element.onclick = () => {
         revealPuzzle();
     }
-
     let resetButton = new ControlButton("Reset", icon["resetSVG"], controlButtons);
     resetButton.element.onclick = () => {
         resetPuzzle();
     }
-
     let shareButton = new ControlButton("Share", icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
         sharePuzzle();
     }
-
     let remixButton = new ControlButton("Remix", icon["specialSVG"], controlButtons);
     remixButton.element.innerHTML += "Remix";
     remixButton.element.onclick = () => {
         let encodedPuzzleLink = encodeURIComponent(window.location.href);
         window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
     }
-
     let pauseButton = new ControlButton("Pause", icon["pauseSVG"], controlButtons);
     let stopwatch = document.createElement("span");
     stopwatch.classList.add("oc-stopwatch");
@@ -401,10 +452,8 @@ function displayControlButtons() {
     }
 }
 
-// Button-related functions
-
-// Erases all incorrect squares
 function verifyPuzzle() {
+    // Erases all incorrect squares
     for (const square of puzzle.squares) {
         if (square.style === "cell") {
             if (square.textElement.value.toUpperCase() !== square.answer.toUpperCase() && square.textElement.value !== "") {
@@ -415,8 +464,8 @@ function verifyPuzzle() {
     checkPuzzle();
 }
 
-// Reveals all squares
 function revealPuzzle() {
+    // Reveals all squares
     if (window.confirm("Are you sure you want to reveal the puzzle?")) {
         for (const square of puzzle.squares) {
             square.element.classList.remove("oc-cell-invalid");
@@ -428,13 +477,13 @@ function revealPuzzle() {
     checkPuzzle();
 }
 
-// Pauses the game
 function pauseGame() {
+    // Pauses the game
     window.alert("Game paused");
 }
 
-// Clears all squares
 function resetPuzzle() {
+    // Clears all squares
     if (window.confirm("Are you sure you want to reset the puzzle?")) {
         for (const square of puzzle.squares) {
             if (square.style === "cell") {
@@ -444,11 +493,10 @@ function resetPuzzle() {
         }
         puzzle.puzzleSeconds = 0;
     }
-
 }
 
-// Open a share dialog
 function sharePuzzle() {
+    // Open a share dialog
     if (navigator.share) {
         navigator.share({
             title: "OpenCrossword", url: window.location.href
@@ -464,26 +512,8 @@ function sharePuzzle() {
     }
 }
 
-// Show the grid
-function displayPuzzle(obj) {
-    let squareX = 0; // x-coordinate of the current square
-    let squareY = 0; // y-coordinate of the current square
-
-    gridContainer.style.gridTemplateColumns = `repeat(${obj["grid"][0].length}, 75px)`;
-
-    for (const i of obj["grid"]) {
-
-        for (const j of i) {
-            puzzle.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"], j["circled"]));
-            squareX++;
-        }
-        squareY++;
-        squareX = 0;
-    }
-}
-
-// Check if the puzzle is solved
 function checkPuzzle() {
+    // Check if the puzzle is solved
     let solved = true;
     let full = true;
     for (const square of puzzle.squares) {
@@ -501,8 +531,8 @@ function checkPuzzle() {
     }
 }
 
-// Display a "game over" alert
 function showSolvedScreen() {
+    // Display a "game over" alert
     endStopwatch();
     window.alert(`Congratulations! You solved the puzzle in ${document.getElementById("oc-stopwatch").textContent}!`);
 }
@@ -517,90 +547,14 @@ document.getElementById("oc-game-view").appendChild(infoContainer);
 
 function populate(obj) {
     clueBar = new ClueBar(puzzleContainer);
-    displayPuzzle(obj);
-    populateClues(obj);
-    populateInfo(obj);
+    puzzle = new Puzzle(obj);
+    puzzle.populateGrid(obj);
+    puzzle.populateClues(obj);
+    puzzle.populateInfo(obj);
     displayControlButtons();
 }
 
-function populateClues(obj) {
-
-    let acrossLabel = document.createElement("h2");
-    acrossLabel.classList.add("info-header");
-    infoContainer.appendChild(acrossLabel);
-    acrossLabel.textContent = "Across";
-
-    let acrossClues = document.createElement("menu");
-    acrossClues.classList.add("oc-clue-list");
-    infoContainer.appendChild(acrossClues);
-
-    for (const [clueTag, clueText] of Object.entries(obj["clues"]["across"])) {
-        puzzle.clues.push(new PuzzleClue(clueTag, "across", clueText, acrossClues));
-    }
-
-    let downLabel = document.createElement("h2");
-    downLabel.classList.add("info-header");
-    infoContainer.appendChild(downLabel);
-    downLabel.textContent = "Down";
-
-    let downClues = document.createElement("menu");
-    downClues.classList.add("oc-clue-list");
-    infoContainer.appendChild(downClues);
-
-    for (const [clueTag, clueText] of Object.entries(obj["clues"]["down"])) {
-        puzzle.clues.push(new PuzzleClue(clueTag, "down", clueText, downClues));
-    }
-
-}
-
-function populateInfo(obj) {
-    let infoSeparator = document.createElement("hr");
-    infoSeparator.classList.add("info-separator");
-    infoContainer.appendChild(infoSeparator);
-
-    let infoLabel = document.createElement("h2");
-    infoLabel.classList.add("info-header");
-    infoContainer.appendChild(infoLabel);
-    infoLabel.textContent = "Info";
-
-    let infoList = document.createElement("dl");
-    infoList.classList.add("puzzle-info");
-    infoContainer.appendChild(infoList);
-
-    // Set the puzzle's descriptive size (e.g., "Extra Small", "Small", "Medium", "Large", "Extra Large")
-    let sizeName = "Error";
-    switch (true) {
-        case(puzzle.squares.length <= 9):
-            sizeName = "Extra Small";
-            break;
-        case(puzzle.squares.length <= 36 && puzzle.squares.length > 9):
-            sizeName = "Small";
-            break;
-        case(puzzle.squares.length <= 81 && puzzle.squares.length > 36):
-            sizeName = "Medium";
-            break;
-        case(puzzle.squares.length <= 144 && puzzle.squares.length > 81):
-            sizeName = "Large";
-            break;
-        case(puzzle.squares.length > 144):
-            sizeName = "Extra Large";
-            break;
-
-    }
-
-    new InfoItem("Title", obj["info"]["title"], infoList); // Title
-    new InfoItem("Author", obj["info"]["author"], infoList); // Author
-    new InfoItem("Description", obj["info"]["description"], infoList); // Description
-    new InfoItem("Tags", obj["info"]["tags"], infoList); // Tags
-    new InfoItem("Size", sizeName, infoList); // Size
-    new InfoItem("Date Published", obj["info"]["date_published"], infoList); // Date Published
-    new InfoItem("Language", obj["info"]["language"], infoList); // Language
-
-    // Set the page's title to the puzzle's title
-    document.title = `${obj["info"]["title"]}, by ${obj["info"]["author"]} - OpenCrossword`;
-}
-
-Number.prototype.toHumanReadable = function () {
+Number.prototype.toFormattedTime = function () {
     let hours = Math.floor(this / 3600);
     let minutes = Math.floor((this - (hours * 3600)) / 60);
     let seconds = this - (hours * 3600) - (minutes * 60);
@@ -626,7 +580,7 @@ String.prototype.toCapitalized = function () {
 }
 
 function incrementStopwatchTime() {
-    document.getElementById("oc-stopwatch").textContent = puzzle.puzzleSeconds.toHumanReadable();
+    document.getElementById("oc-stopwatch").textContent = puzzle.puzzleSeconds.toFormattedTime();
     puzzle.puzzleSeconds += 1;
 }
 
@@ -634,16 +588,22 @@ function endStopwatch() {
     clearInterval(puzzle.puzzleStopwatch);
 }
 
-let params = new URLSearchParams(document.location.search);
+function startOC() {
+    let params = new URLSearchParams(document.location.search);
+    if (params.has("p")) {
+        let puzzleID = params.get("p").toString();
+        let puzzleURL = `${document.baseURI}data/puzzles/${puzzleID}.json`;
+        // Fetch puzzle data from url
+        fetch(puzzleURL).then((response) => response.json()).then((data) => {
+            populate(data);
+        });
+    } else if (params.has("d")) {
+        let puzzleData = params.get("d").toString();
+        populate(JSON.parse(puzzleData));
+    }
+}
+
 let puzzle;
 let clueBar;
 
-if (params.has("p")) {
-    let puzzleID = params.get("p").toString();
-    let puzzleURL = `${document.baseURI}data/puzzles/${puzzleID}.json`;
-    puzzle = new Puzzle(puzzleURL);
-} else if (params.has("d")) {
-    let puzzleData = params.get("d").toString();
-    puzzle = new Puzzle();
-    populate(JSON.parse(puzzleData));
-}
+startOC();
