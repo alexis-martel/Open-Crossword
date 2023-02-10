@@ -588,7 +588,7 @@ function endStopwatch() {
     clearInterval(puzzle.puzzleStopwatch);
 }
 
-function startOCPlayer() {
+function startOC() {
     let params = new URLSearchParams(document.location.search);
     if (params.has("p")) {
         let puzzleID = params.get("p").toString();
@@ -601,10 +601,9 @@ function startOCPlayer() {
         let puzzleData = params.get("d").toString();
         populate(JSON.parse(puzzleData));
     }
-    console.info("%cStarted OpenCrossword Player…", "font-family: \"Times New Roman\", Times, serif; font-weight: bold; font-size: 20px;");
 }
 
 let puzzle;
 let clueBar;
 
-startOCPlayer();
+startOC();
