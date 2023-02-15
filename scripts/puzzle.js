@@ -235,14 +235,18 @@ class PuzzleSquare {
         }
         if (this.textElement) {
             this.textElement.oninput = (e) => {
+                puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
                 if (!e.data) {
                     // If the delete key is pressed, select the previous square
                     puzzle.selectPreviousSquare();
                 } else {
+                    // If the space key is pressed, ignore the input
+                    if (e.data === " ") {
+                        puzzle.selectedSquare.textElement.value = "";
+                    }
                     puzzle.selectNextSquare();
                 }
                 checkPuzzle();
-                puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
             };
         }
     }
