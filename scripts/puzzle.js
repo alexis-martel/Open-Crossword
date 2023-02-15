@@ -113,7 +113,7 @@ class Puzzle {
         // Selects the next square in the puzzle
         if (this.selectionDirection === "across") {
             // Filters the squares array to the same y value as the selected square and a larger x value
-            if (this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x).length === 0 || this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].style === ("block" || "invisible")) {
+            if (this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x).length === 0 || this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].style !== "cell") {
                 // Select next clue if array is empty or next square is a block/invisible square
                 clueBar.nextButton.element.click();
             } else {
@@ -122,7 +122,7 @@ class Puzzle {
             }
         } else if (this.selectionDirection === "down") {
             // Filters the squares array to the same x value as the selected square and a larger x value
-            if (this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y).length === 0 || this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].style === ("block" || "invisible")) {
+            if (this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y).length === 0 || this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].style !== "cell") {
                 // Select next clue if array is empty or next square is a block/invisible square
                 clueBar.nextButton.element.click();
             } else {
