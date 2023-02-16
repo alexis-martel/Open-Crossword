@@ -136,10 +136,22 @@ class Puzzle {
         // Selects the previous square in the puzzle
         if (this.selectionDirection === "across") {
             // Filters the squares array to the same y value as the selected square and a smaller x value
-            this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].select();
+            if (this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length === 0 || this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].style !== "cell") {
+                // Select previous clue if array is empty or previous square is a block/invisible square
+                clueBar.previousButton.element.click();
+            } else {
+                // Select previous square if array is not empty and previous square is not a block/invisible square
+                this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].select();
+            }
         } else if (this.selectionDirection === "down") {
             // Filters the squares array to the same x value as the selected square and a smaller x value
-            this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].select();
+            if (this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length === 0 || this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].style !== "cell") {
+                // Select previous clue if array is empty or previous square is a block/invisible square
+                clueBar.previousButton.element.click();
+            } else {
+                // Select previous square if array is not empty and previous square is not a block/invisible square
+                this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].select();
+            }
         }
     }
 
@@ -591,6 +603,44 @@ function incrementStopwatchTime() {
 function endStopwatch() {
     clearInterval(puzzle.puzzleStopwatch);
 }
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowUp") {
+        event.preventDefault();
+        if (puzzle.selectionDirection === "down") {
+            puzzle.selectPreviousSquare();
+        } else {
+            puzzle.selectionDirection = "down";
+            puzzle.selectedSquare.select(); // Refresh the grid
+        }
+    } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        if (puzzle.selectionDirection === "down") {
+            puzzle.selectNextSquare();
+        } else {
+            puzzle.selectionDirection = "down";
+            puzzle.selectedSquare.select(); // Refresh the grid
+        }
+    } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        if (puzzle.selectionDirection === "across") {
+            puzzle.selectPreviousSquare();
+        } else {
+            puzzle.selectionDirection = "across";
+            puzzle.selectedSquare.select(); // Refresh the grid
+        }
+    } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        if (puzzle.selectionDirection === "across") {
+            puzzle.selectNextSquare();
+        } else {
+            puzzle.selectionDirection = "across";
+            puzzle.selectedSquare.select(); // Refresh the grid
+        }
+    } else if (event.key === "Enter") {
+        clueBar.nextButton.element.click();
+    }
+});
 
 function startOCPlayer() {
     let params = new URLSearchParams(document.location.search);
