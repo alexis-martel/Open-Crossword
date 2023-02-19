@@ -414,7 +414,7 @@ class ClueBar {
             this.element.style.display = "none";
         } else {
             this.element.style.display = "block";
-            this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number}-${puzzle.selectedClue.direction.toCapitalized()}</span> ${puzzle.selectedClue.HTMLContent}`;
+            this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number}-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${puzzle.selectedClue.HTMLContent}`;
         }
     }
 }
