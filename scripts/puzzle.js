@@ -9,6 +9,8 @@ const gridContainer = document.createElement("div");
 gridContainer.classList.add("oc-grid-container");
 puzzleContainer.appendChild(gridContainer);
 
+let l; // Stores language data
+
 class Puzzle {
     constructor(obj) {
         this.obj = obj;
@@ -42,7 +44,7 @@ class Puzzle {
         let acrossLabel = document.createElement("h2");
         acrossLabel.classList.add("info-header");
         infoContainer.appendChild(acrossLabel);
-        acrossLabel.textContent = "Across";
+        acrossLabel.textContent = "Across".i18n();
 
         let acrossClues = document.createElement("menu");
         acrossClues.classList.add("oc-clue-list");
@@ -55,7 +57,7 @@ class Puzzle {
         let downLabel = document.createElement("h2");
         downLabel.classList.add("info-header");
         infoContainer.appendChild(downLabel);
-        downLabel.textContent = "Down";
+        downLabel.textContent = "Down".i18n();
 
         let downClues = document.createElement("menu");
         downClues.classList.add("oc-clue-list");
@@ -75,7 +77,7 @@ class Puzzle {
         let infoLabel = document.createElement("h2");
         infoLabel.classList.add("info-header");
         infoContainer.appendChild(infoLabel);
-        infoLabel.textContent = "Info";
+        infoLabel.textContent = "Info".i18n();
 
         let infoList = document.createElement("dl");
         infoList.classList.add("puzzle-info");
@@ -84,26 +86,26 @@ class Puzzle {
         // Set the puzzle's descriptive size (e.g., "Extra Small", "Small", "Medium", "Large", "Extra Large")
         let sizeName;
         if (puzzle.squares.length <= 9) {
-            sizeName = "Extra Small";
+            sizeName = "Extra Small".i18n();
         } else if (puzzle.squares.length <= 36 && puzzle.squares.length > 9) {
-            sizeName = "Small";
+            sizeName = "Small".i18n();
         } else if (puzzle.squares.length <= 81 && puzzle.squares.length > 36) {
-            sizeName = "Medium";
+            sizeName = "Medium".i18n();
         } else if (puzzle.squares.length <= 144 && puzzle.squares.length > 81) {
-            sizeName = "Large";
+            sizeName = "Large".i18n();
         } else if (puzzle.squares.length > 144) {
-            sizeName = "Extra Large";
+            sizeName = "Extra Large".i18n();
         } else {
-            sizeName = "Error";
+            sizeName = "Error".i18n();
         }
 
-        new InfoItem("Title", this.obj["info"]["title"], infoList); // Title
-        new InfoItem("Author", this.obj["info"]["author"], infoList); // Author
-        new InfoItem("Description", this.obj["info"]["description"], infoList); // Description
-        new InfoItem("Tags", this.obj["info"]["tags"], infoList); // Tags
-        new InfoItem("Size", sizeName, infoList); // Size
-        new InfoItem("Date Published", this.obj["info"]["date_published"], infoList); // Date Published
-        new InfoItem("Language", this.obj["info"]["language"], infoList); // Language
+        new InfoItem("Title".i18n(), this.obj["info"]["title"], infoList); // Title
+        new InfoItem("Author".i18n(), this.obj["info"]["author"], infoList); // Author
+        new InfoItem("Description".i18n(), this.obj["info"]["description"], infoList); // Description
+        new InfoItem("Tags".i18n(), this.obj["info"]["tags"], infoList); // Tags
+        new InfoItem("Size".i18n(), sizeName, infoList); // Size
+        new InfoItem("Date Published".i18n(), this.obj["info"]["date_published"], infoList); // Date Published
+        new InfoItem("Language".i18n(), this.obj["info"]["language"], infoList); // Language
 
         // Set the page's title to the puzzle's title
         document.title = `${this.obj["info"]["title"]}, by ${this.obj["info"]["author"]} - OpenCrossword`;
@@ -379,7 +381,7 @@ class ClueBar {
         this.element.appendChild(this.clueContentWrapper);
         this.element.appendChild(this.controlWrapper);
 
-        this.previousButton = new ControlButton("Next Clue", icon["chevronPreviousSVG"], this.controlWrapper);
+        this.previousButton = new ControlButton("Previous Clue".i18n(), icon["chevronPreviousSVG"], this.controlWrapper);
         this.previousButton.element.onclick = () => {
             // Select the previous clue in the list
             if (puzzle.clues.indexOf(puzzle.selectedClue) - 1 >= 0) {
@@ -388,7 +390,7 @@ class ClueBar {
                 puzzle.clues[puzzle.clues.length - 1].element.click();
             }
         }
-        this.nextButton = new ControlButton("Next Clue", icon["chevronNextSVG"], this.controlWrapper);
+        this.nextButton = new ControlButton("Next Clue".i18n(), icon["chevronNextSVG"], this.controlWrapper);
         this.nextButton.element.onclick = () => {
             // Select the next clue in the list
             if (puzzle.clues.indexOf(puzzle.selectedClue) + 1 < puzzle.clues.length) {
@@ -435,29 +437,28 @@ function displayControlButtons() {
     controlButtons.classList.add("control-button-container");
     puzzleContainer.appendChild(controlButtons);
 
-    let verifyButton = new ControlButton("Verify", icon["verifySVG"], controlButtons);
+    let verifyButton = new ControlButton("Verify".i18n(), icon["verifySVG"], controlButtons);
     verifyButton.element.onclick = () => {
         verifyPuzzle();
     }
-    let revealButton = new ControlButton("Reveal", icon["revealSVG"], controlButtons);
+    let revealButton = new ControlButton("Reveal".i18n(), icon["revealSVG"], controlButtons);
     revealButton.element.onclick = () => {
         revealPuzzle();
     }
-    let resetButton = new ControlButton("Reset", icon["resetSVG"], controlButtons);
+    let resetButton = new ControlButton("Reset".i18n(), icon["resetSVG"], controlButtons);
     resetButton.element.onclick = () => {
         resetPuzzle();
     }
-    let shareButton = new ControlButton("Share", icon["shareSVG"], controlButtons);
+    let shareButton = new ControlButton("Share".i18n(), icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
         sharePuzzle();
     }
-    let remixButton = new ControlButton("Remix", icon["specialSVG"], controlButtons);
-    remixButton.element.innerHTML += "Remix";
+    let remixButton = new ControlButton("Remix".i18n(), icon["specialSVG"], controlButtons);
     remixButton.element.onclick = () => {
         let encodedPuzzleLink = encodeURIComponent(window.location.href);
         window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
     }
-    let pauseButton = new ControlButton("Pause", icon["pauseSVG"], controlButtons);
+    let pauseButton = new ControlButton("Pause".i18n(), icon["pauseSVG"], controlButtons);
     let stopwatch = document.createElement("span");
     stopwatch.classList.add("oc-stopwatch");
     stopwatch.id = "oc-stopwatch";
@@ -482,7 +483,7 @@ function verifyPuzzle() {
 
 function revealPuzzle() {
     // Reveals all squares
-    if (window.confirm("Are you sure you want to reveal the puzzle?")) {
+    if (window.confirm("Are you sure you want to reveal the puzzle?".i18n())) {
         for (const square of puzzle.squares) {
             square.element.classList.remove("oc-cell-invalid");
             if (square.style === "cell") {
@@ -495,12 +496,12 @@ function revealPuzzle() {
 
 function pauseGame() {
     // Pauses the game
-    window.alert("Game paused");
+    window.alert("Game paused".i18n());
 }
 
 function resetPuzzle() {
     // Clears all squares
-    if (window.confirm("Are you sure you want to reset the puzzle?")) {
+    if (window.confirm("Are you sure you want to reset the puzzle?".i18n())) {
         for (const square of puzzle.squares) {
             if (square.style === "cell") {
                 square.textElement.value = "";
@@ -520,10 +521,10 @@ function sharePuzzle() {
     } else {
         navigator.clipboard.writeText(window.location.href).then(() => {
             /* clipboard successfully set */
-            window.alert("Link copied to clipboard");
+            window.alert("Link copied to clipboard".i18n());
         }, () => {
             /* clipboard write failed */
-            window.alert("Failed to copy link to clipboard");
+            window.alert("Failed to copy link to clipboard".i18n());
         });
     }
 }
@@ -550,11 +551,11 @@ function checkPuzzle() {
 function showSolvedScreen() {
     // Display a "game over" alert
     endStopwatch();
-    window.alert(`Congratulations! You solved the puzzle in ${document.getElementById("oc-stopwatch").textContent}!`);
+    window.alert("Congratulations! You solved the puzzle in".i18n() + " " + document.getElementById("oc-stopwatch").textContent);
 }
 
 function showNotSolvedScreen() {
-    window.alert("Puzzle not solved.");
+    window.alert("Puzzle not solved".i18n());
 }
 
 const infoContainer = document.createElement("div")
@@ -593,6 +594,15 @@ Number.prototype.toFormattedTime = function () {
 
 String.prototype.toCapitalized = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+String.prototype.i18n = function () {
+    // Translates the string to the current language, if available
+    if (l[`${this}`]) {
+        return l[`${this}`];
+    } else {
+        return this;
+    }
 }
 
 function incrementStopwatchTime() {
@@ -642,6 +652,10 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
+function setLanguage(data) {
+    l = data;
+}
+
 function startOCPlayer() {
     let params = new URLSearchParams(document.location.search);
     if (params.has("p")) {
@@ -649,11 +663,48 @@ function startOCPlayer() {
         let puzzleURL = `${document.baseURI}data/puzzles/${puzzleID}.json`;
         // Fetch puzzle data from url
         fetch(puzzleURL).then((response) => response.json()).then((data) => {
-            populate(data);
+            // Fetch language data
+            fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`,
+                {method: "HEAD"}
+            ).then((res) => {
+                if (res.ok) {
+                    // Language file exists
+                    fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`).then((response) => response.json()).then((languageData) => {
+                        setLanguage(languageData);
+                        populate(data);
+                    });
+                } else {
+                    // Language file does not exist
+                    console.error("Language not supported");
+                    fetch(`${document.baseURI}languages/en.json`).then((response) => response.json()).then((languageData) => {
+                        setLanguage(languageData);
+                        populate(data);
+                    });
+                }
+            });
         });
     } else if (params.has("d")) {
         let puzzleData = params.get("d").toString();
-        populate(JSON.parse(puzzleData));
+        let data = JSON.parse(puzzleData);
+        // Fetch language data
+        fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`,
+            {method: "HEAD"}
+        ).then((res) => {
+            if (res.ok) {
+                // Language file exists
+                fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`).then((response) => response.json()).then((languageData) => {
+                    setLanguage(languageData);
+                    populate(data);
+                });
+            } else {
+                // Language file does not exist
+                console.error("Language not supported, falling back to English");
+                fetch(`${document.baseURI}languages/en.json`).then((response) => response.json()).then((languageData) => {
+                    setLanguage(languageData);
+                    populate(data);
+                });
+            }
+        });
     }
     console.info("%cStarted OpenCrossword Player…", "font-family: \"Times New Roman\", Times, serif; font-weight: bold; font-size: 20px;");
 }
