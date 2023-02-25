@@ -358,10 +358,6 @@ a {
     height: 75px;
     color: var(--foreground-colour);
     background-color: var(--background-colour);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     text-align: center;
     position: relative;
 }
@@ -411,15 +407,17 @@ a {
 }
 
 .oc-builder-clue-input {
-    width: 90%;
+    width: 100%;
     font-family: var(--main-font);
     font-size: initial;
+    box-sizing: border-box;
 }
 
 .oc-builder-answer-input {
-    width: 90%;
+    width: 100%;
     font-family: var(--main-font);
     font-size: initial;
+    box-sizing: border-box;
 }
 
 .oc-builder-info-input-label {
