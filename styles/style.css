@@ -222,6 +222,8 @@ a {
     cursor: pointer;
     text-align: center;
     font-size: large;
+    position: sticky;
+    top: 0;
 }
 
 .oc-clue-bar-number-direction {
