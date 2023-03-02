@@ -663,6 +663,14 @@ document.addEventListener("keydown", function (event) {
         puzzle.selectNextSquare();
     } else if (event.key === " " || event.key === "Spacebar") {
         puzzle.selectNextBlankSquare();
+    } else if (event.key === "Tab") {
+        // Switch selection direction
+        if (puzzle.selectionDirection === "across") {
+            puzzle.selectionDirection = "down";
+        } else if (puzzle.selectionDirection === "down") {
+            puzzle.selectionDirection = "across";
+        }
+        puzzle.selectedSquare.select(); // Refresh the grid
     }
 });
 
