@@ -248,12 +248,12 @@ class PuzzleSquare {
             }
         }
         if (this.textElement) {
+            this.textElement.onbeforeinput = (e) => {
+                if (e.data === " ") e.preventDefault();
+            }
             this.textElement.oninput = (e) => {
                 puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
                 if (e.data) {
-                    if (e.data === " ") {
-                        puzzle.selectedSquare.textElement.value = ""; // For compatibility reasons
-                    }
                     puzzle.selectNextSquare();
                 }
                 checkPuzzle();
@@ -648,6 +648,8 @@ document.addEventListener("keydown", function (event) {
     } else if (event.key === "Backspace") {
         puzzle.selectPreviousSquare();
     } else if (event.key === "Delete") {
+        puzzle.selectNextSquare();
+    } else if (event.key === " " || event.key === "Spacebar") {
         puzzle.selectNextSquare();
     }
 });
