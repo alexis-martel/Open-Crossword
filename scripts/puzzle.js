@@ -157,6 +157,18 @@ class Puzzle {
         }
     }
 
+    selectNextBlankSquare() {
+        // Selects the next cell without input, if the puzzle isn't full
+        if (this.squares.find((square) => square.style === "cell" && square.textElement.value === "")) {
+            this.selectNextSquare();
+            while (this.selectedSquare.textElement.value !== "") {
+                this.selectNextSquare();
+            }
+        } else {
+            puzzle.selectNextSquare();
+        }
+    }
+
     backCheck() {
         // Checks if the selected square does not have a number
         for (const clue of puzzle.clues) {
@@ -255,8 +267,8 @@ class PuzzleSquare {
                 puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
                 if (e.data) {
                     puzzle.selectNextSquare();
+                    checkPuzzle();
                 }
-                checkPuzzle();
             };
         }
     }
@@ -650,7 +662,7 @@ document.addEventListener("keydown", function (event) {
     } else if (event.key === "Delete") {
         puzzle.selectNextSquare();
     } else if (event.key === " " || event.key === "Spacebar") {
-        puzzle.selectNextSquare();
+        puzzle.selectNextBlankSquare();
     }
 });
 
