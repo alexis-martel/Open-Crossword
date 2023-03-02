@@ -250,13 +250,9 @@ class PuzzleSquare {
         if (this.textElement) {
             this.textElement.oninput = (e) => {
                 puzzle.selectedSquare.element.classList.remove("oc-cell-invalid");
-                if (!e.data) {
-                    // If the delete key is pressed, select the previous square
-                    puzzle.selectPreviousSquare();
-                } else {
-                    // If the space key is pressed, ignore the input
+                if (e.data) {
                     if (e.data === " ") {
-                        puzzle.selectedSquare.textElement.value = "";
+                        puzzle.selectedSquare.textElement.value = ""; // For compatibility reasons
                     }
                     puzzle.selectNextSquare();
                 }
@@ -649,6 +645,10 @@ document.addEventListener("keydown", function (event) {
         }
     } else if (event.key === "Enter") {
         clueBar.nextButton.element.click();
+    } else if (event.key === "Backspace") {
+        puzzle.selectPreviousSquare();
+    } else if (event.key === "Delete") {
+        puzzle.selectNextSquare();
     }
 });
 

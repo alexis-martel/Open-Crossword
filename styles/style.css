@@ -404,6 +404,7 @@ a {
     font-family: var(--main-font);
     font-size: initial;
     resize: vertical;
+    box-sizing: border-box;
 }
 
 .oc-builder-clue-input {
