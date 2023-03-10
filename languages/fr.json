@@ -29,5 +29,6 @@
         "Link copied to clipboard": "Le lien a été copié dans le presse-papier",
         "Failed to copy link to clipboard": "Le lien n'a pas pu être copié dans le presse-papier ",
         "Congratulations! You solved the puzzle in": "Bravo! Vous avez complété le mot croisé en",
-        "Puzzle not solved": "Non résolu"
+        "Puzzle not solved": "Non résolu",
+        "Verify automatically": "Vérifier automatiquement"
 }

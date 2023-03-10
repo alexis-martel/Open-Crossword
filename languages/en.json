@@ -28,5 +28,6 @@
         "Are you sure you want to reset the puzzle?": "Are you sure you want to reset the puzzle?",
         "Link copied to clipboard": "Link copied to clipboard",
         "Failed to copy link to clipboard": "Failed to copy link to clipboard",
-        "Puzzle not solved": "Puzzle not solved"
+        "Puzzle not solved": "Puzzle not solved",
+        "Verify automatically": "Verify automatically"
 }

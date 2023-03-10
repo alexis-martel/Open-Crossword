@@ -268,6 +268,7 @@ class PuzzleSquare {
                 if (e.data) {
                     puzzle.selectNextSquare();
                     checkPuzzle();
+                    if (document.getElementById("oc-verify-automatically").checked) verifyPuzzle();
                 }
             };
         }
@@ -475,6 +476,14 @@ function displayControlButtons() {
     pauseButton.element.onclick = () => {
         pauseGame();
     }
+    let verifyAutomaticallyCheckboxLabel = document.createElement("label");
+    let verifyAutomaticallyCheckbox = document.createElement("input");
+    verifyAutomaticallyCheckbox.type = "checkbox";
+    verifyAutomaticallyCheckbox.id = "oc-verify-automatically";
+    verifyAutomaticallyCheckboxLabel.appendChild(verifyAutomaticallyCheckbox);
+    verifyAutomaticallyCheckboxLabel.innerHTML += "Verify automatically".i18n();
+    verifyAutomaticallyCheckboxLabel.style.display = "block";
+    controlButtons.appendChild(verifyAutomaticallyCheckboxLabel);
 }
 
 function verifyPuzzle() {
