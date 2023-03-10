@@ -482,6 +482,7 @@ function displayControlButtons() {
     verifyAutomaticallyCheckbox.id = "oc-verify-automatically";
     verifyAutomaticallyCheckboxLabel.appendChild(verifyAutomaticallyCheckbox);
     verifyAutomaticallyCheckboxLabel.innerHTML += "Verify automatically".i18n();
+    verifyAutomaticallyCheckboxLabel.title = "Verify the puzzle automatically on each keystroke".i18n();
     verifyAutomaticallyCheckboxLabel.style.display = "block";
     controlButtons.appendChild(verifyAutomaticallyCheckboxLabel);
 }

@@ -29,5 +29,6 @@
         "Link copied to clipboard": "Link copied to clipboard",
         "Failed to copy link to clipboard": "Failed to copy link to clipboard",
         "Puzzle not solved": "Puzzle not solved",
-        "Verify automatically": "Verify automatically"
+        "Verify automatically": "Verify automatically",
+        "Verify the puzzle automatically on each keystroke": "Verify the puzzle automatically on each keystroke"
 }
