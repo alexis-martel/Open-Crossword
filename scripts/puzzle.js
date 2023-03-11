@@ -245,6 +245,7 @@ class PuzzleSquare {
             this.textElement.setAttribute("autocorrect", "off");
             this.textElement.setAttribute("autocomplete", "off");
             this.textElement.setAttribute("autocapitalize", "characters");
+            this.textElement.ariaLabel = "Square answer".i18n();
             this.element.appendChild(this.textElement);
             this.textElement.classList.add("oc-puzzle-square-text");
             this.answer = this.answer.toUpperCase();
