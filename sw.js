@@ -1,6 +1,6 @@
 "use strict";
 
-const cacheVersion = 1; // Forces cache reload on increment
+const cacheVersion = 2; // Forces cache reload on increment
 const cacheName = "oc-cache";
 const offlinePageURL = "offline.html";
 
