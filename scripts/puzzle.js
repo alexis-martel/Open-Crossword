@@ -489,7 +489,7 @@ function displayControlButtons() {
 }
 
 function verifyPuzzle() {
-    // Erases all incorrect squares
+    // Marks all incorrect squares
     for (const square of puzzle.squares) {
         if (square.style === "cell") {
             if (square.textElement.value.toUpperCase() !== square.answer.toUpperCase() && square.textElement.value !== "") {
