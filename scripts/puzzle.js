@@ -380,6 +380,19 @@ class ControlButton {
     }
 }
 
+class ControlInput {
+    constructor(type, title, label, parentElement, id) {
+        this.labelElement = document.createElement("label");
+        this.element = document.createElement("input");
+        this.labelElement.appendChild(this.element);
+        this.element.type = type;
+        this.element.title = title;
+        this.element.id = id;
+        this.labelElement.innerHTML += label;
+        parentElement.appendChild(this.labelElement);
+    }
+}
+
 class ClueBar {
     constructor(parentElement) {
         this.element = document.createElement("nav");
@@ -477,15 +490,11 @@ function displayControlButtons() {
     pauseButton.element.onclick = () => {
         pauseGame();
     }
-    let verifyAutomaticallyCheckboxLabel = document.createElement("label");
-    let verifyAutomaticallyCheckbox = document.createElement("input");
-    verifyAutomaticallyCheckbox.type = "checkbox";
-    verifyAutomaticallyCheckbox.id = "oc-verify-automatically";
-    verifyAutomaticallyCheckboxLabel.appendChild(verifyAutomaticallyCheckbox);
-    verifyAutomaticallyCheckboxLabel.innerHTML += "Verify automatically".i18n();
-    verifyAutomaticallyCheckboxLabel.title = "Verify the puzzle automatically on each keystroke".i18n();
-    verifyAutomaticallyCheckboxLabel.style.display = "block";
-    controlButtons.appendChild(verifyAutomaticallyCheckboxLabel);
+    let verifyAutomaticallyCheckbox = new ControlInput("checkbox", "Verify the puzzle automatically on each keystroke".i18n(), "Verify automatically".i18n(), controlButtons, "oc-verify-automatically");
+    verifyAutomaticallyCheckbox.labelElement.style.display = "block";
+    document.getElementById("oc-verify-automatically").onclick = () => {
+        verifyPuzzle();
+    }
 }
 
 function verifyPuzzle() {
