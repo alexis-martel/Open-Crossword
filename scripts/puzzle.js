@@ -506,7 +506,6 @@ function verifyPuzzle() {
             }
         }
     }
-    checkPuzzle();
 }
 
 function revealPuzzle() {
