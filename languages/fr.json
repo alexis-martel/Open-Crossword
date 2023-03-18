@@ -32,5 +32,6 @@
         "Puzzle not solved": "Non résolu",
         "Verify automatically": "Vérifier automatiquement",
         "Verify the puzzle automatically on each keystroke": "Vérifier le mot croisé automatiquement chaque fois qu'une touche est appuyée",
-        "Square answer": "Réponse de la cellule"
+        "Square answer": "Réponse de la cellule",
+        "Play": "Jouer"
 }

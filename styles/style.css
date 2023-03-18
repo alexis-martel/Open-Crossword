@@ -151,6 +151,63 @@ a {
     padding: 5px;
 }
 
+.oc-player-splash-screen {
+    padding: 0;
+    width: 50vmin;
+    min-width: 340px;
+    box-shadow: 5px 5px 0 0 var(--foreground-colour);
+    background-color: var(--background-colour);
+    border: var(--main-border-width) solid var(--foreground-colour);
+
+}
+
+.oc-player-splash-screen h1 {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-weight: normal;
+    position: absolute;
+    color: white;
+    font-size: 6vmin;
+    z-index: 1;
+}
+
+.oc-player-splash-screen p {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: normal;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    z-index: 1;
+    text-wrap: normal;
+}
+
+.oc-player-splash-screen img {
+    filter: brightness(75%);
+    width: 100%;
+    display: block;
+}
+
+.oc-player-splash-screen div {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.oc-player-splash-screen input[type="submit"] {
+    padding: 1vmin;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+}
+
+.oc-player-splash-screen form {
+    text-align: center;
+    padding: 1vmin;
+}
+
 .oc-stopwatch {
     display: inline-block;
     vertical-align: middle;

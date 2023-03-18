@@ -591,12 +591,16 @@ infoContainer.classList.add("oc-info-container")
 document.getElementById("oc-game-view").appendChild(infoContainer);
 
 function populate(obj) {
-    clueBar = new ClueBar(puzzleContainer);
-    puzzle = new Puzzle(obj);
-    puzzle.populateGrid(obj);
-    puzzle.populateClues(obj);
-    puzzle.populateInfo(obj);
-    displayControlButtons();
+    showSplashScreen(obj);
+    document.getElementById("oc-player-splash-screen").onsubmit = () => {
+        clueBar = new ClueBar(puzzleContainer);
+        puzzle = new Puzzle(obj);
+        puzzle.populateGrid(obj);
+        puzzle.populateClues(obj);
+        puzzle.populateInfo(obj);
+        displayControlButtons();
+    }
+
 }
 
 Number.prototype.toFormattedTime = function () {
@@ -696,6 +700,22 @@ document.addEventListener("keydown", function (event) {
 
 function setLanguage(data) {
     l = data;
+}
+
+function showSplashScreen(obj) {
+    let splashScreen = document.createElement("dialog");
+    splashScreen.id = "oc-player-splash-screen";
+    splashScreen.classList.add("oc-player-splash-screen");
+    splashScreen.innerHTML = `<div>
+        <h1>OpenCrossword<br>Player</h1>
+        <p><b>${obj["info"]["title"]} - ${obj["info"]["author"]}</b><br>${obj["info"]["description"]}</p>
+        <img alt="OpenCrossword banner" src="${document.baseURI}images/splash-screen.jpg">
+    </div>
+    <form method="dialog">
+        <input type="submit" value="${"Play".i18n()}">
+    </form>`
+    document.body.appendChild(splashScreen);
+    splashScreen.showModal();
 }
 
 function startOCPlayer() {
