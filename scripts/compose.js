@@ -500,53 +500,44 @@ function populateGrid(obj) {
 
 function showSplashScreen() {
     let splashScreen = document.createElement("dialog");
-    splashScreen.classList.add("oc-builder-splash-screen");
-    document.getElementById("oc-build-view").appendChild(splashScreen);
-    let splashScreenTitle = document.createElement("h1");
-    splashScreenTitle.textContent = "New Puzzle";
-    splashScreen.appendChild(splashScreenTitle);
+    splashScreen.id = "oc-splash-screen";
+    splashScreen.classList.add("oc-splash-screen");
+    splashScreen.innerHTML = `<div>
+        <h1>OpenCrossword<br>Editor</h1>
+        <p><b>Create a New Puzzle</b></p>
+        <img alt="OpenCrossword banner" src="${document.baseURI}images/splash-screen.jpg">
+    </div>
+    <form method="dialog">
+        <label class="oc-splash-screen-info-input-label">Grid Width
+            <input class="oc-splash-screen-info-input" id="oc-splash-screen-info-input-grid-width" placeholder="Width" required="" title="Enter the width of your puzzle" type="number">
+        </label>
+        <label class="oc-splash-screen-info-input-label">Grid Height
+            <input class="oc-splash-screen-info-input" id="oc-splash-screen-info-input-grid-height" placeholder="Height" required="" title="Enter the height of your puzzle" type="number">
+        </label>
+        <label class="oc-splash-screen-info-input-label">
+            <input class="oc-splash-screen-info-input" required="" title="Create a new puzzle" type="submit" value="Create">
+        </label>
+        <hr>
+        <label class="oc-splash-screen-info-input-label">
+            <input class="oc-splash-screen-info-input" id="oc-splash-screen-open-button" required="" title="Open an existing puzzle" type="button" value="Open…">
+        </label>
+        </form>`;
 
-    let gridDimensionsForm = document.createElement("form");
-    gridDimensionsForm.method = "dialog";
-    let gridWidthInput = new PuzzleInfo("Grid Width", "number", "Enter the width of your puzzle", "", gridDimensionsForm);
-    let gridHeightInput = new PuzzleInfo("Grid Height", "number", "Enter the height of your puzzle", "", gridDimensionsForm);
-    let gridCreateButton = new PuzzleInfo(null, "submit", "Create a new puzzle", null, gridDimensionsForm);
-    gridCreateButton.inputElement.value = "Create";
-    let openGridButton = new PuzzleInfo(null, "button", "Open an existing puzzle", null, gridDimensionsForm);
-    openGridButton.inputElement.value = "Open…";
-    gridDimensionsForm.appendChild(document.createElement("hr"));
-    let cancelButton = new PuzzleInfo(null, "button", "Return to homepage", null, gridDimensionsForm);
-    cancelButton.inputElement.value = "Cancel";
-
-    openGridButton.inputElement.onclick = () => {
-        splashScreen.close();
-        showOpenDialog()
-    }
-
-    cancelButton.inputElement.onclick = () => {
-        splashScreen.close();
-        window.location.href = document.baseURI;
-    }
-
-
-    gridDimensionsForm.onsubmit = (event) => {
-        event.preventDefault();
-        splashScreen.close();
-        populateNewGrid(parseInt(gridWidthInput.inputElement.value, 10), parseInt(gridHeightInput.inputElement.value, 10));
-    }
-
-    splashScreen.appendChild(gridDimensionsForm);
+    document.body.appendChild(splashScreen);
     splashScreen.showModal();
+
+    document.getElementById("oc-splash-screen").onsubmit = () => {
+        let gridWidth = parseInt(document.getElementById("oc-splash-screen-info-input-grid-width").value, 10);
+        let gridHeight = parseInt(document.getElementById("oc-splash-screen-info-input-grid-height").value, 10);
+        populateNewGrid(gridWidth, gridHeight);
+    }
+
+    document.getElementById("oc-splash-screen-open-button").onclick = () => {
+        showOpenForm();
+    }
 }
 
-function showOpenDialog() {
-    let openGridDialog = document.createElement("dialog");
-    openGridDialog.classList.add("oc-builder-splash-screen");
-    document.getElementById("oc-build-view").appendChild(openGridDialog);
-    let openDialogTitle = document.createElement("h1");
-    openDialogTitle.textContent = "Open Puzzle";
-    openGridDialog.appendChild(openDialogTitle);
-
+function showOpenForm() {
     let openGridForm = document.createElement("form");
     openGridForm.method = "dialog";
     let sourceSelector = document.createElement("select");
@@ -596,11 +587,13 @@ function showOpenDialog() {
                 populateGrid(JSON.parse(params.get("d").toString()));
             }
         }
-        openGridDialog.close();
     }
-
-    openGridDialog.appendChild(openGridForm);
-    openGridDialog.showModal();
+    document.getElementById("oc-splash-screen").removeChild(document.getElementById("oc-splash-screen").lastChild);
+    document.getElementById("oc-splash-screen").getElementsByTagName("b")[0].textContent = "Open a Puzzle";
+    document.getElementById("oc-splash-screen").appendChild(openGridForm);
+    document.getElementById("oc-splash-screen").onsubmit = () => {
+        document.getElementById("oc-splash-screen").close();
+    }
 }
 
 String.prototype.toQueryString = function () {

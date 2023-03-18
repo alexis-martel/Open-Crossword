@@ -151,7 +151,7 @@ a {
     padding: 5px;
 }
 
-.oc-player-splash-screen {
+.oc-splash-screen {
     padding: 0;
     width: 50vmin;
     min-width: 340px;
@@ -161,7 +161,7 @@ a {
 
 }
 
-.oc-player-splash-screen h1 {
+.oc-splash-screen h1 {
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 0;
@@ -172,7 +172,7 @@ a {
     z-index: 1;
 }
 
-.oc-player-splash-screen p {
+.oc-splash-screen p {
     margin-top: 10px;
     margin-left: 10px;
     font-weight: normal;
@@ -183,29 +183,33 @@ a {
     text-wrap: normal;
 }
 
-.oc-player-splash-screen img {
+.oc-splash-screen img {
     filter: brightness(75%);
     width: 100%;
     display: block;
 }
 
-.oc-player-splash-screen div {
+.oc-splash-screen div {
     position: relative;
     margin: 0;
     padding: 0;
 }
 
-.oc-player-splash-screen input[type="submit"] {
+.oc-splash-screen form {
     padding: 1vmin;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    outline: none;
 }
 
-.oc-player-splash-screen form {
-    text-align: center;
-    padding: 1vmin;
+.oc-splash-screen-info-input {
+    width: 100%;
+    font-family: var(--main-font);
+    font-size: initial;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.oc-splash-screen-info-input-label {
+    margin-bottom: var(--main-border-width);
+    box-sizing: border-box;
 }
 
 .oc-stopwatch {
@@ -383,12 +387,6 @@ a {
     transform:rotate(-45deg);
 }
 
-.oc-builder-splash-screen {
-    border: var(--main-border-width) solid var(--foreground-colour);
-    background-color: var(--background-colour);
-    color: var(--foreground-colour);
-}
-
 .oc-builder-ui-container {
     position: sticky;
     z-index: 2147483647;
@@ -456,14 +454,6 @@ a {
     font-size: initial;
 }
 
-.oc-builder-info-input {
-    width: 100%;
-    font-family: var(--main-font);
-    font-size: initial;
-    resize: vertical;
-    box-sizing: border-box;
-}
-
 .oc-builder-clue-input {
     width: 100%;
     font-family: var(--main-font);
@@ -480,4 +470,12 @@ a {
 
 .oc-builder-info-input-label {
     display: block;
+}
+
+.oc-builder-info-input {
+    width: 100%;
+    font-family: var(--main-font);
+    font-size: initial;
+    resize: vertical;
+    box-sizing: border-box;
 }
