@@ -1,27 +1,65 @@
 {
   "clues": {
     "across": {
-      "1": "\"School,\" in French",
-      "12": "Nut-based dessert",
-      "13": "Trust your ___",
-      "14": "Popular antacid",
-      "15": "Message of general interest (Abbr.)",
-      "16": "Ulysses' hometown",
-      "17": "Popular hot sauce",
-      "18": "Laughing canine"
+      "1": {
+        "content": "\"School,\" in French"
+      },
+      "12": {
+        "content": "Nut-based dessert"
+      },
+      "13": {
+        "content": "Trust your ___"
+      },
+      "14": {
+        "content": "Popular antacid"
+      },
+      "15": {
+        "content": "Message of general interest (Abbr.)"
+      },
+      "16": {
+        "content": "Ulysses' hometown"
+      },
+      "17": {
+        "content": "Popular hot sauce"
+      },
+      "18": {
+        "content": "Laughing canine"
+      }
     },
     "down": {
-      "1": "Second language taught in the Quebec curriculum",
-      "2": "Part of a continent",
-      "3": "Opposite of \"in\"",
-      "4": "Go quickly, strive",
-      "5": "Fridge brand",
-      "6": "Cats play with it",
-      "7": "Nourish yourself",
-      "8": "Quebec insurance company",
-      "9": "Rapper who sold in excess of 75 million records",
-      "10": "Miss (Abbr.)",
-      "11": "Japanese city"
+      "1": {
+        "content": "Second language taught in the Quebec curriculum"
+      },
+      "2": {
+        "content": "Part of a continent"
+      },
+      "3": {
+        "content": "Opposite of \"in\""
+      },
+      "4": {
+        "content": "Go quickly, strive"
+      },
+      "5": {
+        "content": "Fridge brand"
+      },
+      "6": {
+        "content": "Cats play with it"
+      },
+      "7": {
+        "content": "Nourish yourself"
+      },
+      "8": {
+        "content": "Quebec insurance company"
+      },
+      "9": {
+        "content": "Rapper who sold in excess of 75 million records"
+      },
+      "10": {
+        "content": "Miss (Abbr.)"
+      },
+      "11": {
+        "content": "Japanese city"
+      }
     }
   },
   "grid": [

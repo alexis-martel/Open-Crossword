@@ -1,86 +1,258 @@
 {
   "clues": {
     "across": {
-      "1": "Bull-fighting novel by [64-Down] [36-Down]",
-      "2": "Reimbursements",
-      "3": "Synonym for \"bar\"",
-      "4": "Scary, worrying",
-      "5": "Bank terminal (Abbr.)",
-      "6": "Some vaccines use it to quicken development",
-      "7": "British philanthropist Mary Clarke ____",
-      "8": "\"Is __ __?\"",
-      "9": "Weak and fearful",
-      "10": "\"Silence\" contracts (Abbr.)",
-      "11": "Repeated twice, expression of averageness",
-      "12": "Opposite of NW",
-      "13": "French \"state\"",
-      "14": "Dairy-free frozen treats",
-      "15": "Expressions of disgust",
-      "16": "Purée",
-      "17": "General ___ chicken",
-      "18": "Refreshing machines",
-      "19": "Relaxed cat sound",
-      "20": "Place of worship read",
-      "21": "French \"dark\"",
-      "22": "Throat clearing sounds",
-      "23": "Plays on words",
-      "24": "UNIX command to delete a file",
-      "25": "Soccer players wear a long one on each leg",
-      "26": "Edward Snowden's former workplace",
-      "27": "Land of <cite>The xx</cite>, <cite>Broadcast</cite>, and <cite>Slowdive</cite> (Abbr.)",
-      "28": "Getting Somewhere",
-      "29": "Creature that likes <cite>Reese's Pieces</cite>, in a Steven Spielberg movie",
-      "30": "The <cite>_____ Hook shooting</cite>",
-      "31": "Ripped",
-      "32": "Pork tender____",
-      "33": "Academic talk",
-      "34": "Invitation to suicide, in text",
-      "35": "Inspect, at a bookstore"
+      "1": {
+        "content": "Bull-fighting novel by [64-Down] [36-Down]",
+        "links": [
+          "64-Down",
+          "36-Down"
+        ]
+      },
+      "2": {
+        "content": "Reimbursements"
+      },
+      "3": {
+        "content": "Synonym for \"bar\""
+      },
+      "4": {
+        "content": "Scary, worrying"
+      },
+      "5": {
+        "content": "Bank terminal (Abbr.)"
+      },
+      "6": {
+        "content": "Some vaccines use it to quicken development"
+      },
+      "7": {
+        "content": "British philanthropist Mary Clarke ____"
+      },
+      "8": {
+        "content": "\"Is __ __?\""
+      },
+      "9": {
+        "content": "Weak and fearful"
+      },
+      "10": {
+        "content": "\"Silence\" contracts (Abbr.)"
+      },
+      "11": {
+        "content": "Repeated twice, expression of averageness"
+      },
+      "12": {
+        "content": "Opposite of NW"
+      },
+      "13": {
+        "content": "French \"state\""
+      },
+      "14": {
+        "content": "Dairy-free frozen treats"
+      },
+      "15": {
+        "content": "Expressions of disgust"
+      },
+      "16": {
+        "content": "Purée"
+      },
+      "17": {
+        "content": "General ___ chicken"
+      },
+      "18": {
+        "content": "Refreshing machines"
+      },
+      "19": {
+        "content": "Relaxed cat sound"
+      },
+      "20": {
+        "content": "Place of worship read"
+      },
+      "21": {
+        "content": "French \"dark\""
+      },
+      "22": {
+        "content": "Throat clearing sounds"
+      },
+      "23": {
+        "content": "Plays on words"
+      },
+      "24": {
+        "content": "UNIX command to delete a file"
+      },
+      "25": {
+        "content": "Soccer players wear a long one on each leg"
+      },
+      "26": {
+        "content": "Edward Snowden's former workplace"
+      },
+      "27": {
+        "content": "Land of <cite>The xx</cite>, <cite>Broadcast</cite>, and <cite>Slowdive</cite> (Abbr.)"
+      },
+      "28": {
+        "content": "Getting Somewhere"
+      },
+      "29": {
+        "content": "Creature that likes <cite>Reese's Pieces</cite>, in a Steven Spielberg movie"
+      },
+      "30": {
+        "content": "The <cite>_____ Hook shooting</cite>"
+      },
+      "31": {
+        "content": "Ripped"
+      },
+      "32": {
+        "content": "Pork tender____"
+      },
+      "33": {
+        "content": "Academic talk"
+      },
+      "34": {
+        "content": "Invitation to suicide, in text"
+      },
+      "35": {
+        "content": "Inspect, at a bookstore"
+      }
     },
     "down": {
-      "1": "First movie to use extensive computer-generated effects",
-      "5": "Arsenic (Abbr.)",
-      "9": "Angry school of people",
-      "14": "___ Pellegrino",
-      "15": "The essence of an era",
-      "18": "Shinzo ___, RIP 2022",
-      "19": "The Justin Trudeaus and [18-Downs] of this world (Abbr.)",
-      "21": "Opposite of cloudy",
-      "26": "Animal Crossing's Tom",
-      "29": "Spanish masculine article",
-      "36": "Last name of <cite>The Old Man and the Sea</cite>'s author",
-      "37": "Not inside of",
-      "38": "Very unknown search engine",
-      "39": "Repeated twice, band who wrote <cite>Teardrops</cite> in the 80's",
-      "40": "French \"he\"",
-      "41": "Fancy ice cream cups",
-      "42": "Japanese public broadcaster",
-      "43": "Prefix meaning [44-Down], in English",
-      "44": "Card game with a reverse card",
-      "45": "Prefix to Petersburg or Joseph",
-      "46": "Clamshell Game Boy Advance suffix",
-      "47": "University for national security agents",
-      "48": "Original Spider-Man books",
-      "49": "Help",
-      "50": "Mistakenly believed to mean \"Save our ship\"",
-      "51": "Serment?",
-      "52": "Counterpart of \"from\"",
-      "53": "According to the Book of Mormon, one of King Mosiah II's sons",
-      "54": "\"I would do\", briefly",
-      "55": "Kafuku's wife, in <cite>Drive my Car</cite>",
-      "56": "French \"bone\"",
-      "57": "Bullish sheep, or a Fiat-Chrysler subsidiary",
-      "58": "The meaning of + or - in blood type: __ factor",
-      "59": "Most populous Canadian province (Abbr.)",
-      "60": "4, to Julius Caesar",
-      "61": "Audi sports sedan",
-      "62": "Dry and withered",
-      "63": "Kindle or Nook download",
-      "64": "First name of [36-Down]",
-      "65": "Continuations of [19-Across]?",
-      "66": "<cite>The Catcher in the ___</cite>",
-      "67": "Elongated reptiles",
-      "68": "Stays"
+      "1": {
+        "content": "First movie to use extensive computer-generated effects"
+      },
+      "5": {
+        "content": "Arsenic (Abbr.)"
+      },
+      "9": {
+        "content": "Angry school of people"
+      },
+      "14": {
+        "content": "___ Pellegrino"
+      },
+      "15": {
+        "content": "The essence of an era"
+      },
+      "18": {
+        "content": "Shinzo ___, RIP 2022"
+      },
+      "19": {
+        "content": "The Justin Trudeaus and [18-Down]s of this world (Abbr.)",
+        "links": [
+          "18-Down"
+        ]
+      },
+      "21": {
+        "content": "Opposite of cloudy"
+      },
+      "26": {
+        "content": "Animal Crossing's Tom"
+      },
+      "29": {
+        "content": "Spanish masculine article"
+      },
+      "36": {
+        "content": "Last name of <cite>The Old Man and the Sea</cite>'s author"
+      },
+      "37": {
+        "content": "Not inside of"
+      },
+      "38": {
+        "content": "Very unknown search engine"
+      },
+      "39": {
+        "content": "Repeated twice, band who wrote <cite>Teardrops</cite> in the 80's"
+      },
+      "40": {
+        "content": "French \"he\""
+      },
+      "41": {
+        "content": "Fancy ice cream cups"
+      },
+      "42": {
+        "content": "Japanese public broadcaster"
+      },
+      "43": {
+        "content": "Prefix meaning [44-Down], in English",
+        "links": [
+          "44-Down"
+        ]
+      },
+      "44": {
+        "content": "Card game with a reverse card"
+      },
+      "45": {
+        "content": "Prefix to Petersburg or Joseph"
+      },
+      "46": {
+        "content": "Clamshell Game Boy Advance suffix"
+      },
+      "47": {
+        "content": "University for national security agents"
+      },
+      "48": {
+        "content": "Original Spider-Man books"
+      },
+      "49": {
+        "content": "Help"
+      },
+      "50": {
+        "content": "Mistakenly believed to mean \"Save our ship\""
+      },
+      "51": {
+        "content": "Serment?"
+      },
+      "52": {
+        "content": "Counterpart of \"from\""
+      },
+      "53": {
+        "content": "According to the Book of Mormon, one of King Mosiah II's sons"
+      },
+      "54": {
+        "content": "\"I would do\", briefly"
+      },
+      "55": {
+        "content": "Kafuku's wife, in <cite>Drive my Car</cite>"
+      },
+      "56": {
+        "content": "French \"bone\""
+      },
+      "57": {
+        "content": "Bullish sheep, or a Fiat-Chrysler subsidiary"
+      },
+      "58": {
+        "content": "The meaning of + or - in blood type: __ factor"
+      },
+      "59": {
+        "content": "Most populous Canadian province (Abbr.)"
+      },
+      "60": {
+        "content": "4, to Julius Caesar"
+      },
+      "61": {
+        "content": "Audi sports sedan"
+      },
+      "62": {
+        "content": "Dry and withered"
+      },
+      "63": {
+        "content": "Kindle or Nook download"
+      },
+      "64": {
+        "content": "First name of [36-Down]",
+        "links": [
+          "36-Down"
+        ]
+      },
+      "65": {
+        "content": "Continuations of [19-Across]?",
+        "links": [
+          "19-Across"
+        ]
+      },
+      "66": {
+        "content": "<cite>The Catcher in the ___</cite>"
+      },
+      "67": {
+        "content": "Elongated reptiles"
+      },
+      "68": {
+        "content": "Stays"
+      }
     }
   },
   "grid": [

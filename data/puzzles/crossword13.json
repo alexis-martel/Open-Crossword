@@ -1,18 +1,38 @@
 {
   "clues": {
     "across": {
-      "1": "British author Virginia",
-      "6": "Point maximum in judo",
-      "7": "Oven ____",
-      "8": "Then, in French",
-      "9": "Christian health organization with a catchy theme song"
+      "1": {
+        "content": "British author Virginia"
+      },
+      "6": {
+        "content": "Point maximum in judo"
+      },
+      "7": {
+        "content": "Oven ____"
+      },
+      "8": {
+        "content": "Then, in French"
+      },
+      "9": {
+        "content": "Christian health organization with a catchy theme song"
+      }
     },
     "down": {
-      "1": "Adjective to describe Greg Heffley",
-      "2": "Drug extracted from poppy seeds",
-      "3": "Branch of physics studying light and its properties",
-      "4": "Lots of, for short",
-      "5": "Function key"
+      "1": {
+        "content": "Adjective to describe Greg Heffley"
+      },
+      "2": {
+        "content": "Drug extracted from poppy seeds"
+      },
+      "3": {
+        "content": "Branch of physics studying light and its properties"
+      },
+      "4": {
+        "content": "Lots of, for short"
+      },
+      "5": {
+        "content": "Function key"
+      }
     }
   },
   "grid": [

@@ -1,17 +1,41 @@
 {
   "clues": {
     "across": {
-      "1": "Possesses",
-      "2": "What an interrupted owl might say?",
-      "3": "With [4-Across], expected verdict to a wedding",
-      "4": "See [3-Across]",
-      "5": "Boat pole"
+      "1": {
+        "content": "Possesses"
+      },
+      "2": {
+        "content": "What an interrupted owl might say?"
+      },
+      "3": {
+        "content": "With [4-Across], expected verdict to a wedding",
+        "links": [
+          "4-Across"
+        ]
+      },
+      "4": {
+        "content": "See [3-Across]",
+        "links": [
+          "3-Across"
+        ]
+      },
+      "5": {
+        "content": "Boat pole"
+      }
     },
     "down": {
-      "3": "\"I think __ ready!\"",
-      "6": "Western part of the globe (Abbr.)",
-      "7": "Accepts visually",
-      "8": "Inner chimney coating"
+      "3": {
+        "content": "\"I think __ ready!\""
+      },
+      "6": {
+        "content": "Western part of the globe (Abbr.)"
+      },
+      "7": {
+        "content": "Accepts visually"
+      },
+      "8": {
+        "content": "Inner chimney coating"
+      }
     }
   },
   "grid": [

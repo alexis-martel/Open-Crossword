@@ -1,18 +1,38 @@
 {
   "clues": {
     "across": {
-      "1": "Note entre do et mi",
-      "2": "Pierre dure",
-      "3": "Caniculaire",
-      "4": "Lieux",
-      "5": "Programme universitaire où l'utilité de NAND est enseignée (Abbr.)"
+      "1": {
+        "content": "Note entre do et mi"
+      },
+      "2": {
+        "content": "Pierre dure"
+      },
+      "3": {
+        "content": "Caniculaire"
+      },
+      "4": {
+        "content": "Lieux"
+      },
+      "5": {
+        "content": "Programme universitaire où l'utilité de NAND est enseignée (Abbr.)"
+      }
     },
     "down": {
-      "1": "Nom de plusieurs listes de lecture pour des amis",
-      "2": "Rongeurs",
-      "6": "Son pouvant suivre une période de rire intense",
-      "7": "L'invention préhistorique par excellence",
-      "8": "Rondelles contenant de l'information binaire"
+      "1": {
+        "content": "Nom de plusieurs listes de lecture pour des amis"
+      },
+      "2": {
+        "content": "Rongeurs"
+      },
+      "6": {
+        "content": "Son pouvant suivre une période de rire intense"
+      },
+      "7": {
+        "content": "L'invention préhistorique par excellence"
+      },
+      "8": {
+        "content": "Rondelles contenant de l'information binaire"
+      }
     }
   },
   "grid": [

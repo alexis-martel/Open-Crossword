@@ -50,8 +50,15 @@ class Puzzle {
         acrossClues.classList.add("oc-clue-list");
         infoContainer.appendChild(acrossClues);
 
-        for (const [clueTag, clueText] of Object.entries(this.obj["clues"]["across"])) {
-            puzzle.clues.push(new PuzzleClue(clueTag, "across", clueText, acrossClues));
+        for (const clue of Object.entries(this.obj["clues"]["across"])) {
+            let options = {
+                "number": clue[0],
+                "direction": "across",
+                "html_content": clue[1]["content"],
+                "hints": clue[1]["hints"],
+                "links": clue[1]["links"]
+            };
+            puzzle.clues.push(new PuzzleClue(options, acrossClues));
         }
 
         let downLabel = document.createElement("h2");
@@ -63,8 +70,15 @@ class Puzzle {
         downClues.classList.add("oc-clue-list");
         infoContainer.appendChild(downClues);
 
-        for (const [clueTag, clueText] of Object.entries(this.obj["clues"]["down"])) {
-            puzzle.clues.push(new PuzzleClue(clueTag, "down", clueText, downClues));
+        for (const clue of Object.entries(this.obj["clues"]["down"])) {
+            let options = {
+                "number": clue[0],
+                "direction": "down",
+                "html_content": clue[1]["content"],
+                "hints": clue[1]["hints"],
+                "links": clue[1]["links"]
+            };
+            puzzle.clues.push(new PuzzleClue(options, downClues));
         }
     }
 
@@ -315,7 +329,13 @@ class PuzzleSquare {
 }
 
 class PuzzleClue {
-    constructor(clueTag, direction, clueHTML, parentElement) {
+    constructor(options, parentElement) {
+        let clueTag = options["number"];
+        let direction = options["direction"];
+        let clueHTML = options["html_content"];
+        let clueHints = options["hints"];
+        let clueLinks = options["links"];
+
         this.HTMLContent = clueHTML;
         this.element = document.createElement("li");
         this.element.classList.add("oc-clue");
@@ -330,6 +350,7 @@ class PuzzleClue {
         parentElement.appendChild(this.element);
         this.number = parseInt(clueTag, 10);
         this.direction = direction;
+        this.links = clueLinks;
         this.selected = false;
         this.element.onclick = () => {
             this.select();
@@ -348,13 +369,34 @@ class PuzzleClue {
         this.element.classList.add("selected");
         puzzle.selectedClue = this;
         puzzle.selectionDirection = this.direction;
-        clueBar.displayClue()
+        clueBar.displayClue();
+        for (const clue of puzzle.clues) {
+            clue.element.classList.remove("highlighted");
+        }
+        if (this.links) {
+            this.highlightLinks();
+        }
     }
 
     deselect() {
         this.selected = false;
         this.element.classList.remove("selected");
         puzzle.selectedClue = undefined;
+    }
+
+    highlight() {
+        this.element.classList.add("highlighted");
+    }
+
+    highlightLinks() {
+        for (const link of this.links) {
+            const [number, direction] = link.split("-");
+            for (const clue of puzzle.clues) {
+                if (clue.number === parseInt(number, 10) && clue.direction === direction.toLowerCase()) {
+                    clue.highlight();
+                }
+            }
+        }
     }
 }
 

@@ -1,22 +1,50 @@
 {
   "clues": {
     "across": {
-      "1": "Peu commun",
-      "2": "À l'aise sur la planète bleue",
-      "3": "Note entre Ré et Fa",
-      "4": "_i_les é__s (Prix médiéval élevé)",
-      "5": "Désert d'Afrique du nord",
-      "6": "«___ vous plaît!»",
-      "7": "Opposé de NO"
+      "1": {
+        "content": "Peu commun"
+      },
+      "2": {
+        "content": "À l'aise sur la planète bleue"
+      },
+      "3": {
+        "content": "Note entre Ré et Fa"
+      },
+      "4": {
+        "content": "_i_les é__s (Prix médiéval élevé)"
+      },
+      "5": {
+        "content": "Désert d'Afrique du nord"
+      },
+      "6": {
+        "content": "«___ vous plaît!»"
+      },
+      "7": {
+        "content": "Opposé de NO"
+      }
     },
     "down": {
-      "1": "Dieter ____ (Designer industriel)",
-      "8": "Façon de propulser un bateau",
-      "9": "Dans un épisode de <cite>Seinfeld</cite>, George triche sur un de ces tests",
-      "10": "Livre de cartes",
-      "11": "Abondant et varié",
-      "12": "Relation entre deux quantités (Abbr.)",
-      "13": "Ceci et ____"
+      "1": {
+        "content": "Dieter ____ (Designer industriel)"
+      },
+      "8": {
+        "content": "Façon de propulser un bateau"
+      },
+      "9": {
+        "content": "Dans un épisode de <cite>Seinfeld</cite>, George triche sur un de ces tests"
+      },
+      "10": {
+        "content": "Livre de cartes"
+      },
+      "11": {
+        "content": "Abondant et varié"
+      },
+      "12": {
+        "content": "Relation entre deux quantités (Abbr.)"
+      },
+      "13": {
+        "content": "Ceci et ____"
+      }
     }
   },
   "grid": [

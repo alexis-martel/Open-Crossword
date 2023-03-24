@@ -1,16 +1,32 @@
 {
   "clues": {
     "across": {
-      "1": "Dramatis Personae",
-      "2": "Not a-near",
-      "3": "Other way of writing NW",
-      "4": "Do this before leaving"
+      "1": {
+        "content": "Dramatis Personae"
+      },
+      "2": {
+        "content": "Not a-near"
+      },
+      "3": {
+        "content": "Other way of writing NW"
+      },
+      "4": {
+        "content": "Do this before leaving"
+      }
     },
     "down": {
-      "1": "Summon",
-      "5": "Voluminous hairstyle",
-      "6": "Last day of the week (Abbr.)",
-      "7": "<cite>Star ____</cite>"
+      "1": {
+        "content": "Summon"
+      },
+      "5": {
+        "content": "Voluminous hairstyle"
+      },
+      "6": {
+        "content": "Last day of the week (Abbr.)"
+      },
+      "7": {
+        "content": "<cite>Star ____</cite>"
+      }
     }
   },
   "grid": [

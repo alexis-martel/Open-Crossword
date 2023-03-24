@@ -1,16 +1,32 @@
 {
   "clues": {
     "across": {
-      "1": "Exhaustive, angry explanation",
-      "2": "2019 Pakistani Urdu series starring Shahzad Sheikh",
-      "3": "Mix",
-      "4": "<cite>The Beatles</cite> fifth studio album"
+      "1": {
+        "content": "Exhaustive, angry explanation"
+      },
+      "2": {
+        "content": "2019 Pakistani Urdu series starring Shahzad Sheikh"
+      },
+      "3": {
+        "content": "Mix"
+      },
+      "4": {
+        "content": "<cite>The Beatles</cite> fifth studio album"
+      }
     },
     "down": {
-      "1": "Poison ivy might give you one",
-      "5": "Before, in Spanish",
-      "6": "It gets hammered down",
-      "7": "Heavy-duty cloth"
+      "1": {
+        "content": "Poison ivy might give you one"
+      },
+      "5": {
+        "content": "Before, in Spanish"
+      },
+      "6": {
+        "content": "It gets hammered down"
+      },
+      "7": {
+        "content": "Heavy-duty cloth"
+      }
     }
   },
   "grid": [

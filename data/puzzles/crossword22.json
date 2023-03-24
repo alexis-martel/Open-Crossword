@@ -1,52 +1,148 @@
 {
   "clues": {
     "across": {
-      "1": "Screen type of old TV sets (Abbr.)",
-      "2": "Tramar Lacel Dillard's stage first name",
-      "3": "Word appropriately spelled backwards",
-      "4": "First name of Bill Cosby's son",
-      "5": "\"They ____ and went\"",
-      "6": "Bank terminal (Abbr.)",
-      "7": "Manufacturer of calculators",
-      "8": "Some ambulance technicians (Abbr.)",
-      "9": "Tops of Freudian icebergs",
-      "10": "Water rings protecting a castle",
-      "11": "Epoch",
-      "12": "What [1-Across], [6-Across], [8-Across], [17-Across], [3-Down], and [33-Down] have in common",
-      "13": "Actress Watson",
-      "14": "The Finnish equivalent to <cite>PBS</cite> or <cite>CBC</cite>",
-      "15": "Text editor part of the <cite>GNU</cite> operating system",
-      "16": "Barney from <cite>The Simpsons</cite> has a distinctive one",
-      "17": "One can populate your <cite>Wallet</cite> app (Abbr.)",
-      "18": "Letter before \"gi\"",
-      "19": "Snake-like fish",
-      "20": "The carpet of the forest",
-      "21": "<cite>PBS</cite> show <cite>A Moveable _____</cite>",
-      "22": "Actress Hathaway",
-      "23": "Tasikmalya, Indonesia airport code",
-      "24": "American feminist and philosopher Noddings"
+      "1": {
+        "content": "Screen type of old TV sets (Abbr.)"
+      },
+      "2": {
+        "content": "Tramar Lacel Dillard's stage first name"
+      },
+      "3": {
+        "content": "Word appropriately spelled backwards"
+      },
+      "4": {
+        "content": "First name of Bill Cosby's son"
+      },
+      "5": {
+        "content": "\"They ____ and went\""
+      },
+      "6": {
+        "content": "Bank terminal (Abbr.)"
+      },
+      "7": {
+        "content": "Manufacturer of calculators"
+      },
+      "8": {
+        "content": "Some ambulance technicians (Abbr.)"
+      },
+      "9": {
+        "content": "Tops of Freudian icebergs"
+      },
+      "10": {
+        "content": "Water rings protecting a castle"
+      },
+      "11": {
+        "content": "Epoch"
+      },
+      "12": {
+        "content": "What [1-Across], [6-Across], [8-Across], [17-Across], [3-Down], and [33-Down] have in common",
+        "links": [
+          "1-Across",
+          "6-Across",
+          "8-Across",
+          "17-Across",
+          "3-Down",
+          "33-Down"
+        ]
+      },
+      "13": {
+        "content": "Actress Watson"
+      },
+      "14": {
+        "content": "The Finnish equivalent to <cite>PBS</cite> or <cite>CBC</cite>"
+      },
+      "15": {
+        "content": "Text editor part of the <cite>GNU</cite> operating system"
+      },
+      "16": {
+        "content": "Barney from <cite>The Simpsons</cite> has a distinctive one"
+      },
+      "17": {
+        "content": "One can populate your <cite>Wallet</cite> app (Abbr.)"
+      },
+      "18": {
+        "content": "Letter before \"gi\""
+      },
+      "19": {
+        "content": "Snake-like fish"
+      },
+      "20": {
+        "content": "The carpet of the forest"
+      },
+      "21": {
+        "content": "<cite>PBS</cite> show <cite>A Moveable _____</cite>"
+      },
+      "22": {
+        "content": "Actress Hathaway"
+      },
+      "23": {
+        "content": "Tasikmalya, Indonesia airport code"
+      },
+      "24": {
+        "content": "American feminist and philosopher Noddings"
+      }
     },
     "down": {
-      "1": "Canadian vehicle insurance group",
-      "2": "Big meal",
-      "3": "Many motorized toys (Abbr.)",
-      "13": "Famous basketball head coach and referee Charley",
-      "25": "Possibly, perhaps",
-      "26": "Poker lie",
-      "27": "Recall",
-      "28": "Uncalled for quivering movement",
-      "29": "Ireland is its main producer",
-      "30": "British slang for \"thank you\"",
-      "31": "Letter between \"are\" and \"tee\"",
-      "32": "Prone to liquefaction",
-      "33": "<cite>SNL</cite> and <cite>A Late Show</cite> genre (Abbr.)",
-      "34": "@",
-      "35": "\"The next round's __ __\"",
-      "36": "A diamond, for one",
-      "37": "One could be cooking in the kitchen or in the troposphere",
-      "38": "It's \"live from New York\" weekly",
-      "39": "Asimov, Newton or Su, for one",
-      "40": "Opposite of NW"
+      "1": {
+        "content": "Canadian vehicle insurance group"
+      },
+      "2": {
+        "content": "Big meal"
+      },
+      "3": {
+        "content": "Many motorized toys (Abbr.)"
+      },
+      "13": {
+        "content": "Famous basketball head coach and referee Charley"
+      },
+      "25": {
+        "content": "Possibly, perhaps"
+      },
+      "26": {
+        "content": "Poker lie"
+      },
+      "27": {
+        "content": "Recall"
+      },
+      "28": {
+        "content": "Uncalled for quivering movement"
+      },
+      "29": {
+        "content": "Ireland is its main producer"
+      },
+      "30": {
+        "content": "British slang for \"thank you\""
+      },
+      "31": {
+        "content": "Letter between \"are\" and \"tee\""
+      },
+      "32": {
+        "content": "Prone to liquefaction"
+      },
+      "33": {
+        "content": "<cite>SNL</cite> and <cite>A Late Show</cite> genre (Abbr.)"
+      },
+      "34": {
+        "content": "@"
+      },
+      "35": {
+        "content": "\"The next round's __ __\""
+      },
+      "36": {
+        "content": "A diamond, for one"
+      },
+      "37": {
+        "content": "One could be cooking in the kitchen or in the troposphere"
+      },
+      "38": {
+        "content": "It's \"live from New York\" weekly"
+      },
+      "39": {
+        "content": "Asimov, Newton or Su, for one"
+      },
+      "40": {
+        "content": "Opposite of NW"
+      }
     }
   },
   "grid": [

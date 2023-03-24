@@ -1,18 +1,38 @@
 {
   "clues": {
     "across": {
-      "1": "<cite>The ___ of War</cite>",
-      "2": "Elongated sea creature",
-      "3": "Paleologism for \"decorate\"",
-      "4": "What a homeless fish has?",
-      "5": "What Jay Gatsby is"
+      "1": {
+        "content": "<cite>The ___ of War</cite>"
+      },
+      "2": {
+        "content": "Elongated sea creature"
+      },
+      "3": {
+        "content": "Paleologism for \"decorate\""
+      },
+      "4": {
+        "content": "What a homeless fish has?"
+      },
+      "5": {
+        "content": "What Jay Gatsby is"
+      }
     },
     "down": {
-      "1": "First word of a popular video game's name",
-      "6": "Court decision that allows a convict to remain free pending the trial",
-      "7": "Not relaxed",
-      "8": "Video game company that owns <cite>The Sims</cite>",
-      "9": "Fold"
+      "1": {
+        "content": "First word of a popular video game's name"
+      },
+      "6": {
+        "content": "Court decision that allows a convict to remain free pending the trial"
+      },
+      "7": {
+        "content": "Not relaxed"
+      },
+      "8": {
+        "content": "Video game company that owns <cite>The Sims</cite>"
+      },
+      "9": {
+        "content": "Fold"
+      }
     }
   },
   "grid": [

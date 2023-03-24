@@ -1,18 +1,38 @@
 {
   "clues": {
     "across": {
-      "1": "Web feed now considered obsolete",
-      "2": "Expressions of unrequested details in text messages",
-      "3": "Evade, dodge",
-      "4": "Anatomical cavity",
-      "5": "Pronoun"
+      "1": {
+        "content": "Web feed now considered obsolete"
+      },
+      "2": {
+        "content": "Expressions of unrequested details in text messages"
+      },
+      "3": {
+        "content": "Evade, dodge"
+      },
+      "4": {
+        "content": "Anatomical cavity"
+      },
+      "5": {
+        "content": "Pronoun"
+      }
     },
     "down": {
-      "1": "Data types for enumerations in many C-family languages",
-      "6": "British slang for \"drug party\"",
-      "7": "Irish punk band formed in 1975",
-      "8": "Handles of a dagger",
-      "9": "Opposite of NW"
+      "1": {
+        "content": "Data types for enumerations in many C-family languages"
+      },
+      "6": {
+        "content": "British slang for \"drug party\""
+      },
+      "7": {
+        "content": "Irish punk band formed in 1975"
+      },
+      "8": {
+        "content": "Handles of a dagger"
+      },
+      "9": {
+        "content": "Opposite of NW"
+      }
     }
   },
   "grid": [

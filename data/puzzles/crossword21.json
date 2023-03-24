@@ -1,16 +1,32 @@
 {
   "clues": {
     "across": {
-      "1": "Une habileté à réagir de façon propice dans une situation spontanée",
-      "2": "<cite>Tove __</cite>",
-      "3": "Film d'Irene Villamor sorti en 2019",
-      "4": "Genre pour <cite>Eminem</cite>"
+      "1": {
+        "content": "Une habileté à réagir de façon propice dans une situation spontanée"
+      },
+      "2": {
+        "content": "<cite>Tove __</cite>"
+      },
+      "3": {
+        "content": "Film d'Irene Villamor sorti en 2019"
+      },
+      "4": {
+        "content": "Genre pour <cite>Eminem</cite>"
+      }
     },
     "down": {
-      "1": "Pièce d'échec dans les coins",
-      "5": "« Do ré mi fa sol __ si do »",
-      "6": "Applaudir, en anglais",
-      "7": "Répété deux fois, synonyme affectueux pour « oncle »"
+      "1": {
+        "content": "Pièce d'échec dans les coins"
+      },
+      "5": {
+        "content": "« Do ré mi fa sol __ si do »"
+      },
+      "6": {
+        "content": "Applaudir, en anglais"
+      },
+      "7": {
+        "content": "Répété deux fois, synonyme affectueux pour « oncle »"
+      }
     }
   },
   "grid": [

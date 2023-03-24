@@ -1,16 +1,32 @@
 {
   "clues": {
     "across": {
-      "1": "Le lion, le tigre, le puma et le lynx en sont des variantes",
-      "2": "Cours de religion et d'éthique à être démantelé au Québec en 2023",
-      "3": "Zéro, en espagnol",
-      "4": "Première ville de Syrie, en population"
+      "1": {
+        "content": "Le lion, le tigre, le puma et le lynx en sont des variantes"
+      },
+      "2": {
+        "content": "Cours de religion et d'éthique à être démantelé au Québec en 2023"
+      },
+      "3": {
+        "content": "Zéro, en espagnol"
+      },
+      "4": {
+        "content": "Première ville de Syrie, en population"
+      }
     },
     "down": {
-      "3": "San Francisco, __, USA",
-      "5": "Talon, en anglais",
-      "6": "Goût désagréable ou irritant",
-      "7": "En excès"
+      "3": {
+        "content": "San Francisco, __, USA"
+      },
+      "5": {
+        "content": "Talon, en anglais"
+      },
+      "6": {
+        "content": "Goût désagréable ou irritant"
+      },
+      "7": {
+        "content": "En excès"
+      }
     }
   },
   "grid": [

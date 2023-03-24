@@ -1,38 +1,104 @@
 {
   "clues": {
     "across": {
-      "1": "The pinnacle of portable cuisine",
-      "2": "It can be quick",
-      "3": "🖤🐮",
-      "4": "[See 22-Down]",
-      "5": "London airport code",
-      "6": "Actress Thurman",
-      "7": "@",
-      "8": "Red jolly fellow",
-      "9": "Prefix indicating error",
-      "10": "Opposite of HI",
-      "11": "The region at the top of a map (Abbr.)",
-      "12": "Charged particle",
-      "13": "More thorough alternative to a CT scan",
-      "14": "Bandmate Cheng of <cite>Horsegirl</cite>",
-      "15": "One of the \"to be\" verbs in spanish",
-      "16": "Irish death spirit"
+      "1": {
+        "content": "The pinnacle of portable cuisine"
+      },
+      "2": {
+        "content": "It can be quick"
+      },
+      "3": {
+        "content": "🖤🐮"
+      },
+      "4": {
+        "content": "[See 22-Down]",
+        "links": [
+          "22-Down"
+        ]
+      },
+      "5": {
+        "content": "London airport code"
+      },
+      "6": {
+        "content": "Actress Thurman"
+      },
+      "7": {
+        "content": "@"
+      },
+      "8": {
+        "content": "Red jolly fellow"
+      },
+      "9": {
+        "content": "Prefix indicating error"
+      },
+      "10": {
+        "content": "Opposite of HI"
+      },
+      "11": {
+        "content": "The region at the top of a map (Abbr.)"
+      },
+      "12": {
+        "content": "Charged particle"
+      },
+      "13": {
+        "content": "More thorough alternative to a CT scan"
+      },
+      "14": {
+        "content": "Bandmate Cheng of <cite>Horsegirl</cite>"
+      },
+      "15": {
+        "content": "One of the \"to be\" verbs in spanish"
+      },
+      "16": {
+        "content": "Irish death spirit"
+      }
     },
     "down": {
-      "1": "Setback",
-      "2": "Possible ingredient of [1-Across]",
-      "17": "Artist Warhol",
-      "18": "Je suis ____ (Boris Vian hit song)",
-      "19": "Experience close to death (Abbr.)",
-      "20": "Egyptian deity",
-      "21": "Be a ____ ___ (toxic bro culture)",
-      "22": "With [4-Across], director of The French Dispatch",
-      "23": "Negative \"or\"",
-      "24": "Bye!",
-      "25": "Suffix meaning \"sort of\"",
-      "26": "Male scam artist",
-      "27": "Repeated thrice, the signature exclamation of [8-Across]",
-      "28": "Response to a teacher calling your name"
+      "1": {
+        "content": "Setback"
+      },
+      "2": {
+        "content": "Possible ingredient of [1-Across]",
+        "links": ["1-Across"]
+      },
+      "17": {
+        "content": "Artist Warhol"
+      },
+      "18": {
+        "content": "Je suis ____ (Boris Vian hit song)"
+      },
+      "19": {
+        "content": "Experience close to death (Abbr.)"
+      },
+      "20": {
+        "content": "Egyptian deity"
+      },
+      "21": {
+        "content": "Be a ____ ___ (toxic bro culture)"
+      },
+      "22": {
+        "content": "With [4-Across], director of The French Dispatch",
+        "links": ["4-Across"]
+      },
+      "23": {
+        "content": "Negative \"or\""
+      },
+      "24": {
+        "content": "Bye!"
+      },
+      "25": {
+        "content": "Suffix meaning \"sort of\""
+      },
+      "26": {
+        "content": "Male scam artist"
+      },
+      "27": {
+        "content": "Repeated thrice, the signature exclamation of [8-Across]",
+        "links": ["8-Across"]
+      },
+      "28": {
+        "content": "Response to a teacher calling your name"
+      }
     }
   },
   "grid": [

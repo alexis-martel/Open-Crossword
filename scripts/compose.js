@@ -89,12 +89,16 @@ class Grid {
 
         // Loop through every "Across" clue and set a key-value pair in the "clues" "across" object
         for (const clue of this.acrossClues) {
-            this.obj["clues"]["across"][`${clue.numberElement.value}`] = `${clue.textElement.value}`;
+            this.obj["clues"]["across"][clue.numberElement.value] = {
+                "content": clue.textElement.value
+            }
         }
 
         // Loop through every "Down" clue and set a key-value pair in the "clues" "down" object
         for (const clue of this.downClues) {
-            this.obj["clues"]["down"][`${clue.numberElement.value}`] = `${clue.textElement.value}`;
+            this.obj["clues"]["down"][clue.numberElement.value] = {
+                "content": clue.textElement.value
+            }
         }
 
         // Create the "grid" array

@@ -1,14 +1,26 @@
 {
   "clues": {
     "across": {
-      "1": "<cite>Lil ___ X</cite>",
-      "2": "Musician Brian of <cite>Music for Airports</cite>",
-      "3": "Water wall"
+      "1": {
+        "content": "<cite>Lil ___ X</cite>"
+      },
+      "2": {
+        "content": "Musician Brian of <cite>Music for Airports</cite>"
+      },
+      "3": {
+        "content": "Water wall"
+      }
     },
     "down": {
-      "1": "Flanders of <cite>The Simpsons</cite>",
-      "4": "Japanese air line",
-      "5": "Musician Jay of <cite>Anak Ko</cite>"
+      "1": {
+        "content": "Flanders of <cite>The Simpsons</cite>"
+      },
+      "4": {
+        "content": "Japanese air line"
+      },
+      "5": {
+        "content": "Musician Jay of <cite>Anak Ko</cite>"
+      }
     }
   },
   "grid": [

@@ -1,16 +1,32 @@
 {
   "clues": {
     "across": {
-      "1": "Michael’s father, in <cite>The Godfather</cite>",
-      "2": "“Let’s do it”",
-      "3": "Gun pellets, for short",
-      "4": "Author Harper of <cite>To Kill a Mockingbird</cite>"
+      "1": {
+        "content": "Michael’s father, in <cite>The Godfather</cite>"
+      },
+      "2": {
+        "content": "“Let’s do it”"
+      },
+      "3": {
+        "content": "Gun pellets, for short"
+      },
+      "4": {
+        "content": "Author Harper of <cite>To Kill a Mockingbird</cite>"
+      }
     },
     "down": {
-      "1": "Small cylindrical container for fluids",
-      "5": "Obvious response to “Who are you?”",
-      "6": "You are wasting it",
-      "7": "Alternative music’s Yoko"
+      "1": {
+        "content": "Small cylindrical container for fluids"
+      },
+      "5": {
+        "content": "Obvious response to “Who are you?”"
+      },
+      "6": {
+        "content": "You are wasting it"
+      },
+      "7": {
+        "content": "Alternative music’s Yoko"
+      }
     }
   },
   "grid": [

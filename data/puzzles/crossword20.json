@@ -1,20 +1,44 @@
 {
   "clues": {
     "across": {
-      "1": "Précurseur du beau temps",
-      "2": "Outil de géolocalisation palindromique",
-      "3": "Adresse Internet",
-      "4": "« N'attends pas que je __ fâche »",
-      "5": "Touche de la calculatrice utile en trigonométrie",
-      "6": "Chaîne de stations d'essence populaires au Canada"
+      "1": {
+        "content": "Précurseur du beau temps"
+      },
+      "2": {
+        "content": "Outil de géolocalisation palindromique"
+      },
+      "3": {
+        "content": "Adresse Internet"
+      },
+      "4": {
+        "content": "« N'attends pas que je __ fâche »"
+      },
+      "5": {
+        "content": "Touche de la calculatrice utile en trigonométrie"
+      },
+      "6": {
+        "content": "Chaîne de stations d'essence populaires au Canada"
+      }
     },
     "down": {
-      "1": "Trophée de pêche",
-      "7": "Crayon, en espagnol",
-      "8": "L'ancêtre du luth occidental (mot arabe)",
-      "9": "Axe perpendiculaire à E-O",
-      "10": "« Je suis, » en anglais",
-      "11": "Verbe « être » à la deuxième personne du singulier, en espagnol (au présent)"
+      "1": {
+        "content": "Trophée de pêche"
+      },
+      "7": {
+        "content": "Crayon, en espagnol"
+      },
+      "8": {
+        "content": "L'ancêtre du luth occidental (mot arabe)"
+      },
+      "9": {
+        "content": "Axe perpendiculaire à E-O"
+      },
+      "10": {
+        "content": "« Je suis, » en anglais"
+      },
+      "11": {
+        "content": "Verbe « être » à la deuxième personne du singulier, en espagnol (au présent)"
+      }
     }
   },
   "grid": [

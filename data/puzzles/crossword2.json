@@ -1,20 +1,44 @@
 {
   "clues": {
     "across": {
-      "1": "Poisson-_____ (Inimicus Didactylus)",
-      "2": "Se dit d'un sable mousseux",
-      "3": "Mer __ de Chine Méridionale",
-      "4": "Points de rencontre entre un fleuve et un océan",
-      "5": "Surnuméraire (Abbr.) [Mode de reproduction des plusieurs espèces aquatiques]",
-      "6": "Spirale de mer?"
+      "1": {
+        "content": "Poisson-_____ (Inimicus Didactylus)"
+      },
+      "2": {
+        "content": "Se dit d'un sable mousseux"
+      },
+      "3": {
+        "content": "Mer __ de Chine Méridionale"
+      },
+      "4": {
+        "content": "Points de rencontre entre un fleuve et un océan"
+      },
+      "5": {
+        "content": "Surnuméraire (Abbr.) [Mode de reproduction des plusieurs espèces aquatiques]"
+      },
+      "6": {
+        "content": "Spirale de mer?"
+      }
     },
     "down": {
-      "1": "Aloïs _______, nageur du Bénin",
-      "7": "Créatures marines gélatineuses",
-      "8": "Il y en a cinq",
-      "9": "Comme le corps du blob-fish",
-      "10": "Poisson maigre d'eau salée",
-      "11": "Village français près du Rhin"
+      "1": {
+        "content": "Aloïs _______, nageur du Bénin"
+      },
+      "7": {
+        "content": "Créatures marines gélatineuses"
+      },
+      "8": {
+        "content": "Il y en a cinq"
+      },
+      "9": {
+        "content": "Comme le corps du blob-fish"
+      },
+      "10": {
+        "content": "Poisson maigre d'eau salée"
+      },
+      "11": {
+        "content": "Village français près du Rhin"
+      }
     }
   },
   "grid": [
@@ -352,7 +376,8 @@
       }
     ]
   ],
-  "colour-scheme": {},
+  "colour-scheme": {
+  },
   "info": {
     "title": "Mot Croisé Aquatique",
     "author": "Alexis Martel",

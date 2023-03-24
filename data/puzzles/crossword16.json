@@ -1,19 +1,44 @@
 {
   "clues": {
     "across": {
-      "1": "You can ride one in <cite>The Legend of Zelda: Breath of the Wild</cite>",
-      "2": "New \"space\" for immersive games (Abbr.)",
-      "3": "Recent trend in visually stunning games (Abbr.)",
-      "4": "Red cap wearer",
-      "5": "Simple conditional statement, in most programming languages",
-      "6": "Word that follows \"3, 2, 1...\" in many racing games",
-      "7": "Sonic's friend has two of them, for one"
+      "1": {
+        "content": "You can ride one in <cite>The Legend of Zelda: Breath of the Wild</cite>"
+      },
+      "2": {
+        "content": "New \"space\" for immersive games (Abbr.)"
+      },
+      "3": {
+        "content": "Recent trend in visually stunning games (Abbr.)"
+      },
+      "4": {
+        "content": "Red cap wearer"
+      },
+      "5": {
+        "content": "Simple conditional statement, in most programming languages"
+      },
+      "6": {
+        "content": "Word that follows \"3, 2, 1...\" in many racing games"
+      },
+      "7": {
+        "content": "Sonic's friend has two of them, for one"
+      }
     },
     "down": {
-      "8": "First word of the <cite>NES</cite>'s Japanese name",
-      "9": "You can ride one in <cite>Super Mario Party</cite>",
-      "10": "[4-Across]'s brother",
-      "11": "Evil crocodile in the <cite>Donkey Kong</cite> series"
+      "8": {
+        "content": "First word of the <cite>NES</cite>'s Japanese name"
+      },
+      "9": {
+        "content": "You can ride one in <cite>Super Mario Party</cite>"
+      },
+      "10": {
+        "content": "[4-Across]'s brother",
+        "links": [
+          "4-Across"
+]
+      },
+      "11": {
+        "content": "Evil crocodile in the <cite>Donkey Kong</cite> series"
+      }
     }
   },
   "grid": [

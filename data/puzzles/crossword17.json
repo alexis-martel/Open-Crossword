@@ -1,16 +1,32 @@
 {
   "clues": {
     "across": {
-      "1": "\"Public\" remark, in theatre",
-      "2": "<cite>S__ so Lovely</cite> (<cite>Beach House</cite> song)",
-      "3": "Standard batteries for the <cite>SONY Walkman</cite>",
-      "4": "Vintage"
+      "1": {
+        "content": "\"Public\" remark, in theatre"
+      },
+      "2": {
+        "content": "<cite>S__ so Lovely</cite> (<cite>Beach House</cite> song)"
+      },
+      "3": {
+        "content": "Standard batteries for the <cite>SONY Walkman</cite>"
+      },
+      "4": {
+        "content": "Vintage"
+      }
     },
     "down": {
-      "1": "Cracked open, as a door",
-      "5": "What <cite>Apple</cite> could call its headwear?",
-      "6": "\"Honey!\"",
-      "7": " <cite>Exxon-Mobil</cite> trade name that sounds like \"SO\""
+      "1": {
+        "content": "Cracked open, as a door"
+      },
+      "5": {
+        "content": "What <cite>Apple</cite> could call its headwear?"
+      },
+      "6": {
+        "content": "\"Honey!\""
+      },
+      "7": {
+        "content": " <cite>Exxon-Mobil</cite> trade name that sounds like \"SO\""
+      }
     }
   },
   "grid": [

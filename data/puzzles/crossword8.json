@@ -1,18 +1,38 @@
 {
   "clues": {
     "across": {
-      "1": "Place where judo is taught",
-      "2": "Prefix for environment",
-      "3": "<cite>Goodbye _____</cite> (2003 movie)",
-      "4": "NATO alphabet \"T\"",
-      "5": "Actress Taylor-Joy"
+      "1": {
+        "content": "Place where judo is taught"
+      },
+      "2": {
+        "content": "Prefix for environment"
+      },
+      "3": {
+        "content": "<cite>Goodbye _____</cite> (2003 movie)"
+      },
+      "4": {
+        "content": "NATO alphabet \"T\""
+      },
+      "5": {
+        "content": "Actress Taylor-Joy"
+      }
     },
     "down": {
-      "1": "NATO alphabet \"D\"",
-      "6": "Arabelle's <cite>Wordle</cite> starting word",
-      "7": "Greenwood of <cite>Radiohead</cite>",
-      "8": "Quebec grocery store chain",
-      "9": "__ man's land"
+      "1": {
+        "content": "NATO alphabet \"D\""
+      },
+      "6": {
+        "content": "Arabelle's <cite>Wordle</cite> starting word"
+      },
+      "7": {
+        "content": "Greenwood of <cite>Radiohead</cite>"
+      },
+      "8": {
+        "content": "Quebec grocery store chain"
+      },
+      "9": {
+        "content": "__ man's land"
+      }
     }
   },
   "grid": [

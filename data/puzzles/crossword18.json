@@ -1,1 +1,184 @@
-{"clues":{"across":{"1":"Band behind <cite>Apple Music</cite>'s <cite>Interludes Radio</cite>","2":"<cite>Beverly _____</cite>","3":"Annoy","4":"Bird abodes","5":"\"__ I only knew!\""},"down":{"1":"\"To _____ own self be true\"","6":"Employ","7":"Deer lookalikes","8":"Large shirt size","9":"Small shirt size","10":"Manufacturer of calculators and components","11":"<cite>Golden Gate Bridge</cite> city, for short"}},"grid":[[{"clueNumber":1,"answer":"t","type":"cell"},{"clueNumber":6,"answer":"h","type":"cell"},{"clueNumber":7,"answer":"e","type":"cell"},{"clueNumber":8,"answer":"x","type":"cell"},{"clueNumber":9,"answer":"x","type":"cell"}],[{"clueNumber":2,"answer":"h","type":"cell"},{"clueNumber":null,"answer":"i","type":"cell"},{"clueNumber":null,"answer":"l","type":"cell"},{"clueNumber":null,"answer":"l","type":"cell"},{"clueNumber":null,"answer":"s","type":"cell"}],[{"clueNumber":3,"answer":"i","type":"cell"},{"clueNumber":null,"answer":"r","type":"cell"},{"clueNumber":null,"answer":"k","type":"cell"},{"type":"block"},{"type":"block"}],[{"clueNumber":4,"answer":"n","type":"cell"},{"clueNumber":null,"answer":"e","type":"cell"},{"clueNumber":null,"answer":"s","type":"cell"},{"clueNumber":10,"answer":"t","type":"cell"},{"clueNumber":11,"answer":"s","type":"cell"}],[{"clueNumber":null,"answer":"e","type":"cell"},{"type":"block"},{"type":"block"},{"clueNumber":5,"answer":"i","type":"cell"},{"clueNumber":null,"answer":"f","type":"cell"}]],"info":{"title":"Mini #12","author":"Alexis Martel","contact":"","description":"A small 5x5 crossword","tags":["mini"],"date_published":"2023-01-02","language":"en"}}
+{
+  "clues": {
+    "across": {
+      "1": {
+        "content": "Band behind <cite>Apple Music</cite>'s <cite>Interludes Radio</cite>"
+      },
+      "2": {
+        "content": "<cite>Beverly _____</cite>"
+      },
+      "3": {
+        "content": "Annoy"
+      },
+      "4": {
+        "content": "Bird abodes"
+      },
+      "5": {
+        "content": "\"__ I only knew!\""
+      }
+    },
+    "down": {
+      "1": {
+        "content": "\"To _____ own self be true\""
+      },
+      "6": {
+        "content": "Employ"
+      },
+      "7": {
+        "content": "Deer lookalikes"
+      },
+      "8": {
+        "content": "Large shirt size"
+      },
+      "9": {
+        "content": "Small shirt size"
+      },
+      "10": {
+        "content": "Manufacturer of calculators and components"
+      },
+      "11": {
+        "content": "<cite>Golden Gate Bridge</cite> city, for short"
+      }
+    }
+  },
+  "grid": [
+    [
+      {
+        "clueNumber": 1,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 6,
+        "answer": "h",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 7,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 8,
+        "answer": "x",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 9,
+        "answer": "x",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 2,
+        "answer": "h",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "l",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": 3,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "r",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "k",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      }
+    ],
+    [
+      {
+        "clueNumber": 4,
+        "answer": "n",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "s",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 10,
+        "answer": "t",
+        "type": "cell"
+      },
+      {
+        "clueNumber": 11,
+        "answer": "s",
+        "type": "cell"
+      }
+    ],
+    [
+      {
+        "clueNumber": null,
+        "answer": "e",
+        "type": "cell"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "type": "block"
+      },
+      {
+        "clueNumber": 5,
+        "answer": "i",
+        "type": "cell"
+      },
+      {
+        "clueNumber": null,
+        "answer": "f",
+        "type": "cell"
+      }
+    ]
+  ],
+  "info": {
+    "title": "Mini #12",
+    "author": "Alexis Martel",
+    "contact": "",
+    "description": "A small 5x5 crossword",
+    "tags": [
+      "mini"
+    ],
+    "date_published": "2023-01-02",
+    "language": "en"
+  }
+}

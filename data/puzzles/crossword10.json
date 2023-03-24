@@ -1,16 +1,32 @@
 {
   "clues": {
     "across": {
-      "1": "Camera’s sensitivity to light (Abbr.)",
-      "2": "Con job",
-      "3": "Prefix meaning “one trillion”",
-      "4": "<cite>“It’s a ___ to kill a mockingbird”</cite>"
+      "1": {
+        "content": "Camera’s sensitivity to light (Abbr.)"
+      },
+      "2": {
+        "content": "Con job"
+      },
+      "3": {
+        "content": "Prefix meaning “one trillion”"
+      },
+      "4": {
+        "content": "<cite>“It’s a ___ to kill a mockingbird”</cite>"
+      }
     },
     "down": {
-      "1": "Freezes",
-      "2": "Prefix to Lawrence, Petersburg, or Patrick (Abbr.)",
-      "5": "Traditional Indian garment",
-      "6": "Middle-eastern country"
+      "1": {
+        "content": "Freezes"
+      },
+      "2": {
+        "content": "Prefix to Lawrence, Petersburg, or Patrick (Abbr.)"
+      },
+      "5": {
+        "content": "Traditional Indian garment"
+      },
+      "6": {
+        "content": "Middle-eastern country"
+      }
     }
   },
   "grid": [
