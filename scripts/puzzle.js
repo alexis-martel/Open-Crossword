@@ -195,7 +195,7 @@ class Puzzle {
                             for (const clue of puzzle.clues) {
                                 if (clue.number === rowSquares[i].clue && puzzle.selectionDirection === clue.direction) {
                                     clue.select();
-                                    return;
+                                    return clue.number;
                                 }
                             }
                         }
@@ -207,7 +207,7 @@ class Puzzle {
                             for (const clue of puzzle.clues) {
                                 if (clue.number === rowSquares[i].clue && puzzle.selectionDirection === clue.direction) {
                                     clue.select();
-                                    return;
+                                    return clue.number;
                                 }
                             }
                         }
@@ -302,15 +302,6 @@ class PuzzleSquare {
         this.textElement.focus();
         this.textElement.select(); // Select the entered text so it can be overwritten
 
-        // Highlight all squares in the same row or column as the selected square
-        for (const square of puzzle.squares) {
-            if (square.y === this.y && puzzle.selectionDirection === "across" && square.style === "cell") {
-                square.element.classList.add("highlighted");
-            } else if (square.x === this.x && puzzle.selectionDirection === "down" && square.style === "cell") {
-                square.element.classList.add("highlighted");
-            }
-        }
-
         if (this.clue) {
             for (const clue of puzzle.clues) {
                 if (clue.number === this.clue && this.style === "cell" && puzzle.selectionDirection === clue.direction) {
@@ -318,7 +309,26 @@ class PuzzleSquare {
                 }
             }
         }
-        puzzle.backCheck();
+        let firstSquareNumber = puzzle.backCheck();
+        let firstSquare = puzzle.squares.find(square => square.clue === firstSquareNumber);
+        // Highlight all squares from `firstSquareNumber` to the next block
+        if (puzzle.selectionDirection === "across") {
+            let rowSquares = puzzle.squares.filter(square => square.y === firstSquare.y && square.x >= firstSquare.x);
+            for (const square of rowSquares) {
+                square.element.classList.add("highlighted");
+                if (square.style === "block") {
+                    break;
+                }
+            }
+        } else if (puzzle.selectionDirection === "down") {
+            let columnSquares = puzzle.squares.filter(square => square.x === firstSquare.x && square.y >= firstSquare.y);
+            for (const square of columnSquares) {
+                square.element.classList.add("highlighted");
+                if (square.style === "block") {
+                    break;
+                }
+            }
+        }
     }
 
     deselect() {
