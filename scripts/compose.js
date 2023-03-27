@@ -469,18 +469,18 @@ function displayInfo(obj) {
         }
         myPuzzle.tagsInput.inputElement.value = myPuzzle.tagsInput.inputElement.value.slice(0, -2);
         myPuzzle.languageInput.value = obj["info"]["language"];
-        for (const [clueTag, clueText] of Object.entries(obj["clues"]["across"])) {
-            let clue = new PuzzleClue("across", acrossClues);
-            clue.textElement.value = clueText.toString();
-            clue.numberElement.value = clueTag;
-            myPuzzle.acrossClues.push(clue);
+        for (const clue of Object.entries(obj["clues"]["across"])) {
+            let NewClue = new PuzzleClue("across", acrossClues);
+            NewClue.textElement.value = clue[1]["content"].toString();
+            NewClue.numberElement.value = clue[0];
+            myPuzzle.downClues.push(NewClue);
 
         }
-        for (const [clueTag, clueText] of Object.entries(obj["clues"]["down"])) {
-            let clue = new PuzzleClue("across", downClues);
-            clue.textElement.value = clueText.toString();
-            clue.numberElement.value = clueTag;
-            myPuzzle.downClues.push(clue);
+        for (const clue of Object.entries(obj["clues"]["down"])) {
+            let NewClue = new PuzzleClue("down", downClues);
+            NewClue.textElement.value = clue[1]["content"].toString();
+            NewClue.numberElement.value = clue[0];
+            myPuzzle.downClues.push(NewClue);
 
         }
     }
