@@ -7,6 +7,9 @@ searchField.type = "search";
 const searchButton = document.createElement("input");
 searchButton.type = "submit";
 dictionarySelectorLabel.appendChild(dictionarySelector);
+const descriptionText = document.createElement("p");
+descriptionText.innerHTML = "Replace unknown letters with '*' or '?'. Dictionary data from GNU Aspell. Check out the <a href='https://github.com/alexis-martel/Open-Crossword-Dictionaries'>dictionary repository</a>.";
+
 const searchResults = document.createElement("div");
 const searchStats = document.createElement("p");
 const resultsList = document.createElement("ul");
@@ -16,6 +19,7 @@ searchResults.appendChild(resultsList);
 wordHelperForm.appendChild(dictionarySelectorLabel);
 wordHelperForm.appendChild(searchField);
 wordHelperForm.appendChild(searchButton);
+wordHelperForm.appendChild(descriptionText);
 document.getElementById("oc-word-helper-view").appendChild(wordHelperForm);
 document.getElementById("oc-word-helper-view").appendChild(searchResults);
 
@@ -34,7 +38,7 @@ for (const [language, url] of Object.entries(availableDictionaries)) {
 function findWords(dict, search) {
     resultsList.innerHTML = "";
     searchStats.innerHTML = "";
-    const regExp = new RegExp(`^${search.replaceAll("*", ".")}$`);
+    const regExp = new RegExp(`^${search.replaceAll("*", ".").replaceAll("?", ".")}$`);
     let resultsCount = 0;
     for (const word of dict["words"]) {
         if (regExp.test(word) && word.length === search.length) {
