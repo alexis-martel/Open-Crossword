@@ -341,6 +341,11 @@ a {
     background-color: var(--foreground-colour);
 }
 
+.oc-cell.oc-shaded-level-1 {
+    background-color: var(--highlight-colour);
+}
+
+
 .oc-invisible {
     background-color: transparent;
     box-shadow: none;

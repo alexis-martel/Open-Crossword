@@ -31,7 +31,7 @@ class Puzzle {
 
         for (const i of this.obj["grid"]) {
             for (const j of i) {
-                puzzle.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"], j["circled"]));
+                puzzle.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"], j["circled"], j["shadeLevel"]));
                 squareX++;
             }
             squareY++;
@@ -219,7 +219,7 @@ class Puzzle {
 }
 
 class PuzzleSquare {
-    constructor(x, y, style, clue, answer, circled) {
+    constructor(x, y, style, clue, answer, circled, shadeLevel) {
         this.x = x; // x-coordinate
         this.y = y; // y-coordinate
         this.style = style; // Style of the square (e.g. "cell", "block", "invisible")
@@ -236,6 +236,9 @@ class PuzzleSquare {
         if (circled) {
             this.element.classList.add("oc-cell");
             this.element.classList.add("oc-cell-circled");
+        }
+        if(shadeLevel || shadeLevel > 0) {
+            this.element.classList.add(`oc-shaded-level-${shadeLevel}`);
         }
         if (this.style === "cell") {
             this.element.classList.add("oc-cell");
