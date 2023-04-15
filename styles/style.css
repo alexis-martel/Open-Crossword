@@ -12,6 +12,9 @@
         --selection-colour: #B4D7FF;
         --highlight-colour: #DCDCDD;
         --error-colour: #ff5959;
+        --shaded-colour-1: rgba(0, 109, 239, 0.2);
+        --shaded-colour-2: rgba(0, 109, 239, 0.3);
+        --shaded-colour-3: rgba(0, 109, 239, 0.4);
     }
 }
 
@@ -22,6 +25,9 @@
         --selection-colour: #1b538a;
         --highlight-colour: #3f3f3f;
         --error-colour: #d50000;
+        --shaded-colour-1: rgba(255, 250, 240, 0.2);
+        --shaded-colour-2: rgba(255, 250, 240, 0.3);
+        --shaded-colour-3: rgba(255, 250, 240, 0.4);
     }
 }
 
@@ -341,10 +347,17 @@ a {
     background-color: var(--foreground-colour);
 }
 
-.oc-cell.oc-shaded-level-1 {
-    background-color: var(--highlight-colour);
+.oc-shaded-level-1 {
+    background-color: var(--shaded-colour-1);
 }
 
+.oc-shaded-level-2 {
+    background-color: var(--shaded-colour-2);
+}
+
+.oc-shaded-level-3 {
+    background-color: var(--shaded-colour-3);
+}
 
 .oc-invisible {
     background-color: transparent;
