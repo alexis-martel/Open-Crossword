@@ -281,27 +281,17 @@ a {
 .oc-clue-bar {
     display: none;
     grid-row: span;
-    width: 100%;
     margin-bottom: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
     background-color: var(--selection-colour);
     cursor: pointer;
-    text-align: center;
+    align-items: center;
+    justify-content: space-between;
     font-size: large;
-    position: sticky;
-    top: 0;
+    padding: 2px;
 }
 
 .oc-clue-bar-number-direction {
     font-weight: bold;
-    margin-right: 5px;
-}
-
-.oc-clue-bar-control-wrapper {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
 }
 
 .oc-puzzle-square {

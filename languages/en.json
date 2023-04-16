@@ -32,6 +32,7 @@
         "Verify automatically": "Verify automatically",
         "Verify the puzzle automatically on each keystroke": "Verify the puzzle automatically on each keystroke",
         "Square answer": "Square answer",
-        "Play": "Play"
-
+        "Play": "Play",
+        "Shortcuts Help": "Shortcuts Help",
+        "Keyboard Shortcuts:\n\t▲, ▼, ◀, ▶: Moves the cursor\n\tEnter: Selects next word\n\tDelete: Deletes the previous character\n\t⌦: Deletes the next character\n\tSpacebar: Selects next empty cell\n\tTab: Toggles the selection direction": "Keyboard Shortcuts:\n\t▲, ▼, ◀, ▶: Moves the cursor\n\tEnter: Selects next word\n\tDelete: Deletes the previous character\n\t⌦: Deletes the next character\n\tSpacebar: Selects next empty cell\n\tTab: Toggles the selection direction"
 }
