@@ -116,7 +116,13 @@ class Puzzle {
         new InfoItem("Title".i18n(), this.obj["info"]["title"], infoList); // Title
         new InfoItem("Author".i18n(), this.obj["info"]["author"], infoList); // Author
         new InfoItem("Description".i18n(), this.obj["info"]["description"], infoList); // Description
-        new InfoItem("Tags".i18n(), this.obj["info"]["tags"], infoList); // Tags
+        let tags = new InfoItem("Tags".i18n(), "", infoList); // Tags
+        let tagsList = document.createElement("ul");
+        tagsList.classList.add("oc-info-puzzle-tags-list");
+        tags.descriptionDetailElement.appendChild(tagsList);
+        for (const tag of this.obj["info"]["tags"]) {
+            new InfoTag(tag, tagsList);
+        }
         new InfoItem("Size".i18n(), sizeName, infoList); // Size
         new InfoItem("Date Published".i18n(), this.obj["info"]["date_published"], infoList); // Date Published
         new InfoItem("Language".i18n(), this.obj["info"]["language"], infoList); // Language
@@ -494,6 +500,15 @@ class ClueBar {
             this.element.style.display = "flex";
             this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number}-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${puzzle.selectedClue.HTMLContent}`;
         }
+    }
+}
+
+class InfoTag {
+    constructor(content, parentElement) {
+        this.element = document.createElement("li");
+        this.element.classList.add("oc-info-tag");
+        this.element.textContent = content;
+        parentElement.appendChild(this.element);
     }
 }
 
