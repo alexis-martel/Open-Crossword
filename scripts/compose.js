@@ -562,8 +562,8 @@ function showSplashScreen() {
         let gridWidth = parseInt(document.getElementById("oc-splash-screen-info-input-grid-width").value, 10);
         let gridHeight = parseInt(document.getElementById("oc-splash-screen-info-input-grid-height").value, 10);
         populateNewGrid(gridWidth, gridHeight);
+        document.getElementById("oc-splash-screen").remove();
     }
-
     document.getElementById("oc-splash-screen-open-button").onclick = () => {
         showOpenForm();
     }
@@ -624,7 +624,7 @@ function showOpenForm() {
     document.getElementById("oc-splash-screen").getElementsByTagName("b")[0].textContent = "Open a Puzzle";
     document.getElementById("oc-splash-screen").appendChild(openGridForm);
     document.getElementById("oc-splash-screen").onsubmit = () => {
-        document.getElementById("oc-splash-screen").close();
+        document.getElementById("oc-splash-screen").remove();
     }
 }
 
