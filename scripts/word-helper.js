@@ -26,7 +26,8 @@ document.getElementById("oc-word-helper-view").appendChild(wordHelperForm);
 document.getElementById("oc-word-helper-view").appendChild(searchResults);
 
 const availableDictionaries = {
-    "English": "https://raw.githubusercontent.com/alexis-martel/Open-Crossword-Dictionaries/main/dictionaries/en.json"
+    "English": "https://raw.githubusercontent.com/alexis-martel/Open-Crossword-Dictionaries/main/dictionaries/en.json",
+    "French": "https://raw.githubusercontent.com/alexis-martel/Open-Crossword-Dictionaries/main/dictionaries/fr.json"
 }
 
 // Adds the supported dictionaries to the dictionary selector
