@@ -330,7 +330,9 @@ const icon = {
     "sharePuzzleSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11 46q-1.2 0-2.1-.9Q8 44.2 8 43V17.55q0-1.2.9-2.1.9-.9 2.1-.9h8.45v3H11V43h26V17.55h-8.55v-3H37q1.2 0 2.1.9.9.9.9 2.1V43q0 1.2-.9 2.1-.9.9-2.1.9Zm11.45-15.35V7.8l-4.4 4.4-2.15-2.15L23.95 2 32 10.05l-2.15 2.15-4.4-4.4v22.85Z"/></svg>`,
     "addSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/></svg>`,
     "removeSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M10 25.5v-3h28v3Z"/></svg>`,
-    "playSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M16 37.85v-28l22 14Zm3-14Zm0 8.55 13.45-8.55L19 15.3Z"/></svg>`
+    "playSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M16 37.85v-28l22 14Zm3-14Zm0 8.55 13.45-8.55L19 15.3Z"/></svg>`,
+    "searchSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>`,
+    "closeSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`
 }
 
 function populateToolBar() {
@@ -360,6 +362,10 @@ function populateToolBar() {
     let playPuzzleButton = new ControlButton("Play puzzle in new tab", icon["playSVG"], toolBarElement);
     playPuzzleButton.element.onclick = () => {
         window.open(myPuzzle.createDataLink(), '_blank');
+    }
+    let wordHelperButton = new ControlButton("Word helper", icon["searchSVG"], toolBarElement);
+    wordHelperButton.element.onclick = () => {
+        displayWordHelperDialog();
     }
 }
 
@@ -484,6 +490,28 @@ function displayInfo(obj) {
 
         }
     }
+}
+
+function displayWordHelperDialog() {
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("oc-builder-word-helper-dialog");
+    let dialogTitleBar = document.createElement("div");
+    let dialogTitle = document.createElement("h2");
+    dialogTitle.textContent = "Word Helper";
+    let titleBarSeparator = document.createElement("hr");
+    let frame = document.createElement("iframe");
+    frame.src = `${document.baseURI}frames/word-helper.html`;
+    let dialogCloseButton = new ControlButton("Close", icon["closeSVG"], dialogTitleBar);
+    dialogCloseButton.element.onclick = () => {
+        dialog.close();
+        dialog.remove();
+    }
+    dialogTitleBar.appendChild(dialogTitle);
+    dialog.appendChild(dialogTitleBar);
+    dialog.appendChild(titleBarSeparator);
+    dialog.appendChild(frame);
+    document.body.appendChild(dialog);
+    dialog.showModal();
 }
 
 function populateNewGrid(gridWidth, gridHeight) {

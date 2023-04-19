@@ -506,3 +506,28 @@ a {
     resize: vertical;
     box-sizing: border-box;
 }
+
+.oc-builder-word-helper-dialog {
+    padding: 8px;
+    box-shadow: 5px 5px 0 0 var(--foreground-colour);
+    background-color: var(--background-colour);
+    border: var(--main-border-width) solid var(--foreground-colour);
+}
+
+.oc-builder-word-helper-dialog h2 {
+    display: inline-block;
+    margin: auto;
+}
+
+.oc-builder-word-helper-dialog iframe {
+    border: none;
+    height: 50%;
+}
+
+.oc-builder-word-helper-dialog div {
+    display: flex;
+    align-items: center;
+}
+
+.oc-builder-word-helper-dialog button {
+}
