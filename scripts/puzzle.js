@@ -1,3 +1,6 @@
+import decompressAndDecode from "./decompress.js";
+import compressAndEncode from "./compress.js";
+
 "use strict";
 
 const puzzleContainer = document.createElement("div");
@@ -243,7 +246,7 @@ class PuzzleSquare {
             this.element.classList.add("oc-cell");
             this.element.classList.add("oc-cell-circled");
         }
-        if(shadeLevel || shadeLevel > 0) {
+        if (shadeLevel || shadeLevel > 0) {
             this.element.classList.add(`oc-shaded-level-${shadeLevel}`);
         }
         if (this.style === "cell") {
@@ -798,7 +801,7 @@ function showSplashScreen(obj) {
     splashScreen.showModal();
 }
 
-function startOCPlayer() {
+async function startOCPlayer() {
     let params = new URLSearchParams(document.location.search);
     if (params.has("p")) {
         let puzzleID = params.get("p").toString();
@@ -825,9 +828,17 @@ function startOCPlayer() {
                 }
             });
         });
-    } else if (params.has("d")) {
-        let puzzleData = params.get("d").toString();
-        let data = JSON.parse(puzzleData);
+    } else if (params.has("d") || params.has("dc")) {
+        let data;
+        if (params.has("d")) {
+            let puzzleData = params.get("d").toString();
+            data = JSON.parse(puzzleData);
+        } else if (params.has("dc")) {
+            if (!"CompressionStream" in window) console.error("CompressionStream not supported");
+            let puzzleData = await decompressAndDecode(params.get("dc").toString());
+            data = await JSON.parse(puzzleData);
+        }
+        console.log(data)
         // Fetch language data
         fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`,
             {method: "HEAD"}

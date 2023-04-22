@@ -1,3 +1,6 @@
+import decompressAndDecode from "./decompress.js";
+import compressAndEncode from "./compress.js";
+
 "use strict";
 
 const UIContainer = document.createElement("div");
@@ -170,10 +173,18 @@ class Grid {
         this.data = JSON.stringify(this.obj);
     }
 
-    createDataLink() {
-        // Creates a link string containing the puzzle data in the "d" parameter
-        this.generate();
-        return `solve.html?d=${encodeURIComponent(this.data)}`;
+    async createDataLink() {
+        // Creates a link string containing the puzzle data in the "d" or "dc" parameter
+        // Compress the data if the browser supports the Compression Streams API
+        if ("CompressionStream" in window) {
+            this.generate();
+            let dcParam = await compressAndEncode(this.data);
+            console.log(dcParam);
+            return `solve.html?dc=${dcParam}`;
+        } else {
+            this.generate();
+            return `solve.html?d=${encodeURIComponent(this.data)}`;
+        }
     }
 
     downloadJSON() {
@@ -360,8 +371,8 @@ function populateToolBar() {
         myPuzzle.downloadJSON();
     }
     let playPuzzleButton = new ControlButton("Play puzzle in new tab", icon["playSVG"], toolBarElement);
-    playPuzzleButton.element.onclick = () => {
-        window.open(myPuzzle.createDataLink(), '_blank');
+    playPuzzleButton.element.onclick = async () => {
+        window.open(await myPuzzle.createDataLink(), '_blank');
     }
     let wordHelperButton = new ControlButton("Word helper", icon["searchSVG"], toolBarElement);
     wordHelperButton.element.onclick = () => {
@@ -369,15 +380,15 @@ function populateToolBar() {
     }
 }
 
-function displayShareDialog() {
+async function displayShareDialog() {
     myPuzzle.generate();
     if (navigator.share) {
         navigator.share({
             title: `${myPuzzle.obj["info"]["title"]}, by ${myPuzzle.obj["info"]["author"]} - OpenCrossword`,
-            url: myPuzzle.createDataLink()
+            url: await myPuzzle.createDataLink()
         }).catch(console.error);
     } else {
-        navigator.clipboard.writeText(myPuzzle.createDataLink()).then(() => {
+        navigator.clipboard.writeText(await myPuzzle.createDataLink()).then(() => {
             /* clipboard successfully set */
             window.alert("Link copied to clipboard");
         }, () => {
@@ -646,6 +657,10 @@ if (params.has("l")) {
     if (targetParams.has("d")) {
         // Fetch the object data from the data URL
         populateGrid(JSON.parse(targetParams.get("d").toString()));
+    }
+    if (targetParams.has("dc")) {
+        // Fetch the object data from the data URL
+        populateGrid(JSON.parse(await decompressAndDecode(targetParams.get("dc").toString())));
     }
 
 } else {
