@@ -516,6 +516,7 @@ a {
 
 .oc-builder-word-helper-dialog h2 {
     display: inline-block;
+    color: var(--foreground-colour);
     margin: auto;
 }
 

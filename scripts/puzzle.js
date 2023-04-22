@@ -1,5 +1,4 @@
 import decompressAndDecode from "./decompress.js";
-import compressAndEncode from "./compress.js";
 
 "use strict";
 
@@ -525,7 +524,10 @@ const icon = {
     "chevronNextSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z"/></svg>`,
     "chevronPreviousSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M28.05 36 16 23.95 28.05 11.9l2.15 2.15-9.9 9.9 9.9 9.9Z"/></svg>`,
     "specialSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m19.2 36.4-4.75-10.45L4 21.2l10.45-4.75L19.2 6l4.75 10.45L34.4 21.2l-10.45 4.75ZM36.4 42l-2.35-5.25-5.25-2.35 5.25-2.4 2.35-5.2 2.4 5.2 5.2 2.4-5.2 2.35Z"/></svg>`,
-    "helpSVG": `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24.2 35.65q.8 0 1.35-.55t.55-1.35q0-.8-.55-1.35t-1.35-.55q-.8 0-1.35.55t-.55 1.35q0 .8.55 1.35t1.35.55Zm-1.75-7.3h2.95q0-1.3.325-2.375T27.75 23.5q1.55-1.3 2.2-2.55.65-1.25.65-2.75 0-2.65-1.725-4.25t-4.575-1.6q-2.45 0-4.325 1.225T17.25 16.95l2.65 1q.55-1.4 1.65-2.175 1.1-.775 2.6-.775 1.7 0 2.75.925t1.05 2.375q0 1.1-.65 2.075-.65.975-1.9 2.025-1.5 1.3-2.225 2.575-.725 1.275-.725 3.375ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/></svg>`
+    "helpSVG": `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24.2 35.65q.8 0 1.35-.55t.55-1.35q0-.8-.55-1.35t-1.35-.55q-.8 0-1.35.55t-.55 1.35q0 .8.55 1.35t1.35.55Zm-1.75-7.3h2.95q0-1.3.325-2.375T27.75 23.5q1.55-1.3 2.2-2.55.65-1.25.65-2.75 0-2.65-1.725-4.25t-4.575-1.6q-2.45 0-4.325 1.225T17.25 16.95l2.65 1q.55-1.4 1.65-2.175 1.1-.775 2.6-.775 1.7 0 2.75.925t1.05 2.375q0 1.1-.65 2.075-.65.975-1.9 2.025-1.5 1.3-2.225 2.575-.725 1.275-.725 3.375ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/></svg>`,
+    "copySVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M180 975q-24 0-42-18t-18-42V312h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42V235q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440V235H300v560Zm0 0V235v560Z"/></svg>`,
+    "embedSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M320 814 80 574l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg>`,
+    "closeSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48""><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`
 }
 
 function displayControlButtons() {
@@ -548,7 +550,7 @@ function displayControlButtons() {
     }
     let shareButton = new ControlButton("Share".i18n(), icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
-        sharePuzzle();
+        displayShareDialog();
     }
     let remixButton = new ControlButton("Remix".i18n(), icon["specialSVG"], controlButtons);
     remixButton.element.onclick = () => {
@@ -579,6 +581,59 @@ function displayControlButtons() {
     document.getElementById("oc-verify-automatically").onclick = () => {
         verifyPuzzle();
     }
+}
+
+function displayShareDialog() {
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("oc-builder-word-helper-dialog");
+    let dialogTitleBar = document.createElement("div");
+    let dialogTitle = document.createElement("h2");
+    dialogTitle.textContent = "Share".i18n();
+    let titleBarSeparator = document.createElement("hr");
+    let shareArea = document.createElement("div");
+    let shareButton = new ControlButton("Share".i18n(), icon["shareSVG"], shareArea);
+    shareButton.element.onclick = () => {
+        navigator.share({
+            title: "OpenCrossword", url: window.location.href
+        }).catch(console.error);
+    }
+    let copyLinkButton = new ControlButton("Copy Link".i18n(), icon["copySVG"], shareArea);
+    copyLinkButton.element.onclick = () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            /* clipboard successfully set */
+            window.alert("Link copied to clipboard".i18n());
+        }, () => {
+            /* clipboard write failed */
+            window.alert("Failed to copy link to clipboard".i18n());
+        });
+    }
+    let embedPuzzleButton = new ControlButton("Copy Embed Code".i18n(), icon["embedSVG"], shareArea);
+    embedPuzzleButton.element.onclick = () => {
+        let transformedLink = window.location.href.replace("/solve", "/frames/player-embed");
+        navigator.clipboard.writeText(`<iframe width="100%" height="100%" src="${transformedLink}"/>`).then(() => {
+            /* clipboard successfully set */
+            window.alert("Code copied to clipboard".i18n());
+        }, () => {
+            /* clipboard write failed */
+            window.alert("Failed to copy code to clipboard".i18n());
+        });
+    }
+    let remixButton = new ControlButton("Remix".i18n(), icon["specialSVG"], shareArea);
+    remixButton.element.onclick = () => {
+        let encodedPuzzleLink = encodeURIComponent(window.location.href);
+        window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
+    }
+    let dialogCloseButton = new ControlButton("Close".i18n(), icon["closeSVG"], dialogTitleBar);
+    dialogCloseButton.element.onclick = () => {
+        dialog.close();
+        dialog.remove();
+    }
+    dialogTitleBar.appendChild(dialogTitle);
+    dialog.appendChild(dialogTitleBar);
+    dialog.appendChild(titleBarSeparator);
+    dialog.appendChild(shareArea);
+    document.body.appendChild(dialog);
+    dialog.showModal();
 }
 
 function verifyPuzzle() {
@@ -683,7 +738,6 @@ function populate(obj) {
         puzzle.populateInfo(obj);
         displayControlButtons();
     }
-
 }
 
 Number.prototype.toFormattedTime = function () {

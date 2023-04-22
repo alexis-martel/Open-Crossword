@@ -34,5 +34,10 @@
         "Square answer": "Square answer",
         "Play": "Play",
         "Shortcuts Help": "Shortcuts Help",
-        "Keyboard Shortcuts:\n\t▲, ▼, ◀, ▶: Moves the cursor\n\tEnter: Selects next word\n\tDelete: Deletes the previous character\n\t⌦: Deletes the next character\n\tSpacebar: Selects next empty cell\n\tTab: Toggles the selection direction": "Keyboard Shortcuts:\n\t▲, ▼, ◀, ▶: Moves the cursor\n\tEnter: Selects next word\n\tDelete: Deletes the previous character\n\t⌦: Deletes the next character\n\tSpacebar: Selects next empty cell\n\tTab: Toggles the selection direction"
+        "Keyboard Shortcuts:\n\t▲, ▼, ◀, ▶: Moves the cursor\n\tEnter: Selects next word\n\tDelete: Deletes the previous character\n\t⌦: Deletes the next character\n\tSpacebar: Selects next empty cell\n\tTab: Toggles the selection direction": "Keyboard Shortcuts:\n\t▲, ▼, ◀, ▶: Moves the cursor\n\tEnter: Selects next word\n\tDelete: Deletes the previous character\n\t⌦: Deletes the next character\n\tSpacebar: Selects next empty cell\n\tTab: Toggles the selection direction",
+        "Copy Link": "Copy Link",
+        "Copy Embed Code": "Copy Embed Code",
+        "Close": "Close",
+        "Code copied to clipboard": "Code copied to clipboard",
+        "Failed to copy code to clipboard": "Failed to copy code to clipboard"
 }

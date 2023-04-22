@@ -35,5 +35,10 @@
         "Square answer": "Réponse de la cellule",
         "Play": "Jouer",
         "Shortcuts Help": "Aide des Raccourcis",
-        "Keyboard Shortcuts:\n\t▲, ▼, ◀, ▶: Moves the cursor\n\tEnter: Selects next word\n\tDelete: Deletes the previous character\n\t⌦: Deletes the next character\n\tSpacebar: Selects next empty cell\n\tTab: Toggles the selection direction": "Raccourcis Clavier:\n\t▲, ▼, ◀, ▶: Déplace le curseur\n\t↩: Sélectionne le prochain mot\n\t⌫: Efface le caractère précédent\n\t⌦: Efface le caractère suivant\n\tEspace: Sélectionne la prochaine cellule vide\n\t⇥: Change la direction de la sélection"
+        "Keyboard Shortcuts:\n\t▲, ▼, ◀, ▶: Moves the cursor\n\tEnter: Selects next word\n\tDelete: Deletes the previous character\n\t⌦: Deletes the next character\n\tSpacebar: Selects next empty cell\n\tTab: Toggles the selection direction": "Raccourcis Clavier:\n\t▲, ▼, ◀, ▶: Déplace le curseur\n\t↩: Sélectionne le prochain mot\n\t⌫: Efface le caractère précédent\n\t⌦: Efface le caractère suivant\n\tEspace: Sélectionne la prochaine cellule vide\n\t⇥: Change la direction de la sélection",
+        "Copy Link": "Copier le Lien",
+        "Copy Embed Code": "Copier le Code d'Intégration",
+        "Close": "Fermer",
+        "Code copied to clipboard": "Le code a été copié dans le presse-papier",
+        "Failed to copy code to clipboard": "Le code n'a pas pu être copié dans le presse-papier"
 }
