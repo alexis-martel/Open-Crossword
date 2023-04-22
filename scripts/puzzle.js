@@ -610,7 +610,7 @@ function displayShareDialog() {
     let embedPuzzleButton = new ControlButton("Copy Embed Code".i18n(), icon["embedSVG"], shareArea);
     embedPuzzleButton.element.onclick = () => {
         let transformedLink = window.location.href.replace("/solve", "/frames/player-embed");
-        navigator.clipboard.writeText(`<iframe width="100%" height="100%" src="${transformedLink}"/>`).then(() => {
+        navigator.clipboard.writeText(`<iframe width="100%" height="600px" src="${transformedLink}"/>`).then(() => {
             /* clipboard successfully set */
             window.alert("Code copied to clipboard".i18n());
         }, () => {
