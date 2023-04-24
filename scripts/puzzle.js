@@ -892,7 +892,6 @@ async function startOCPlayer() {
             let puzzleData = await decompressAndDecode(params.get("dc").toString());
             data = await JSON.parse(puzzleData);
         }
-        console.log(data)
         // Fetch language data
         fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`,
             {method: "HEAD"}

@@ -136,8 +136,8 @@ class Grid {
                     this.obj["grid"][i].push({"type": "invisible"});
                 }
             }
-
         }
+
 
         // Create the "info" object
         this.obj["info"] = {};
@@ -168,8 +168,6 @@ class Grid {
         // Set the "language" key-value pair
         this.obj["info"]["language"] = myPuzzle.languageInput.value;
 
-
-        // Output the object to the console
         this.data = JSON.stringify(this.obj);
     }
 
@@ -179,7 +177,6 @@ class Grid {
         if ("CompressionStream" in window) {
             this.generate();
             let dcParam = await compressAndEncode(this.data);
-            console.log(dcParam);
             return `solve.html?dc=${dcParam}`;
         } else {
             this.generate();
@@ -490,7 +487,7 @@ function displayInfo(obj) {
             let NewClue = new PuzzleClue("across", acrossClues);
             NewClue.textElement.value = clue[1]["content"].toString();
             NewClue.numberElement.value = clue[0];
-            myPuzzle.downClues.push(NewClue);
+            myPuzzle.acrossClues.push(NewClue);
 
         }
         for (const clue of Object.entries(obj["clues"]["down"])) {
