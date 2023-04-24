@@ -678,23 +678,6 @@ function resetPuzzle() {
     }
 }
 
-function sharePuzzle() {
-    // Open a share dialog
-    if (navigator.share) {
-        navigator.share({
-            title: "OpenCrossword", url: window.location.href
-        }).catch(console.error);
-    } else {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            /* clipboard successfully set */
-            window.alert("Link copied to clipboard".i18n());
-        }, () => {
-            /* clipboard write failed */
-            window.alert("Failed to copy link to clipboard".i18n());
-        });
-    }
-}
-
 function checkPuzzle() {
     // Check if the puzzle is solved
     let solved = true;
