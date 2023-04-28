@@ -230,6 +230,8 @@ a {
 
 .oc-puzzle-container {
     padding: 0;
+    max-height: min-content;
+    max-width: min-content;
 }
 
 
@@ -310,6 +312,14 @@ a {
 
 .oc-clue-bar-number-direction {
     font-weight: bold;
+}
+
+.oc-clue-content-wrapper {
+
+}
+
+.oc-clue-bar-control-wrapper {
+    min-width: max-content;
 }
 
 .oc-puzzle-square {

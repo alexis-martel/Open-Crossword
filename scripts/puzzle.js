@@ -461,6 +461,7 @@ class ClueBar {
         this.element = document.createElement("nav");
         this.element.classList.add("oc-clue-bar");
         this.clueContentWrapper = document.createElement("span");
+        this.clueContentWrapper.classList.add("oc-clue-content-wrapper");
         this.controlWrapper = document.createElement("nav");
         this.controlWrapper.classList.add("oc-clue-bar-control-wrapper");
         parentElement.insertBefore(this.element, parentElement.firstChild);
