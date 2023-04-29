@@ -517,28 +517,28 @@ a {
     box-sizing: border-box;
 }
 
-.oc-builder-word-helper-dialog {
+.oc-dialog {
     padding: 8px;
     box-shadow: 5px 5px 0 0 var(--foreground-colour);
     background-color: var(--background-colour);
     border: var(--main-border-width) solid var(--foreground-colour);
 }
 
-.oc-builder-word-helper-dialog h2 {
+.oc-dialog h2 {
     display: inline-block;
     color: var(--foreground-colour);
     margin: auto;
 }
 
-.oc-builder-word-helper-dialog iframe {
+.oc-dialog iframe {
     border: none;
     height: 50%;
 }
 
-.oc-builder-word-helper-dialog div {
+.oc-dialog div {
     display: flex;
     align-items: center;
 }
 
-.oc-builder-word-helper-dialog button {
+.oc-dialog button {
 }

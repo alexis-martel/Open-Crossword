@@ -502,7 +502,7 @@ function displayInfo(obj) {
 
 function displayWordHelperDialog() {
     let dialog = document.createElement("dialog");
-    dialog.classList.add("oc-builder-word-helper-dialog");
+    dialog.classList.add("oc-dialog");
     let dialogTitleBar = document.createElement("div");
     let dialogTitle = document.createElement("h2");
     dialogTitle.textContent = "Word Helper";
