@@ -29,7 +29,7 @@ class Puzzle {
         let squareX = 0; // x-coordinate of the current square
         let squareY = 0; // y-coordinate of the current square
 
-        gridContainer.style.gridTemplateColumns = `repeat(${this.obj["grid"][0].length}, 75px)`;
+        gridContainer.style.gridTemplateColumns = `repeat(${this.obj["grid"][0].length}, 1fr)`;
 
         for (const i of this.obj["grid"]) {
             for (const j of i) {
@@ -260,6 +260,7 @@ class PuzzleSquare {
             this.element.appendChild(this.clueElement);
             this.clueElement.classList.add("oc-puzzle-square-clue");
             this.clueElement.textContent = this.clue;
+            resizeClueFont.observe(this.clueElement.parentElement);
         }
         if (this.answer) {
             this.textElement = document.createElement("input");
@@ -271,6 +272,7 @@ class PuzzleSquare {
             this.textElement.setAttribute("autocomplete", "off");
             this.textElement.setAttribute("autocapitalize", "characters");
             this.textElement.ariaLabel = "Square answer".i18n();
+            resizeInputFont.observe(this.textElement);
             this.element.appendChild(this.textElement);
             this.textElement.classList.add("oc-puzzle-square-text");
             this.answer = this.answer.toUpperCase();
@@ -816,6 +818,18 @@ document.addEventListener("keydown", function (event) {
             puzzle.selectionDirection = "across";
         }
         puzzle.selectedSquare.select(); // Refresh the grid
+    }
+});
+
+const resizeInputFont = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+        entry.target.style.fontSize = (entry.contentRect.height * 0.75) + "px";
+    }
+});
+
+const resizeClueFont = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+        entry.target.firstChild.style.fontSize = (entry.target.clientHeight * 0.3) + "px";
     }
 });
 

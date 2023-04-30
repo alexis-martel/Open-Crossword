@@ -238,9 +238,6 @@ a {
 }
 
 .oc-puzzle-container {
-    padding: 0;
-    max-height: min-content;
-    max-width: min-content;
 }
 
 
@@ -297,9 +294,11 @@ a {
 
 .oc-grid-container {
     display: grid;
-    grid-gap: 2px;
-    height: min-content;
-    width: min-content;
+    gap: var(--main-border-width);
+    /*height: 100vh;*/
+    /*width: 100vw;*/
+    /*max-width: max-content;*/
+    /*max-height: max-content;*/
     margin: var(--main-border-width);
 }
 
@@ -332,7 +331,9 @@ a {
     display: inline-block;
     max-width: 75px;
     max-height: 75px;
-    aspect-ratio: 1 / 1;
+    min-height: 15px;
+    min-width: 15px;
+    aspect-ratio: 1;
     color: var(--foreground-colour);
     background-color: var(--background-colour);
     -webkit-user-select: none;
@@ -341,6 +342,7 @@ a {
     user-select: none;
     text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
 .oc-puzzle-square-clue {
@@ -353,13 +355,12 @@ a {
 .oc-cell {
     font-size: 20px;
     cursor: text;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .oc-cell-circled::before {
     position: absolute;
+    top: calc(-1 * var(--main-border-width));
+    left: calc(-1 * var(--main-border-width));
     content: "";
     width: 100%;
     height: 100%;
@@ -406,6 +407,8 @@ a {
     background-color: transparent;
     border: none;
     outline: none;
+    padding: 0;
+    appearance: none;
     caret-color: transparent;
     font-family: var(--main-font);
     color: var(--foreground-colour);
