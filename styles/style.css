@@ -35,12 +35,15 @@ body {
     background-color: var(--background-colour);
     color: var(--foreground-colour);
     font-family: var(--main-font);
+    font-size: medium;
 }
 
 hr {
     height: 2px;
     border: none;
     background-color: var(--foreground-colour);
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 header {
@@ -157,6 +160,12 @@ a {
     padding: 5px;
 }
 
+.oc-game-view {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .oc-splash-screen {
     padding: 0;
     width: 50vmin;
@@ -174,7 +183,7 @@ a {
     font-weight: normal;
     position: absolute;
     color: white;
-    font-size: 6vmin;
+    font-size: xx-large;
     z-index: 1;
 }
 
@@ -202,7 +211,7 @@ a {
 }
 
 .oc-splash-screen form {
-    padding: 1vmin;
+    padding: 8px;
 }
 
 .oc-splash-screen-info-input {
@@ -291,17 +300,13 @@ a {
     grid-gap: 2px;
     height: min-content;
     width: min-content;
-}
-
-.oc-game-view {
-    display: flex;
-    flex-wrap: wrap;
+    margin: var(--main-border-width);
 }
 
 .oc-clue-bar {
     display: none;
     grid-row: span;
-    margin-bottom: 8px;
+    margin-bottom: 5px; /* To remedy margin collapse */
     background-color: var(--selection-colour);
     cursor: pointer;
     align-items: center;
@@ -325,8 +330,9 @@ a {
 .oc-puzzle-square {
     box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
     display: inline-block;
-    width: 75px;
-    height: 75px;
+    max-width: 75px;
+    max-height: 75px;
+    aspect-ratio: 1 / 1;
     color: var(--foreground-colour);
     background-color: var(--background-colour);
     -webkit-user-select: none;
@@ -393,7 +399,9 @@ a {
 .oc-puzzle-square-text {
     font-size: 50px;
     font-weight: bold;
-    width: 1em;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     text-transform: uppercase;
     background-color: transparent;
     border: none;
