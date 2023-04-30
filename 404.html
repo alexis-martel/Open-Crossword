@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/Open-Crossword/"/>
+    <meta charset="utf-8">
+    <title>Offline - OpenCrossword</title>
+    <link href="apple-touch-icon.png?v=2" rel="apple-touch-icon">
+    <link href="favicon.png" rel="icon">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="#FFFAF0FF" media="(prefers-color-scheme: light)" name="theme-color">
+    <meta content="#012c37" media="(prefers-color-scheme: dark)" name="theme-color">
+    <style>
+        :root {
+            --main-font: "Times New Roman", Times, serif;
+            --main-border-width: 2px;
+            --empty-clue-list-text: "No clues";
+            color-scheme: light dark;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --background-colour: #FFFAF0FF;
+                --foreground-colour: #006def;
+                --selection-colour: #B4D7FF;
+                --highlight-colour: #DCDCDD;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-colour: #012c37;
+                --foreground-colour: #FFFAF0FF;
+                --selection-colour: #1b538a;
+                --highlight-colour: #3f3f3f;
+            }
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-color: var(--background-colour);
+            color: var(--foreground-colour);
+            font-family: var(--main-font);
+            text-align: center;
+            margin: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            padding: 2px;
+            margin: 3px 3px 3px 0;
+            font-family: var(--main-font);
+            font-size: initial;
+            border: var(--main-border-width) solid var(--foreground-colour);
+            background-color: transparent;
+            color: var(--foreground-colour);
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--highlight-colour);
+        }
+
+        button:active {
+            background-color: var(--selection-colour);
+        }
+
+        button svg {
+            fill: var(--foreground-colour);
+            stroke: var(--foreground-colour);
+            width: 22px;
+            height: 22px;
+            display: inline;
+            vertical-align: middle;
+        }
+
+        .oc-offline span {
+            box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
+            margin: calc(var(--main-border-width) / 2);
+            padding: 0.2em;
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="oc-offline">
+    <h2>Error</h2>
+    <p><span>4</span><span>0</span><span>4</span></p>
+    <p>The page you're looking for can't be found.</p>
+</div>
+</body>
+</html>
