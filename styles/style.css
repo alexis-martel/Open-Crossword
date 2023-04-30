@@ -295,10 +295,7 @@ a {
 .oc-grid-container {
     display: grid;
     gap: var(--main-border-width);
-    /*height: 100vh;*/
-    /*width: 100vw;*/
-    /*max-width: max-content;*/
-    /*max-height: max-content;*/
+    max-width: max-content;
     margin: var(--main-border-width);
 }
 
@@ -312,6 +309,8 @@ a {
     justify-content: space-between;
     font-size: large;
     padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .oc-clue-bar-number-direction {

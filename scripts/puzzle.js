@@ -717,7 +717,7 @@ document.getElementById("oc-game-view").appendChild(infoContainer);
 function populate(obj) {
     showSplashScreen(obj);
     document.getElementById("oc-splash-screen").onsubmit = () => {
-        clueBar = new ClueBar(puzzleContainer);
+        clueBar = new ClueBar(document.getElementById("oc-game-view"));
         puzzle = new Puzzle(obj);
         puzzle.populateGrid(obj);
         puzzle.populateClues(obj);
