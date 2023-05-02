@@ -823,13 +823,16 @@ document.addEventListener("keydown", function (event) {
 
 const resizeInputFont = new ResizeObserver((entries) => {
     for (const entry of entries) {
-        entry.target.style.fontSize = (entry.contentRect.height * 0.75) + "px";
+        entry.target.style.fontSize = (entry.contentRect.height * 0.70) + "px";
     }
 });
 
 const resizeClueFont = new ResizeObserver((entries) => {
     for (const entry of entries) {
         entry.target.firstChild.style.fontSize = (entry.target.clientHeight * 0.3) + "px";
+        entry.target.firstChild.style.top = (entry.target.clientHeight * 0.05) + "px";
+        entry.target.firstChild.style.left = (entry.target.clientHeight * 0.05) + "px";
+
     }
 });
 
