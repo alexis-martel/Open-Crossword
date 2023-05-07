@@ -108,9 +108,10 @@ a {
 
 .oc-featured-puzzles {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 50px;
+    flex-direction: row;
+    overflow: scroll;
+    margin: auto;
+    max-width: min-content;
 }
 
 .oc-featured-item {
