@@ -116,7 +116,6 @@ a {
 .oc-featured-item {
     border: var(--main-border-width) solid var(--foreground-colour);
     padding: 20px;
-
     display: inline-block;
     margin: 5px;
     text-align: center;
@@ -238,6 +237,7 @@ a {
 }
 
 .oc-puzzle-container {
+    margin: auto;
 }
 
 
@@ -330,8 +330,8 @@ a {
     display: inline-block;
     max-width: 75px;
     max-height: 75px;
-    min-height: 15px;
-    min-width: 15px;
+    min-height: 25px;
+    min-width: 25px;
     aspect-ratio: 1;
     color: var(--foreground-colour);
     background-color: var(--background-colour);
