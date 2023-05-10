@@ -109,7 +109,7 @@ a {
 .oc-featured-puzzles {
     display: flex;
     flex-direction: row;
-    overflow: scroll;
+    overflow: auto;
     margin: auto;
     max-width: min-content;
 }
