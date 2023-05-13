@@ -70,26 +70,26 @@ header a {
     display: inline-block;
 }
 
-button, input[type="button"], input[type="submit"] {
+button, input[type="button"], input[type="submit"], .oc-button-link {
     padding: 2px;
-    margin: 3px 3px 3px 0;
     font-family: var(--main-font);
     font-size: initial;
     border: var(--main-border-width) solid var(--foreground-colour);
     background-color: transparent;
     color: var(--foreground-colour);
     cursor: pointer;
+    text-decoration: none;
 }
 
-button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+button:hover, input[type="button"]:hover, input[type="submit"]:hover, .oc-button-link:hover {
     background-color: var(--highlight-colour);
 }
 
-button:active, input[type="button"]:active, input[type="submit"]:active {
+button:active, input[type="button"]:active, input[type="submit"]:active, .oc-button-link:active {
     background-color: var(--selection-colour);
 }
 
-button svg {
+button svg, input[type="button"] svg, input[type="submit"] svg, .oc-button-link svg {
     fill: var(--foreground-colour);
     stroke: var(--foreground-colour);
     width: 22px;
@@ -98,12 +98,13 @@ button svg {
     vertical-align: middle;
 }
 
-button a {
-    text-decoration: none;
-}
-
 a {
     color: var(--foreground-colour);
+}
+
+nav {
+    display: flex;
+    gap: 4px
 }
 
 .oc-featured-puzzles {
@@ -136,6 +137,10 @@ a {
     width: 100px;
     fill: var(--foreground-colour);
     display: block;
+}
+
+.oc-home-menu {
+    margin-bottom: 4px;
 }
 
 .oc-puzzle-browser {
