@@ -536,7 +536,7 @@ const icon = {
 function displayControlButtons() {
     // Display the control buttons beneath the puzzle grid (e.g. "Check", "Reveal", "Pause", "Reset", "Share", "Settings")
     let controlButtons = document.createElement("nav");
-    controlButtons.classList.add("control-button-container");
+    controlButtons.classList.add("oc-control-button-container");
     puzzleContainer.appendChild(controlButtons);
 
     let verifyButton = new ControlButton("Verify".i18n(), icon["verifySVG"], controlButtons);

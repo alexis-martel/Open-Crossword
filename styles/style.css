@@ -104,7 +104,8 @@ a {
 
 nav {
     display: flex;
-    gap: 4px
+    gap: 4px;
+    flex-wrap: wrap;
 }
 
 .oc-featured-puzzles {
@@ -113,6 +114,7 @@ nav {
     overflow: auto;
     margin: auto;
     max-width: min-content;
+    flex-wrap: revert;
 }
 
 .oc-featured-item {
@@ -169,6 +171,7 @@ nav {
     align-items: center;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .oc-splash-screen {
@@ -238,7 +241,6 @@ nav {
 }
 
 .oc-info-container {
-    margin-left: 10px;
     padding: 0;
 }
 
@@ -317,6 +319,15 @@ nav {
     padding: 8px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.oc-control-button-container {
+    display: block;
+}
+
+.oc-control-button-container button {
+    margin-top: 2px;
+    margin-right: 2px;
 }
 
 .oc-clue-bar-number-direction {
@@ -453,6 +464,7 @@ nav {
     grid-gap: 2px;
     height: min-content;
     width: min-content;
+    margin: var(--main-border-width);
 }
 
 .oc-builder-info-container {
