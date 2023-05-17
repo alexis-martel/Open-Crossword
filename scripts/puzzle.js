@@ -856,63 +856,36 @@ function showSplashScreen(obj) {
     splashScreen.showModal();
 }
 
+async function getPuzzleObject(URLParams) {
+    // Returns a puzzle object based on the URL parameters
+    let obj = {};
+    if (URLParams.has("p")) {
+        let fileURL = `${document.baseURI}data/puzzles/${URLParams.get("p").toString()}.json`;
+        let response = await fetch(fileURL);
+        obj = await response.json();
+    } else if (URLParams.has("d")) {
+        obj = JSON.parse(await URLParams.get("d").toString());
+    } else if (URLParams.has("dc")) {
+        if (!"CompressionStream" in window) throw new Error("CompressionStream not supported");
+        obj = JSON.parse(await decompressAndDecode(URLParams.get("dc").toString()));
+    } else {
+        throw new Error("Invalid parameters");
+    }
+    return obj;
+}
+
+async function getLanguageObject(language) {
+    // Returns a language object of the specified locale
+    let response = await fetch(`${document.baseURI}languages/${language}.json`);
+    return await response.json();
+}
+
 async function startOCPlayer() {
     let params = new URLSearchParams(document.location.search);
-    if (params.has("p")) {
-        let puzzleID = params.get("p").toString();
-        let puzzleURL = `${document.baseURI}data/puzzles/${puzzleID}.json`;
-        // Fetch puzzle data from url
-        fetch(puzzleURL).then((response) => response.json()).then((data) => {
-            // Fetch language data
-            fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`,
-                {method: "HEAD"}
-            ).then((res) => {
-                if (res.ok) {
-                    // Language file exists
-                    fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`).then((response) => response.json()).then((languageData) => {
-                        setLanguage(languageData);
-                        populate(data);
-                    });
-                } else {
-                    // Language file does not exist
-                    console.error("Language not supported");
-                    fetch(`${document.baseURI}languages/en.json`).then((response) => response.json()).then((languageData) => {
-                        setLanguage(languageData);
-                        populate(data);
-                    });
-                }
-            });
-        });
-    } else if (params.has("d") || params.has("dc")) {
-        let data;
-        if (params.has("d")) {
-            let puzzleData = params.get("d").toString();
-            data = JSON.parse(puzzleData);
-        } else if (params.has("dc")) {
-            if (!"CompressionStream" in window) console.error("CompressionStream not supported");
-            let puzzleData = await decompressAndDecode(params.get("dc").toString());
-            data = await JSON.parse(puzzleData);
-        }
-        // Fetch language data
-        fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`,
-            {method: "HEAD"}
-        ).then((res) => {
-            if (res.ok) {
-                // Language file exists
-                fetch(`${document.baseURI}languages/${data["info"]["language"]}.json`).then((response) => response.json()).then((languageData) => {
-                    setLanguage(languageData);
-                    populate(data);
-                });
-            } else {
-                // Language file does not exist
-                console.error("Language not supported, falling back to English");
-                fetch(`${document.baseURI}languages/en.json`).then((response) => response.json()).then((languageData) => {
-                    setLanguage(languageData);
-                    populate(data);
-                });
-            }
-        });
-    }
+    let data = await getPuzzleObject(params);
+    let language = await getLanguageObject(data["info"]["language"]);
+    setLanguage(language);
+    populate(data);
     console.info("%cStarted OpenCrossword Player…", "font-family: \"Times New Roman\", Times, serif; font-weight: bold; font-size: 20px;");
 }
 
