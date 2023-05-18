@@ -876,8 +876,11 @@ async function getPuzzleObject(URLParams) {
 
 async function getLanguageObject(language) {
     // Returns a language object of the specified locale
-    let response = await fetch(`${document.baseURI}languages/${language}.json`);
-    return await response.json();
+    try {
+        return await fetch(`${document.baseURI}languages/${language}.json`);
+    } catch {
+        return await fetch(`${document.baseURI}languages/en.json`);
+    }
 }
 
 async function startOCPlayer() {
