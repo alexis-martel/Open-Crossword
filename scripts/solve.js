@@ -13,32 +13,83 @@ puzzleContainer.appendChild(gridContainer);
 
 let l; // Stores language data
 
-class Puzzle {
+class Grid {
     constructor(obj) {
         this.obj = obj;
         this.squares = []; // Stores all squares in the puzzle
-        this.clues = []; // Stores all clues in the puzzle
         this.selectedSquare = null; // Stores the selected square
         this.selectionDirection = "across"; // Stores the direction of the selection ("across" or "down")
-        this.puzzleStopwatch = setInterval(incrementStopwatchTime, 1000); // Start the stopwatch
-        this.puzzleSeconds = 0; // Stores the seconds for which the puzzle has been running
+
     }
 
-    populateGrid() {
+    populate(parentElement) {
         // Populates `puzzleContainer` with a grid of squares
         let squareX = 0; // x-coordinate of the current square
         let squareY = 0; // y-coordinate of the current square
 
-        gridContainer.style.gridTemplateColumns = `repeat(${this.obj["grid"][0].length}, 1fr)`;
+        parentElement.style.gridTemplateColumns = `repeat(${this.obj["grid"][0].length}, 1fr)`;
 
         for (const i of this.obj["grid"]) {
             for (const j of i) {
-                puzzle.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"], j["circled"], j["shadeLevel"]));
+                this.squares.push(new PuzzleSquare(squareX, squareY, j["type"], j["clueNumber"], j["answer"], j["circled"], j["shadeLevel"]));
                 squareX++;
             }
             squareY++;
             squareX = 0;
         }
+    }
+
+    selectNextSquare() {
+        // Selects the next square in the puzzle
+        if (this.selectionDirection === "across") {
+            // Filters the squares array to the same y value as the selected square and a larger x value
+            if (this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x).length === 0 || this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].style !== "cell") {
+                // Select next clue if array is empty or next square is a block/invisible square
+                clueBar.nextButton.element.click();
+            } else {
+                // Select next square if array is not empty and next square is not a block/invisible square
+                this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].select();
+            }
+        } else if (this.selectionDirection === "down") {
+            // Filters the squares array to the same x value as the selected square and a larger x value
+            if (this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y).length === 0 || this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].style !== "cell") {
+                // Select next clue if array is empty or next square is a block/invisible square
+                clueBar.nextButton.element.click();
+            } else {
+                // Select next square if array is not empty and next square is not a block/invisible square
+                this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].select();
+            }
+        }
+    }
+
+    selectPreviousSquare() {
+        // Selects the previous square in the puzzle
+        if (this.selectionDirection === "across") {
+            this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].select();
+        } else if (this.selectionDirection === "down") {
+            this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].select();
+        }
+    }
+
+    selectNextBlankSquare() {
+        // Selects the next cell without input, if the puzzle isn't full
+        if (this.squares.find((square) => square.style === "cell" && square.textElement.value === "")) {
+            this.selectNextSquare();
+            while (this.selectedSquare.textElement.value !== "") {
+                this.selectNextSquare();
+            }
+        } else {
+            this.selectNextSquare();
+        }
+    }
+}
+
+class Puzzle extends Grid {
+    constructor(obj) {
+        super(obj);
+        this.clues = []; // Stores all clues in the puzzle
+        this.puzzleStopwatch = setInterval(incrementStopwatchTime, 1000); // Start the stopwatch
+        this.puzzleSeconds = 0; // Stores the seconds for which the puzzle has been running
     }
 
     populateClues() {
@@ -131,64 +182,6 @@ class Puzzle {
 
         // Set the page's title to the puzzle's title
         document.title = `${this.obj["info"]["title"]}, by ${this.obj["info"]["author"]} - OpenCrossword`;
-    }
-
-    selectNextSquare() {
-        // Selects the next square in the puzzle
-        if (this.selectionDirection === "across") {
-            // Filters the squares array to the same y value as the selected square and a larger x value
-            if (this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x).length === 0 || this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].style !== "cell") {
-                // Select next clue if array is empty or next square is a block/invisible square
-                clueBar.nextButton.element.click();
-            } else {
-                // Select next square if array is not empty and next square is not a block/invisible square
-                this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].select();
-            }
-        } else if (this.selectionDirection === "down") {
-            // Filters the squares array to the same x value as the selected square and a larger x value
-            if (this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y).length === 0 || this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].style !== "cell") {
-                // Select next clue if array is empty or next square is a block/invisible square
-                clueBar.nextButton.element.click();
-            } else {
-                // Select next square if array is not empty and next square is not a block/invisible square
-                this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].select();
-            }
-        }
-    }
-
-    selectPreviousSquare() {
-        // Selects the previous square in the puzzle
-        if (this.selectionDirection === "across") {
-            // Filters the squares array to the same y value as the selected square and a smaller x value
-            if (this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length === 0 || this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].style !== "cell") {
-                // Select previous clue if array is empty or previous square is a block/invisible square
-                clueBar.previousButton.element.click();
-            } else {
-                // Select previous square if array is not empty and previous square is not a block/invisible square
-                this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].select();
-            }
-        } else if (this.selectionDirection === "down") {
-            // Filters the squares array to the same x value as the selected square and a smaller x value
-            if (this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length === 0 || this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].style !== "cell") {
-                // Select previous clue if array is empty or previous square is a block/invisible square
-                clueBar.previousButton.element.click();
-            } else {
-                // Select previous square if array is not empty and previous square is not a block/invisible square
-                this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].select();
-            }
-        }
-    }
-
-    selectNextBlankSquare() {
-        // Selects the next cell without input, if the puzzle isn't full
-        if (this.squares.find((square) => square.style === "cell" && square.textElement.value === "")) {
-            this.selectNextSquare();
-            while (this.selectedSquare.textElement.value !== "") {
-                this.selectNextSquare();
-            }
-        } else {
-            puzzle.selectNextSquare();
-        }
     }
 
     backCheck() {
@@ -719,9 +712,9 @@ function populate(obj) {
     document.getElementById("oc-splash-screen").onsubmit = () => {
         clueBar = new ClueBar(document.getElementById("oc-game-view"));
         puzzle = new Puzzle(obj);
-        puzzle.populateGrid(obj);
-        puzzle.populateClues(obj);
-        puzzle.populateInfo(obj);
+        puzzle.populate(gridContainer);
+        puzzle.populateClues();
+        puzzle.populateInfo();
         displayControlButtons();
     }
 }
