@@ -468,6 +468,11 @@ class ClueBar {
             }
             puzzle.selectedSquare.select(); // Refresh grid
         }
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                this.nextButton.element.click();
+            }
+        });
     }
 
     displayClue() {
@@ -476,11 +481,6 @@ class ClueBar {
         } else {
             this.element.style.display = "flex";
             this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number}-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${puzzle.selectedClue.HTMLContent}`;
-        }
-        document.onkeydown = (event) => {
-            if (event.key === "Enter") {
-                this.nextButton.element.click();
-            }
         }
     }
 }
