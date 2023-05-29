@@ -359,7 +359,11 @@ class ClueBar {
         }
         document.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                this.nextButton.element.click();
+                if (event.shiftKey) {
+                    this.previousButton.element.click();
+                } else {
+                    this.nextButton.element.click();
+                }
             }
         });
     }
