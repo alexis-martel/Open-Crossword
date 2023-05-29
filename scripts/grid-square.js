@@ -1,19 +1,16 @@
 export default class GridSquare {
-    constructor(parentGrid, x, y, style, clue, answer, circled, shadeLevel) {
+    constructor(parentGrid, x, y, type, clueNumber, answer, circled, shadeLevel) {
         this.parentGrid = parentGrid;
         this.x = x; // x-coordinate
         this.y = y; // y-coordinate
-        this.style = style; // Style of the square (e.g. "cell", "block", "invisible")
-        this.clue = clue; // Clue of the square (Number)
+        this.style = type; // Style of the square (e.g. "cell", "block", "invisible")
+        this.clue = clueNumber; // Clue of the square (Number)
         this.answer = answer // Answer of the square (Character)
         this.element = document.createElement("span");
         this.element.classList.add("oc-puzzle-square");
         parentGrid.element.appendChild(this.element);
         this.selected = false; // Whether the square is selected
 
-        if (this.style === "block") {
-            this.element.classList.add("oc-block");
-        }
         if (circled) {
             this.element.classList.add("oc-cell");
             this.element.classList.add("oc-cell-circled");
@@ -21,21 +18,18 @@ export default class GridSquare {
         if (shadeLevel || shadeLevel > 0) {
             this.element.classList.add(`oc-shaded-level-${shadeLevel}`);
         }
-        if (this.style === "cell") {
-            this.element.classList.add("oc-cell");
-        }
-        if (this.style === "invisible") {
-            this.element.classList.add("oc-invisible", "oc-block");
-        }
 
-        if (this.clue) {
-            this.clueElement = document.createElement("span");
-            this.element.appendChild(this.clueElement);
-            this.clueElement.classList.add("oc-puzzle-square-clue");
-            this.clueElement.textContent = this.clue;
-            this.parentGrid.resizeClueFont.observe(this.clueElement.parentElement);
-        }
-        if (this.answer) {
+        if (this.style === "block") {
+            this.element.classList.add("oc-block");
+        } else if (this.style === "cell") {
+            if (this.clue) {
+                this.clueElement = document.createElement("span");
+                this.element.appendChild(this.clueElement);
+                this.clueElement.classList.add("oc-puzzle-square-clue");
+                this.clueElement.textContent = this.clue;
+                this.parentGrid.resizeClueFont.observe(this.clueElement.parentElement);
+            }
+            this.element.classList.add("oc-cell");
             this.textElement = document.createElement("input");
             this.textElement.type = "text";
             this.textElement.maxLength = 1;
@@ -59,11 +53,11 @@ export default class GridSquare {
                 }
                 this.select();
             }
-        }
-        if (this.textElement) {
             this.textElement.onbeforeinput = (e) => {
                 if (e.data === " ") e.preventDefault();
             }
+        } else if (this.style === "invisible") {
+            this.element.classList.add("oc-invisible", "oc-block");
         }
     }
 
