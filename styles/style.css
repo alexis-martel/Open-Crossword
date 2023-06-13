@@ -490,6 +490,37 @@ nav {
     background-color: var(--selection-colour);
 }
 
+.oc-builder-clue-checkbox {
+    z-index: 1;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+}
+
+.oc-builder-clue-checkbox {
+    display: block;
+}
+
+.oc-builder-clue-checkbox:checked {
+    display: block; /* Always show when checked */
+}
+
+@media (hover: hover) {
+    .oc-builder-clue-checkbox {
+        display: none;
+    }
+    .oc-puzzle-square:hover > .oc-builder-clue-checkbox {
+        display: block;
+    }
+}
+
+.oc-builder-square-clue-number-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+}
+
 .oc-builder-cell {
 }
 

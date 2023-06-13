@@ -111,9 +111,9 @@ export default class Grid {
     selectPreviousSquare() {
         // Selects the previous square in the puzzle
         if (this.selectionDirection === "across") {
-            this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x)[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x).length - 1].select();
+            this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x && square.style === "cell")[this.squares.filter((square) => square.y === this.selectedSquare.y && square.x < this.selectedSquare.x && square.style === "cell").length - 1].select();
         } else if (this.selectionDirection === "down") {
-            this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y)[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y).length - 1].select();
+            this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y && square.style === "cell")[this.squares.filter((square) => square.x === this.selectedSquare.x && square.y < this.selectedSquare.y && square.style === "cell").length - 1].select();
         }
     }
 

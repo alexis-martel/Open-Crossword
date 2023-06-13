@@ -1,5 +1,7 @@
 import decompressAndDecode from "./decompress.js";
 import compressAndEncode from "./compress.js";
+import Grid from "./grid.js";
+import GridSquare from "./grid-square.js";
 
 "use strict";
 
@@ -12,64 +14,20 @@ puzzleContainer.classList.add("oc-builder-puzzle-container")
 document.getElementById("oc-build-view").appendChild(puzzleContainer);
 
 const gridContainer = document.createElement("form");
-gridContainer.classList.add("oc-builder-grid-container");
+gridContainer.classList.add("oc-grid-container");
 puzzleContainer.appendChild(gridContainer);
 
 let myPuzzle;
-let selectedSquare;
 
-class Grid {
-    constructor(width, height, obj) {
-        this.squares = [];
-        if (obj) {
-            // Create a grid filled in with `obj` data (ignores `width` and `height`)
-            this.width = obj["grid"][0].length;
-            this.height = obj["grid"].length;
-            for (let i = 0; i < this.height; i++) {
-                for (let j = 0; j < this.width; j++) {
-                    let square = new PuzzleSquare(i, j);
-                    // Check the obj for the corresponding square's data
-                    if (obj["grid"][i][j]["type"] === "cell") {
-                        square.makeCell();
-                        square.answerInput.value = obj["grid"][i][j]["answer"];
-                        square.clueNumberInput.value = obj["grid"][i][j]["clueNumber"];
-                    }
-                    if (obj["grid"][i][j]["type"] === "circled-cell") {
-                        square.makeCell();
-                        square.answerInput.value = obj["grid"][i][j]["answer"];
-                        square.clueNumberInput.value = obj["grid"][i][j]["clueNumber"];
-                        square.circledInput.checked = true;
-                    }
-                    if (obj["grid"][i][j]["type"] === "block") {
-                        square.makeBlock();
-                    }
-                    if (obj["grid"][i][j]["type"] === "invisible") {
-                        square.makeInvisible();
-                    }
-                    this.squares.push(square);
-                }
-            }
-        } else {
-            // Create a new empty grid
-            this.width = width;
-            this.height = height;
-            for (let i = 0; i < this.width; i++) {
-                for (let j = 0; j < this.height; j++) {
-                    let square = new PuzzleSquare(j, i);
-                    this.squares.push(square);
-                    square.makeCell();
-                }
-            }
-        }
-
+class EditorGrid extends Grid {
+    constructor(obj) {
+        super(obj);
 
         this.acrossClues = [];
         this.downClues = [];
-        gridContainer.style.gridTemplateColumns = `repeat(${this.width}, 75px)`;
         if (this.width < 1 || this.height < 1) {
             gridContainer.textContent = "Invalid grid size";
         }
-
     }
 
     selectSquare(x, y) {
@@ -107,35 +65,21 @@ class Grid {
         // Create the "grid" array
         this.obj["grid"] = [];
 
-        // Loop through every row of squares
-        for (let i = 0; i < this.height; i++) {
-            // Create a new array for the current row
+        // Create rows
+        for (let i = 0; i < this.squares.filter(square => square.y === 0).length; i++) {
             this.obj["grid"].push([]);
+        }
 
-            // Loop through every square in the current row
-            for (let j = 0; j < this.width; j++) {
-                if (this.squares[i * this.width + j].type === "cell") {
-                    // Add the current square's letter to the current row
-                    if (this.squares[i * this.width + j].circledInput.checked) {
-                        this.obj["grid"][i].push({
-                            "clueNumber": parseInt(this.squares[i * this.width + j].clueNumberInput.value, 10),
-                            "answer": this.squares[i * this.width + j].answerInput.value.toLowerCase(),
-                            "type": "cell",
-                            "circled": true
-                        });
-                    } else {
-                        this.obj["grid"][i].push({
-                            "clueNumber": parseInt(this.squares[i * this.width + j].clueNumberInput.value, 10),
-                            "answer": this.squares[i * this.width + j].answerInput.value.toLowerCase(),
-                            "type": "cell"
-                        });
-                    }
-                } else if (this.squares[i * this.width + j].type === "block") {
-                    this.obj["grid"][i].push({"type": "block"});
-                } else if (this.squares[i * this.width + j].type === "invisible") {
-                    this.obj["grid"][i].push({"type": "invisible"});
-                }
-            }
+        // Loop through every square
+        for (const square of this.squares) {
+
+            let puzzleSquare = {};
+            if (square.textElement) puzzleSquare["answer"] = square.textElement.value;
+            if (square.numberInput && square.numberInput.value) puzzleSquare["clueNumber"] = parseInt(square.numberInput.value, 10);
+            puzzleSquare["type"] = square.style;
+
+            this.obj["grid"][square.y][square.x] = puzzleSquare;
+
         }
 
 
@@ -197,89 +141,40 @@ class Grid {
     }
 }
 
-class PuzzleSquare {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.type = null;
-        this.selected = false;
-        this.element = document.createElement("span");
-        this.element.classList.add("oc-builder-puzzle-square");
-        this.element.onclick = () => {
-            this.select();
+class EditorGridSquare extends GridSquare {
+    constructor(parentGrid, x, y, type, clueNumber, answer, circled, shadeLevel) {
+        super(parentGrid, x, y, type, clueNumber, answer, circled, shadeLevel);
+
+        this.checkBoxElement = document.createElement("input");
+        this.checkBoxElement.type = "checkbox";
+        this.checkBoxElement.classList.add("oc-builder-clue-checkbox");
+        this.element.appendChild(this.checkBoxElement);
+        this.checkBoxElement.onclick = (e) => {
+            e.stopPropagation(); // Prevents selection of the associated square
         }
-        gridContainer.appendChild(this.element)
-    }
-
-    makeCell() {
-        this.deselect();
-        // Remove all child nodes
-        this.element.replaceChildren();
-
-        this.element.classList.add("oc-builder-cell");
-        this.element.classList.remove("oc-builder-invisible");
-        this.element.classList.remove("oc-builder-block");
-
-        // Append two <input type="text"> elements to the cell and a checkbox
-        this.clueNumberInput = document.createElement("input");
-        this.clueNumberInput.type = "number";
-        this.clueNumberInput.placeholder = "#";
-        this.clueNumberInput.classList.add("oc-builder-clue-input");
-
-        this.answerInput = document.createElement("input");
-        this.answerInput.type = "text";
-        this.answerInput.placeholder = "A";
-        this.answerInput.maxLength = 1;
-        this.answerInput.classList.add("oc-builder-answer-input");
-
-        this.circledInputLabel = document.createElement("label");
-        this.circledInputLabel.textContent = "Circled";
-        this.circledInput = document.createElement("input");
-        this.circledInput.type = "checkbox";
-
-        this.element.appendChild(this.clueNumberInput);
-        this.element.appendChild(this.answerInput);
-        this.element.appendChild(this.circledInputLabel);
-        this.circledInputLabel.appendChild(this.circledInput);
-        this.type = "cell";
-    }
-
-    makeBlock() {
-        this.deselect();
-        // Remove all child nodes
-        this.element.replaceChildren();
-
-        this.element.classList.add("oc-builder-block");
-        this.element.classList.remove("oc-builder-cell");
-        this.element.classList.remove("oc-builder-invisible");
-        this.type = "block";
-    }
-
-    makeInvisible() {
-        this.deselect();
-        // Remove all child nodes
-        this.element.replaceChildren();
-
-        this.element.classList.add("oc-builder-invisible");
-        this.element.classList.remove("oc-builder-cell");
-        this.element.classList.remove("oc-builder-block");
-        this.type = "invisible";
-    }
-
-    select() {
-        for (const square of myPuzzle.squares) {
-            square.deselect();
-            square.element.classList.remove("highlighted");
+        if (this.style === "cell") {
+            this.numberInput = document.createElement("input");
+            this.numberInput.type = "number";
+            this.numberInput.classList.add("oc-builder-square-clue-number-input");
+            this.numberInput.value = clueNumber;
+            this.element.appendChild(this.numberInput);
+            try {
+                this.clueElement.remove();
+            } catch {
+            }
+            this.numberInput.onclick = (e) => {
+                e.stopPropagation();
+            }
         }
-        this.selected = true;
-        this.element.classList.add("selected");
-        selectedSquare = this;
-    }
-
-    deselect() {
-        this.selected = false;
-        this.element.classList.remove("selected");
-        selectedSquare = undefined;
+        try {
+            this.textElement.value = answer;
+        } catch {
+        }
+        if (this.style !== "cell") {
+            this.element.onclick = () => {
+                    this.checkBoxElement.checked = !this.checkBoxElement.checked;
+            }
+        }
     }
 }
 
@@ -349,15 +244,15 @@ function populateToolBar() {
     UIContainer.appendChild(document.createElement("hr"));
     let makeCellButton = new ControlButton("Make cell", icon["squareCellSVG"], toolBarElement);
     makeCellButton.element.onclick = () => {
-        selectedSquare.makeCell();
+        transformSquares("cell");
     }
     let makeBlockButton = new ControlButton("Make block", icon["squareBlockSVG"], toolBarElement);
     makeBlockButton.element.onclick = () => {
-        selectedSquare.makeBlock();
+        transformSquares("block");
     }
     let makeInvisibleButton = new ControlButton("Make invisible", icon["squareInvisibleSVG"], toolBarElement);
     makeInvisibleButton.element.onclick = () => {
-        selectedSquare.makeInvisible();
+        transformSquares("invisible");
     }
     let sharePuzzleButton = new ControlButton("Share puzzle", icon["sharePuzzleSVG"], toolBarElement);
     sharePuzzleButton.element.onclick = () => {
@@ -374,6 +269,25 @@ function populateToolBar() {
     let wordHelperButton = new ControlButton("Word helper", icon["searchSVG"], toolBarElement);
     wordHelperButton.element.onclick = () => {
         displayWordHelperDialog();
+    }
+}
+
+function transformSquares(destinationType) {
+    if (myPuzzle.squares.filter(square => square.checkBoxElement.checked).length > 0) {
+        // Transform all checked squares
+        for (let square of myPuzzle.squares.filter(square => square.checkBoxElement.checked)) {
+            let newSquare = new EditorGridSquare(myPuzzle, square.x, square.y, destinationType, null, null, null, null);
+            square.element.replaceWith(newSquare.element)
+            myPuzzle.squares[myPuzzle.squares.indexOf(square)] = newSquare;
+        }
+    } else {
+        // Transform selected square
+        let x = myPuzzle.selectedSquare.x;
+        let y = myPuzzle.selectedSquare.y;
+        let newSquare = new EditorGridSquare(myPuzzle, x, y, destinationType, null, null, null, null);
+        myPuzzle.selectedSquare.element.replaceWith(newSquare.element)
+        myPuzzle.squares[myPuzzle.squares.indexOf(myPuzzle.selectedSquare)] = newSquare;
+        newSquare.select();
     }
 }
 
@@ -472,8 +386,8 @@ function displayInfo(obj) {
     infoForm.lastChild.textContent = "Language";
     infoForm.lastChild.appendChild(myPuzzle.languageInput);
 
-    if (obj) {
-        // Load the clues and info from `obj`
+    if (obj["info"] || obj["clues"]) {
+        // Load the clues and info from `obj` if they exist
         myPuzzle.titleInput.inputElement.value = obj["info"]["title"];
         myPuzzle.authorInput.inputElement.value = obj["info"]["author"];
         myPuzzle.contactInput.inputElement.value = obj["info"]["contact"];
@@ -522,19 +436,11 @@ function displayWordHelperDialog() {
     dialog.showModal();
 }
 
-function populateNewGrid(gridWidth, gridHeight) {
-    // Populate the toolbar, then initialize the grid and clues
-    populateToolBar();
-    myPuzzle = new Grid(gridWidth, gridHeight);
-    displayInfo();
-}
-
 function populateGrid(obj) {
     // Fill in a grid with object data
     populateToolBar();
-    let gridWidth = null;
-    let gridWeight = null;
-    myPuzzle = new Grid(gridWidth, gridWeight, obj);
+    myPuzzle = new EditorGrid(obj);
+    myPuzzle.populate(gridContainer, EditorGridSquare);
     displayInfo(obj);
 }
 
@@ -569,12 +475,28 @@ function showSplashScreen() {
     document.getElementById("oc-splash-screen").onsubmit = () => {
         let gridWidth = parseInt(document.getElementById("oc-splash-screen-info-input-grid-width").value, 10);
         let gridHeight = parseInt(document.getElementById("oc-splash-screen-info-input-grid-height").value, 10);
-        populateNewGrid(gridWidth, gridHeight);
+        populateGrid(createEmptyPuzzleObj(gridWidth, gridHeight));
         document.getElementById("oc-splash-screen").remove();
     }
     document.getElementById("oc-splash-screen-open-button").onclick = () => {
         showOpenForm();
     }
+}
+
+function createEmptyPuzzleObj(width, height) {
+    let obj = {};
+    obj["grid"] = [];
+
+    for (let i = 0; i < height; i++) {
+        obj["grid"][i] = [];
+        for (let j = 0; j < width; j++) {
+            obj["grid"][i][j] = {
+                "type": "cell",
+                "answer": null
+            };
+        }
+    }
+    return obj;
 }
 
 function showOpenForm() {

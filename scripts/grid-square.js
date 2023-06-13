@@ -38,11 +38,20 @@ export default class GridSquare {
             this.textElement.setAttribute("autocorrect", "off");
             this.textElement.setAttribute("autocomplete", "off");
             this.textElement.setAttribute("autocapitalize", "characters");
-            this.textElement.ariaLabel = "Square answer".i18n();
+            try {
+                this.textElement.ariaLabel = "Square answer".i18n();
+            } catch {
+                this.textElement.ariaLabel = "Square answer";
+            }
             this.parentGrid.resizeInputFont.observe(this.textElement);
             this.element.appendChild(this.textElement);
             this.textElement.classList.add("oc-puzzle-square-text");
-            this.answer = this.answer.toUpperCase();
+            if (this.answer) this.answer = this.answer.toUpperCase();
+            this.textElement.oninput = (e) => {
+                if (e.data) {
+                    parentGrid.selectNextSquare();
+                }
+            };
             this.element.onclick = () => {
                 if (this.selected) {
                     if (parentGrid.selectionDirection === "across") {
@@ -71,33 +80,39 @@ export default class GridSquare {
         this.selected = true;
         this.element.classList.add("selected");
         this.parentGrid.selectedSquare = this;
-        this.textElement.focus();
-        this.textElement.select(); // Select the entered text so it can be overwritten
-
-        if (this.clue) {
-            for (const clue of this.parentGrid.clues) {
-                if (clue.number === this.clue && this.style === "cell" && this.parentGrid.selectionDirection === clue.direction) {
-                    clue.select();
+        try {
+            this.textElement.focus();
+            this.textElement.select(); // Select the entered text so it can be overwritten
+        } catch {}
+        try {
+            let firstSquareNumber = this.parentGrid.backCheck();
+            let firstSquare = this.parentGrid.squares.find(square => square.clue === firstSquareNumber);
+            // Highlight all squares from `firstSquareNumber` to the next block
+            if (this.parentGrid.selectionDirection === "across") {
+                let rowSquares = this.parentGrid.squares.filter(square => square.y === firstSquare.y && square.x >= firstSquare.x);
+                for (const square of rowSquares) {
+                    square.element.classList.add("highlighted");
+                    if (square.style === "block") {
+                        break;
+                    }
+                }
+            } else if (this.parentGrid.selectionDirection === "down") {
+                let columnSquares = this.parentGrid.squares.filter(square => square.x === firstSquare.x && square.y >= firstSquare.y);
+                for (const square of columnSquares) {
+                    square.element.classList.add("highlighted");
+                    if (square.style === "block") {
+                        break;
+                    }
                 }
             }
-        }
-        let firstSquareNumber = this.parentGrid.backCheck();
-        let firstSquare = this.parentGrid.squares.find(square => square.clue === firstSquareNumber);
-        // Highlight all squares from `firstSquareNumber` to the next block
-        if (this.parentGrid.selectionDirection === "across") {
-            let rowSquares = this.parentGrid.squares.filter(square => square.y === firstSquare.y && square.x >= firstSquare.x);
-            for (const square of rowSquares) {
-                square.element.classList.add("highlighted");
-                if (square.style === "block") {
-                    break;
+        } catch {
+            if (this.parentGrid.selectionDirection === "across") {
+                for (const square of this.parentGrid.squares.filter(square => square.y === this.y)) {
+                    square.element.classList.add("highlighted");
                 }
-            }
-        } else if (this.parentGrid.selectionDirection === "down") {
-            let columnSquares = this.parentGrid.squares.filter(square => square.x === firstSquare.x && square.y >= firstSquare.y);
-            for (const square of columnSquares) {
-                square.element.classList.add("highlighted");
-                if (square.style === "block") {
-                    break;
+            } else if (this.parentGrid.selectionDirection === "down") {
+                for (const square of this.parentGrid.squares.filter(square => square.x === this.x)) {
+                    square.element.classList.add("highlighted");
                 }
             }
         }
