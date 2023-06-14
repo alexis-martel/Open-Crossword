@@ -335,7 +335,6 @@ nav {
 }
 
 .oc-clue-content-wrapper {
-
 }
 
 .oc-clue-bar-control-wrapper {
@@ -459,57 +458,31 @@ nav {
     background-color: var(--background-colour);
 }
 
-.oc-builder-grid-container {
-    display: grid;
-    grid-gap: 2px;
-    height: min-content;
-    width: min-content;
-    margin: var(--main-border-width);
-}
-
 .oc-builder-info-container {
     margin-left: 10px;
 }
 
-.oc-builder-puzzle-square {
-    box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
-    display: inline-block;
-    width: 75px;
-    height: 75px;
-    color: var(--foreground-colour);
-    background-color: var(--background-colour);
-    text-align: center;
-    position: relative;
-}
-
-.oc-builder-puzzle-square:hover {
-    background-color: var(--highlight-colour);
-}
-
-.oc-builder-puzzle-square.selected {
-    background-color: var(--selection-colour);
-}
-
-.oc-builder-clue-checkbox {
+.oc-builder-square-checkbox {
     z-index: 1;
     position: absolute;
     right: 1px;
     top: 1px;
 }
 
-.oc-builder-clue-checkbox {
+.oc-builder-square-checkbox {
     display: block;
 }
 
-.oc-builder-clue-checkbox:checked {
+.oc-builder-square-checkbox:checked {
     display: block; /* Always show when checked */
 }
 
 @media (hover: hover) {
-    .oc-builder-clue-checkbox {
+    .oc-builder-square-checkbox {
         display: none;
     }
-    .oc-puzzle-square:hover > .oc-builder-clue-checkbox {
+
+    .oc-puzzle-square:hover > .oc-builder-square-checkbox {
         display: block;
     }
 }
@@ -519,17 +492,6 @@ nav {
     top: 0;
     left: 0;
     width: 50%;
-}
-
-.oc-builder-cell {
-}
-
-.oc-builder-block {
-    background-color: var(--foreground-colour);
-}
-
-.oc-builder-invisible {
-    background-color: var(--selection-colour);
 }
 
 .oc-builder-clue-list:empty:before {
@@ -548,20 +510,6 @@ nav {
     width: 85%;
     font-family: var(--main-font);
     font-size: initial;
-}
-
-.oc-builder-clue-input {
-    width: 100%;
-    font-family: var(--main-font);
-    font-size: initial;
-    box-sizing: border-box;
-}
-
-.oc-builder-answer-input {
-    width: 100%;
-    font-family: var(--main-font);
-    font-size: initial;
-    box-sizing: border-box;
 }
 
 .oc-builder-info-input-label {

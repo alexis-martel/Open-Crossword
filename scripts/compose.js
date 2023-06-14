@@ -147,7 +147,7 @@ class EditorGridSquare extends GridSquare {
 
         this.checkBoxElement = document.createElement("input");
         this.checkBoxElement.type = "checkbox";
-        this.checkBoxElement.classList.add("oc-builder-clue-checkbox");
+        this.checkBoxElement.classList.add("oc-builder-square-checkbox");
         this.element.appendChild(this.checkBoxElement);
         this.checkBoxElement.onclick = (e) => {
             e.stopPropagation(); // Prevents selection of the associated square
