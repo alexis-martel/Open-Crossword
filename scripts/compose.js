@@ -1,7 +1,7 @@
-import decompressAndDecode from "./decompress.js";
 import compressAndEncode from "./compress.js";
-import Grid from "./grid.js";
+import decompressAndDecode from "./decompress.js";
 import GridSquare from "./grid-square.js";
+import Grid from "./grid.js";
 
 "use strict";
 
@@ -25,8 +25,76 @@ class EditorGrid extends Grid {
 
         this.acrossClues = [];
         this.downClues = [];
+
+        this.rowColumnCheckboxes = [];
+
         if (this.width < 1 || this.height < 1) {
             gridContainer.textContent = "Invalid grid size";
+        }
+    }
+
+    showEditorFunctions() {
+        // Show a checkbox to the left of every row and at the top of every column that allows for easy multi-selection
+
+        // Show the `select column` checkbox(es)
+        this.element.style.gridTemplateColumns = `auto repeat(${this.obj["grid"][0].length}, 1fr)`;
+        for (let i = this.obj["grid"][0].length; i > 0; i--) {
+            this.element.prepend(new EditorCheckBox(i - 1, "x").container);
+        }
+        // Show the `select puzzle` checkbox
+        this.element.prepend(new EditorCheckBox(null, "both").container);
+        // Show the `select row` checkbox(es)
+        for (const square of this.squares.filter(square => square.x === 0)) {
+            this.element.insertBefore(new EditorCheckBox(square.y, "y").container, square.element);
+        }
+    }
+
+    refreshCheckboxes() {
+        // Sets the check state of each row/column and of the puzzle checkbox to the correct state
+        for (const checkbox of this.rowColumnCheckboxes) {
+            if (checkbox.axis === "both") {
+                if (this.squares.filter(square => square.checkboxElement.checked === true).length === 0) {
+                    // None are checked
+                    checkbox.element.indeterminate = false;
+                    checkbox.element.checked = false;
+                } else if (this.squares.filter(square => square.checkboxElement.checked === false).length === 0) {
+                    // All are checked
+                    checkbox.element.indeterminate = false;
+                    checkbox.element.checked = true;
+                } else {
+                    // Some are checked
+                    checkbox.element.indeterminate = true;
+                    checkbox.element.checked = false;
+                }
+            } else if (checkbox.axis === "x") {
+                if (this.squares.filter(square => square.x === checkbox.position && square.checkboxElement.checked === false).length === 0) {
+                    // Entire column is checked
+                    checkbox.element.indeterminate = false;
+                    checkbox.element.checked = true;
+                } else if (this.squares.filter(square => square.x === checkbox.position && square.checkboxElement.checked === true).length === 0) {
+                    // Entire column is unchecked
+                    checkbox.element.indeterminate = false;
+                    checkbox.element.checked = false;
+                } else {
+                    // Some squares in column are checked
+                    checkbox.element.indeterminate = true;
+                    checkbox.element.checked = false;
+                }
+            } else if (checkbox.axis === "y") {
+                if (this.squares.filter(square => square.y === checkbox.position && square.checkboxElement.checked === false).length === 0) {
+                    // Entire row is checked
+                    checkbox.element.indeterminate = false;
+                    checkbox.element.checked = true;
+                } else if (this.squares.filter(square => square.y === checkbox.position && square.checkboxElement.checked === true).length === 0) {
+                    // Entire row is unchecked
+                    checkbox.element.indeterminate = false;
+                    checkbox.element.checked = false;
+                } else {
+                    // Some squares in row are checked
+                    checkbox.element.indeterminate = true;
+                    checkbox.element.checked = false;
+                }
+            }
         }
     }
 
@@ -141,16 +209,72 @@ class EditorGrid extends Grid {
     }
 }
 
+class EditorCheckBox {
+    constructor(position, axis) {
+        this.element = document.createElement("input");
+        this.element.type = "checkbox";
+        this.element.classList.add("oc-builder-row-column-checkbox");
+        this.container = document.createElement("label");
+        this.container.classList.add("oc-builder-row-column-checkbox-container");
+        this.container.appendChild(this.element);
+
+        this.axis = axis;
+        this.position = position;
+
+        myPuzzle.rowColumnCheckboxes.push(this);
+
+        this.element.onchange = () => {
+            if (axis === "both") {
+                if (this.element.checked) {
+                    for (const square of myPuzzle.squares) {
+                        square.checkboxElement.checked = true;
+                    }
+                } else {
+                    for (const square of myPuzzle.squares) {
+                        square.checkboxElement.checked = false;
+                    }
+                }
+            } else if (axis === "x") {
+                let squares = myPuzzle.squares.filter(square => square.x === position);
+                if (this.element.checked) {
+                    for (const square of squares) {
+                        square.checkboxElement.checked = true;
+                    }
+                } else {
+                    for (const square of squares) {
+                        square.checkboxElement.checked = false;
+                    }
+                }
+            } else if (axis === "y") {
+                let squares = myPuzzle.squares.filter(square => square.y === position);
+                if (this.element.checked) {
+                    for (const square of squares) {
+                        square.checkboxElement.checked = true;
+                    }
+                } else {
+                    for (const square of squares) {
+                        square.checkboxElement.checked = false;
+                    }
+                }
+            }
+            myPuzzle.refreshCheckboxes();
+        }
+    }
+}
+
 class EditorGridSquare extends GridSquare {
     constructor(parentGrid, x, y, type, clueNumber, answer, circled, shadeLevel) {
         super(parentGrid, x, y, type, clueNumber, answer, circled, shadeLevel);
 
-        this.checkBoxElement = document.createElement("input");
-        this.checkBoxElement.type = "checkbox";
-        this.checkBoxElement.classList.add("oc-builder-square-checkbox");
-        this.element.appendChild(this.checkBoxElement);
-        this.checkBoxElement.onclick = (e) => {
+        this.checkboxElement = document.createElement("input");
+        this.checkboxElement.type = "checkbox";
+        this.checkboxElement.classList.add("oc-builder-square-checkbox");
+        this.element.appendChild(this.checkboxElement);
+        this.checkboxElement.onclick = (e) => {
             e.stopPropagation(); // Prevents selection of the associated square
+        }
+        this.checkboxElement.onchange = () => {
+            this.parentGrid.refreshCheckboxes();
         }
         if (this.style === "cell") {
             this.numberInput = document.createElement("input");
@@ -172,7 +296,8 @@ class EditorGridSquare extends GridSquare {
         }
         if (this.style !== "cell") {
             this.element.onclick = () => {
-                    this.checkBoxElement.checked = !this.checkBoxElement.checked;
+                this.checkboxElement.checked = !this.checkboxElement.checked;
+                this.checkboxElement.onchange();
             }
         }
     }
@@ -273,13 +398,14 @@ function populateToolBar() {
 }
 
 function transformSquares(destinationType) {
-    if (myPuzzle.squares.filter(square => square.checkBoxElement.checked).length > 0) {
+    if (myPuzzle.squares.filter(square => square.checkboxElement.checked).length > 0) {
         // Transform all checked squares
-        for (let square of myPuzzle.squares.filter(square => square.checkBoxElement.checked)) {
+        for (let square of myPuzzle.squares.filter(square => square.checkboxElement.checked)) {
             let newSquare = new EditorGridSquare(myPuzzle, square.x, square.y, destinationType, null, null, null, null);
             square.element.replaceWith(newSquare.element)
             myPuzzle.squares[myPuzzle.squares.indexOf(square)] = newSquare;
         }
+        myPuzzle.refreshCheckboxes();
     } else {
         // Transform selected square
         let x = myPuzzle.selectedSquare.x;
@@ -402,14 +528,12 @@ function displayInfo(obj) {
             NewClue.textElement.value = clue[1]["content"].toString();
             NewClue.numberElement.value = clue[0];
             myPuzzle.acrossClues.push(NewClue);
-
         }
         for (const clue of Object.entries(obj["clues"]["down"])) {
             let NewClue = new PuzzleClue("down", downClues);
             NewClue.textElement.value = clue[1]["content"].toString();
             NewClue.numberElement.value = clue[0];
             myPuzzle.downClues.push(NewClue);
-
         }
     }
 }
@@ -441,6 +565,7 @@ function populateGrid(obj) {
     populateToolBar();
     myPuzzle = new EditorGrid(obj);
     myPuzzle.populate(gridContainer, EditorGridSquare);
+    myPuzzle.showEditorFunctions();
     displayInfo(obj);
 }
 
@@ -558,7 +683,7 @@ function showOpenForm() {
     }
 }
 
-String.prototype.toQueryString = function () {
+String.prototype.toQueryString = function() {
     // Remove all characters that precede "?"
     return this.substring(this.indexOf("?"));
 }

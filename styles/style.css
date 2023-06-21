@@ -487,6 +487,17 @@ nav {
     }
 }
 
+.oc-builder-row-column-checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.oc-builder-row-column-checkbox {
+    margin: 5px
+}
+
 .oc-builder-square-clue-number-input {
     position: absolute;
     top: 0;

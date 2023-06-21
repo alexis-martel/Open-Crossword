@@ -4,7 +4,6 @@ export default class Grid {
         this.squares = []; // Stores all squares in the puzzle
         this.selectedSquare = null; // Stores the selected square
         this.selectionDirection = "across"; // Stores the direction of the selection ("across" or "down")
-
     }
 
     populate(parentElement, Square) {
@@ -21,7 +20,6 @@ export default class Grid {
                 entry.target.firstChild.style.fontSize = (entry.target.clientHeight * 0.3) + "px";
                 entry.target.firstChild.style.top = (entry.target.clientHeight * 0.05) + "px";
                 entry.target.firstChild.style.left = (entry.target.clientHeight * 0.05) + "px";
-
             }
         });
 
