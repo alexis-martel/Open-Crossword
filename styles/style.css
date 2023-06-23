@@ -7,10 +7,10 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --background-colour: #FFFAF0FF;
-        --foreground-colour: #006def;
-        --selection-colour: #B4D7FF;
-        --highlight-colour: #DCDCDD;
+        --background-colour: #F1F1F1FF;
+        --foreground-colour: #0F0E12FF;
+        --selection-colour: #A0C2E9;
+        --highlight-colour: #D4D4D4;
         --error-colour: #ff5959;
         --shaded-colour-1: rgba(0, 109, 239, 0.2);
         --shaded-colour-2: rgba(0, 109, 239, 0.3);
@@ -292,7 +292,7 @@ nav {
 .oc-info-tag {
     font-weight: bold;
     font-size: small;
-    background-color: var(--selection-colour);
+    background-color: var(--highlight-colour);
     border-radius: 6px;
     display: inline-block;
     padding: 4px;
@@ -311,8 +311,8 @@ nav {
     display: none;
     grid-row: span;
     margin-bottom: 5px; /* To remedy margin collapse */
-    background-color: var(--selection-colour);
-    cursor: pointer;
+
+    border: var(--main-border-width) solid var(--foreground-colour);
     align-items: center;
     justify-content: space-between;
     font-size: large;
@@ -335,6 +335,7 @@ nav {
 }
 
 .oc-clue-content-wrapper {
+    cursor: pointer;
 }
 
 .oc-clue-bar-control-wrapper {

@@ -31,6 +31,6 @@
     "lang": "en",
     "display": "standalone",
     "start_url": "/Open-Crossword/",
-    "background_color": "#fffaf0",
-    "theme_color": "#fffaf0"
+    "background_color": "#F1F1F1FF",
+    "theme_color": "#F1F1F1FF"
 }
