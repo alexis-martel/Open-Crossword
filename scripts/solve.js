@@ -349,6 +349,7 @@ class ClueBar {
             } else {
                 puzzle.clues[puzzle.clues.length - 1].element.click();
             }
+            this.selectFirstBlankSquareInWord();
         }
         this.nextButton = new ControlButton("Next Clue".i18n(), icon["chevronNextSVG"], this.controlWrapper);
         this.nextButton.element.onclick = () => {
@@ -357,6 +358,10 @@ class ClueBar {
                 puzzle.clues[puzzle.clues.indexOf(puzzle.selectedClue) + 1].element.click();
             } else {
                 puzzle.clues[0].element.click();
+            }
+            // Selects the next blank in word
+            if (puzzle.selectedSquare.textElement.value !== null) {
+                this.selectFirstBlankSquareInWord();
             }
         }
         this.clueContentWrapper.onclick = () => {
@@ -384,6 +389,24 @@ class ClueBar {
         } else {
             this.element.style.display = "flex";
             this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number}-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${puzzle.selectedClue.HTMLContent}`;
+        }
+    }
+
+    selectFirstBlankSquareInWord() {
+        if (puzzle.selectionDirection === "across") {
+            let nextNonCellSquare = puzzle.squares.filter(square => square.y === puzzle.selectedSquare.y && square.x > puzzle.selectedSquare.x).find(square => square.style !== "cell");
+            try {
+                puzzle.squares.filter(square => square.y === puzzle.selectedSquare.y && square.x >= puzzle.selectedSquare.x && square.x < nextNonCellSquare.x).find(square => square.textElement.value === "").select();
+            } catch (TypeError) {
+                puzzle.squares.filter(square => square.y === puzzle.selectedSquare.y && square.x >= puzzle.selectedSquare.x).find(square => square.textElement.value === "").select();
+            }
+        } else if (puzzle.selectionDirection === "down") {
+            let nextNonCellSquare = puzzle.squares.filter(square => square.x === puzzle.selectedSquare.x && square.y > puzzle.selectedSquare.y).find(square => square.style !== "cell");
+            try {
+                puzzle.squares.filter(square => square.x === puzzle.selectedSquare.x && square.y >= puzzle.selectedSquare.y && square.y < nextNonCellSquare.y).find(square => square.textElement.value === "").select();
+            } catch (TypeError) {
+                puzzle.squares.filter(square => square.x === puzzle.selectedSquare.x && square.y >= puzzle.selectedSquare.y).find(square => square.textElement.value === "").select();
+            }
         }
     }
 }
