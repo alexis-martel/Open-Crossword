@@ -248,6 +248,10 @@ details {
     box-sizing: border-box;
 }
 
+.oc-puzzle-title {
+    word-break: break-word;
+}
+
 .oc-stopwatch {
     display: inline-block;
     vertical-align: middle;

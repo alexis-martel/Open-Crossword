@@ -23,6 +23,13 @@ class Puzzle extends Grid {
         this.puzzleSeconds = 0; // Stores the seconds for which the puzzle has been running
     }
 
+    displayTitle() {
+        let titleElement = document.createElement("h2");
+        titleElement.textContent = this.obj["info"]["title"];
+        titleElement.classList.add("oc-puzzle-title");
+        puzzleContainer.prepend(titleElement);
+    }
+
     populateClues() {
         // Populates `infoContainer` with the puzzle's clues
         let acrossLabel = document.createElement("h2");
@@ -592,6 +599,7 @@ function populate(obj) {
     document.getElementById("oc-splash-screen").onsubmit = () => {
         clueBar = new ClueBar(document.getElementById("oc-game-view"));
         puzzle = new Puzzle(obj);
+        puzzle.displayTitle();
         puzzle.populate(gridContainer, PuzzleSquare);
         puzzle.populateClues();
         puzzle.populateInfo();
