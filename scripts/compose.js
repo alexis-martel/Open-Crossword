@@ -279,6 +279,7 @@ class EditorGridSquare extends GridSquare {
         if (this.style === "cell") {
             this.numberInput = document.createElement("input");
             this.numberInput.type = "number";
+            this.numberInput.placeholder = "#";
             this.numberInput.classList.add("oc-builder-square-clue-number-input");
             this.numberInput.value = clueNumber;
             this.element.appendChild(this.numberInput);
@@ -450,6 +451,7 @@ function displayInfo(obj) {
     infoContainer.appendChild(acrossClues);
 
     let addAcrossClueButton = new ControlButton("Add a horizontal clue", icon["addSVG"], infoContainer);
+    addAcrossClueButton.element.classList.add("oc-builder-clue-list-button");
     addAcrossClueButton.element.onclick = () => {
         myPuzzle.acrossClues.push(new PuzzleClue("across", acrossClues));
     }
@@ -469,6 +471,7 @@ function displayInfo(obj) {
     infoContainer.appendChild(downClues);
 
     let addDownClueButton = new ControlButton("Add a vertical clue", icon["addSVG"], infoContainer);
+    addDownClueButton.element.classList.add("oc-builder-clue-list-button");
     addDownClueButton.element.onclick = () => {
         myPuzzle.downClues.push(new PuzzleClue("down", downClues));
     }
@@ -514,15 +517,17 @@ function displayInfo(obj) {
 
     if (obj["info"] || obj["clues"]) {
         // Load the clues and info from `obj` if they exist
-        myPuzzle.titleInput.inputElement.value = obj["info"]["title"];
-        myPuzzle.authorInput.inputElement.value = obj["info"]["author"];
-        myPuzzle.contactInput.inputElement.value = obj["info"]["contact"];
-        myPuzzle.descriptionInput.value = obj["info"]["description"];
-        for (let tag of obj["info"]["tags"]) {
-            myPuzzle.tagsInput.inputElement.value += tag + ", ";
-        }
-        myPuzzle.tagsInput.inputElement.value = myPuzzle.tagsInput.inputElement.value.slice(0, -2);
-        myPuzzle.languageInput.value = obj["info"]["language"];
+        try {
+            myPuzzle.titleInput.inputElement.value = obj["info"]["title"];
+            myPuzzle.authorInput.inputElement.value = obj["info"]["author"];
+            myPuzzle.contactInput.inputElement.value = obj["info"]["contact"];
+            myPuzzle.descriptionInput.value = obj["info"]["description"];
+            for (let tag of obj["info"]["tags"]) {
+                myPuzzle.tagsInput.inputElement.value += tag + ", ";
+            }
+            myPuzzle.tagsInput.inputElement.value = myPuzzle.tagsInput.inputElement.value.slice(0, -2);
+            myPuzzle.languageInput.value = obj["info"]["language"];
+        } catch { }
         for (const clue of Object.entries(obj["clues"]["across"])) {
             let NewClue = new PuzzleClue("across", acrossClues);
             NewClue.textElement.value = clue[1]["content"].toString();
@@ -621,6 +626,7 @@ function createEmptyPuzzleObj(width, height) {
             };
         }
     }
+    obj["clues"] = { "across": { "null": { "content": "" } }, "down": { "null": { "content": "" } } }
     return obj;
 }
 

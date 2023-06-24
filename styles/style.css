@@ -476,8 +476,15 @@ details {
     background-color: var(--background-colour);
 }
 
+.oc-builder-puzzle-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .oc-builder-info-container {
-    margin-left: 10px;
+    width: 100%;
 }
 
 .oc-builder-square-checkbox {
@@ -521,6 +528,8 @@ details {
     top: 0;
     left: 0;
     width: 50%;
+    font-family: var(--main-font);
+    font-size: small;
 }
 
 .oc-builder-clue-list:empty:before {
@@ -532,13 +541,20 @@ details {
 }
 
 .oc-builder-clue-number-input {
-    width: 15%;
+    width: 50px;
+    font-family: var(--main-font);
+    font-size: initial;
 }
 
 .oc-builder-clue-text-input {
-    width: 85%;
+    width: 100%;
     font-family: var(--main-font);
     font-size: initial;
+}
+
+.oc-builder-clue-list-button {
+    margin-top: var(--main-border-width);
+    margin-right: var(--main-border-width);
 }
 
 .oc-builder-info-input-label {
