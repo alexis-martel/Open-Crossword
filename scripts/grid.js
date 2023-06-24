@@ -92,17 +92,9 @@ export default class Grid {
     selectNextSquare() {
         // Selects the next square in the puzzle
         if (this.selectionDirection === "across") {
-            // Filters the squares array to the same y value as the selected square and a larger x value
-            if (!(this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x).length === 0 || this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].style !== "cell")) {
-                // Select next square if array is not empty and next square is not a block/invisible square
-                this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x)[0].select();
-            }
+            this.squares.filter((square) => square.y === this.selectedSquare.y && square.x > this.selectedSquare.x && square.style === "cell")[0].select();
         } else if (this.selectionDirection === "down") {
-            // Filters the squares array to the same x value as the selected square and a larger x value
-            if (!(this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y).length === 0 || this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].style !== "cell")) {
-                // Select next square if array is not empty and next square is not a block/invisible square
-                this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y)[0].select();
-            }
+            this.squares.filter((square) => square.x === this.selectedSquare.x && square.y > this.selectedSquare.y && square.style === "cell")[0].select();
         }
     }
 
