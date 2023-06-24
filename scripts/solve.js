@@ -72,14 +72,17 @@ class Puzzle extends Grid {
         infoSeparator.classList.add("info-separator");
         infoContainer.appendChild(infoSeparator);
 
-        let infoLabel = document.createElement("h2");
-        infoLabel.classList.add("info-header");
-        infoContainer.appendChild(infoLabel);
-        infoLabel.textContent = "Info".i18n();
+        let infoWrapper = document.createElement("details");
+        let infoWrapperSummary = document.createElement("summary");
+        infoWrapperSummary.innerHTML = `<h2>${"Info".i18n()}</h2>`;
+        infoWrapperSummary.classList.add("info-header");
+        infoWrapper.appendChild(infoWrapperSummary);
 
         let infoList = document.createElement("dl");
         infoList.classList.add("puzzle-info");
-        infoContainer.appendChild(infoList);
+        infoWrapper.appendChild(infoList);
+
+        infoContainer.appendChild(infoWrapper);
 
         // Set the puzzle's descriptive size (e.g., "Extra Small", "Small", "Medium", "Large", "Extra Large")
         let sizeName;
@@ -596,7 +599,7 @@ function populate(obj) {
     }
 }
 
-Number.prototype.toFormattedTime = function () {
+Number.prototype.toFormattedTime = function() {
     let hours = Math.floor(this / 3600);
     let minutes = Math.floor((this - (hours * 3600)) / 60);
     let seconds = this - (hours * 3600) - (minutes * 60);
@@ -617,11 +620,11 @@ Number.prototype.toFormattedTime = function () {
     }
 }
 
-String.prototype.toCapitalized = function () {
+String.prototype.toCapitalized = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-String.prototype.i18n = function () {
+String.prototype.i18n = function() {
     // Translates the string to the current language, if available
     if (l[`${this}`]) {
         return l[`${this}`];

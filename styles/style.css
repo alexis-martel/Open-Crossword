@@ -108,6 +108,19 @@ nav {
     flex-wrap: wrap;
 }
 
+details summary > * {
+  display: inline;
+}
+
+details summary {
+    margin-block-start: 15px;
+    margin-block-end: 15px;
+}
+
+details {
+    cursor: pointer;
+}
+
 .oc-featured-puzzles {
     display: flex;
     flex-direction: row;
