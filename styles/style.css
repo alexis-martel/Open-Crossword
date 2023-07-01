@@ -70,7 +70,7 @@ header a {
     display: inline-block;
 }
 
-button, input[type="button"], input[type="submit"], .oc-button-link {
+button, input[type="button"], input[type="submit"], .oc-button-link, .oc-reveal-button {
     padding: 2px;
     font-family: var(--main-font);
     font-size: initial;
@@ -81,15 +81,15 @@ button, input[type="button"], input[type="submit"], .oc-button-link {
     text-decoration: none;
 }
 
-button:hover, input[type="button"]:hover, input[type="submit"]:hover, .oc-button-link:hover {
+button:hover, input[type="button"]:hover, input[type="submit"]:hover, .oc-button-link:hover, .oc-reveal-button:hover {
     background-color: var(--highlight-colour);
 }
 
-button:active, input[type="button"]:active, input[type="submit"]:active, .oc-button-link:active {
+button:active, input[type="button"]:active, input[type="submit"]:active, .oc-button-link:active, .oc-reveal-button:active {
     background-color: var(--selection-colour);
 }
 
-button svg, input[type="button"] svg, input[type="submit"] svg, .oc-button-link svg {
+button svg, input[type="button"] svg, input[type="submit"] svg, .oc-button-link svg, .oc-reveal-button svg {
     fill: var(--foreground-colour);
     stroke: var(--foreground-colour);
     width: 22px;
@@ -252,6 +252,39 @@ details {
     word-break: break-word;
 }
 
+.oc-reveal-button {
+    display: inline-block;
+    position: relative;
+}
+
+.oc-reveal-button button {
+    display: block;
+}
+
+.oc-reveal-button summary {
+    list-style: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.oc-reveal-button summary::-webkit-details-marker {
+    display: none;
+}
+
+.oc-reveal-options {
+    position: absolute;
+    display: block;
+    background-color: var(--background-colour);
+    border-collapse: collapse;
+    min-width: max-content;
+}
+
+.oc-reveal-options button {
+    margin: 0 0 calc(var(--main-border-width) * -1) 0 !important;
+    width: 100%;
+    text-align: left;
+}
+
 .oc-stopwatch {
     display: inline-block;
     vertical-align: middle;
@@ -342,7 +375,7 @@ details {
     display: block;
 }
 
-.oc-control-button-container button {
+.oc-control-button-container button, .oc-control-button-container details {
     margin-top: 2px;
     margin-right: 2px;
 }

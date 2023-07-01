@@ -446,10 +446,34 @@ function displayControlButtons() {
     verifyButton.element.onclick = () => {
         verifyPuzzle();
     }
-    let revealButton = new ControlButton("Reveal".i18n(), icon["revealSVG"], controlButtons);
-    revealButton.element.onclick = () => {
+    let revealButton = document.createElement("details");
+    revealButton.classList.add("oc-reveal-button");
+    let revealButtonSummary = document.createElement("summary");
+    revealButtonSummary.innerHTML = icon["revealSVG"];
+    let revealOptions = document.createElement("nav");
+    revealOptions.classList.add("oc-reveal-options");
+    let revealPuzzleButton = new ControlButton("Reveal Puzzle".i18n(), null, revealOptions);
+    revealPuzzleButton.element.textContent = "Reveal Puzzle".i18n();
+    revealPuzzleButton.element.onclick = () => {
         revealPuzzle();
+        revealButton.removeAttribute("open");
     }
+    let revealWordButton = new ControlButton("Reveal Word".i18n(), null, revealOptions);
+    revealWordButton.element.textContent = "Reveal Word".i18n();
+    revealWordButton.element.onclick = () => {
+        revealWord();
+        revealButton.removeAttribute("open");
+    }
+    let revealSquareButton = new ControlButton("Reveal Square".i18n(), null, revealOptions);
+    revealSquareButton.element.textContent = "Reveal Square".i18n();
+    revealSquareButton.element.onclick = () => {
+        revealSquare();
+        revealButton.removeAttribute("open");
+
+    }
+    revealButton.appendChild(revealButtonSummary);
+    revealButton.appendChild(revealOptions);
+    controlButtons.appendChild(revealButton);
     let resetButton = new ControlButton("Reset".i18n(), icon["resetSVG"], controlButtons);
     resetButton.element.onclick = () => {
         resetPuzzle();
@@ -564,6 +588,19 @@ function revealPuzzle() {
         }
     }
     checkPuzzle();
+}
+
+function revealWord() {
+    for (const square of puzzle.squares) {
+        if (square.element.classList.contains("highlighted")) {
+            try {
+                square.textElement.value = square.answer;
+            } catch { }
+        }
+    }
+}
+function revealSquare() {
+    puzzle.selectedSquare.textElement.value = puzzle.selectedSquare.answer;
 }
 
 function pauseGame() {
