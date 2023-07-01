@@ -70,7 +70,7 @@ header a {
     display: inline-block;
 }
 
-button, input[type="button"], input[type="submit"], .oc-button-link, .oc-reveal-button {
+button, input[type="button"], input[type="submit"], .oc-button-link, .oc-reveal-button summary {
     padding: 2px;
     font-family: var(--main-font);
     font-size: initial;
@@ -280,9 +280,10 @@ details {
 }
 
 .oc-reveal-options button {
-    margin: 0 0 calc(var(--main-border-width) * -1) 0 !important;
+    margin-top: calc(-1 * var(--main-border-width)) !important;
     width: 100%;
     text-align: left;
+    padding: 4px;
 }
 
 .oc-stopwatch {

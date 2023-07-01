@@ -453,19 +453,19 @@ function displayControlButtons() {
     let revealOptions = document.createElement("nav");
     revealOptions.classList.add("oc-reveal-options");
     let revealPuzzleButton = new ControlButton("Reveal Puzzle".i18n(), null, revealOptions);
-    revealPuzzleButton.element.textContent = "Reveal Puzzle".i18n();
+    revealPuzzleButton.element.textContent = "Puzzle".i18n();
     revealPuzzleButton.element.onclick = () => {
         revealPuzzle();
         revealButton.removeAttribute("open");
     }
     let revealWordButton = new ControlButton("Reveal Word".i18n(), null, revealOptions);
-    revealWordButton.element.textContent = "Reveal Word".i18n();
+    revealWordButton.element.textContent = "Word".i18n();
     revealWordButton.element.onclick = () => {
         revealWord();
         revealButton.removeAttribute("open");
     }
     let revealSquareButton = new ControlButton("Reveal Square".i18n(), null, revealOptions);
-    revealSquareButton.element.textContent = "Reveal Square".i18n();
+    revealSquareButton.element.textContent = "Square".i18n();
     revealSquareButton.element.onclick = () => {
         revealSquare();
         revealButton.removeAttribute("open");
