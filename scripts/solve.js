@@ -120,6 +120,7 @@ class Puzzle extends Grid {
         new InfoItem("Size".i18n(), sizeName, infoList); // Size
         new InfoItem("Date Published".i18n(), this.obj["info"]["date_published"], infoList); // Date Published
         new InfoItem("Language".i18n(), this.obj["info"]["language"], infoList); // Language
+        new InfoItem("Puzzle Copyright".i18n(), `© ${this.obj["info"]["date_published"].split("-")[0]} ${this.obj["info"]["author"]}`, infoList)
 
         // Set the page's title to the puzzle's title
         document.title = `${this.obj["info"]["title"]}, by ${this.obj["info"]["author"]} - OpenCrossword`;
