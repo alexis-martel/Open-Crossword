@@ -752,9 +752,11 @@ async function getPuzzleObject(URLParams) {
 async function getLanguageObject(language) {
     // Returns a language object of the specified locale
     try {
-        return await fetch(`${document.baseURI}languages/${language}.json`);
-    } catch {
-        return await fetch(`${document.baseURI}languages/en.json`);
+        let response = await fetch(`${document.baseURI}languages/${language}.json`);
+        return await response.json();
+    } catch (e) {
+        let response = await fetch(`${document.baseURI}languages/en.json`);
+        return await response.json();
     }
 }
 
