@@ -70,6 +70,11 @@ header a {
     display: inline-block;
 }
 
+input[type="button"], input[type="submit"] {
+    appearance: none;
+    border-radius: 0;
+}
+
 button, input[type="button"], input[type="submit"], .oc-button-link, .oc-reveal-button summary {
     padding: 2px;
     font-family: var(--main-font);
@@ -116,6 +121,10 @@ details summary {
     margin-block-start: 15px;
     margin-block-end: 15px;
     cursor: pointer;
+}
+
+label > * {
+    margin: var(--main-border-width);
 }
 
 .oc-featured-puzzles {
@@ -411,8 +420,8 @@ details summary {
 
 .oc-puzzle-square-clue {
     position: absolute;
-    left: 3px;
-    top: 3px;
+    left: var(--main-border-width);
+    top: var(--main-border-width);
 }
 
 
@@ -521,8 +530,8 @@ details summary {
 .oc-builder-square-checkbox {
     z-index: 1;
     position: absolute;
-    right: 1px;
-    top: 1px;
+    right: var(--main-border-width);
+    top: var(--main-border-width);
 }
 
 .oc-builder-square-checkbox {
@@ -556,9 +565,9 @@ details summary {
 
 .oc-builder-square-clue-number-input {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
+    top: var(--main-border-width);
+    left: var(--main-border-width);
+    width: 5ch;
     font-family: var(--main-font);
     font-size: small;
 }
@@ -572,15 +581,17 @@ details summary {
 }
 
 .oc-builder-clue-number-input {
-    width: 50px;
+    width: 5ch;
     font-family: var(--main-font);
     font-size: initial;
+    margin: var(--main-border-width);
 }
 
 .oc-builder-clue-text-input {
     width: 100%;
     font-family: var(--main-font);
     font-size: initial;
+    margin: var(--main-border-width);
 }
 
 .oc-builder-clue-list-button {
