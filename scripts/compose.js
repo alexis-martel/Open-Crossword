@@ -290,6 +290,9 @@ class EditorGridSquare extends GridSquare {
             this.numberInput.onclick = (e) => {
                 e.stopPropagation();
             }
+            this.numberInput.onkeydown = (e) => {
+                e.stopPropagation();
+            }
         }
         try {
             this.textElement.value = answer;
