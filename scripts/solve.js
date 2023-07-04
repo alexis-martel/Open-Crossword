@@ -389,7 +389,9 @@ class ClueBar {
         if (!puzzle.selectedClue) {
             this.element.style.display = "none";
         } else {
-            document.getElementById("oc-puzzle-title").remove(); // Hides the title once solving begins
+            try {
+                document.getElementById("oc-puzzle-title").remove(); // Hides the title once solving begins
+            } catch { }
             this.element.style.display = "flex";
             this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number}-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${puzzle.selectedClue.HTMLContent}`;
         }
