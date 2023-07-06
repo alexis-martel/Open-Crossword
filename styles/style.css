@@ -31,11 +31,41 @@
     }
 }
 
+@media print {
+    :root {
+        --background-colour: white;
+        --foreground-colour: black;
+        --selection-colour: white;
+        --highlight-colour: white;
+        --error-colour: transparent;
+        --shaded-colour-1: rgba(255, 250, 240, 0.2);
+        --shaded-colour-2: rgba(255, 250, 240, 0.3);
+        --shaded-colour-3: rgba(255, 250, 240, 0.4);
+    }
+
+    header, footer, nav {
+        display: none !important;
+    }
+
+    summary {
+        list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .oc-puzzle-title {
+        display: block !important;
+    }
+}
+
 body {
     background-color: var(--background-colour);
     color: var(--foreground-colour);
     font-family: var(--main-font);
     font-size: medium;
+    print-color-adjust: exact !important;
 }
 
 hr {
@@ -360,7 +390,9 @@ label > * {
 .oc-grid-container {
     display: grid;
     gap: var(--main-border-width);
-    max-width: max-content;
+    max-width: 100vh;
+    max-height: 100vh;
+    box-sizing: border-box;
     margin: var(--main-border-width);
 }
 
