@@ -83,7 +83,7 @@ export default class GridSquare {
         try {
             this.textElement.focus();
             this.textElement.select(); // Select the entered text so it can be overwritten
-        } catch {}
+        } catch { }
         try {
             let firstSquareNumber = this.parentGrid.backCheck();
             let firstSquare = this.parentGrid.squares.find(square => square.clue === firstSquareNumber);
@@ -114,6 +114,22 @@ export default class GridSquare {
                 for (const square of this.parentGrid.squares.filter(square => square.x === this.x)) {
                     square.element.classList.add("highlighted");
                 }
+            }
+        }
+        // Set the cursor to reflect `parentGrid.selectionDirection`
+        if (this.parentGrid.selectionDirection === "across") {
+            for (const square of this.parentGrid.squares.filter(square => square.style === "cell")) {
+                square.textElement.style.cursor = "text";
+                try {
+                    square.clueElement.style.cursor = "text";
+                } catch { }
+            }
+        } else if (this.parentGrid.selectionDirection === "down") {
+            for (const square of this.parentGrid.squares.filter(square => square.style === "cell")) {
+                square.textElement.style.cursor = "vertical-text";
+                try {
+                    square.clueElement.style.cursor = "vertical-text";
+                } catch { }
             }
         }
     }
