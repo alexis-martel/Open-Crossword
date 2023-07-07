@@ -390,9 +390,7 @@ label > * {
 .oc-grid-container {
     display: grid;
     gap: var(--main-border-width);
-    max-width: 100vh;
-    max-height: 100vh;
-    box-sizing: border-box;
+    max-width: max-content;
     margin: var(--main-border-width);
 }
 
