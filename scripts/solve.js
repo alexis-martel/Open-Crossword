@@ -515,6 +515,7 @@ function displayControlButtons() {
     printButton.element.innerHTML += "Print".i18n();
     printButton.element.onclick = () => {
         window.print();
+        moreButton.removeAttribute("open");
     }
     let copyLinkButton = new ControlButton("Copy Link".i18n(), icon["copySVG"], moreOptions);
     copyLinkButton.element.innerHTML += "Copy Link".i18n();
