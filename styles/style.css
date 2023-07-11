@@ -105,7 +105,7 @@ input[type="button"], input[type="submit"] {
     border-radius: 0;
 }
 
-button, input[type="button"], input[type="submit"], .oc-button-link, .oc-reveal-button summary {
+button, input[type="button"], input[type="submit"], .oc-button-link, .oc-combo-button summary {
     padding: 2px;
     font-family: var(--main-font);
     font-size: initial;
@@ -116,15 +116,15 @@ button, input[type="button"], input[type="submit"], .oc-button-link, .oc-reveal-
     text-decoration: none;
 }
 
-button:hover, input[type="button"]:hover, input[type="submit"]:hover, .oc-button-link:hover, .oc-reveal-button:hover {
+button:hover, input[type="button"]:hover, input[type="submit"]:hover, .oc-button-link:hover, .oc-combo-button:hover {
     background-color: var(--highlight-colour);
 }
 
-button:active, input[type="button"]:active, input[type="submit"]:active, .oc-button-link:active, .oc-reveal-button:active {
+button:active, input[type="button"]:active, input[type="submit"]:active, .oc-button-link:active, .oc-combo-button:active {
     background-color: var(--selection-colour);
 }
 
-button svg, input[type="button"] svg, input[type="submit"] svg, .oc-button-link svg, .oc-reveal-button svg {
+button svg, input[type="button"] svg, input[type="submit"] svg, .oc-button-link svg, .oc-combo-button svg {
     fill: var(--foreground-colour);
     stroke: var(--foreground-colour);
     width: 22px;
@@ -288,26 +288,26 @@ label > * {
     word-break: break-word;
 }
 
-.oc-reveal-button {
+.oc-combo-button {
     display: inline-block;
     position: relative;
 }
 
-.oc-reveal-button button {
+.oc-combo-button button {
     display: block;
 }
 
-.oc-reveal-button summary {
+.oc-combo-button summary {
     list-style: none;
     margin-block-start: 0;
     margin-block-end: 0;
 }
 
-.oc-reveal-button summary::-webkit-details-marker {
+.oc-combo-button summary::-webkit-details-marker {
     display: none;
 }
 
-.oc-reveal-options {
+.oc-combo-button-options {
     position: absolute;
     display: block;
     background-color: var(--background-colour);
@@ -315,7 +315,7 @@ label > * {
     min-width: max-content;
 }
 
-.oc-reveal-options button {
+.oc-combo-button-options button {
     margin-top: calc(-1 * var(--main-border-width)) !important;
     width: 100%;
     text-align: left;

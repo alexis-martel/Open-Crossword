@@ -443,7 +443,11 @@ const icon = {
     "copySVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M180 975q-24 0-42-18t-18-42V312h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42V235q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440V235H300v560Zm0 0V235v560Z"/></svg>`,
     "embedSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M320 814 80 574l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg>`,
     "closeSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`,
-    "printSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M658-648v-132H302v132h-60v-192h476v192h-60Zm-518 60h680-680Zm599 95q12 0 21-9t9-21q0-12-9-21t-21-9q-12 0-21 9t-9 21q0 12 9 21t21 9Zm-81 313v-192H302v192h356Zm60 60H242v-176H80v-246q0-45.05 30.5-75.525Q141-648 186-648h588q45.05 0 75.525 30.475Q880-587.05 880-542v246H718v176Zm102-236v-186.215Q820-562 806.775-575 793.55-588 774-588H186q-19.55 0-32.775 13.225Q140-561.55 140-542v186h102v-76h476v76h102Z"/></svg>`
+    "printSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M658-648v-132H302v132h-60v-192h476v192h-60Zm-518 60h680-680Zm599 95q12 0 21-9t9-21q0-12-9-21t-21-9q-12 0-21 9t-9 21q0 12 9 21t21 9Zm-81 313v-192H302v192h356Zm60 60H242v-176H80v-246q0-45.05 30.5-75.525Q141-648 186-648h588q45.05 0 75.525 30.475Q880-587.05 880-542v246H718v176Zm102-236v-186.215Q820-562 806.775-575 793.55-588 774-588H186q-19.55 0-32.775 13.225Q140-561.55 140-542v186h102v-76h476v76h102Z"/></svg>`,
+    "moreSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M207.858-432Q188-432 174-446.142q-14-14.141-14-34Q160-500 174.142-514q14.141-14 34-14Q228-528 242-513.858q14 14.141 14 34Q256-460 241.858-446q-14.141 14-34 14Zm272 0Q460-432 446-446.142q-14-14.141-14-34Q432-500 446.142-514q14.141-14 34-14Q500-528 514-513.858q14 14.141 14 34Q528-460 513.858-446q-14.141 14-34 14Zm272 0Q732-432 718-446.142q-14-14.141-14-34Q704-500 718.142-514q14.141-14 34-14Q772-528 786-513.858q14 14.141 14 34Q800-460 785.858-446q-14.141 14-34 14Z"/></svg>`,
+    "cellSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M264-240h67l45-124h209l45 124h66L512-720h-65L264-240Zm133-179 82-230h2l82 230H397ZM140-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h680q24 0 42 18t18 42v680q0 24-18 42t-42 18H140Zm1-60h680v-680H141v680Zm0-680v680-680Z"/></svg>`,
+    "wordSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M667-360q-15 0-24.5-9.5T633-394v-172q0-15 9.5-24.5T667-600h139q15 0 24.5 9.5T840-566v46h-48v-32H681v144h111v-32h48v46q0 15-9.5 24.5T806-360H667Zm-287 0v-240h173q15 0 24.5 9.5T587-566v52q0 15-9.5 24.5T553-480q15 0 24.5 9.5T587-446v52q0 15-9.5 24.5T553-360H380Zm48-144h111v-48H428v48Zm0 96h111v-48H428v48Zm-308 48v-206q0-15 9.5-24.5T154-600h139q15 0 24.5 9.5T327-566v206h-48v-77H168v77h-48Zm48-125h111v-67H168v67Z"/></svg>`,
+    "puzzleSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M386-140h187v-186H386v186ZM140-386h186v-187H140v187Zm246 0h187v-187H386v187Zm247 0h187v-187H633v187Zm0-247h187v-187H633v187ZM326-80v-246H80v-307h493v-247h307v554H633v246H326Z"/></svg>`
 }
 
 function displayControlButtons() {
@@ -457,26 +461,26 @@ function displayControlButtons() {
         verifyPuzzle();
     }
     let revealButton = document.createElement("details");
-    revealButton.classList.add("oc-reveal-button");
+    revealButton.classList.add("oc-combo-button");
     let revealButtonSummary = document.createElement("summary");
     revealButtonSummary.title = "Reveal".i18n();
     revealButtonSummary.innerHTML = icon["revealSVG"];
     let revealOptions = document.createElement("nav");
-    revealOptions.classList.add("oc-reveal-options");
-    let revealPuzzleButton = new ControlButton("Reveal Puzzle".i18n(), null, revealOptions);
-    revealPuzzleButton.element.textContent = "Puzzle".i18n();
+    revealOptions.classList.add("oc-combo-button-options");
+    let revealPuzzleButton = new ControlButton("Reveal Puzzle".i18n(), icon["puzzleSVG"], revealOptions);
+    revealPuzzleButton.element.innerHTML += "Puzzle".i18n();
     revealPuzzleButton.element.onclick = () => {
         revealPuzzle();
         revealButton.removeAttribute("open");
     }
-    let revealWordButton = new ControlButton("Reveal Word".i18n(), null, revealOptions);
-    revealWordButton.element.textContent = "Word".i18n();
+    let revealWordButton = new ControlButton("Reveal Word".i18n(), icon["wordSVG"], revealOptions);
+    revealWordButton.element.innerHTML += "Word".i18n();
     revealWordButton.element.onclick = () => {
         revealWord();
         revealButton.removeAttribute("open");
     }
-    let revealSquareButton = new ControlButton("Reveal Square".i18n(), null, revealOptions);
-    revealSquareButton.element.textContent = "Square".i18n();
+    let revealSquareButton = new ControlButton("Reveal Square".i18n(), icon["cellSVG"], revealOptions);
+    revealSquareButton.element.innerHTML += "Square".i18n();
     revealSquareButton.element.onclick = () => {
         revealSquare();
         revealButton.removeAttribute("open");
@@ -491,17 +495,55 @@ function displayControlButtons() {
     }
     let shareButton = new ControlButton("Share".i18n(), icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
-        displayShareDialog();
-    }
-    let printButton = new ControlButton("Print".i18n(), icon["printSVG"], controlButtons);
-    printButton.element.onclick = () => {
-        window.print();
+        navigator.share({
+            title: "OpenCrossword", url: window.location.href
+        }).catch(console.error);
     }
     let remixButton = new ControlButton("Remix".i18n(), icon["editSVG"], controlButtons);
     remixButton.element.onclick = () => {
         let encodedPuzzleLink = encodeURIComponent(window.location.href);
         window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
     }
+    let moreButton = document.createElement("details");
+    moreButton.classList.add("oc-combo-button");
+    let moreButtonSummary = document.createElement("summary");
+    moreButtonSummary.title = "More".i18n();
+    moreButtonSummary.innerHTML = icon["moreSVG"];
+    let moreOptions = document.createElement("nav");
+    moreOptions.classList.add("oc-combo-button-options");
+    let printButton = new ControlButton("Print".i18n(), icon["printSVG"], moreOptions);
+    printButton.element.innerHTML += "Print".i18n();
+    printButton.element.onclick = () => {
+        window.print();
+    }
+    let copyLinkButton = new ControlButton("Copy Link".i18n(), icon["copySVG"], moreOptions);
+    copyLinkButton.element.innerHTML += "Copy Link".i18n();
+    copyLinkButton.element.onclick = () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            /* clipboard successfully set */
+            window.alert("Link copied to clipboard".i18n());
+        }, () => {
+            /* clipboard write failed */
+            window.alert("Failed to copy link to clipboard".i18n());
+        });
+        moreButton.removeAttribute("open");
+    }
+    let copyEmbedCodeButton = new ControlButton("Copy Embed Code".i18n(), icon["embedSVG"], moreOptions);
+    copyEmbedCodeButton.element.innerHTML += "Embed".i18n();
+    copyEmbedCodeButton.element.onclick = () => {
+        let transformedLink = window.location.href.replace("/solve", "/frames/player-embed");
+        navigator.clipboard.writeText(`<iframe width="100%" height="300px" src="${transformedLink}"/>`).then(() => {
+            /* clipboard successfully set */
+            window.alert("Code copied to clipboard".i18n());
+        }, () => {
+            /* clipboard write failed */
+            window.alert("Failed to copy code to clipboard".i18n());
+        });
+        moreButton.removeAttribute("open");
+    }
+    moreButton.appendChild(moreButtonSummary);
+    moreButton.appendChild(moreOptions);
+    controlButtons.appendChild(moreButton);
     let helpButton = new ControlButton("Shortcuts Help".i18n(), icon["helpSVG"], controlButtons);
     helpButton.element.onclick = () => {
         window.alert(`Keyboard Shortcuts:
@@ -525,70 +567,6 @@ function displayControlButtons() {
     verifyAutomaticallyCheckbox.labelElement.style.display = "block";
     document.getElementById("oc-verify-automatically").onclick = () => {
         verifyPuzzle();
-    }
-}
-
-function displayShareDialog() {
-    let dialog = document.createElement("dialog");
-    dialog.classList.add("oc-dialog");
-    let dialogTitleBar = document.createElement("div");
-    let dialogTitle = document.createElement("h2");
-    dialogTitle.textContent = "Share".i18n();
-    let titleBarSeparator = document.createElement("hr");
-    let shareArea = document.createElement("div");
-    let shareButton = new ControlButton("Share".i18n(), icon["shareSVG"], shareArea);
-    shareButton.element.onclick = () => {
-        navigator.share({
-            title: "OpenCrossword", url: window.location.href
-        }).catch(console.error);
-    }
-    let copyLinkButton = new ControlButton("Copy Link".i18n(), icon["copySVG"], shareArea);
-    copyLinkButton.element.onclick = () => {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            /* clipboard successfully set */
-            window.alert("Link copied to clipboard".i18n());
-        }, () => {
-            /* clipboard write failed */
-            window.alert("Failed to copy link to clipboard".i18n());
-        });
-    }
-    let embedPuzzleButton = new ControlButton("Copy Embed Code".i18n(), icon["embedSVG"], shareArea);
-    embedPuzzleButton.element.onclick = () => {
-        let transformedLink = window.location.href.replace("/solve", "/frames/player-embed");
-        navigator.clipboard.writeText(`<iframe width="100%" height="100vh" src="${transformedLink}"/>`).then(() => {
-            /* clipboard successfully set */
-            window.alert("Code copied to clipboard".i18n());
-        }, () => {
-            /* clipboard write failed */
-            window.alert("Failed to copy code to clipboard".i18n());
-        });
-    }
-    let remixButton = new ControlButton("Remix".i18n(), icon["editSVG"], shareArea);
-    remixButton.element.onclick = () => {
-        let encodedPuzzleLink = encodeURIComponent(window.location.href);
-        window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
-    }
-    let dialogCloseButton = new ControlButton("Close".i18n(), icon["closeSVG"], dialogTitleBar);
-    dialogCloseButton.element.onclick = () => {
-        dialog.close();
-        dialog.remove();
-    }
-    dialogTitleBar.appendChild(dialogTitle);
-    dialog.appendChild(dialogTitleBar);
-    dialog.appendChild(titleBarSeparator);
-    dialog.appendChild(shareArea);
-    document.body.appendChild(dialog);
-    dialog.showModal();
-}
-
-function verifyPuzzle() {
-    // Marks all incorrect squares
-    for (const square of puzzle.squares) {
-        if (square.style === "cell") {
-            if (square.textElement.value.toUpperCase() !== square.answer.toUpperCase() && square.textElement.value !== "") {
-                square.element.classList.add("oc-cell-invalid");
-            }
-        }
     }
 }
 
