@@ -23,6 +23,8 @@
     "Share": "Share",
     "Print": "Print",
     "Remix": "Remix",
+    "More": "More",
+    "Embed": "Embed",
     "Pause": "Pause",
     "Are you sure you want to reveal the puzzle?": "Are you sure you want to reveal the puzzle?",
     "Game paused": "Game paused",
@@ -44,7 +46,7 @@
     "Word": "Word",
     "Square": "Square",
     "Puzzle": "Puzzle",
-    "Reveal Word": "Word",
-    "Reveal Square": "Square",
-    "Reveal Puzzle": "Puzzle"
+    "Reveal Word": "Reveal Word",
+    "Reveal Square": "Reveal Square",
+    "Reveal Puzzle": "Reveal Puzzle"
 }
