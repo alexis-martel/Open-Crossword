@@ -447,7 +447,8 @@ const icon = {
     "moreSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M207.858-432Q188-432 174-446.142q-14-14.141-14-34Q160-500 174.142-514q14.141-14 34-14Q228-528 242-513.858q14 14.141 14 34Q256-460 241.858-446q-14.141 14-34 14Zm272 0Q460-432 446-446.142q-14-14.141-14-34Q432-500 446.142-514q14.141-14 34-14Q500-528 514-513.858q14 14.141 14 34Q528-460 513.858-446q-14.141 14-34 14Zm272 0Q732-432 718-446.142q-14-14.141-14-34Q704-500 718.142-514q14.141-14 34-14Q772-528 786-513.858q14 14.141 14 34Q800-460 785.858-446q-14.141 14-34 14Z"/></svg>`,
     "cellSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M264-240h67l45-124h209l45 124h66L512-720h-65L264-240Zm133-179 82-230h2l82 230H397ZM140-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h680q24 0 42 18t18 42v680q0 24-18 42t-42 18H140Zm1-60h680v-680H141v680Zm0-680v680-680Z"/></svg>`,
     "wordSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M667-360q-15 0-24.5-9.5T633-394v-172q0-15 9.5-24.5T667-600h139q15 0 24.5 9.5T840-566v46h-48v-32H681v144h111v-32h48v46q0 15-9.5 24.5T806-360H667Zm-287 0v-240h173q15 0 24.5 9.5T587-566v52q0 15-9.5 24.5T553-480q15 0 24.5 9.5T587-446v52q0 15-9.5 24.5T553-360H380Zm48-144h111v-48H428v48Zm0 96h111v-48H428v48Zm-308 48v-206q0-15 9.5-24.5T154-600h139q15 0 24.5 9.5T327-566v206h-48v-77H168v77h-48Zm48-125h111v-67H168v67Z"/></svg>`,
-    "puzzleSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M386-140h187v-186H386v186ZM140-386h186v-187H140v187Zm246 0h187v-187H386v187Zm247 0h187v-187H633v187Zm0-247h187v-187H633v187ZM326-80v-246H80v-307h493v-247h307v554H633v246H326Z"/></svg>`
+    "puzzleSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M386-140h187v-186H386v186ZM140-386h186v-187H140v187Zm246 0h187v-187H386v187Zm247 0h187v-187H633v187Zm0-247h187v-187H633v187ZM326-80v-246H80v-307h493v-247h307v554H633v246H326Z"/></svg>`,
+    "insertSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M439-120v-60h83v60h-83Zm0-660v-60h83v60h-83Zm170 660v-60h83v60h-83Zm0-660v-60h83v60h-83Zm171 660v-60h60v60h-60Zm0-660v-60h60v60h-60ZM120-120v-60h86v-600h-86v-60h231v60h-85v600h85v60H120Zm574-214-42-42 73-74H414v-60h311l-73-74 42-42 146 146-146 146Z"/></svg>`
 }
 
 function displayControlButtons() {
@@ -492,6 +493,10 @@ function displayControlButtons() {
     let resetButton = new ControlButton("Reset".i18n(), icon["resetSVG"], controlButtons);
     resetButton.element.onclick = () => {
         resetPuzzle();
+    }
+    let insertButton = new ControlButton("Insert".i18n(), icon["insertSVG"], controlButtons)
+    insertButton.element.onclick = () => {
+        displayInsertDialog();
     }
     let shareButton = new ControlButton("Share".i18n(), icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
@@ -658,6 +663,38 @@ function populate(obj) {
         puzzle.populateClues();
         puzzle.populateInfo();
         displayControlButtons();
+    }
+}
+
+function displayInsertDialog() {
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("oc-dialog");
+    let dialogTitleBar = document.createElement("div");
+    let dialogTitle = document.createElement("h2");
+    dialogTitle.textContent = "Insert".i18n();
+    let titleBarSeparator = document.createElement("hr");
+    let frame = document.createElement("iframe");
+    frame.src = `${document.baseURI}frames/insert.html`;
+    frame.name = "oc-insert-frame"
+    let dialogCloseButton = new ControlButton("Close".i18n(), icon["closeSVG"], dialogTitleBar);
+    dialogCloseButton.element.onclick = () => {
+        dialog.close();
+        dialog.remove();
+    }
+    dialogTitleBar.appendChild(dialogTitle);
+    dialog.appendChild(dialogTitleBar);
+    dialog.appendChild(titleBarSeparator);
+    dialog.appendChild(frame);
+    document.body.appendChild(dialog);
+    dialog.showModal();
+
+    // Implement inserting functionality
+    frame.onload = () => {
+        frame.contentWindow.document.getElementById("oc-insert-form").onsubmit = (e) => {
+            e.preventDefault();
+            dialog.close();
+            puzzle.insertText(frame.contentWindow.document.getElementById("oc-insert-field").value);
+        }
     }
 }
 

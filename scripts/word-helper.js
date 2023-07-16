@@ -1,3 +1,5 @@
+"use strict";
+
 const wordHelperForm = document.createElement("form");
 const dictionarySelectorLabel = document.createElement("label");
 dictionarySelectorLabel.textContent = "Dictionary";

@@ -364,7 +364,8 @@ const icon = {
     "removeSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M10 25.5v-3h28v3Z"/></svg>`,
     "playSVG": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M16 37.85v-28l22 14Zm3-14Zm0 8.55 13.45-8.55L19 15.3Z"/></svg>`,
     "searchSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>`,
-    "closeSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`
+    "closeSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`,
+    "insertSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M439-120v-60h83v60h-83Zm0-660v-60h83v60h-83Zm170 660v-60h83v60h-83Zm0-660v-60h83v60h-83Zm171 660v-60h60v60h-60Zm0-660v-60h60v60h-60ZM120-120v-60h86v-600h-86v-60h231v60h-85v600h85v60H120Zm574-214-42-42 73-74H414v-60h311l-73-74 42-42 146 146-146 146Z"/></svg>`
 }
 
 function populateToolBar() {
@@ -382,6 +383,10 @@ function populateToolBar() {
     let makeInvisibleButton = new ControlButton("Make invisible", icon["squareInvisibleSVG"], toolBarElement);
     makeInvisibleButton.element.onclick = () => {
         transformSquares("invisible");
+    }
+    let insertButton = new ControlButton("Insert", icon["insertSVG"], toolBarElement);
+    insertButton.element.onclick = () => {
+        displayInsertDialog();
     }
     let sharePuzzleButton = new ControlButton("Share puzzle", icon["sharePuzzleSVG"], toolBarElement);
     sharePuzzleButton.element.onclick = () => {
@@ -566,6 +571,38 @@ function displayWordHelperDialog() {
     dialog.appendChild(frame);
     document.body.appendChild(dialog);
     dialog.showModal();
+}
+
+function displayInsertDialog() {
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("oc-dialog");
+    let dialogTitleBar = document.createElement("div");
+    let dialogTitle = document.createElement("h2");
+    dialogTitle.textContent = "Insert";
+    let titleBarSeparator = document.createElement("hr");
+    let frame = document.createElement("iframe");
+    frame.src = `${document.baseURI}frames/insert.html`;
+    frame.name = "oc-insert-frame"
+    let dialogCloseButton = new ControlButton("Close", icon["closeSVG"], dialogTitleBar);
+    dialogCloseButton.element.onclick = () => {
+        dialog.close();
+        dialog.remove();
+    }
+    dialogTitleBar.appendChild(dialogTitle);
+    dialog.appendChild(dialogTitleBar);
+    dialog.appendChild(titleBarSeparator);
+    dialog.appendChild(frame);
+    document.body.appendChild(dialog);
+    dialog.showModal();
+
+    // Implement inserting functionality
+    frame.onload = () => {
+        frame.contentWindow.document.getElementById("oc-insert-form").onsubmit = (e) => {
+            e.preventDefault();
+            dialog.close();
+            myPuzzle.insertText(frame.contentWindow.document.getElementById("oc-insert-field").value);
+        }
+    }
 }
 
 function populateGrid(obj) {

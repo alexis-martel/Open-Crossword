@@ -118,4 +118,11 @@ export default class Grid {
             this.selectNextSquare();
         }
     }
+    insertText(text) {
+        // Fills in the provided string as input to the grid
+        for (const character of text) {
+            this.selectedSquare.textElement.value = character;
+            this.selectNextSquare();
+        }
+    }
 }
