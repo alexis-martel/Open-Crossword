@@ -328,8 +328,8 @@ class ControlInput {
         this.element = document.createElement("input");
         this.labelElement.appendChild(this.element);
         this.element.type = type;
-        this.element.title = title;
         this.element.id = id;
+        this.labelElement.title = title;
         this.labelElement.innerHTML += label;
         parentElement.appendChild(this.labelElement);
     }
@@ -468,8 +468,8 @@ function displayControlButtons() {
     revealButtonSummary.innerHTML = icon["revealSVG"];
     let revealOptions = document.createElement("nav");
     revealOptions.classList.add("oc-combo-button-options");
-    let revealPuzzleButton = new ControlButton("Reveal Puzzle".i18n(), icon["puzzleSVG"], revealOptions);
-    revealPuzzleButton.element.innerHTML += "Puzzle".i18n();
+    let revealPuzzleButton = new ControlButton("Reveal Puzzle".i18n() + "…", icon["puzzleSVG"], revealOptions);
+    revealPuzzleButton.element.innerHTML += "Puzzle".i18n() + "…";
     revealPuzzleButton.element.onclick = () => {
         revealPuzzle();
         revealButton.removeAttribute("open");
@@ -490,21 +490,21 @@ function displayControlButtons() {
     revealButton.appendChild(revealButtonSummary);
     revealButton.appendChild(revealOptions);
     controlButtons.appendChild(revealButton);
-    let resetButton = new ControlButton("Reset".i18n(), icon["resetSVG"], controlButtons);
+    let resetButton = new ControlButton("Reset".i18n() + "…", icon["resetSVG"], controlButtons);
     resetButton.element.onclick = () => {
         resetPuzzle();
     }
-    let insertButton = new ControlButton("Insert".i18n(), icon["insertSVG"], controlButtons)
+    let insertButton = new ControlButton("Insert".i18n() + "…", icon["insertSVG"], controlButtons)
     insertButton.element.onclick = () => {
         displayInsertDialog();
     }
-    let shareButton = new ControlButton("Share".i18n(), icon["shareSVG"], controlButtons);
+    let shareButton = new ControlButton("Share".i18n() + "…", icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
         navigator.share({
             title: "OpenCrossword", url: window.location.href
         }).catch(console.error);
     }
-    let remixButton = new ControlButton("Remix".i18n(), icon["editSVG"], controlButtons);
+    let remixButton = new ControlButton("Remix".i18n() + "…", icon["editSVG"], controlButtons);
     remixButton.element.onclick = () => {
         let encodedPuzzleLink = encodeURIComponent(window.location.href);
         window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
@@ -516,8 +516,8 @@ function displayControlButtons() {
     moreButtonSummary.innerHTML = icon["moreSVG"];
     let moreOptions = document.createElement("nav");
     moreOptions.classList.add("oc-combo-button-options");
-    let printButton = new ControlButton("Print".i18n(), icon["printSVG"], moreOptions);
-    printButton.element.innerHTML += "Print".i18n();
+    let printButton = new ControlButton("Print".i18n() + "…", icon["printSVG"], moreOptions);
+    printButton.element.innerHTML += "Print".i18n() + "…";
     printButton.element.onclick = () => {
         window.print();
         moreButton.removeAttribute("open");

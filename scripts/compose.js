@@ -384,11 +384,11 @@ function populateToolBar() {
     makeInvisibleButton.element.onclick = () => {
         transformSquares("invisible");
     }
-    let insertButton = new ControlButton("Insert", icon["insertSVG"], toolBarElement);
+    let insertButton = new ControlButton("Insert" + "…", icon["insertSVG"], toolBarElement);
     insertButton.element.onclick = () => {
         displayInsertDialog();
     }
-    let sharePuzzleButton = new ControlButton("Share puzzle", icon["sharePuzzleSVG"], toolBarElement);
+    let sharePuzzleButton = new ControlButton("Share" + "…", icon["sharePuzzleSVG"], toolBarElement);
     sharePuzzleButton.element.onclick = () => {
         displayShareDialog();
     }
@@ -396,11 +396,11 @@ function populateToolBar() {
     downloadPuzzleButton.element.onclick = () => {
         myPuzzle.downloadJSON();
     }
-    let playPuzzleButton = new ControlButton("Play puzzle in new tab", icon["playSVG"], toolBarElement);
+    let playPuzzleButton = new ControlButton("Play puzzle in new tab" + "…", icon["playSVG"], toolBarElement);
     playPuzzleButton.element.onclick = async () => {
         window.open(await myPuzzle.createDataLink(), '_blank');
     }
-    let wordHelperButton = new ControlButton("Word helper", icon["searchSVG"], toolBarElement);
+    let wordHelperButton = new ControlButton("Word helper" + "…", icon["searchSVG"], toolBarElement);
     wordHelperButton.element.onclick = () => {
         displayWordHelperDialog();
     }
