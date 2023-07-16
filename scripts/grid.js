@@ -72,9 +72,15 @@ export default class Grid {
                     this.selectedSquare.select(); // Refresh the grid
                 }
             } else if (event.key === "Backspace") {
-                this.selectPreviousSquare();
+                // Deletes the character under the cursor, if any, and then erases the previous character
+                if (!this.selectedSquare.textElement.value) {
+                    this.selectPreviousSquare();
+                }
             } else if (event.key === "Delete") {
-                this.selectNextSquare();
+                // Deletes the character under the cursor, if any, and then erases the next character
+                if (!this.selectedSquare.textElement.value) {
+                    this.selectNextSquare();
+                }
             } else if (event.key === " " || event.key === "Spacebar") {
                 this.selectNextBlankSquare();
             } else if (event.key === "Tab") {
