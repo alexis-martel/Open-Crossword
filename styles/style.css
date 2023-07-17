@@ -105,7 +105,7 @@ input[type="button"], input[type="submit"] {
     border-radius: 0;
 }
 
-button, input[type="button"], input[type="submit"], .oc-button-link, .oc-combo-button summary {
+button, input[type="button"], input[type="submit"], .oc-button-link, .oc-drop-down-button summary {
     padding: 2px;
     font-family: var(--main-font);
     font-size: initial;
@@ -116,15 +116,15 @@ button, input[type="button"], input[type="submit"], .oc-button-link, .oc-combo-b
     text-decoration: none;
 }
 
-button:hover, input[type="button"]:hover, input[type="submit"]:hover, .oc-button-link:hover, .oc-combo-button:hover {
+button:hover, input[type="button"]:hover, input[type="submit"]:hover, .oc-button-link:hover, .oc-drop-down-button:hover {
     background-color: var(--highlight-colour);
 }
 
-button:active, input[type="button"]:active, input[type="submit"]:active, .oc-button-link:active, .oc-combo-button:active {
+button:active, input[type="button"]:active, input[type="submit"]:active, .oc-button-link:active, .oc-drop-down-button:active {
     background-color: var(--selection-colour);
 }
 
-button svg, input[type="button"] svg, input[type="submit"] svg, .oc-button-link svg, .oc-combo-button svg {
+button svg, input[type="button"] svg, input[type="submit"] svg, .oc-button-link svg, .oc-drop-down-button svg {
     fill: var(--foreground-colour);
     stroke: var(--foreground-colour);
     width: 22px;
@@ -288,26 +288,26 @@ label > * {
     word-break: break-word;
 }
 
-.oc-combo-button {
+.oc-drop-down-button {
     display: inline-block;
     position: relative;
 }
 
-.oc-combo-button button {
+.oc-drop-down-button button {
     display: block;
 }
 
-.oc-combo-button summary {
+.oc-drop-down-button summary {
     list-style: none;
     margin-block-start: 0;
     margin-block-end: 0;
 }
 
-.oc-combo-button summary::-webkit-details-marker {
+.oc-drop-down-button summary::-webkit-details-marker {
     display: none;
 }
 
-.oc-combo-button-options {
+.oc-drop-down-button-options {
     position: absolute;
     display: block;
     background-color: var(--background-colour);
@@ -315,7 +315,7 @@ label > * {
     min-width: max-content;
 }
 
-.oc-combo-button-options button {
+.oc-drop-down-button-options button {
     margin-top: calc(-1 * var(--main-border-width)) !important;
     width: 100%;
     text-align: left;
@@ -334,7 +334,6 @@ label > * {
 .oc-puzzle-container {
     margin: auto;
 }
-
 
 .oc-clue-list {
     padding-inline-start: 10px;

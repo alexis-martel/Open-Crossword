@@ -462,12 +462,12 @@ function displayControlButtons() {
         verifyPuzzle();
     }
     let revealButton = document.createElement("details");
-    revealButton.classList.add("oc-combo-button");
+    revealButton.classList.add("oc-drop-down-button");
     let revealButtonSummary = document.createElement("summary");
     revealButtonSummary.title = "Reveal".i18n();
     revealButtonSummary.innerHTML = icon["revealSVG"];
     let revealOptions = document.createElement("nav");
-    revealOptions.classList.add("oc-combo-button-options");
+    revealOptions.classList.add("oc-drop-down-button-options");
     let revealPuzzleButton = new ControlButton("Reveal Puzzle".i18n() + "…", icon["puzzleSVG"], revealOptions);
     revealPuzzleButton.element.innerHTML += "Puzzle".i18n() + "…";
     revealPuzzleButton.element.onclick = () => {
@@ -510,12 +510,12 @@ function displayControlButtons() {
         window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
     }
     let moreButton = document.createElement("details");
-    moreButton.classList.add("oc-combo-button");
+    moreButton.classList.add("oc-drop-down-button");
     let moreButtonSummary = document.createElement("summary");
     moreButtonSummary.title = "More".i18n();
     moreButtonSummary.innerHTML = icon["moreSVG"];
     let moreOptions = document.createElement("nav");
-    moreOptions.classList.add("oc-combo-button-options");
+    moreOptions.classList.add("oc-drop-down-button-options");
     let printButton = new ControlButton("Print".i18n() + "…", icon["printSVG"], moreOptions);
     printButton.element.innerHTML += "Print".i18n() + "…";
     printButton.element.onclick = () => {
