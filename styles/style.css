@@ -76,8 +76,8 @@ hr {
     margin-bottom: 3px;
 }
 
-header {
-    z-index: 1; /* Stay on top */
+footer {
+    margin-top: 8px;
 }
 
 header h1 {
@@ -213,7 +213,7 @@ label > * {
 }
 
 .oc-puzzle-browser td, .oc-puzzle-browser th {
-    padding: 5px;
+    padding: 8px;
 }
 
 .oc-game-view {
@@ -663,9 +663,6 @@ label > * {
     align-items: center;
 }
 
-.oc-dialog button {
-}
-
 .oc-insert-preview {
     display: flex;
     flex-direction: row;
@@ -684,4 +681,13 @@ label > * {
     font-weight: bold;
     font-size: 30px;
     text-align: center;
+}
+
+.oc-dialog-content {
+    display: block !important;
+}
+
+.oc-dialog-content button {
+    width: 100%;
+    margin-top: 8px;
 }

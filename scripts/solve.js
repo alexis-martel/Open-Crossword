@@ -500,9 +500,7 @@ function displayControlButtons() {
     }
     let shareButton = new ControlButton("Share".i18n() + "…", icon["shareSVG"], controlButtons);
     shareButton.element.onclick = () => {
-        navigator.share({
-            title: "OpenCrossword", url: window.location.href
-        }).catch(console.error);
+        navigator.share({ url: window.location.href }).catch(console.error);
     }
     let remixButton = new ControlButton("Remix".i18n() + "…", icon["editSVG"], controlButtons);
     remixButton.element.onclick = () => {
@@ -642,7 +640,41 @@ function checkPuzzle() {
 function showSolvedScreen() {
     // Display a "game over" alert
     endStopwatch();
-    window.alert("Congratulations! You solved the puzzle in".i18n() + " " + document.getElementById("oc-stopwatch").textContent);
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("oc-dialog");
+    let dialogTitleBar = document.createElement("div");
+    let dialogTitle = document.createElement("h2");
+    dialogTitle.textContent = "Congratulations".i18n();
+    let titleBarSeparator = document.createElement("hr");
+    let solveMessageContainer = document.createElement("div");
+    solveMessageContainer.classList.add("oc-dialog-content");
+    let solveParagraph = document.createElement("p");
+    solveParagraph.textContent = "You solved the puzzle in:"
+    let solveTimeContainer = document.createElement("div");
+    for (const character of puzzle.puzzleSeconds.toFormattedTime()) {
+        let square = document.createElement("span");
+        square.classList.add("oc-text-square");
+        square.textContent = character;
+        solveTimeContainer.appendChild(square);
+    }
+    let dialogCloseButton = new ControlButton("Close".i18n(), icon["closeSVG"], dialogTitleBar);
+    dialogCloseButton.element.onclick = () => {
+        dialog.close();
+        dialog.remove();
+    }
+    solveMessageContainer.append(solveParagraph);
+    solveMessageContainer.appendChild(solveTimeContainer);
+    dialogTitleBar.appendChild(dialogTitle);
+    dialog.appendChild(dialogTitleBar);
+    dialog.appendChild(titleBarSeparator);
+    let shareTimeButton = new ControlButton("Share Time".i18n() + "…", null, solveMessageContainer);
+    shareTimeButton.element.textContent = "Share Time".i18n() + "…"
+    shareTimeButton.element.onclick = () => {
+        navigator.share({ text: "I solved %a, by %b, in %c!".i18n().replace("%a", puzzle.obj["info"]["title"]).replace("%b", puzzle.obj["info"]["author"]).replace("%c", puzzle.puzzleSeconds.toFormattedTime()) }).catch(console.error);
+    }
+    dialog.appendChild(solveMessageContainer);
+    document.body.appendChild(dialog);
+    dialog.showModal();
 }
 
 function showNotSolvedScreen() {
@@ -675,7 +707,6 @@ function displayInsertDialog() {
     let titleBarSeparator = document.createElement("hr");
     let frame = document.createElement("iframe");
     frame.src = `${document.baseURI}frames/insert.html`;
-    frame.name = "oc-insert-frame"
     let dialogCloseButton = new ControlButton("Close".i18n(), icon["closeSVG"], dialogTitleBar);
     dialogCloseButton.element.onclick = () => {
         dialog.close();
@@ -733,8 +764,8 @@ String.prototype.i18n = function() {
 }
 
 function incrementStopwatchTime() {
-    document.getElementById("oc-stopwatch").textContent = puzzle.puzzleSeconds.toFormattedTime();
     puzzle.puzzleSeconds += 1;
+    document.getElementById("oc-stopwatch").textContent = puzzle.puzzleSeconds.toFormattedTime();
 }
 
 function endStopwatch() {

@@ -49,5 +49,9 @@
     "Puzzle": "Puzzle",
     "Reveal Word": "Reveal Word",
     "Reveal Square": "Reveal Square",
-    "Reveal Puzzle": "Reveal Puzzle"
+    "Reveal Puzzle": "Reveal Puzzle",
+    "Congratulations": "Congratulations",
+    "You solved the puzzle in:": "You solved the puzzle in:",
+    "Share Time": "Share Time",
+    "I solved %a, by %b, in %c!": "I solved %a, by %b, in %c!"
 }
