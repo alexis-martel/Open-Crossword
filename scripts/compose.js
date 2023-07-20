@@ -619,13 +619,16 @@ function showSplashScreen() {
     splashScreen.id = "oc-splash-screen";
     splashScreen.classList.add("oc-splash-screen");
     splashScreen.innerHTML = `<div>
-        <h1>OpenCrossword<br>Editor</h1>
+        <div class="oc-splash-screen-title">
+            <button onclick="history.back()">‹Back</button>
+            <h1>OpenCrossword<br>Editor</h1>
+        </div>
         <p><b>Create a New Puzzle</b></p>
         <img alt="OpenCrossword banner" src="${document.baseURI}images/splash-screen.jpg">
     </div>
     <form method="dialog">
         <label class="oc-splash-screen-info-input-label">Grid Width
-            <input class="oc-splash-screen-info-input" id="oc-splash-screen-info-input-grid-width" placeholder="Width" required="" title="Enter the width of your puzzle" type="number">
+            <input autofocus class="oc-splash-screen-info-input" id="oc-splash-screen-info-input-grid-width" placeholder="Width" required="" title="Enter the width of your puzzle" type="number">
         </label>
         <label class="oc-splash-screen-info-input-label">Grid Height
             <input class="oc-splash-screen-info-input" id="oc-splash-screen-info-input-grid-height" placeholder="Height" required="" title="Enter the height of your puzzle" type="number">

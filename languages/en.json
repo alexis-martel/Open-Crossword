@@ -53,5 +53,6 @@
     "Congratulations": "Congratulations",
     "You solved the puzzle in:": "You solved the puzzle in:",
     "Share Time": "Share Time",
-    "I solved %a, by %b, in %c!": "I solved %a, by %b, in %c!"
+    "I solved %a, by %b, in %c!": "I solved %a, by %b, in %c!",
+    "Back": "Back"
 }

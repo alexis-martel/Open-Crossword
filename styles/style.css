@@ -230,18 +230,21 @@ label > * {
     box-shadow: 5px 5px 0 0 var(--foreground-colour);
     background-color: var(--background-colour);
     border: var(--main-border-width) solid var(--foreground-colour);
-
 }
 
 .oc-splash-screen h1 {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-bottom: 0;
     font-weight: normal;
-    position: absolute;
     color: white;
     font-size: xx-large;
-    z-index: 1;
+    margin-top: 0;
+}
+
+.oc-splash-screen-title button {
+    border: none;
+    margin: 0;
+    background-color: transparent;
+    color: white;
+    text-decoration: underline;
 }
 
 .oc-splash-screen p {
@@ -269,6 +272,14 @@ label > * {
 
 .oc-splash-screen form {
     padding: 8px;
+}
+
+.oc-splash-screen-title {
+    margin-top: 10px !important;
+    margin-left: 10px !important;
+    margin-bottom: 0;
+    position: absolute !important;
+    z-index: 1;
 }
 
 .oc-splash-screen-info-input {

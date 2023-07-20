@@ -781,12 +781,15 @@ function showSplashScreen(obj) {
     splashScreen.id = "oc-splash-screen";
     splashScreen.classList.add("oc-splash-screen");
     splashScreen.innerHTML = `<div>
-        <h1>OpenCrossword<br>Player</h1>
+        <div class="oc-splash-screen-title">
+            <button onclick="history.back()">${"‹" + "Back".i18n()}</button>
+            <h1>OpenCrossword<br>Player</h1>
+        </div>
         <p><b>${obj["info"]["title"]} - ${obj["info"]["author"]}</b><br>${obj["info"]["description"]}</p>
         <img alt="OpenCrossword banner" src="${document.baseURI}images/splash-screen.jpg">
     </div>
     <form method="dialog">
-        <input class="oc-splash-screen-info-input" type="submit" value="${"Play".i18n()}">
+        <input autofocus class="oc-splash-screen-info-input" type="submit" value="${"Play".i18n()}">
     </form>`;
     document.body.appendChild(splashScreen);
     splashScreen.showModal();
