@@ -140,9 +140,7 @@
     "author": "Alexis Martel",
     "contact": "",
     "description": "A small 5x4 crossword",
-    "tags": [
-      "mini"
-    ],
+    "tags": ["mini"],
     "date_published": "2023-01-01",
     "language": "en"
   }

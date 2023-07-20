@@ -1,5 +1,5 @@
 "use strict";
 
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register(`${document.baseURI}sw.js`);
+  navigator.serviceWorker.register(`${document.baseURI}sw.js`);
 }

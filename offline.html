@@ -1,105 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <base href="/Open-Crossword/"/>
-    <meta charset="utf-8">
+  <head>
+    <base href="/Open-Crossword/" />
+    <meta charset="utf-8" />
     <title>Offline - OpenCrossword</title>
-    <link href="apple-touch-icon.png?v=2" rel="apple-touch-icon">
-    <link href="favicon.png" rel="icon">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="#F1F1F1FF" media="(prefers-color-scheme: light)" name="theme-color">
-    <meta content="#012c37" media="(prefers-color-scheme: dark)" name="theme-color">
+    <link href="apple-touch-icon.png?v=2" rel="apple-touch-icon" />
+    <link href="favicon.png" rel="icon" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta
+      content="#F1F1F1FF"
+      media="(prefers-color-scheme: light)"
+      name="theme-color"
+    />
+    <meta
+      content="#012c37"
+      media="(prefers-color-scheme: dark)"
+      name="theme-color"
+    />
     <style>
+      :root {
+        --main-font: "Times New Roman", Times, serif;
+        --main-border-width: 2px;
+        --empty-clue-list-text: "No clues";
+        color-scheme: light dark;
+      }
+
+      @media (prefers-color-scheme: light) {
         :root {
-            --main-font: "Times New Roman", Times, serif;
-            --main-border-width: 2px;
-            --empty-clue-list-text: "No clues";
-            color-scheme: light dark;
+          --background-colour: #f1f1f1ff;
+          --foreground-colour: #0f0e12ff;
+          --selection-colour: #a0c2e9;
+          --highlight-colour: #d4d4d4;
         }
+      }
 
-        @media (prefers-color-scheme: light) {
-            :root {
-                --background-colour: #F1F1F1FF;
-                --foreground-colour: #0F0E12FF;
-                --selection-colour: #A0C2E9;
-                --highlight-colour: #D4D4D4;
-            }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background-colour: #012c37;
+          --foreground-colour: #fffaf0ff;
+          --selection-colour: #1b538a;
+          --highlight-colour: #3f3f3f;
         }
+      }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background-colour: #012c37;
-                --foreground-colour: #FFFAF0FF;
-                --selection-colour: #1b538a;
-                --highlight-colour: #3f3f3f;
-            }
-        }
+      html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
 
-        html {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-        }
+      body {
+        background-color: var(--background-colour);
+        color: var(--foreground-colour);
+        font-family: var(--main-font);
+        text-align: center;
+        margin: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-        body {
-            background-color: var(--background-colour);
-            color: var(--foreground-colour);
-            font-family: var(--main-font);
-            text-align: center;
-            margin: 0;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+      button {
+        padding: 2px;
+        margin: 3px 3px 3px 0;
+        font-family: var(--main-font);
+        font-size: initial;
+        border: var(--main-border-width) solid var(--foreground-colour);
+        background-color: transparent;
+        color: var(--foreground-colour);
+        cursor: pointer;
+      }
 
-        button {
-            padding: 2px;
-            margin: 3px 3px 3px 0;
-            font-family: var(--main-font);
-            font-size: initial;
-            border: var(--main-border-width) solid var(--foreground-colour);
-            background-color: transparent;
-            color: var(--foreground-colour);
-            cursor: pointer;
-        }
+      button:hover {
+        background-color: var(--highlight-colour);
+      }
 
-        button:hover {
-            background-color: var(--highlight-colour);
-        }
+      button:active {
+        background-color: var(--selection-colour);
+      }
 
-        button:active {
-            background-color: var(--selection-colour);
-        }
+      button svg {
+        fill: var(--foreground-colour);
+        stroke: var(--foreground-colour);
+        width: 22px;
+        height: 22px;
+        display: inline;
+        vertical-align: middle;
+      }
 
-        button svg {
-            fill: var(--foreground-colour);
-            stroke: var(--foreground-colour);
-            width: 22px;
-            height: 22px;
-            display: inline;
-            vertical-align: middle;
-        }
-
-        .oc-offline span {
-            box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
-            margin: calc(var(--main-border-width) / 2);
-            padding: 0.2em;
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            font-weight: bold;
-            font-size: 30px;
-            text-align: center;
-        }
+      .oc-offline span {
+        box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
+        margin: calc(var(--main-border-width) / 2);
+        padding: 0.2em;
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 30px;
+        text-align: center;
+      }
     </style>
-</head>
-<body>
-<div class="oc-offline">
-    <h2>You are</h2>
-    <p><span>O</span><span>F</span><span>F</span><span>L</span><span>I</span><span>N</span><span>E</span><span>!</span></p>
-    <p>Please check your internet connection.</p>
-    <button onclick="window.location.reload();"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M24 44q-3.75 0-7.025-1.4-3.275-1.4-5.725-3.85Q8.8 36.3 7.4 33.025 6 29.75 6 26h3q0 6.25 4.375 10.625T24 41q6.25 0 10.625-4.375T39 26q0-6.25-4.25-10.625T24.25 11H23.1l3.65 3.65-2.05 2.1-7.35-7.35 7.35-7.35 2.05 2.05-3.9 3.9H24q3.75 0 7.025 1.4 3.275 1.4 5.725 3.85 2.45 2.45 3.85 5.725Q42 22.25 42 26q0 3.75-1.4 7.025-1.4 3.275-3.85 5.725-2.45 2.45-5.725 3.85Q27.75 44 24 44Z"/></svg>Reconnect</button>
-</div>
-</body>
+  </head>
+  <body>
+    <div class="oc-offline">
+      <h2>You are</h2>
+      <p>
+        <span>O</span><span>F</span><span>F</span><span>L</span><span>I</span
+        ><span>N</span><span>E</span><span>!</span>
+      </p>
+      <p>Please check your internet connection.</p>
+      <button onclick="window.location.reload();">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+          <path
+            d="M24 44q-3.75 0-7.025-1.4-3.275-1.4-5.725-3.85Q8.8 36.3 7.4 33.025 6 29.75 6 26h3q0 6.25 4.375 10.625T24 41q6.25 0 10.625-4.375T39 26q0-6.25-4.25-10.625T24.25 11H23.1l3.65 3.65-2.05 2.1-7.35-7.35 7.35-7.35 2.05 2.05-3.9 3.9H24q3.75 0 7.025 1.4 3.275 1.4 5.725 3.85 2.45 2.45 3.85 5.725Q42 22.25 42 26q0 3.75-1.4 7.025-1.4 3.275-3.85 5.725-2.45 2.45-5.725 3.85Q27.75 44 24 44Z"
+          /></svg
+        >Reconnect
+      </button>
+    </div>
+  </body>
 </html>

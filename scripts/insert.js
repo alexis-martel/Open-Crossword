@@ -11,7 +11,7 @@ insertForm.appendChild(inputField);
 inputField.required = true;
 
 inputField.oninput = () => {
-    updatePreview();
+  updatePreview();
 };
 
 let insertButton = document.createElement("input");
@@ -30,15 +30,15 @@ characterPreview.classList.add("oc-insert-preview");
 document.getElementById("oc-insert-view").appendChild(characterPreview);
 
 insertForm.onsubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 };
 
 function updatePreview() {
-    characterPreview.innerHTML = "";
-    for (const character of inputField.value) {
-        let square = document.createElement("span");
-        square.classList.add("oc-text-square");
-        square.textContent = character.toUpperCase();
-        characterPreview.appendChild(square);
-    }
+  characterPreview.innerHTML = "";
+  for (const character of inputField.value) {
+    let square = document.createElement("span");
+    square.classList.add("oc-text-square");
+    square.textContent = character.toUpperCase();
+    characterPreview.appendChild(square);
+  }
 }

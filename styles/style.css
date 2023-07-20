@@ -1,146 +1,165 @@
 :root {
-    --main-font: "Times New Roman", Times, serif;
-    --main-border-width: 2px;
-    --empty-clue-list-text: "No clues";
-    color-scheme: light dark;
+  --main-font: "Times New Roman", Times, serif;
+  --main-border-width: 2px;
+  --empty-clue-list-text: "No clues";
+  color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: light) {
-    :root {
-        --background-colour: #F1F1F1FF;
-        --foreground-colour: #0F0E12FF;
-        --selection-colour: #A0C2E9;
-        --highlight-colour: #D4D4D4;
-        --error-colour: #ff5959;
-        --shaded-colour-1: rgba(0, 109, 239, 0.2);
-        --shaded-colour-2: rgba(0, 109, 239, 0.3);
-        --shaded-colour-3: rgba(0, 109, 239, 0.4);
-    }
+  :root {
+    --background-colour: #f1f1f1ff;
+    --foreground-colour: #0f0e12ff;
+    --selection-colour: #a0c2e9;
+    --highlight-colour: #d4d4d4;
+    --error-colour: #ff5959;
+    --shaded-colour-1: rgba(0, 109, 239, 0.2);
+    --shaded-colour-2: rgba(0, 109, 239, 0.3);
+    --shaded-colour-3: rgba(0, 109, 239, 0.4);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --background-colour: #012c37;
-        --foreground-colour: #FFFAF0FF;
-        --selection-colour: #1b538a;
-        --highlight-colour: #3f3f3f;
-        --error-colour: #d50000;
-        --shaded-colour-1: rgba(255, 250, 240, 0.2);
-        --shaded-colour-2: rgba(255, 250, 240, 0.3);
-        --shaded-colour-3: rgba(255, 250, 240, 0.4);
-    }
+  :root {
+    --background-colour: #012c37;
+    --foreground-colour: #fffaf0ff;
+    --selection-colour: #1b538a;
+    --highlight-colour: #3f3f3f;
+    --error-colour: #d50000;
+    --shaded-colour-1: rgba(255, 250, 240, 0.2);
+    --shaded-colour-2: rgba(255, 250, 240, 0.3);
+    --shaded-colour-3: rgba(255, 250, 240, 0.4);
+  }
 }
 
 @media print {
-    :root {
-        --background-colour: white;
-        --foreground-colour: black;
-        --selection-colour: white;
-        --highlight-colour: white;
-        --error-colour: transparent;
-        --shaded-colour-1: rgba(255, 250, 240, 0.2);
-        --shaded-colour-2: rgba(255, 250, 240, 0.3);
-        --shaded-colour-3: rgba(255, 250, 240, 0.4);
-    }
+  :root {
+    --background-colour: white;
+    --foreground-colour: black;
+    --selection-colour: white;
+    --highlight-colour: white;
+    --error-colour: transparent;
+    --shaded-colour-1: rgba(255, 250, 240, 0.2);
+    --shaded-colour-2: rgba(255, 250, 240, 0.3);
+    --shaded-colour-3: rgba(255, 250, 240, 0.4);
+  }
 
-    header, footer, nav {
-        display: none !important;
-    }
+  header,
+  footer,
+  nav {
+    display: none !important;
+  }
 
-    summary {
-        list-style: none;
-    }
+  summary {
+    list-style: none;
+  }
 
-    summary::-webkit-details-marker {
-        display: none;
-    }
+  summary::-webkit-details-marker {
+    display: none;
+  }
 
-    .oc-puzzle-title {
-        display: block !important;
-    }
+  .oc-puzzle-title {
+    display: block !important;
+  }
 }
 
 body {
-    background-color: var(--background-colour);
-    color: var(--foreground-colour);
-    font-family: var(--main-font);
-    font-size: medium;
-    print-color-adjust: exact !important;
+  background-color: var(--background-colour);
+  color: var(--foreground-colour);
+  font-family: var(--main-font);
+  font-size: medium;
+  print-color-adjust: exact !important;
 }
 
 hr {
-    height: 2px;
-    border: none;
-    background-color: var(--foreground-colour);
-    margin-top: 3px;
-    margin-bottom: 3px;
+  height: 2px;
+  border: none;
+  background-color: var(--foreground-colour);
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 footer {
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 header h1 {
-    display: inline;
-    vertical-align: middle;
+  display: inline;
+  vertical-align: middle;
 }
 
 header svg {
-    height: 50px;
-    width: 50px;
-    fill: var(--foreground-colour);
-    stroke: var(--foreground-colour);
-    display: inline;
-    vertical-align: middle;
-    margin-right: 10px;
+  height: 50px;
+  width: 50px;
+  fill: var(--foreground-colour);
+  stroke: var(--foreground-colour);
+  display: inline;
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 header a {
-    text-decoration: none;
-    display: inline-block;
+  text-decoration: none;
+  display: inline-block;
 }
 
-input[type="button"], input[type="submit"] {
-    appearance: none;
-    border-radius: 0;
+input[type="button"],
+input[type="submit"] {
+  appearance: none;
+  border-radius: 0;
 }
 
-button, input[type="button"], input[type="submit"], .oc-button-link, .oc-drop-down-button summary {
-    padding: 2px;
-    font-family: var(--main-font);
-    font-size: initial;
-    border: var(--main-border-width) solid var(--foreground-colour);
-    background-color: transparent;
-    color: var(--foreground-colour);
-    cursor: pointer;
-    text-decoration: none;
+button,
+input[type="button"],
+input[type="submit"],
+.oc-button-link,
+.oc-drop-down-button summary {
+  padding: 2px;
+  font-family: var(--main-font);
+  font-size: initial;
+  border: var(--main-border-width) solid var(--foreground-colour);
+  background-color: transparent;
+  color: var(--foreground-colour);
+  cursor: pointer;
+  text-decoration: none;
 }
 
-button:hover, input[type="button"]:hover, input[type="submit"]:hover, .oc-button-link:hover, .oc-drop-down-button:hover {
-    background-color: var(--highlight-colour);
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.oc-button-link:hover,
+.oc-drop-down-button:hover {
+  background-color: var(--highlight-colour);
 }
 
-button:active, input[type="button"]:active, input[type="submit"]:active, .oc-button-link:active, .oc-drop-down-button:active {
-    background-color: var(--selection-colour);
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+.oc-button-link:active,
+.oc-drop-down-button:active {
+  background-color: var(--selection-colour);
 }
 
-button svg, input[type="button"] svg, input[type="submit"] svg, .oc-button-link svg, .oc-drop-down-button svg {
-    fill: var(--foreground-colour);
-    stroke: var(--foreground-colour);
-    width: 22px;
-    height: 22px;
-    display: inline;
-    vertical-align: middle;
+button svg,
+input[type="button"] svg,
+input[type="submit"] svg,
+.oc-button-link svg,
+.oc-drop-down-button svg {
+  fill: var(--foreground-colour);
+  stroke: var(--foreground-colour);
+  width: 22px;
+  height: 22px;
+  display: inline;
+  vertical-align: middle;
 }
 
 a {
-    color: var(--foreground-colour);
+  color: var(--foreground-colour);
 }
 
 nav {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
 }
 
 details summary > * {
@@ -148,557 +167,562 @@ details summary > * {
 }
 
 details summary {
-    margin-block-start: 15px;
-    margin-block-end: 15px;
-    cursor: pointer;
+  margin-block-start: 15px;
+  margin-block-end: 15px;
+  cursor: pointer;
 }
 
 label > * {
-    margin: var(--main-border-width);
+  margin: var(--main-border-width);
 }
 
 .oc-featured-puzzles {
-    display: flex;
-    flex-direction: row;
-    overflow: auto;
-    margin: auto;
-    max-width: min-content;
-    flex-wrap: revert;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  margin: auto;
+  max-width: min-content;
+  flex-wrap: revert;
 }
 
 .oc-featured-item {
-    border: var(--main-border-width) solid var(--foreground-colour);
-    padding: 20px;
-    display: inline-block;
-    margin: 5px;
-    text-align: center;
-    width: min-content;
+  border: var(--main-border-width) solid var(--foreground-colour);
+  padding: 20px;
+  display: inline-block;
+  margin: 5px;
+  text-align: center;
+  width: min-content;
 }
 
 .oc-featured-item:hover {
-    background-color: var(--highlight-colour);
+  background-color: var(--highlight-colour);
 }
 
 .oc-featured-item:active {
-    background-color: var(--selection-colour);
+  background-color: var(--selection-colour);
 }
 
 .oc-featured-item svg {
-    height: 100px;
-    width: 100px;
-    fill: var(--foreground-colour);
-    display: block;
+  height: 100px;
+  width: 100px;
+  fill: var(--foreground-colour);
+  display: block;
 }
 
 .oc-home-menu {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .oc-puzzle-browser {
-    border-collapse: collapse;
-    width: 100%;
-    padding: 5px;
+  border-collapse: collapse;
+  width: 100%;
+  padding: 5px;
 }
 
 .oc-puzzle-browser tr {
-    border: var(--main-border-width) solid var(--foreground-colour);
+  border: var(--main-border-width) solid var(--foreground-colour);
 }
 
 .oc-puzzle-browser tr:hover {
-    background-color: var(--highlight-colour);
+  background-color: var(--highlight-colour);
 }
 
 .oc-puzzle-browser tr:active {
-    background-color: var(--selection-colour);
+  background-color: var(--selection-colour);
 }
 
-.oc-puzzle-browser td, .oc-puzzle-browser th {
-    padding: 8px;
+.oc-puzzle-browser td,
+.oc-puzzle-browser th {
+  padding: 8px;
 }
 
 .oc-game-view {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .oc-splash-screen {
-    padding: 0;
-    width: 50vmin;
-    min-width: 340px;
-    box-shadow: 5px 5px 0 0 var(--foreground-colour);
-    background-color: var(--background-colour);
-    border: var(--main-border-width) solid var(--foreground-colour);
+  padding: 0;
+  width: 50vmin;
+  min-width: 340px;
+  box-shadow: 5px 5px 0 0 var(--foreground-colour);
+  background-color: var(--background-colour);
+  border: var(--main-border-width) solid var(--foreground-colour);
 }
 
 .oc-splash-screen h1 {
-    font-weight: normal;
-    color: white;
-    font-size: xx-large;
-    margin-top: 0;
+  font-weight: normal;
+  color: white;
+  font-size: xx-large;
+  margin-top: 0;
 }
 
 .oc-splash-screen-title button {
-    border: none;
-    margin: 0;
-    background-color: transparent;
-    color: white;
-    text-decoration: underline;
+  border: none;
+  margin: 0;
+  background-color: transparent;
+  color: white;
+  text-decoration: underline;
 }
 
 .oc-splash-screen p {
-    margin-top: 10px;
-    margin-left: 10px;
-    font-weight: normal;
-    position: absolute;
-    bottom: 0;
-    color: white;
-    z-index: 1;
-    text-wrap: normal;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: normal;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  z-index: 1;
+  text-wrap: normal;
 }
 
 .oc-splash-screen img {
-    filter: brightness(75%);
-    width: 100%;
-    display: block;
+  filter: brightness(75%);
+  width: 100%;
+  display: block;
 }
 
 .oc-splash-screen div {
-    position: relative;
-    margin: 0;
-    padding: 0;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .oc-splash-screen form {
-    padding: 8px;
+  padding: 8px;
 }
 
 .oc-splash-screen-title {
-    margin-top: 10px !important;
-    margin-left: 10px !important;
-    margin-bottom: 0;
-    position: absolute !important;
-    z-index: 1;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+  margin-bottom: 0;
+  position: absolute !important;
+  z-index: 1;
 }
 
 .oc-splash-screen-info-input {
-    width: 100%;
-    font-family: var(--main-font);
-    font-size: initial;
-    resize: vertical;
-    box-sizing: border-box;
+  width: 100%;
+  font-family: var(--main-font);
+  font-size: initial;
+  resize: vertical;
+  box-sizing: border-box;
 }
 
 .oc-splash-screen-info-input-label {
-    margin-bottom: var(--main-border-width);
-    box-sizing: border-box;
+  margin-bottom: var(--main-border-width);
+  box-sizing: border-box;
 }
 
 .oc-puzzle-title {
-    word-break: break-word;
+  word-break: break-word;
 }
 
 .oc-drop-down-button {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 
 .oc-drop-down-button button {
-    display: block;
+  display: block;
 }
 
 .oc-drop-down-button summary {
-    list-style: none;
-    margin-block-start: 0;
-    margin-block-end: 0;
+  list-style: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .oc-drop-down-button summary::-webkit-details-marker {
-    display: none;
+  display: none;
 }
 
 .oc-drop-down-button-options {
-    position: absolute;
-    display: block;
-    background-color: var(--background-colour);
-    border-collapse: collapse;
-    min-width: max-content;
+  position: absolute;
+  display: block;
+  background-color: var(--background-colour);
+  border-collapse: collapse;
+  min-width: max-content;
 }
 
 .oc-drop-down-button-options button {
-    margin-top: calc(-1 * var(--main-border-width)) !important;
-    width: 100%;
-    text-align: left;
-    padding: 4px;
+  margin-top: calc(-1 * var(--main-border-width)) !important;
+  width: 100%;
+  text-align: left;
+  padding: 4px;
 }
 
 .oc-stopwatch {
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .oc-info-container {
-    padding: 0;
+  padding: 0;
 }
 
 .oc-puzzle-container {
-    margin: auto;
+  margin: auto;
 }
 
 .oc-clue-list {
-    padding-inline-start: 10px;
+  padding-inline-start: 10px;
 }
 
 .oc-clue-tag {
-    font-weight: bold;
-    margin-right: 5px;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .oc-clue {
-    display: block;
-    cursor: pointer;
-    color: var(--foreground-colour);
-    padding: 5px;
+  display: block;
+  cursor: pointer;
+  color: var(--foreground-colour);
+  padding: 5px;
 }
 
-.oc-clue:hover, .oc-clue.highlighted {
-    background-color: var(--highlight-colour);
+.oc-clue:hover,
+.oc-clue.highlighted {
+  background-color: var(--highlight-colour);
 }
 
-.oc-clue:active, .oc-clue.selected {
-    background-color: var(--selection-colour);
+.oc-clue:active,
+.oc-clue.selected {
+  background-color: var(--selection-colour);
 }
 
 .oc-info-label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .oc-info-text {
-    margin-inline-start: 10px;
-    margin-block-end: 10px;
+  margin-inline-start: 10px;
+  margin-block-end: 10px;
 }
 
 .oc-info-puzzle-tags-list {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
 }
 
 .oc-info-tag {
-    font-weight: bold;
-    font-size: small;
-    background-color: var(--highlight-colour);
-    border-radius: 6px;
-    display: inline-block;
-    padding: 4px;
-    margin-top: 2px;
-    margin-right: 2px;
+  font-weight: bold;
+  font-size: small;
+  background-color: var(--highlight-colour);
+  border-radius: 6px;
+  display: inline-block;
+  padding: 4px;
+  margin-top: 2px;
+  margin-right: 2px;
 }
 
 .oc-grid-container {
-    display: grid;
-    gap: var(--main-border-width);
-    max-width: max-content;
-    margin: var(--main-border-width);
+  display: grid;
+  gap: var(--main-border-width);
+  max-width: max-content;
+  margin: var(--main-border-width);
 }
 
 .oc-clue-bar {
-    display: none;
-    grid-row: span;
-    margin-bottom: 5px; /* To remedy margin collapse */
+  display: none;
+  grid-row: span;
+  margin-bottom: 5px; /* To remedy margin collapse */
 
-    border: var(--main-border-width) solid var(--foreground-colour);
-    align-items: center;
-    justify-content: space-between;
-    font-size: large;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
+  border: var(--main-border-width) solid var(--foreground-colour);
+  align-items: center;
+  justify-content: space-between;
+  font-size: large;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .oc-control-button-container {
-    display: block;
+  display: block;
 }
 
-.oc-control-button-container button, .oc-control-button-container details {
-    margin-top: 2px;
-    margin-right: 2px;
+.oc-control-button-container button,
+.oc-control-button-container details {
+  margin-top: 2px;
+  margin-right: 2px;
 }
 
 .oc-clue-bar-number-direction {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .oc-clue-content-wrapper {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .oc-clue-bar-control-wrapper {
-    min-width: max-content;
+  min-width: max-content;
 }
 
 .oc-puzzle-square {
-    box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
-    display: inline-block;
-    max-width: 75px;
-    max-height: 75px;
-    min-height: 25px;
-    min-width: 25px;
-    aspect-ratio: 1;
-    color: var(--foreground-colour);
-    background-color: var(--background-colour);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
+  display: inline-block;
+  max-width: 75px;
+  max-height: 75px;
+  min-height: 25px;
+  min-width: 25px;
+  aspect-ratio: 1;
+  color: var(--foreground-colour);
+  background-color: var(--background-colour);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .oc-puzzle-square-clue {
-    position: absolute;
-    left: var(--main-border-width);
-    top: var(--main-border-width);
+  position: absolute;
+  left: var(--main-border-width);
+  top: var(--main-border-width);
 }
 
-
 .oc-cell {
-    font-size: 20px;
-    cursor: text;
+  font-size: 20px;
+  cursor: text;
 }
 
 .oc-cell-circled::before {
-    position: absolute;
-    top: calc(-1 * var(--main-border-width));
-    left: calc(-1 * var(--main-border-width));
-    content: "";
-    width: 100%;
-    height: 100%;
-    border: var(--main-border-width) solid var(--foreground-colour);
-    border-radius: 50%;
+  position: absolute;
+  top: calc(-1 * var(--main-border-width));
+  left: calc(-1 * var(--main-border-width));
+  content: "";
+  width: 100%;
+  height: 100%;
+  border: var(--main-border-width) solid var(--foreground-colour);
+  border-radius: 50%;
 }
 
 .oc-block {
-    background-color: var(--foreground-colour);
+  background-color: var(--foreground-colour);
 }
 
 .oc-shaded-level-1 {
-    background-color: var(--shaded-colour-1);
+  background-color: var(--shaded-colour-1);
 }
 
 .oc-shaded-level-2 {
-    background-color: var(--shaded-colour-2);
+  background-color: var(--shaded-colour-2);
 }
 
 .oc-shaded-level-3 {
-    background-color: var(--shaded-colour-3);
+  background-color: var(--shaded-colour-3);
 }
 
 .oc-invisible {
-    background-color: transparent;
-    box-shadow: none;
+  background-color: transparent;
+  box-shadow: none;
 }
 
-.oc-cell:hover, .oc-cell.highlighted {
-    background-color: var(--highlight-colour);
+.oc-cell:hover,
+.oc-cell.highlighted {
+  background-color: var(--highlight-colour);
 }
 
-.oc-cell:active, .oc-cell.selected {
-    background-color: var(--selection-colour);
+.oc-cell:active,
+.oc-cell.selected {
+  background-color: var(--selection-colour);
 }
 
 .oc-puzzle-square-text {
-    font-size: 50px;
-    font-weight: bold;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    text-transform: uppercase;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    padding: 0;
-    appearance: none;
-    caret-color: transparent;
-    font-family: var(--main-font);
-    color: var(--foreground-colour);
-    text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  appearance: none;
+  caret-color: transparent;
+  font-family: var(--main-font);
+  color: var(--foreground-colour);
+  text-align: center;
 }
 
 .oc-puzzle-square-text::selection {
-    background: transparent;
+  background: transparent;
 }
 
 .oc-cell-invalid {
-    position: relative;
+  position: relative;
 }
 
 .oc-cell-invalid::after {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 50%;
-    right: 0;
-    width: 100%;
-    border-top: var(--main-border-width) solid;
-    border-color: var(--error-colour);
-    transform: rotate(-45deg);
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  width: 100%;
+  border-top: var(--main-border-width) solid;
+  border-color: var(--error-colour);
+  transform: rotate(-45deg);
 }
 
 .oc-builder-ui-container {
-    position: sticky;
-    z-index: 2147483647;
-    top: 0;
-    left: 0;
-    background-color: var(--background-colour);
+  position: sticky;
+  z-index: 2147483647;
+  top: 0;
+  left: 0;
+  background-color: var(--background-colour);
 }
 
 .oc-builder-puzzle-container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .oc-builder-info-container {
-    width: 100%;
+  width: 100%;
 }
 
 .oc-builder-square-checkbox {
-    z-index: 1;
-    position: absolute;
-    right: var(--main-border-width);
-    top: var(--main-border-width);
+  z-index: 1;
+  position: absolute;
+  right: var(--main-border-width);
+  top: var(--main-border-width);
 }
 
 .oc-builder-square-checkbox {
-    display: block;
+  display: block;
 }
 
 .oc-builder-square-checkbox:checked {
-    display: block; /* Always show when checked */
+  display: block; /* Always show when checked */
 }
 
 @media (hover: hover) {
-    .oc-builder-square-checkbox {
-        display: none;
-    }
+  .oc-builder-square-checkbox {
+    display: none;
+  }
 
-    .oc-puzzle-square:hover > .oc-builder-square-checkbox {
-        display: block;
-    }
+  .oc-puzzle-square:hover > .oc-builder-square-checkbox {
+    display: block;
+  }
 }
 
 .oc-builder-row-column-checkbox-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .oc-builder-row-column-checkbox {
-    margin: 5px
+  margin: 5px;
 }
 
 .oc-builder-square-clue-number-input {
-    position: absolute;
-    top: var(--main-border-width);
-    left: var(--main-border-width);
-    width: 5ch;
-    font-family: var(--main-font);
-    font-size: small;
+  position: absolute;
+  top: var(--main-border-width);
+  left: var(--main-border-width);
+  width: 5ch;
+  font-family: var(--main-font);
+  font-size: small;
 }
 
 .oc-builder-clue-list:empty:before {
-    content: var(--empty-clue-list-text);
+  content: var(--empty-clue-list-text);
 }
 
 .oc-builder-clue {
-    display: flex;
+  display: flex;
 }
 
 .oc-builder-clue-number-input {
-    width: 5ch;
-    font-family: var(--main-font);
-    font-size: initial;
-    margin: var(--main-border-width);
+  width: 5ch;
+  font-family: var(--main-font);
+  font-size: initial;
+  margin: var(--main-border-width);
 }
 
 .oc-builder-clue-text-input {
-    width: 100%;
-    font-family: var(--main-font);
-    font-size: initial;
-    margin: var(--main-border-width);
+  width: 100%;
+  font-family: var(--main-font);
+  font-size: initial;
+  margin: var(--main-border-width);
 }
 
 .oc-builder-clue-list-button {
-    margin-top: var(--main-border-width);
-    margin-right: var(--main-border-width);
+  margin-top: var(--main-border-width);
+  margin-right: var(--main-border-width);
 }
 
 .oc-builder-info-input-label {
-    display: block;
+  display: block;
 }
 
 .oc-builder-info-input {
-    width: 100%;
-    font-family: var(--main-font);
-    font-size: initial;
-    resize: vertical;
-    box-sizing: border-box;
+  width: 100%;
+  font-family: var(--main-font);
+  font-size: initial;
+  resize: vertical;
+  box-sizing: border-box;
 }
 
 .oc-dialog {
-    padding: 8px;
-    box-shadow: 5px 5px 0 0 var(--foreground-colour);
-    background-color: var(--background-colour);
-    border: var(--main-border-width) solid var(--foreground-colour);
+  padding: 8px;
+  box-shadow: 5px 5px 0 0 var(--foreground-colour);
+  background-color: var(--background-colour);
+  border: var(--main-border-width) solid var(--foreground-colour);
 }
 
 .oc-dialog h2 {
-    display: inline-block;
-    color: var(--foreground-colour);
-    margin: auto;
+  display: inline-block;
+  color: var(--foreground-colour);
+  margin: auto;
 }
 
 .oc-dialog iframe {
-    border: none;
-    height: 50%;
+  border: none;
+  height: 50%;
 }
 
 .oc-dialog div {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .oc-insert-preview {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .oc-text-square {
-    box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
-    margin: calc(var(--main-border-width) / 2);
-    padding: 0.2em;
-    width: 1em;
-    /* min-width: 1em; */
-    height: 1em;
-    /* min-height: 1em; */
-    display: inline-block;
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
+  box-shadow: 0 0 0 var(--main-border-width) var(--foreground-colour);
+  margin: calc(var(--main-border-width) / 2);
+  padding: 0.2em;
+  width: 1em;
+  /* min-width: 1em; */
+  height: 1em;
+  /* min-height: 1em; */
+  display: inline-block;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
 }
 
 .oc-dialog-content {
-    display: block !important;
+  display: block !important;
 }
 
 .oc-dialog-content button {
-    width: 100%;
-    margin-top: 8px;
+  width: 100%;
+  margin-top: 8px;
 }

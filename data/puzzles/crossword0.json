@@ -9,15 +9,11 @@
       },
       "3": {
         "content": "With [4-Across], expected verdict to a wedding",
-        "links": [
-          "4-Across"
-        ]
+        "links": ["4-Across"]
       },
       "4": {
         "content": "See [3-Across]",
-        "links": [
-          "3-Across"
-        ]
+        "links": ["3-Across"]
       },
       "5": {
         "content": "Boat pole"
@@ -129,10 +125,7 @@
     "title": "Mini #1",
     "author": "Alexis Martel",
     "description": "A small 4x4 crossword",
-    "tags": [
-      "mini",
-      "unthemed"
-    ],
+    "tags": ["mini", "unthemed"],
     "date_published": "2022-07-09",
     "language": "en"
   }

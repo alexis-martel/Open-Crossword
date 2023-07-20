@@ -376,16 +376,12 @@
       }
     ]
   ],
-  "colour-scheme": {
-  },
+  "colour-scheme": {},
   "info": {
     "title": "Mot Croisé Aquatique",
     "author": "Alexis Martel",
     "description": "Plongez sous l'eau en complétant ce mot croisé comprenant exclusivement des indices aquatiques",
-    "tags": [
-      "thématique",
-      "aquatique"
-    ],
+    "tags": ["thématique", "aquatique"],
     "date_published": "2022-08-17",
     "language": "fr"
   }

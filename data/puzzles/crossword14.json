@@ -3,10 +3,7 @@
     "across": {
       "1": {
         "content": "Bull-fighting novel by [64-Down] [36-Down]",
-        "links": [
-          "64-Down",
-          "36-Down"
-        ]
+        "links": ["64-Down", "36-Down"]
       },
       "2": {
         "content": "Reimbursements"
@@ -132,9 +129,7 @@
       },
       "19": {
         "content": "The Justin Trudeaus and [18-Down]s of this world (Abbr.)",
-        "links": [
-          "18-Down"
-        ]
+        "links": ["18-Down"]
       },
       "21": {
         "content": "Opposite of cloudy"
@@ -168,9 +163,7 @@
       },
       "43": {
         "content": "Prefix meaning [44-Down], in English",
-        "links": [
-          "44-Down"
-        ]
+        "links": ["44-Down"]
       },
       "44": {
         "content": "Card game with a reverse card"
@@ -234,15 +227,11 @@
       },
       "64": {
         "content": "First name of [36-Down]",
-        "links": [
-          "36-Down"
-        ]
+        "links": ["36-Down"]
       },
       "65": {
         "content": "Continuations of [19-Across]?",
-        "links": [
-          "19-Across"
-        ]
+        "links": ["19-Across"]
       },
       "66": {
         "content": "<cite>The Catcher in the ___</cite>"
@@ -1319,10 +1308,7 @@
     "author": "Alexis Martel",
     "contact": "",
     "description": "This puzzle is for when the sun comes out to cast its shine on the pulp of literature.",
-    "tags": [
-      "summer",
-      "books"
-    ],
+    "tags": ["summer", "books"],
     "date_published": "2022-11-16",
     "language": "en"
   }

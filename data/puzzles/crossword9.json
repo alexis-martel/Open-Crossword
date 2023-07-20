@@ -122,9 +122,7 @@
     "author": "Alexis Martel",
     "contact": "",
     "description": "A small 4x4 crossword",
-    "tags": [
-      "mini"
-    ],
+    "tags": ["mini"],
     "date_published": "2022-11-12",
     "language": "en"
   }

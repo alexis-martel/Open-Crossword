@@ -12,9 +12,7 @@
       },
       "4": {
         "content": "[See 22-Down]",
-        "links": [
-          "22-Down"
-        ]
+        "links": ["22-Down"]
       },
       "5": {
         "content": "London airport code"
@@ -501,10 +499,7 @@
     "title": "Unthemed Crossword #1",
     "author": "Alexis Martel",
     "description": "A medium 9x9 crossword",
-    "tags": [
-      "medium",
-      "unthemed"
-    ],
+    "tags": ["medium", "unthemed"],
     "date_published": "2022-09-06",
     "language": "en"
   }

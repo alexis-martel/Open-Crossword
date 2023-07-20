@@ -2,18 +2,18 @@
 
 let shuffleButton = document.getElementById("shuffle-button");
 shuffleButton.onclick = () => {
-    shufflePuzzles();
-}
+  shufflePuzzles();
+};
 
 function shufflePuzzles() {
-// Choose a random <tr> element
-    let rows = document.getElementsByTagName("tr");
-    let randomRow = rows[Math.floor(Math.random() * rows.length)];
-    if (randomRow.id === "oc-puzzle-browser-header") {
-        shufflePuzzles(); // Select a new row if the random row is the header
-    }
+  // Choose a random <tr> element
+  let rows = document.getElementsByTagName("tr");
+  let randomRow = rows[Math.floor(Math.random() * rows.length)];
+  if (randomRow.id === "oc-puzzle-browser-header") {
+    shufflePuzzles(); // Select a new row if the random row is the header
+  }
 
-    // Navigate to the link in the random row
-    let link = randomRow.getElementsByTagName("a")[0];
-    window.location.href = link.href;
+  // Navigate to the link in the random row
+  let link = randomRow.getElementsByTagName("a")[0];
+  window.location.href = link.href;
 }

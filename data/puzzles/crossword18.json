@@ -175,9 +175,7 @@
     "author": "Alexis Martel",
     "contact": "",
     "description": "A small 5x5 crossword",
-    "tags": [
-      "mini"
-    ],
+    "tags": ["mini"],
     "date_published": "2023-01-02",
     "language": "en"
   }

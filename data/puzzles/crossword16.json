@@ -32,9 +32,7 @@
       },
       "10": {
         "content": "[4-Across]'s brother",
-        "links": [
-          "4-Across"
-]
+        "links": ["4-Across"]
       },
       "11": {
         "content": "Evil crocodile in the <cite>Donkey Kong</cite> series"
@@ -175,10 +173,7 @@
     "author": "Alexis Martel",
     "contact": "",
     "description": "A small 5x5 crossword",
-    "tags": [
-      "mini",
-      " video games"
-    ],
+    "tags": ["mini", " video games"],
     "date_published": "2023-01-01",
     "language": "en"
   }

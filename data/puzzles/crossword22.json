@@ -717,10 +717,7 @@
     "author": "Alexis Martel",
     "contact": "",
     "description": "A medium 11x11 crossword",
-    "tags": [
-      "medium",
-      "unthemed"
-    ],
+    "tags": ["medium", "unthemed"],
     "date_published": "2023-01-12",
     "language": "en"
   }
