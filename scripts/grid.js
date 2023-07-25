@@ -111,26 +111,28 @@ export default class Grid {
   }
 
   selectNextSquare() {
-    // Selects the next square in the puzzle
-    if (this.selectionDirection === "across") {
-      this.squares
-        .filter(
-          (square) =>
-            square.y === this.selectedSquare.y &&
-            square.x > this.selectedSquare.x &&
-            square.style === "cell",
-        )[0]
-        .select();
-    } else if (this.selectionDirection === "down") {
-      this.squares
-        .filter(
-          (square) =>
-            square.x === this.selectedSquare.x &&
-            square.y > this.selectedSquare.y &&
-            square.style === "cell",
-        )[0]
-        .select();
-    }
+    try {
+      // Selects the next square in the puzzle
+      if (this.selectionDirection === "across") {
+        this.squares
+          .filter(
+            (square) =>
+              square.y === this.selectedSquare.y &&
+              square.x > this.selectedSquare.x &&
+              square.style === "cell",
+          )[0]
+          .select();
+      } else if (this.selectionDirection === "down") {
+        this.squares
+          .filter(
+            (square) =>
+              square.x === this.selectedSquare.x &&
+              square.y > this.selectedSquare.y &&
+              square.style === "cell",
+          )[0]
+          .select();
+      }
+    } catch { }
   }
 
   selectPreviousSquare() {

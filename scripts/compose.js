@@ -3,19 +3,17 @@ import decompressAndDecode from "./decompress.js";
 import GridSquare from "./grid-square.js";
 import Grid from "./grid.js";
 
-"use strict";
+("use strict");
 
 let puzzleContainer;
 
 let gridContainer;
 
-document.onchange = () => {
-  pushToMemento();
-}
-
 let myPuzzle;
 
 let memento = []; // Stores previous puzzle states for undo/redo functionality
+let mementoIndex = 0; // Stores the active memento's index
+let shouldPushToMemento = true; // Whether or not to push a new memento to the memento array
 
 class EditorGrid extends Grid {
   constructor(obj) {
@@ -337,6 +335,11 @@ class EditorGridSquare extends GridSquare {
     try {
       this.textElement.value = answer;
     } catch { }
+    try {
+      this.textElement.addEventListener("input", () => {
+        document.onchange();
+      })
+    } catch { }
     if (this.style !== "cell") {
       this.element.onclick = () => {
         this.checkboxElement.checked = !this.checkboxElement.checked;
@@ -405,8 +408,8 @@ const icon = {
   searchSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>`,
   closeSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`,
   insertSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M439-120v-60h83v60h-83Zm0-660v-60h83v60h-83Zm170 660v-60h83v60h-83Zm0-660v-60h83v60h-83Zm171 660v-60h60v60h-60Zm0-660v-60h60v60h-60ZM120-120v-60h86v-600h-86v-60h231v60h-85v600h85v60H120Zm574-214-42-42 73-74H414v-60h311l-73-74 42-42 146 146-146 146Z"/></svg>`,
-  "undoSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M259-200v-60h310q70 0 120.5-46.5T740-422q0-69-50.5-115.5T569-584H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800-422q0 94-68.5 158T568-200H259Z"/></svg>`,
-  "redoSVG": `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M392-200q-95 0-163.5-64T160-422q0-94 68.5-158T392-644h294L572-758l42-42 186 186-186 186-42-42 114-114H391q-70 0-120.5 46.5T220-422q0 69 50.5 115.5T391-260h310v60H392Z"/></svg>`
+  undoSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M259-200v-60h310q70 0 120.5-46.5T740-422q0-69-50.5-115.5T569-584H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800-422q0 94-68.5 158T568-200H259Z"/></svg>`,
+  redoSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M392-200q-95 0-163.5-64T160-422q0-94 68.5-158T392-644h294L572-758l42-42 186 186-186 186-42-42 114-114H391q-70 0-120.5 46.5T220-422q0 69 50.5 115.5T391-260h310v60H392Z"/></svg>`,
 };
 
 function populateToolBar() {
@@ -953,33 +956,50 @@ function showOpenForm() {
 }
 
 function pushToMemento() {
-  myPuzzle.generate();
-  if (!(JSON.stringify(memento[memento.length - 1]) === JSON.stringify(myPuzzle.obj))) {
-    memento.push(myPuzzle.obj);
+  if (shouldPushToMemento) {
+    myPuzzle.generate();
+    if (
+      !(
+        JSON.stringify(memento[memento.length - 1]) ===
+        JSON.stringify(myPuzzle.obj)
+      )
+    ) {
+      // If current memento is last one in array, push
+      // Else, remove all mementos after current one, then push
+      if (mementoIndex === memento.length - 1) {
+        memento.push(myPuzzle.obj);
+        mementoIndex++;
+      } else {
+        memento = memento.slice(0, mementoIndex + 1);
+        memento.push(myPuzzle.obj);
+        mementoIndex++;
+      }
+    }
+
   }
 }
 
 function undo() {
-  myPuzzle.generate();
-  let searchableMemento = [];
-  for (const obj of memento) {
-    searchableMemento[memento.indexOf(obj)] = JSON.stringify(obj);
-  }
-  let index = searchableMemento.indexOf(JSON.stringify(myPuzzle.obj));
-  if (index > 0) {
-    populateGrid(memento[index - 1]);
+  if (mementoIndex - 1 >= 0) {
+    shouldPushToMemento = false;
+    mementoIndex--;
+    populateGrid(memento[mementoIndex]);
+    console.log(memento);
+    shouldPushToMemento = true;
+  } else {
+    console.log("Cannot undo: no previous state");
   }
 }
 
 function redo() {
-  myPuzzle.generate();
-  let searchableMemento = [];
-  for (const obj of memento) {
-    searchableMemento[memento.indexOf(obj)] = JSON.stringify(obj);
-  }
-  let index = searchableMemento.indexOf(JSON.stringify(myPuzzle.obj));
-  if (index > 0) {
-    populateGrid(memento[index + 1]);
+  if (mementoIndex + 1 < memento.length) {
+    shouldPushToMemento = false;
+    mementoIndex++;
+    populateGrid(memento[mementoIndex]);
+    console.log(memento);
+    shouldPushToMemento = true;
+  } else {
+    console.log("Cannot redo: no next state");
   }
 }
 
@@ -1015,14 +1035,26 @@ if (params.has("l")) {
 }
 
 document.addEventListener("keydown", (e) => {
-  if (!e.shiftKey && e.metaKey && e.key === "z" || !e.shiftKey && e.ctrlKey && e.key === "z") {
+  if (
+    (!e.shiftKey && e.metaKey && e.key === "z") ||
+    (!e.shiftKey && e.ctrlKey && e.key === "z")
+  ) {
     e.preventDefault();
     undo();
-  } else if (e.shiftKey && e.metaKey && e.key === "z" || e.shiftKey && e.ctrlKey && e.key === "z" || e.metaKey && e.key === "y" || e.ctrlKey && e.key === "y") {
+  } else if (
+    (e.shiftKey && e.metaKey && e.key === "z") ||
+    (e.shiftKey && e.ctrlKey && e.key === "z") ||
+    (e.metaKey && e.key === "y") ||
+    (e.ctrlKey && e.key === "y")
+  ) {
     e.preventDefault();
     redo();
   }
 });
+
+document.onchange = () => {
+  pushToMemento();
+};
 
 console.info(
   "%cStarted OpenCrossword Editor…",
