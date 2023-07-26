@@ -536,6 +536,7 @@ function transformSquares(destinationType) {
       newSquare;
     newSquare.select();
   }
+  pushToMemento();
 }
 
 async function displayShareDialog() {
@@ -782,7 +783,7 @@ function displayInsertDialog() {
   };
 }
 
-function populateGrid(obj) {
+function populateGrid(obj, original) {
   // Fill in a grid with object data
   document.getElementById("oc-build-view").innerHTML = "";
   populateToolBar();
@@ -796,7 +797,7 @@ function populateGrid(obj) {
   myPuzzle.populate(gridContainer, EditorGridSquare);
   myPuzzle.showEditorFunctions();
   displayInfo(obj);
-  pushToMemento();
+  if (original) pushToMemento() // Push the initial state to the memento stack;
 }
 
 function showSplashScreen() {
@@ -839,7 +840,7 @@ function showSplashScreen() {
       document.getElementById("oc-splash-screen-info-input-grid-height").value,
       10,
     );
-    populateGrid(createEmptyPuzzleObj(gridWidth, gridHeight));
+    populateGrid(createEmptyPuzzleObj(gridWidth, gridHeight), true);
     document.getElementById("oc-splash-screen").remove();
   };
   document.getElementById("oc-splash-screen-open-button").onclick = () => {
@@ -956,26 +957,14 @@ function showOpenForm() {
 }
 
 function pushToMemento() {
-  if (shouldPushToMemento) {
+  myPuzzle.generate();
+  if (shouldPushToMemento && !(JSON.stringify(memento[memento.length - 1]) === JSON.stringify(myPuzzle.obj))) {
+    // Remove all mementos after current one, then push
     myPuzzle.generate();
-    if (
-      !(
-        JSON.stringify(memento[memento.length - 1]) ===
-        JSON.stringify(myPuzzle.obj)
-      )
-    ) {
-      // If current memento is last one in array, push
-      // Else, remove all mementos after current one, then push
-      if (mementoIndex === memento.length - 1) {
-        memento.push(myPuzzle.obj);
-        mementoIndex++;
-      } else {
-        memento = memento.slice(0, mementoIndex + 1);
-        memento.push(myPuzzle.obj);
-        mementoIndex++;
-      }
-    }
-
+    memento = memento.slice(0, mementoIndex + 1);
+    memento.push(myPuzzle.obj);
+    mementoIndex = memento.length - 1;
+    console.log("pushed");
   }
 }
 
@@ -984,10 +973,7 @@ function undo() {
     shouldPushToMemento = false;
     mementoIndex--;
     populateGrid(memento[mementoIndex]);
-    console.log(memento);
     shouldPushToMemento = true;
-  } else {
-    console.log("Cannot undo: no previous state");
   }
 }
 
@@ -996,10 +982,7 @@ function redo() {
     shouldPushToMemento = false;
     mementoIndex++;
     populateGrid(memento[mementoIndex]);
-    console.log(memento);
     shouldPushToMemento = true;
-  } else {
-    console.log("Cannot redo: no next state");
   }
 }
 
@@ -1018,16 +1001,16 @@ if (params.has("l")) {
       .toString()}.json`;
     fetch(fileURL)
       .then((response) => response.json())
-      .then((object) => populateGrid(object));
+      .then((object) => populateGrid(object, true));
   }
   if (targetParams.has("d")) {
     // Fetch the object data from the data URL
-    populateGrid(JSON.parse(targetParams.get("d").toString()));
+    populateGrid(JSON.parse(targetParams.get("d").toString()), true);
   }
   if (targetParams.has("dc")) {
     // Fetch the object data from the data URL
     populateGrid(
-      JSON.parse(await decompressAndDecode(targetParams.get("dc").toString())),
+      JSON.parse(await decompressAndDecode(targetParams.get("dc").toString())), true
     );
   }
 } else {
