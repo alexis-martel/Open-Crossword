@@ -135,8 +135,7 @@ class Puzzle extends Grid {
     new InfoItem("Language".i18n(), this.obj["info"]["language"], infoList); // Language
     new InfoItem(
       "Puzzle Copyright".i18n(),
-      `© ${this.obj["info"]["date_published"].split("-")[0]} ${
-        this.obj["info"]["author"]
+      `© ${this.obj["info"]["date_published"].split("-")[0]} ${this.obj["info"]["author"]
       }`,
       infoList,
     );
@@ -234,13 +233,13 @@ class Puzzle extends Grid {
               square.y === this.selectedSquare.y &&
               square.x < this.selectedSquare.x,
           )
-          [
-            this.squares.filter(
-              (square) =>
-                square.y === this.selectedSquare.y &&
-                square.x < this.selectedSquare.x,
-            ).length - 1
-          ].select();
+        [
+          this.squares.filter(
+            (square) =>
+              square.y === this.selectedSquare.y &&
+              square.x < this.selectedSquare.x,
+          ).length - 1
+        ].select();
       }
     } else if (this.selectionDirection === "down") {
       // Filters the squares array to the same x value as the selected square and a smaller x value
@@ -272,13 +271,13 @@ class Puzzle extends Grid {
               square.x === this.selectedSquare.x &&
               square.y < this.selectedSquare.y,
           )
-          [
-            this.squares.filter(
-              (square) =>
-                square.x === this.selectedSquare.x &&
-                square.y < this.selectedSquare.y,
-            ).length - 1
-          ].select();
+        [
+          this.squares.filter(
+            (square) =>
+              square.x === this.selectedSquare.x &&
+              square.y < this.selectedSquare.y,
+          ).length - 1
+        ].select();
       }
     }
   }
@@ -532,13 +531,11 @@ class ClueBar {
     } else {
       try {
         document.getElementById("oc-puzzle-title").style.display = "none"; // Hides the title once solving begins
-      } catch {}
+      } catch { }
       this.element.style.display = "flex";
-      this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${
-        puzzle.selectedClue.number
-      }-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${
-        puzzle.selectedClue.HTMLContent
-      }`;
+      this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number
+        }-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${puzzle.selectedClue.HTMLContent
+        }`;
     }
   }
 
@@ -829,6 +826,17 @@ function displayControlButtons() {
   };
 }
 
+function verifyPuzzle() {
+  // Marks all incorrect squares
+  for (const square of puzzle.squares) {
+    if (square.style === "cell") {
+      if (square.textElement.value.toUpperCase() !== square.answer.toUpperCase() && square.textElement.value !== "") {
+        square.element.classList.add("oc-cell-invalid");
+      }
+    }
+  }
+}
+
 function revealPuzzle() {
   // Reveals all squares
   if (window.confirm("Are you sure you want to reveal the puzzle?".i18n())) {
@@ -847,7 +855,7 @@ function revealWord() {
     if (square.element.classList.contains("highlighted")) {
       try {
         square.textElement.value = square.answer;
-      } catch {}
+      } catch { }
     }
   }
 }
@@ -1011,7 +1019,7 @@ function displayInsertDialog() {
   };
 }
 
-Number.prototype.toFormattedTime = function () {
+Number.prototype.toFormattedTime = function() {
   let hours = Math.floor(this / 3600);
   let minutes = Math.floor((this - hours * 3600) / 60);
   let seconds = this - hours * 3600 - minutes * 60;
@@ -1032,11 +1040,11 @@ Number.prototype.toFormattedTime = function () {
   }
 };
 
-String.prototype.toCapitalized = function () {
+String.prototype.toCapitalized = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-String.prototype.i18n = function () {
+String.prototype.i18n = function() {
   // Translates the string to the current language, if available
   if (l[`${this}`]) {
     return l[`${this}`];
@@ -1068,12 +1076,10 @@ function showSplashScreen(obj) {
             <button onclick="history.back()">${"‹" + "Back".i18n()}</button>
             <h1>OpenCrossword<br>Player</h1>
         </div>
-        <p><b>${obj["info"]["title"]} - ${obj["info"]["author"]}</b><br>${
-          obj["info"]["description"]
-        }</p>
-        <img alt="OpenCrossword banner" src="${
-          document.baseURI
-        }images/splash-screen.jpg">
+        <p><b>${obj["info"]["title"]} - ${obj["info"]["author"]}</b><br>${obj["info"]["description"]
+    }</p>
+        <img alt="OpenCrossword banner" src="${document.baseURI
+    }images/splash-screen.jpg">
     </div>
     <form method="dialog">
         <input autofocus class="oc-splash-screen-info-input" type="submit" value="${"Play".i18n()}">
