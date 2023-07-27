@@ -421,10 +421,12 @@ function populateToolBar() {
   UIContainer.appendChild(toolBarElement);
   UIContainer.appendChild(document.createElement("hr"));
   let undoButton = new ControlButton("Undo", icon["undoSVG"], toolBarElement);
+  undoButton.element.id = "oc-undo-button";
   undoButton.element.onclick = () => {
     undo();
   };
   let redoButton = new ControlButton("Redo", icon["redoSVG"], toolBarElement);
+  redoButton.element.id = "oc-redo-button";
   redoButton.element.onclick = () => {
     redo();
   };
@@ -797,6 +799,7 @@ function populateGrid(obj, original) {
   myPuzzle.populate(gridContainer, EditorGridSquare);
   myPuzzle.showEditorFunctions();
   displayInfo(obj);
+  refreshDisabledButtons();
   if (original) pushToMemento() // Push the initial state to the memento stack;
 }
 
@@ -964,7 +967,7 @@ function pushToMemento() {
     memento = memento.slice(0, mementoIndex + 1);
     memento.push(myPuzzle.obj);
     mementoIndex = memento.length - 1;
-    console.log("pushed");
+    refreshDisabledButtons();
   }
 }
 
@@ -983,6 +986,22 @@ function redo() {
     mementoIndex++;
     populateGrid(memento[mementoIndex]);
     shouldPushToMemento = true;
+  }
+}
+
+function refreshDisabledButtons() {
+  // Add the `oc-disabled` class to the undo or redo button when appropriate
+  // Undo button
+  if (mementoIndex - 1 < 0) {
+    document.getElementById("oc-undo-button").classList.add("oc-disabled");
+  } else {
+    document.getElementById("oc-undo-button").classList.remove("oc-disabled");
+  }
+  // Redo button
+  if (mementoIndex + 1 >= memento.length) {
+    document.getElementById("oc-redo-button").classList.add("oc-disabled");
+  } else {
+    document.getElementById("oc-redo-button").classList.remove("oc-disabled");
   }
 }
 
