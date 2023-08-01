@@ -167,7 +167,7 @@ class EditorGrid extends Grid {
     // Create rows
     for (
       let i = 0;
-      i < this.squares.filter((square) => square.y === 0).length;
+      i < this.squares.filter((square) => square.x === 0).length;
       i++
     ) {
       this.obj["grid"].push([]);
