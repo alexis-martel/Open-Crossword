@@ -68,6 +68,8 @@ body {
   font-family: var(--main-font);
   font-size: medium;
   print-color-adjust: exact !important;
+  margin: 0;
+  padding: 8px;
 }
 
 hr {
@@ -82,9 +84,21 @@ footer {
   margin-top: 8px;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 header h1 {
   display: inline;
-  vertical-align: middle;
+}
+
+@media screen and (max-width: 500px) {
+    header h1 {
+        display: none;
+    }
 }
 
 header svg {
@@ -93,13 +107,16 @@ header svg {
   fill: var(--foreground-colour);
   stroke: var(--foreground-colour);
   display: inline;
-  vertical-align: middle;
-  margin-right: 10px;
 }
 
 header a {
   text-decoration: none;
-  display: inline-block;
+  height: min-content;
+
+}
+
+header button {
+    height: min-content;
 }
 
 input[type="button"],
@@ -574,7 +591,7 @@ label > * {
 
 .oc-builder-ui-container {
   position: sticky;
-  z-index: 2147483647;
+  z-index: 1;
   top: 0;
   left: 0;
   background-color: var(--background-colour);
@@ -730,4 +747,33 @@ label > * {
 .oc-disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.oc-global-navigation {
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    margin: 0;
+    padding: 8px;
+    background-color: var(--background-colour);
+    z-index: 2;
+}
+
+.oc-global-navigation nav {
+    margin-top: 8px;
+}
+
+.oc-global-navigation li {
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.oc-global-navigation ul {
+    margin: auto;
 }
