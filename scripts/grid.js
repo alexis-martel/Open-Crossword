@@ -132,7 +132,7 @@ export default class Grid {
           )[0]
           .select();
       }
-    } catch { }
+    } catch {}
   }
 
   selectPreviousSquare() {
@@ -145,14 +145,14 @@ export default class Grid {
             square.x < this.selectedSquare.x &&
             square.style === "cell",
         )
-      [
-        this.squares.filter(
-          (square) =>
-            square.y === this.selectedSquare.y &&
-            square.x < this.selectedSquare.x &&
-            square.style === "cell",
-        ).length - 1
-      ].select();
+        [
+          this.squares.filter(
+            (square) =>
+              square.y === this.selectedSquare.y &&
+              square.x < this.selectedSquare.x &&
+              square.style === "cell",
+          ).length - 1
+        ].select();
     } else if (this.selectionDirection === "down") {
       this.squares
         .filter(
@@ -161,14 +161,14 @@ export default class Grid {
             square.y < this.selectedSquare.y &&
             square.style === "cell",
         )
-      [
-        this.squares.filter(
-          (square) =>
-            square.x === this.selectedSquare.x &&
-            square.y < this.selectedSquare.y &&
-            square.style === "cell",
-        ).length - 1
-      ].select();
+        [
+          this.squares.filter(
+            (square) =>
+              square.x === this.selectedSquare.x &&
+              square.y < this.selectedSquare.y &&
+              square.style === "cell",
+          ).length - 1
+        ].select();
     }
   }
 

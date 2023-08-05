@@ -188,20 +188,19 @@ class EditorGrid extends Grid {
     this.obj["info"] = {};
 
     // Set the "title" key-value pair
-    this.obj["info"]["title"] = myPuzzle.titleInput.inputElement.value;
+    this.obj["info"]["title"] = this.titleInput.inputElement.value;
 
     // Set the "author" key-value pair
-    this.obj["info"]["author"] = myPuzzle.authorInput.inputElement.value;
+    this.obj["info"]["author"] = this.authorInput.inputElement.value;
 
     // Set the "contact" key-value pair
-    this.obj["info"]["contact"] = myPuzzle.contactInput.inputElement.value;
+    this.obj["info"]["contact"] = this.contactInput.inputElement.value;
 
     // Set the "description" key-value pair
-    this.obj["info"]["description"] = myPuzzle.descriptionInput.value;
+    this.obj["info"]["description"] = this.descriptionInput.value;
 
     // Set the "tags" key-value pair
-    this.obj["info"]["tags"] =
-      myPuzzle.tagsInput.inputElement.value.split(", ");
+    this.obj["info"]["tags"] = this.tagsInput.inputElement.value.split(", ");
 
     // Set the "date_published" key-value pair
     let today = new Date();
@@ -212,7 +211,7 @@ class EditorGrid extends Grid {
     this.obj["info"]["date_published"] = today;
 
     // Set the "language" key-value pair
-    this.obj["info"]["language"] = myPuzzle.languageInput.value;
+    this.obj["info"]["language"] = this.languageInput.value;
 
     this.data = JSON.stringify(this.obj);
   }
@@ -241,6 +240,238 @@ class EditorGrid extends Grid {
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
+  }
+
+  transformSquares(destinationType) {
+    if (
+      this.squares.filter((square) => square.checkboxElement.checked).length > 0
+    ) {
+      // Transform all checked squares
+      for (let square of this.squares.filter(
+        (square) => square.checkboxElement.checked,
+      )) {
+        let newSquare = new EditorGridSquare(
+          this,
+          square.x,
+          square.y,
+          destinationType,
+          null,
+          null,
+          null,
+          null,
+        );
+        square.element.replaceWith(newSquare.element);
+        this.squares[this.squares.indexOf(square)] = newSquare;
+      }
+      this.refreshCheckboxes();
+    } else {
+      // Transform selected square
+      let x = this.selectedSquare.x;
+      let y = this.selectedSquare.y;
+      let newSquare = new EditorGridSquare(
+        this,
+        x,
+        y,
+        destinationType,
+        null,
+        null,
+        null,
+        null,
+      );
+      this.selectedSquare.element.replaceWith(newSquare.element);
+      this.squares[this.squares.indexOf(this.selectedSquare)] = newSquare;
+      newSquare.select();
+    }
+    this.pushToMemento();
+  }
+
+  displayInfo(obj) {
+    // Populates the `Info` form section
+    let infoContainer = document.createElement("div");
+    infoContainer.classList.add("oc-builder-info-container");
+    puzzleContainer.appendChild(infoContainer);
+    let acrossLabel = document.createElement("h2");
+    acrossLabel.classList.add("info-header");
+    infoContainer.appendChild(acrossLabel);
+    acrossLabel.textContent = "Across";
+
+    let acrossClues = document.createElement("form");
+    acrossClues.classList.add("oc-builder-clue-list");
+    infoContainer.appendChild(acrossClues);
+
+    let addAcrossClueButton = new ControlButton(
+      "Add a horizontal clue",
+      icon["addSVG"],
+      infoContainer,
+    );
+    addAcrossClueButton.element.classList.add("oc-builder-clue-list-button");
+    addAcrossClueButton.element.onclick = () => {
+      this.acrossClues.push(new PuzzleClue("across", acrossClues));
+    };
+    let removeAcrossClueButton = new ControlButton(
+      "Remove last horizontal clue",
+      icon["removeSVG"],
+      infoContainer,
+    );
+    removeAcrossClueButton.element.onclick = () => {
+      acrossClues.removeChild(acrossClues.lastChild);
+      this.acrossClues.pop();
+    };
+
+    let downLabel = document.createElement("h2");
+    downLabel.classList.add("info-header");
+    infoContainer.appendChild(downLabel);
+    downLabel.textContent = "Down";
+
+    let downClues = document.createElement("form");
+    downClues.classList.add("oc-builder-clue-list");
+    infoContainer.appendChild(downClues);
+
+    let addDownClueButton = new ControlButton(
+      "Add a vertical clue",
+      icon["addSVG"],
+      infoContainer,
+    );
+    addDownClueButton.element.classList.add("oc-builder-clue-list-button");
+    addDownClueButton.element.onclick = () => {
+      this.downClues.push(new PuzzleClue("down", downClues));
+    };
+    let removeDownClueButton = new ControlButton(
+      "Remove last vertical clue",
+      icon["removeSVG"],
+      infoContainer,
+    );
+    removeDownClueButton.element.onclick = () => {
+      downClues.removeChild(downClues.lastChild);
+      this.downClues.pop();
+    };
+    // Display a form for entering puzzle metadata
+    let infoHeader = document.createElement("h2");
+    infoHeader.classList.add("info-header");
+    infoHeader.textContent = "Puzzle info";
+    let infoForm = document.createElement("form");
+    infoContainer.appendChild(infoHeader);
+    infoContainer.appendChild(infoForm);
+
+    this.titleInput = new PuzzleInfo(
+      "Title",
+      "text",
+      "Enter the title to your puzzle",
+      "Puzzle title",
+      infoForm,
+    );
+    this.authorInput = new PuzzleInfo(
+      "Author",
+      "text",
+      "Enter your or the puzzle author's name",
+      "Your name",
+      infoForm,
+    );
+    this.contactInput = new PuzzleInfo(
+      "Contact",
+      "email",
+      "Enter an e-mail address you or the author have access to",
+      "Your email address",
+      infoForm,
+    );
+
+    let descriptionInputLabel = document.createElement("label");
+    descriptionInputLabel.textContent = "Description";
+    descriptionInputLabel.classList.add("oc-builder-info-input-label");
+    this.descriptionInput = document.createElement("textarea");
+    this.descriptionInput.classList.add("oc-builder-info-input");
+    this.descriptionInput.placeholder = "Puzzle description";
+    this.descriptionInput.title =
+      "Enter a quick paragraph describing your puzzle's theme";
+    this.descriptionInput.rows = 4;
+    descriptionInputLabel.appendChild(this.descriptionInput);
+    infoForm.appendChild(descriptionInputLabel);
+
+    this.tagsInput = new PuzzleInfo(
+      "Tags",
+      "text",
+      "Enter keywords associated with your puzzle, seperated by a comma (,) with trailing whitespace",
+      "Puzzle tags (seperated by a comma-space)",
+      infoForm,
+    );
+    this.languageInput = document.createElement("select");
+    this.languageInput.options.add(new Option("English", "en"));
+    this.languageInput.options.add(new Option("Français", "fr"));
+    this.languageInput.options.add(
+      new Option("Deutsch (UI support coming soon)", "de"),
+    );
+    this.languageInput.options.add(
+      new Option("Italian (UI support coming soon)", "it"),
+    );
+    this.languageInput.options.add(
+      new Option("Spanish (UI support coming soon)", "es"),
+    );
+    this.languageInput.options.add(new Option("Other", null));
+    infoForm.appendChild(document.createElement("label"));
+    infoForm.lastChild.textContent = "Language";
+    infoForm.lastChild.appendChild(this.languageInput);
+
+    if (obj["info"] || obj["clues"]) {
+      // Load the clues and info from `obj` if they exist
+      try {
+        this.titleInput.inputElement.value = obj["info"]["title"];
+        this.authorInput.inputElement.value = obj["info"]["author"];
+        this.contactInput.inputElement.value = obj["info"]["contact"];
+        this.descriptionInput.value = obj["info"]["description"];
+        for (let tag of obj["info"]["tags"]) {
+          this.tagsInput.inputElement.value += tag + ", ";
+        }
+        this.tagsInput.inputElement.value =
+          this.tagsInput.inputElement.value.slice(0, -2);
+        this.languageInput.value = obj["info"]["language"];
+      } catch {}
+      for (const clue of Object.entries(obj["clues"]["across"])) {
+        let NewClue = new PuzzleClue("across", acrossClues);
+        NewClue.textElement.value = clue[1]["content"].toString();
+        NewClue.numberElement.value = clue[0];
+        this.acrossClues.push(NewClue);
+      }
+      for (const clue of Object.entries(obj["clues"]["down"])) {
+        let NewClue = new PuzzleClue("down", downClues);
+        NewClue.textElement.value = clue[1]["content"].toString();
+        NewClue.numberElement.value = clue[0];
+        this.downClues.push(NewClue);
+      }
+    }
+  }
+  pushToMemento() {
+    this.generate();
+    if (
+      shouldPushToMemento &&
+      !(
+        JSON.stringify(memento[memento.length - 1]) === JSON.stringify(this.obj)
+      )
+    ) {
+      // Remove all mementos after current one, then push
+      this.generate();
+      memento = memento.slice(0, mementoIndex + 1);
+      memento.push(this.obj);
+      mementoIndex = memento.length - 1;
+      refreshDisabledButtons();
+    }
+  }
+
+  undo() {
+    if (mementoIndex - 1 >= 0) {
+      shouldPushToMemento = false;
+      mementoIndex--;
+      populate(memento[mementoIndex]);
+      shouldPushToMemento = true;
+    }
+  }
+
+  redo() {
+    if (mementoIndex + 1 < memento.length) {
+      shouldPushToMemento = false;
+      mementoIndex++;
+      populate(memento[mementoIndex]);
+      shouldPushToMemento = true;
+    }
   }
 }
 
@@ -324,7 +555,7 @@ class EditorGridSquare extends GridSquare {
       this.element.appendChild(this.numberInput);
       try {
         this.clueElement.remove();
-      } catch { }
+      } catch {}
       this.numberInput.onclick = (e) => {
         e.stopPropagation();
       };
@@ -334,12 +565,12 @@ class EditorGridSquare extends GridSquare {
     }
     try {
       this.textElement.value = answer;
-    } catch { }
+    } catch {}
     try {
       this.textElement.addEventListener("input", () => {
         document.onchange();
-      })
-    } catch { }
+      });
+    } catch {}
     if (this.style !== "cell") {
       this.element.onclick = () => {
         this.checkboxElement.checked = !this.checkboxElement.checked;
@@ -423,12 +654,12 @@ function populateToolBar() {
   let undoButton = new ControlButton("Undo", icon["undoSVG"], toolBarElement);
   undoButton.element.id = "oc-undo-button";
   undoButton.element.onclick = () => {
-    undo();
+    myPuzzle.undo();
   };
   let redoButton = new ControlButton("Redo", icon["redoSVG"], toolBarElement);
   redoButton.element.id = "oc-redo-button";
   redoButton.element.onclick = () => {
-    redo();
+    myPuzzle.redo();
   };
   let makeCellButton = new ControlButton(
     "Make cell",
@@ -436,7 +667,7 @@ function populateToolBar() {
     toolBarElement,
   );
   makeCellButton.element.onclick = () => {
-    transformSquares("cell");
+    myPuzzle.transformSquares("cell");
   };
   let makeBlockButton = new ControlButton(
     "Make block",
@@ -444,7 +675,7 @@ function populateToolBar() {
     toolBarElement,
   );
   makeBlockButton.element.onclick = () => {
-    transformSquares("block");
+    myPuzzle.transformSquares("block");
   };
   let makeInvisibleButton = new ControlButton(
     "Make invisible",
@@ -452,7 +683,7 @@ function populateToolBar() {
     toolBarElement,
   );
   makeInvisibleButton.element.onclick = () => {
-    transformSquares("invisible");
+    myPuzzle.transformSquares("invisible");
   };
   let insertButton = new ControlButton(
     "Insert" + "…",
@@ -496,51 +727,6 @@ function populateToolBar() {
   };
 }
 
-function transformSquares(destinationType) {
-  if (
-    myPuzzle.squares.filter((square) => square.checkboxElement.checked).length >
-    0
-  ) {
-    // Transform all checked squares
-    for (let square of myPuzzle.squares.filter(
-      (square) => square.checkboxElement.checked,
-    )) {
-      let newSquare = new EditorGridSquare(
-        myPuzzle,
-        square.x,
-        square.y,
-        destinationType,
-        null,
-        null,
-        null,
-        null,
-      );
-      square.element.replaceWith(newSquare.element);
-      myPuzzle.squares[myPuzzle.squares.indexOf(square)] = newSquare;
-    }
-    myPuzzle.refreshCheckboxes();
-  } else {
-    // Transform selected square
-    let x = myPuzzle.selectedSquare.x;
-    let y = myPuzzle.selectedSquare.y;
-    let newSquare = new EditorGridSquare(
-      myPuzzle,
-      x,
-      y,
-      destinationType,
-      null,
-      null,
-      null,
-      null,
-    );
-    myPuzzle.selectedSquare.element.replaceWith(newSquare.element);
-    myPuzzle.squares[myPuzzle.squares.indexOf(myPuzzle.selectedSquare)] =
-      newSquare;
-    newSquare.select();
-  }
-  pushToMemento();
-}
-
 async function displayShareDialog() {
   myPuzzle.generate();
   if (navigator.share) {
@@ -561,161 +747,6 @@ async function displayShareDialog() {
         window.alert("Failed to copy link to clipboard");
       },
     );
-  }
-}
-
-function displayInfo(obj) {
-  // Display a PuzzleClue for each direction (i.e. "Across", "Down"), with a button to add a clue
-  let infoContainer = document.createElement("div");
-  infoContainer.classList.add("oc-builder-info-container");
-  puzzleContainer.appendChild(infoContainer);
-  let acrossLabel = document.createElement("h2");
-  acrossLabel.classList.add("info-header");
-  infoContainer.appendChild(acrossLabel);
-  acrossLabel.textContent = "Across";
-
-  let acrossClues = document.createElement("form");
-  acrossClues.classList.add("oc-builder-clue-list");
-  infoContainer.appendChild(acrossClues);
-
-  let addAcrossClueButton = new ControlButton(
-    "Add a horizontal clue",
-    icon["addSVG"],
-    infoContainer,
-  );
-  addAcrossClueButton.element.classList.add("oc-builder-clue-list-button");
-  addAcrossClueButton.element.onclick = () => {
-    myPuzzle.acrossClues.push(new PuzzleClue("across", acrossClues));
-  };
-  let removeAcrossClueButton = new ControlButton(
-    "Remove last horizontal clue",
-    icon["removeSVG"],
-    infoContainer,
-  );
-  removeAcrossClueButton.element.onclick = () => {
-    acrossClues.removeChild(acrossClues.lastChild);
-    myPuzzle.acrossClues.pop();
-  };
-
-  let downLabel = document.createElement("h2");
-  downLabel.classList.add("info-header");
-  infoContainer.appendChild(downLabel);
-  downLabel.textContent = "Down";
-
-  let downClues = document.createElement("form");
-  downClues.classList.add("oc-builder-clue-list");
-  infoContainer.appendChild(downClues);
-
-  let addDownClueButton = new ControlButton(
-    "Add a vertical clue",
-    icon["addSVG"],
-    infoContainer,
-  );
-  addDownClueButton.element.classList.add("oc-builder-clue-list-button");
-  addDownClueButton.element.onclick = () => {
-    myPuzzle.downClues.push(new PuzzleClue("down", downClues));
-  };
-  let removeDownClueButton = new ControlButton(
-    "Remove last vertical clue",
-    icon["removeSVG"],
-    infoContainer,
-  );
-  removeDownClueButton.element.onclick = () => {
-    downClues.removeChild(downClues.lastChild);
-    myPuzzle.downClues.pop();
-  };
-  // Display a form for entering puzzle metadata
-  let infoHeader = document.createElement("h2");
-  infoHeader.classList.add("info-header");
-  infoHeader.textContent = "Puzzle info";
-  let infoForm = document.createElement("form");
-  infoContainer.appendChild(infoHeader);
-  infoContainer.appendChild(infoForm);
-
-  myPuzzle.titleInput = new PuzzleInfo(
-    "Title",
-    "text",
-    "Enter the title to your puzzle",
-    "Puzzle title",
-    infoForm,
-  );
-  myPuzzle.authorInput = new PuzzleInfo(
-    "Author",
-    "text",
-    "Enter your or the puzzle author's name",
-    "Your name",
-    infoForm,
-  );
-  myPuzzle.contactInput = new PuzzleInfo(
-    "Contact",
-    "email",
-    "Enter an e-mail address you or the author have access to",
-    "Your email address",
-    infoForm,
-  );
-
-  let descriptionInputLabel = document.createElement("label");
-  descriptionInputLabel.textContent = "Description";
-  descriptionInputLabel.classList.add("oc-builder-info-input-label");
-  myPuzzle.descriptionInput = document.createElement("textarea");
-  myPuzzle.descriptionInput.classList.add("oc-builder-info-input");
-  myPuzzle.descriptionInput.placeholder = "Puzzle description";
-  myPuzzle.descriptionInput.title =
-    "Enter a quick paragraph describing your puzzle's theme";
-  myPuzzle.descriptionInput.rows = 4;
-  descriptionInputLabel.appendChild(myPuzzle.descriptionInput);
-  infoForm.appendChild(descriptionInputLabel);
-
-  myPuzzle.tagsInput = new PuzzleInfo(
-    "Tags",
-    "text",
-    "Enter keywords associated with your puzzle, seperated by a comma (,) with trailing whitespace",
-    "Puzzle tags (seperated by a comma-space)",
-    infoForm,
-  );
-  myPuzzle.languageInput = document.createElement("select");
-  myPuzzle.languageInput.options.add(new Option("English", "en"));
-  myPuzzle.languageInput.options.add(new Option("Français", "fr"));
-  myPuzzle.languageInput.options.add(
-    new Option("Deutsch (UI support coming soon)", "de"),
-  );
-  myPuzzle.languageInput.options.add(
-    new Option("Italian (UI support coming soon)", "it"),
-  );
-  myPuzzle.languageInput.options.add(
-    new Option("Spanish (UI support coming soon)", "es"),
-  );
-  myPuzzle.languageInput.options.add(new Option("Other", null));
-  infoForm.appendChild(document.createElement("label"));
-  infoForm.lastChild.textContent = "Language";
-  infoForm.lastChild.appendChild(myPuzzle.languageInput);
-
-  if (obj["info"] || obj["clues"]) {
-    // Load the clues and info from `obj` if they exist
-    try {
-      myPuzzle.titleInput.inputElement.value = obj["info"]["title"];
-      myPuzzle.authorInput.inputElement.value = obj["info"]["author"];
-      myPuzzle.contactInput.inputElement.value = obj["info"]["contact"];
-      myPuzzle.descriptionInput.value = obj["info"]["description"];
-      for (let tag of obj["info"]["tags"]) {
-        myPuzzle.tagsInput.inputElement.value += tag + ", ";
-      }
-      myPuzzle.tagsInput.inputElement.value =
-        myPuzzle.tagsInput.inputElement.value.slice(0, -2);
-      myPuzzle.languageInput.value = obj["info"]["language"];
-    } catch { }
-    for (const clue of Object.entries(obj["clues"]["across"])) {
-      let NewClue = new PuzzleClue("across", acrossClues);
-      NewClue.textElement.value = clue[1]["content"].toString();
-      NewClue.numberElement.value = clue[0];
-      myPuzzle.acrossClues.push(NewClue);
-    }
-    for (const clue of Object.entries(obj["clues"]["down"])) {
-      let NewClue = new PuzzleClue("down", downClues);
-      NewClue.textElement.value = clue[1]["content"].toString();
-      NewClue.numberElement.value = clue[0];
-      myPuzzle.downClues.push(NewClue);
-    }
   }
 }
 
@@ -771,7 +802,7 @@ function displayInsertDialog() {
   document.body.appendChild(dialog);
   dialog.showModal();
 
-  // Implement inserting functionality
+  // Inserting functionality
   frame.onload = () => {
     frame.contentWindow.document.getElementById("oc-insert-form").onsubmit = (
       e,
@@ -785,7 +816,7 @@ function displayInsertDialog() {
   };
 }
 
-function populateGrid(obj, original) {
+function populate(obj, original) {
   // Fill in a grid with object data
   document.getElementById("oc-build-view").innerHTML = "";
   populateToolBar();
@@ -798,9 +829,9 @@ function populateGrid(obj, original) {
   myPuzzle = new EditorGrid(obj);
   myPuzzle.populate(gridContainer, EditorGridSquare);
   myPuzzle.showEditorFunctions();
-  displayInfo(obj);
+  myPuzzle.displayInfo(obj);
   refreshDisabledButtons();
-  if (original) pushToMemento() // Push the initial state to the memento stack;
+  if (original) myPuzzle.pushToMemento(); // Push the initial state to the memento stack;
 }
 
 function showSplashScreen() {
@@ -843,7 +874,7 @@ function showSplashScreen() {
       document.getElementById("oc-splash-screen-info-input-grid-height").value,
       10,
     );
-    populateGrid(createEmptyPuzzleObj(gridWidth, gridHeight), true);
+    populate(createEmptyPuzzleObj(gridWidth, gridHeight), true);
     document.getElementById("oc-splash-screen").remove();
   };
   document.getElementById("oc-splash-screen-open-button").onclick = () => {
@@ -925,7 +956,7 @@ function showOpenForm() {
         .getElementById("file-input")
         .files[0].text()
         .then((fileContent) => {
-          populateGrid(JSON.parse(fileContent));
+          populate(JSON.parse(fileContent));
         });
     }
     if (sourceSelector.value === "url") {
@@ -939,11 +970,11 @@ function showOpenForm() {
           .toString()}.json`;
         fetch(fileURL)
           .then((response) => response.json())
-          .then((object) => populateGrid(object));
+          .then((object) => populate(object));
       }
       if (params.has("d")) {
         // Fetch the object data from the data URL
-        populateGrid(JSON.parse(params.get("d").toString()));
+        populate(JSON.parse(params.get("d").toString()));
       }
     }
   };
@@ -957,36 +988,6 @@ function showOpenForm() {
   document.getElementById("oc-splash-screen").onsubmit = () => {
     document.getElementById("oc-splash-screen").remove();
   };
-}
-
-function pushToMemento() {
-  myPuzzle.generate();
-  if (shouldPushToMemento && !(JSON.stringify(memento[memento.length - 1]) === JSON.stringify(myPuzzle.obj))) {
-    // Remove all mementos after current one, then push
-    myPuzzle.generate();
-    memento = memento.slice(0, mementoIndex + 1);
-    memento.push(myPuzzle.obj);
-    mementoIndex = memento.length - 1;
-    refreshDisabledButtons();
-  }
-}
-
-function undo() {
-  if (mementoIndex - 1 >= 0) {
-    shouldPushToMemento = false;
-    mementoIndex--;
-    populateGrid(memento[mementoIndex]);
-    shouldPushToMemento = true;
-  }
-}
-
-function redo() {
-  if (mementoIndex + 1 < memento.length) {
-    shouldPushToMemento = false;
-    mementoIndex++;
-    populateGrid(memento[mementoIndex]);
-    shouldPushToMemento = true;
-  }
 }
 
 function refreshDisabledButtons() {
@@ -1005,35 +1006,45 @@ function refreshDisabledButtons() {
   }
 }
 
-String.prototype.toQueryString = function() {
-  // Remove all characters that precede "?"
-  return this.substring(this.indexOf("?"));
-};
-let params = new URLSearchParams(document.location.search);
-if (params.has("l")) {
-  let targetURL = params.get("l").toString().toQueryString();
-  let targetParams = new URLSearchParams(targetURL);
-  if (targetParams.has("p")) {
-    // Fetch the object data from the puzzle URL
-    let fileURL = `${document.baseURI}data/puzzles/${targetParams
-      .get("p")
-      .toString()}.json`;
-    fetch(fileURL)
-      .then((response) => response.json())
-      .then((object) => populateGrid(object, true));
+async function startOCEditor() {
+  String.prototype.toQueryString = function () {
+    // Remove all characters that precede "?"
+    return this.substring(this.indexOf("?"));
+  };
+  let params = new URLSearchParams(document.location.search);
+  if (params.has("l")) {
+    let targetURL = params.get("l").toString().toQueryString();
+    let targetParams = new URLSearchParams(targetURL);
+    if (targetParams.has("p")) {
+      // Fetch the object data from the puzzle URL
+      let fileURL = `${document.baseURI}data/puzzles/${targetParams
+        .get("p")
+        .toString()}.json`;
+      fetch(fileURL)
+        .then((response) => response.json())
+        .then((object) => populate(object, true));
+    }
+    if (targetParams.has("d")) {
+      // Fetch the object data from the data URL
+      populate(JSON.parse(targetParams.get("d").toString()), true);
+    }
+    if (targetParams.has("dc")) {
+      // Fetch the object data from the data URL
+      populate(
+        JSON.parse(
+          await decompressAndDecode(targetParams.get("dc").toString()),
+        ),
+        true,
+      );
+    }
+  } else {
+    // If no parameters are present, present the splash screen
+    showSplashScreen();
   }
-  if (targetParams.has("d")) {
-    // Fetch the object data from the data URL
-    populateGrid(JSON.parse(targetParams.get("d").toString()), true);
-  }
-  if (targetParams.has("dc")) {
-    // Fetch the object data from the data URL
-    populateGrid(
-      JSON.parse(await decompressAndDecode(targetParams.get("dc").toString())), true
-    );
-  }
-} else {
-  showSplashScreen();
+  console.info(
+    "%cStarted OpenCrossword Editor…",
+    'font-family: "Times New Roman", Times, serif; font-weight: bold; font-size: 20px;',
+  );
 }
 
 document.addEventListener("keydown", (e) => {
@@ -1042,7 +1053,7 @@ document.addEventListener("keydown", (e) => {
     (!e.shiftKey && e.ctrlKey && e.key === "z")
   ) {
     e.preventDefault();
-    undo();
+    myPuzzle.undo();
   } else if (
     (e.shiftKey && e.metaKey && e.key === "z") ||
     (e.shiftKey && e.ctrlKey && e.key === "z") ||
@@ -1050,15 +1061,14 @@ document.addEventListener("keydown", (e) => {
     (e.ctrlKey && e.key === "y")
   ) {
     e.preventDefault();
-    redo();
+    myPuzzle.redo();
   }
 });
 
 document.onchange = () => {
-  pushToMemento();
+  if (myPuzzle) {
+    myPuzzle.pushToMemento();
+  }
 };
 
-console.info(
-  "%cStarted OpenCrossword Editor…",
-  'font-family: "Times New Roman", Times, serif; font-weight: bold; font-size: 20px;',
-);
+startOCEditor();
