@@ -1,3 +1,5 @@
+"use strict";
+
 export default class GridSquare {
   constructor(parentGrid, x, y, type, clueNumber, answer, circled, shadeLevel) {
     this.parentGrid = parentGrid;

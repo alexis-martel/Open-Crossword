@@ -1,6 +1,7 @@
-import decompressAndDecode from "./decompress.js";
-import Grid from "./grid.js";
-import GridSquare from "./grid-square.js";
+import decompressAndDecode from "./compression/decompress.js";
+import Grid from "./grid/grid.js";
+import GridSquare from "./grid/grid-square.js";
+import OCButton from "./ui/ui-button.js";
 
 ("use strict");
 
@@ -472,41 +473,44 @@ class ClueBar {
     this.element.appendChild(this.clueContentWrapper);
     this.element.appendChild(this.controlWrapper);
 
-    this.previousButton = new ControlButton(
-      "Previous Clue".i18n(),
-      icon["chevronPreviousSVG"],
-      this.controlWrapper,
-    );
-    this.previousButton.element.onclick = () => {
-      // Select the previous clue in the list
-      if (puzzle.clues.indexOf(puzzle.selectedClue) - 1 >= 0) {
-        puzzle.clues[
-          puzzle.clues.indexOf(puzzle.selectedClue) - 1
-        ].element.click();
-      } else {
-        puzzle.clues[puzzle.clues.length - 1].element.click();
-      }
-      this.selectFirstBlankSquareInWord();
-    };
-    this.nextButton = new ControlButton(
-      "Next Clue".i18n(),
-      icon["chevronNextSVG"],
-      this.controlWrapper,
-    );
-    this.nextButton.element.onclick = () => {
-      // Select the next clue in the list
-      if (puzzle.clues.indexOf(puzzle.selectedClue) + 1 < puzzle.clues.length) {
-        puzzle.clues[
-          puzzle.clues.indexOf(puzzle.selectedClue) + 1
-        ].element.click();
-      } else {
-        puzzle.clues[0].element.click();
-      }
-      // Selects the next blank in word
-      if (puzzle.selectedSquare.textElement.value !== null) {
+    new OCButton({
+      icon: icon["chevronPreviousSVG"],
+      tooltip: "Previous Clue".i18n(),
+      parent: this.controlWrapper,
+      action: () => {
+        // Select the previous clue in the list
+        if (puzzle.clues.indexOf(puzzle.selectedClue) - 1 >= 0) {
+          puzzle.clues[
+            puzzle.clues.indexOf(puzzle.selectedClue) - 1
+          ].element.click();
+        } else {
+          puzzle.clues[puzzle.clues.length - 1].element.click();
+        }
         this.selectFirstBlankSquareInWord();
-      }
-    };
+      },
+    });
+    new OCButton({
+      icon: icon["chevronNextSVG"],
+      tooltip: "Next Clue".i18n(),
+      parent: this.controlWrapper,
+      action: () => {
+        // Select the next clue in the list
+        if (
+          puzzle.clues.indexOf(puzzle.selectedClue) + 1 <
+          puzzle.clues.length
+        ) {
+          puzzle.clues[
+            puzzle.clues.indexOf(puzzle.selectedClue) + 1
+          ].element.click();
+        } else {
+          puzzle.clues[0].element.click();
+        }
+        // Selects the next blank in word
+        if (puzzle.selectedSquare.textElement.value !== null) {
+          this.selectFirstBlankSquareInWord();
+        }
+      },
+    });
     this.clueContentWrapper.onclick = () => {
       if (puzzle.selectionDirection === "across") {
         puzzle.selectionDirection = "down";
@@ -640,14 +644,13 @@ function displayControlButtons() {
   controlButtons.classList.add("oc-control-button-container");
   puzzleContainer.appendChild(controlButtons);
 
-  let verifyButton = new ControlButton(
-    "Verify".i18n(),
-    icon["verifySVG"],
-    controlButtons,
-  );
-  verifyButton.element.onclick = () => {
-    verifyPuzzle();
-  };
+  new OCButton({
+    icon: icon["verifySVG"],
+    tooltip: "Verify".i18n(),
+    parent: controlButtons,
+    action: verifyPuzzle,
+  });
+
   let revealButton = document.createElement("details");
   revealButton.classList.add("oc-drop-down-button");
   let revealButtonSummary = document.createElement("summary");
@@ -688,39 +691,36 @@ function displayControlButtons() {
   revealButton.appendChild(revealButtonSummary);
   revealButton.appendChild(revealOptions);
   controlButtons.appendChild(revealButton);
-  let resetButton = new ControlButton(
-    "Reset".i18n() + "…",
-    icon["resetSVG"],
-    controlButtons,
-  );
-  resetButton.element.onclick = () => {
-    resetPuzzle();
-  };
-  let insertButton = new ControlButton(
-    "Insert".i18n() + "…",
-    icon["insertSVG"],
-    controlButtons,
-  );
-  insertButton.element.onclick = () => {
-    displayInsertDialog();
-  };
-  let shareButton = new ControlButton(
-    "Share".i18n() + "…",
-    icon["shareSVG"],
-    controlButtons,
-  );
-  shareButton.element.onclick = () => {
-    navigator.share({ url: window.location.href }).catch(console.error);
-  };
-  let remixButton = new ControlButton(
-    "Remix".i18n() + "…",
-    icon["editSVG"],
-    controlButtons,
-  );
-  remixButton.element.onclick = () => {
-    let encodedPuzzleLink = encodeURIComponent(window.location.href);
-    window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
-  };
+  new OCButton({
+    icon: icon["resetSVG"],
+    tooltip: "Reset".i18n(),
+    parent: controlButtons,
+    action: resetPuzzle,
+  });
+  new OCButton({
+    icon: icon["insertSVG"],
+    tooltip: "Insert".i18n(),
+    parent: controlButtons,
+    action: displayInsertDialog,
+  });
+  new OCButton({
+    icon: icon["shareSVG"],
+    tooltip: "Share".i18n(),
+    parent: controlButtons,
+    action: () => {
+      navigator.share({ url: window.location.href });
+    },
+  });
+  new OCButton({
+    icon: icon["editSVG"],
+    tooltip: "Remix".i18n(),
+    parent: controlButtons,
+    action: () => {
+      let encodedPuzzleLink = encodeURIComponent(window.location.href);
+      window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
+    },
+  });
+
   let moreButton = document.createElement("details");
   moreButton.classList.add("oc-drop-down-button");
   let moreButtonSummary = document.createElement("summary");
@@ -787,35 +787,33 @@ function displayControlButtons() {
   moreButton.appendChild(moreButtonSummary);
   moreButton.appendChild(moreOptions);
   controlButtons.appendChild(moreButton);
-  let helpButton = new ControlButton(
-    "Shortcuts Help".i18n(),
-    icon["helpSVG"],
-    controlButtons,
-  );
-  helpButton.element.onclick = () => {
-    window.alert(
-      `Keyboard Shortcuts:
+  new OCButton({
+    icon: icon["helpSVG"],
+    tooltip: "Shortcuts Help".i18n(),
+    parent: controlButtons,
+    action: () => {
+      window.alert(
+        `Keyboard Shortcuts:
 \t▲, ▼, ◀, ▶: Moves the cursor
 \tEnter: Selects next word
 \tDelete: Deletes the previous character
 \t⌦: Deletes the next character
 \tSpacebar: Selects next empty cell
 \tTab: Toggles the selection direction`.i18n(),
-    );
-  };
-  let pauseButton = new ControlButton(
-    "Pause".i18n(),
-    icon["pauseSVG"],
-    controlButtons,
-  );
+      );
+    },
+  });
+  let pauseButton = new OCButton({
+    icon: icon["pauseSVG"],
+    tooltip: "Pause".i18n(),
+    parent: controlButtons,
+    action: pauseGame,
+  });
   let stopwatch = document.createElement("span");
   stopwatch.classList.add("oc-stopwatch");
   stopwatch.id = "oc-stopwatch";
   stopwatch.textContent = "00:00";
   pauseButton.element.appendChild(stopwatch);
-  pauseButton.element.onclick = () => {
-    pauseGame();
-  };
   let verifyAutomaticallyCheckbox = new ControlInput(
     "checkbox",
     "Verify the puzzle automatically on each keystroke".i18n(),
@@ -944,23 +942,22 @@ function showSolvedScreen() {
   dialogTitleBar.appendChild(dialogTitle);
   dialog.appendChild(dialogTitleBar);
   dialog.appendChild(titleBarSeparator);
-  let shareTimeButton = new ControlButton(
-    "Share Time".i18n() + "…",
-    null,
-    solveMessageContainer,
-  );
-  shareTimeButton.element.textContent = "Share Time".i18n() + "…";
-  shareTimeButton.element.onclick = () => {
-    navigator
-      .share({
-        text: "I solved %a, by %b, in %c!"
-          .i18n()
-          .replace("%a", puzzle.obj["info"]["title"])
-          .replace("%b", puzzle.obj["info"]["author"])
-          .replace("%c", puzzle.puzzleSeconds.toFormattedTime()),
-      })
-      .catch(console.error);
-  };
+  new OCButton({
+    tooltip: "Share Time".i18n() + "…",
+    title: "Share Time".i18n() + "…",
+    parent: solveMessageContainer,
+    action: () => {
+      navigator
+        .share({
+          text: "I solved %a, by %b, in %c!"
+            .i18n()
+            .replace("%a", puzzle.obj["info"]["title"])
+            .replace("%b", puzzle.obj["info"]["author"])
+            .replace("%c", puzzle.puzzleSeconds.toFormattedTime()),
+        })
+        .catch(console.error);
+    },
+  });
   dialog.appendChild(solveMessageContainer);
   document.body.appendChild(dialog);
   dialog.showModal();

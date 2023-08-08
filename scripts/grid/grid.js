@@ -1,3 +1,5 @@
+"use strict";
+
 export default class Grid {
   constructor(obj) {
     this.obj = obj;

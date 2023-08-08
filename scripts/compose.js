@@ -1,7 +1,8 @@
-import compressAndEncode from "./compress.js";
-import decompressAndDecode from "./decompress.js";
-import GridSquare from "./grid-square.js";
-import Grid from "./grid.js";
+import compressAndEncode from "./compression/compress.js";
+import decompressAndDecode from "./compression/decompress.js";
+import GridSquare from "./grid/grid-square.js";
+import Grid from "./grid/grid.js";
+import OCButton from "./ui/ui-button.js";
 
 ("use strict");
 
@@ -298,25 +299,25 @@ class EditorGrid extends Grid {
     let acrossClues = document.createElement("form");
     acrossClues.classList.add("oc-builder-clue-list");
     infoContainer.appendChild(acrossClues);
-
-    let addAcrossClueButton = new ControlButton(
-      "Add a horizontal clue",
-      icon["addSVG"],
-      infoContainer,
-    );
-    addAcrossClueButton.element.classList.add("oc-builder-clue-list-button");
-    addAcrossClueButton.element.onclick = () => {
-      this.acrossClues.push(new PuzzleClue("across", acrossClues));
-    };
-    let removeAcrossClueButton = new ControlButton(
-      "Remove last horizontal clue",
-      icon["removeSVG"],
-      infoContainer,
-    );
-    removeAcrossClueButton.element.onclick = () => {
-      acrossClues.removeChild(acrossClues.lastChild);
-      this.acrossClues.pop();
-    };
+    new OCButton({
+      icon: icon["addSVG"],
+      tooltip: "Add a horizontal clue",
+      parent: infoContainer,
+      classes: ["oc-builder-clue-list-button"],
+      action: () => {
+        this.acrossClues.push(new PuzzleClue("across", acrossClues));
+      }
+    });
+    new OCButton({
+      icon: icon["removeSVG"],
+      tooltip: "Remove last horizontal clue",
+      parent: infoContainer,
+      classes: ["oc-builder-clue-list-button"],
+      action: () => {
+        acrossClues.removeChild(acrossClues.lastChild);
+        this.acrossClues.pop();
+      }
+    });
 
     let downLabel = document.createElement("h2");
     downLabel.classList.add("info-header");
@@ -327,24 +328,25 @@ class EditorGrid extends Grid {
     downClues.classList.add("oc-builder-clue-list");
     infoContainer.appendChild(downClues);
 
-    let addDownClueButton = new ControlButton(
-      "Add a vertical clue",
-      icon["addSVG"],
-      infoContainer,
-    );
-    addDownClueButton.element.classList.add("oc-builder-clue-list-button");
-    addDownClueButton.element.onclick = () => {
-      this.downClues.push(new PuzzleClue("down", downClues));
-    };
-    let removeDownClueButton = new ControlButton(
-      "Remove last vertical clue",
-      icon["removeSVG"],
-      infoContainer,
-    );
-    removeDownClueButton.element.onclick = () => {
-      downClues.removeChild(downClues.lastChild);
-      this.downClues.pop();
-    };
+    new OCButton({
+      icon: icon["addSVG"],
+      tooltip: "Add a horizontal clue",
+      parent: infoContainer,
+      classes: ["oc-builder-clue-list-button"],
+      action: () => {
+        this.downClues.push(new PuzzleClue("across", acrossClues));
+      }
+    });
+    new OCButton({
+      icon: icon["removeSVG"],
+      tooltip: "Remove last horizontal clue",
+      parent: infoContainer,
+      classes: ["oc-builder-clue-list-button"],
+      action: () => {
+        acrossClues.removeChild(acrossClues.lastChild);
+        this.downClues.pop();
+      }
+    });
     // Display a form for entering puzzle metadata
     let infoHeader = document.createElement("h2");
     infoHeader.classList.add("info-header");
@@ -651,80 +653,82 @@ function populateToolBar() {
   let toolBarElement = document.createElement("nav");
   UIContainer.appendChild(toolBarElement);
   UIContainer.appendChild(document.createElement("hr"));
-  let undoButton = new ControlButton("Undo", icon["undoSVG"], toolBarElement);
-  undoButton.element.id = "oc-undo-button";
-  undoButton.element.onclick = () => {
-    myPuzzle.undo();
-  };
-  let redoButton = new ControlButton("Redo", icon["redoSVG"], toolBarElement);
-  redoButton.element.id = "oc-redo-button";
-  redoButton.element.onclick = () => {
-    myPuzzle.redo();
-  };
-  let makeCellButton = new ControlButton(
-    "Make cell",
-    icon["squareCellSVG"],
-    toolBarElement,
-  );
-  makeCellButton.element.onclick = () => {
-    myPuzzle.transformSquares("cell");
-  };
-  let makeBlockButton = new ControlButton(
-    "Make block",
-    icon["squareBlockSVG"],
-    toolBarElement,
-  );
-  makeBlockButton.element.onclick = () => {
-    myPuzzle.transformSquares("block");
-  };
-  let makeInvisibleButton = new ControlButton(
-    "Make invisible",
-    icon["squareInvisibleSVG"],
-    toolBarElement,
-  );
-  makeInvisibleButton.element.onclick = () => {
-    myPuzzle.transformSquares("invisible");
-  };
-  let insertButton = new ControlButton(
-    "Insert" + "…",
-    icon["insertSVG"],
-    toolBarElement,
-  );
-  insertButton.element.onclick = () => {
-    displayInsertDialog();
-  };
-  let sharePuzzleButton = new ControlButton(
-    "Share" + "…",
-    icon["sharePuzzleSVG"],
-    toolBarElement,
-  );
-  sharePuzzleButton.element.onclick = () => {
-    displayShareDialog();
-  };
-  let downloadPuzzleButton = new ControlButton(
-    "Download puzzle JSON file",
-    icon["downloadPuzzleSVG"],
-    toolBarElement,
-  );
-  downloadPuzzleButton.element.onclick = () => {
-    myPuzzle.downloadJSON();
-  };
-  let playPuzzleButton = new ControlButton(
-    "Play puzzle in new tab" + "…",
-    icon["playSVG"],
-    toolBarElement,
-  );
-  playPuzzleButton.element.onclick = async () => {
-    window.open(await myPuzzle.createDataLink(), "_blank");
-  };
-  let wordHelperButton = new ControlButton(
-    "Word helper" + "…",
-    icon["searchSVG"],
-    toolBarElement,
-  );
-  wordHelperButton.element.onclick = () => {
-    displayWordHelperDialog();
-  };
+  new OCButton({
+    icon: icon["undoSVG"],
+    tooltip: "Undo",
+    parent: toolBarElement,
+    id: "oc-undo-button",
+    action: myPuzzle.undo,
+  });
+  new OCButton({
+    icon: icon["redoSVG"],
+    tooltip: "Redo",
+    parent: toolBarElement,
+    id: "oc-redo-button",
+    action: myPuzzle.redo,
+  });
+  new OCButton({
+    icon: icon["squareCellSVG"],
+    tooltip: "Make cell",
+    parent: toolBarElement,
+    action: () => {myPuzzle.transformSquares("cell");},
+  });
+  new OCButton({
+    icon: icon["squareBlockSVG"],
+    tooltip: "Make block",
+    parent: toolBarElement,
+    action: () => {
+      myPuzzle.transformSquares("block");
+    },
+  });
+  new OCButton({
+    icon: icon["squareInvisibleSVG"],
+    tooltip: "Make invisible",
+    parent: toolBarElement,
+    action: () => {
+      myPuzzle.transformSquares("invisible");
+    },
+  });
+  new OCButton({
+    icon: icon["insertSVG"],
+    tooltip: "Insert" + "…",
+    parent: toolBarElement,
+    action: () => {
+      displayInsertDialog();
+    },
+  });
+  new OCButton({
+    icon:  icon["sharePuzzleSVG"],
+    tooltip: "Share" + "…",
+    parent: toolBarElement,
+    action: () => {
+      displayShareDialog();
+    },
+  });
+  new OCButton({
+    icon: icon["downloadPuzzleSVG"],
+    tooltip: "Download puzzle JSON file",
+    parent: toolBarElement,
+    action: () => {
+      myPuzzle.downloadJSON();
+    },
+  });
+  new OCButton({
+    icon: icon["playSVG"],
+    tooltip: "Play puzzle in new tab" + "…",
+    parent: toolBarElement,
+    action: async () => {
+      window.open(await myPuzzle.createDataLink(), "_blank");
+    },
+  });
+  new OCButton({
+    icon: icon["searchSVG"],
+    tooltip: "Word helper" + "…",
+    parent: toolBarElement,
+    action: () => {
+      displayWordHelperDialog();
+    },
+  });
 }
 
 async function displayShareDialog() {
@@ -732,7 +736,6 @@ async function displayShareDialog() {
   if (navigator.share) {
     navigator
       .share({
-        title: `${myPuzzle.obj["info"]["title"]}, by ${myPuzzle.obj["info"]["author"]} - OpenCrossword`,
         url: await myPuzzle.createDataLink(),
       })
       .catch(console.error);
@@ -818,6 +821,7 @@ function displayInsertDialog() {
 
 function populate(obj, original) {
   // Fill in a grid with object data
+  myPuzzle = new EditorGrid(obj);
   document.getElementById("oc-build-view").innerHTML = "";
   populateToolBar();
   puzzleContainer = document.createElement("div");
@@ -826,7 +830,6 @@ function populate(obj, original) {
   gridContainer = document.createElement("form");
   gridContainer.classList.add("oc-grid-container");
   puzzleContainer.appendChild(gridContainer);
-  myPuzzle = new EditorGrid(obj);
   myPuzzle.populate(gridContainer, EditorGridSquare);
   myPuzzle.showEditorFunctions();
   myPuzzle.displayInfo(obj);
