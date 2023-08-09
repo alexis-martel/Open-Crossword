@@ -3,6 +3,7 @@ import decompressAndDecode from "./compression/decompress.js";
 import GridSquare from "./grid/grid-square.js";
 import Grid from "./grid/grid.js";
 import OCButton from "./ui/ui-button.js";
+import OCIcons from "./ui/ui-icons.js";
 
 ("use strict");
 
@@ -300,7 +301,7 @@ class EditorGrid extends Grid {
     acrossClues.classList.add("oc-builder-clue-list");
     infoContainer.appendChild(acrossClues);
     new OCButton({
-      icon: icon["addSVG"],
+      icon: OCIcons.add,
       tooltip: "Add a horizontal clue",
       parent: infoContainer,
       classes: ["oc-builder-clue-list-button"],
@@ -309,7 +310,7 @@ class EditorGrid extends Grid {
       }
     });
     new OCButton({
-      icon: icon["removeSVG"],
+      icon: OCIcons.remove,
       tooltip: "Remove last horizontal clue",
       parent: infoContainer,
       classes: ["oc-builder-clue-list-button"],
@@ -329,7 +330,7 @@ class EditorGrid extends Grid {
     infoContainer.appendChild(downClues);
 
     new OCButton({
-      icon: icon["addSVG"],
+      icon: OCIcons.add,
       tooltip: "Add a horizontal clue",
       parent: infoContainer,
       classes: ["oc-builder-clue-list-button"],
@@ -338,7 +339,7 @@ class EditorGrid extends Grid {
       }
     });
     new OCButton({
-      icon: icon["removeSVG"],
+      icon: OCIcons.remove,
       tooltip: "Remove last horizontal clue",
       parent: infoContainer,
       classes: ["oc-builder-clue-list-button"],
@@ -426,7 +427,7 @@ class EditorGrid extends Grid {
         this.tagsInput.inputElement.value =
           this.tagsInput.inputElement.value.slice(0, -2);
         this.languageInput.value = obj["info"]["language"];
-      } catch {}
+      } catch { }
       for (const clue of Object.entries(obj["clues"]["across"])) {
         let NewClue = new PuzzleClue("across", acrossClues);
         NewClue.textElement.value = clue[1]["content"].toString();
@@ -557,7 +558,7 @@ class EditorGridSquare extends GridSquare {
       this.element.appendChild(this.numberInput);
       try {
         this.clueElement.remove();
-      } catch {}
+      } catch { }
       this.numberInput.onclick = (e) => {
         e.stopPropagation();
       };
@@ -567,12 +568,12 @@ class EditorGridSquare extends GridSquare {
     }
     try {
       this.textElement.value = answer;
-    } catch {}
+    } catch { }
     try {
       this.textElement.addEventListener("input", () => {
         document.onchange();
       });
-    } catch {}
+    } catch { }
     if (this.style !== "cell") {
       this.element.onclick = () => {
         this.checkboxElement.checked = !this.checkboxElement.checked;
@@ -628,23 +629,6 @@ class ControlButton {
   }
 }
 
-const icon = {
-  squareBlockSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M9 6C8.2 6 7.50625 6.30625 6.90625 6.90625C6.30625 7.50625 6 8.2 6 9L6 39C6 39.8 6.30625 40.4938 6.90625 41.0938C7.50625 41.6938 8.2 42 9 42L39 42C39.8 42 40.4937 41.6938 41.0938 41.0938C41.6938 40.4938 42 39.8 42 39L42 9C42 8.2 41.6938 7.50625 41.0938 6.90625C40.4938 6.30625 39.8 6 39 6L9 6Z"/></svg>`,
-  squareCellSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M9 42q-1.2 0-2.1-.9Q6 40.2 6 39V9q0-1.2.9-2.1Q7.8 6 9 6h30q1.2 0 2.1.9.9.9.9 2.1v30q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h30V9H9v30Z"/></svg>`,
-  squareInvisibleSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m16.8 33.3 7.2-7.2 7.2 7.2 2.1-2.1-7.2-7.2 7.2-7.2-2.1-2.1-7.2 7.2-7.2-7.2-2.1 2.1 7.2 7.2-7.2 7.2ZM9 42q-1.2 0-2.1-.9Q6 40.2 6 39V9q0-1.2.9-2.1Q7.8 6 9 6h30q1.2 0 2.1.9.9.9.9 2.1v30q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h30V9H9v30ZM9 9v30V9Z"/></svg>`,
-  squareEditSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M9 47.4q-1.2 0-2.1-.9-.9-.9-.9-2.1v-30q0-1.2.9-2.1.9-.9 2.1-.9h20.25l-3 3H9v30h30V27l3-3v20.4q0 1.2-.9 2.1-.9.9-2.1.9Zm15-18Zm9.1-17.6 2.15 2.1L21 28.1v4.3h4.25l14.3-14.3 2.1 2.1L26.5 35.4H18v-8.5Zm8.55 8.4-8.55-8.4 5-5q.85-.85 2.125-.85t2.125.9l4.2 4.25q.85.9.85 2.125t-.9 2.075Z"/></svg>`,
-  downloadPuzzleSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11 40q-1.2 0-2.1-.9Q8 38.2 8 37v-7.15h3V37h26v-7.15h3V37q0 1.2-.9 2.1-.9.9-2.1.9Zm13-7.65-9.65-9.65 2.15-2.15 6 6V8h3v18.55l6-6 2.15 2.15Z"/></svg>`,
-  sharePuzzleSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11 46q-1.2 0-2.1-.9Q8 44.2 8 43V17.55q0-1.2.9-2.1.9-.9 2.1-.9h8.45v3H11V43h26V17.55h-8.55v-3H37q1.2 0 2.1.9.9.9.9 2.1V43q0 1.2-.9 2.1-.9.9-2.1.9Zm11.45-15.35V7.8l-4.4 4.4-2.15-2.15L23.95 2 32 10.05l-2.15 2.15-4.4-4.4v22.85Z"/></svg>`,
-  addSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/></svg>`,
-  removeSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M10 25.5v-3h28v3Z"/></svg>`,
-  playSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M16 37.85v-28l22 14Zm3-14Zm0 8.55 13.45-8.55L19 15.3Z"/></svg>`,
-  searchSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>`,
-  closeSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`,
-  insertSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M439-120v-60h83v60h-83Zm0-660v-60h83v60h-83Zm170 660v-60h83v60h-83Zm0-660v-60h83v60h-83Zm171 660v-60h60v60h-60Zm0-660v-60h60v60h-60ZM120-120v-60h86v-600h-86v-60h231v60h-85v600h85v60H120Zm574-214-42-42 73-74H414v-60h311l-73-74 42-42 146 146-146 146Z"/></svg>`,
-  undoSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M259-200v-60h310q70 0 120.5-46.5T740-422q0-69-50.5-115.5T569-584H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800-422q0 94-68.5 158T568-200H259Z"/></svg>`,
-  redoSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M392-200q-95 0-163.5-64T160-422q0-94 68.5-158T392-644h294L572-758l42-42 186 186-186 186-42-42 114-114H391q-70 0-120.5 46.5T220-422q0 69 50.5 115.5T391-260h310v60H392Z"/></svg>`,
-};
-
 function populateToolBar() {
   const UIContainer = document.createElement("div");
   UIContainer.classList.add("oc-builder-ui-container");
@@ -654,27 +638,27 @@ function populateToolBar() {
   UIContainer.appendChild(toolBarElement);
   UIContainer.appendChild(document.createElement("hr"));
   new OCButton({
-    icon: icon["undoSVG"],
+    icon: OCIcons.undo,
     tooltip: "Undo",
     parent: toolBarElement,
     id: "oc-undo-button",
     action: myPuzzle.undo,
   });
   new OCButton({
-    icon: icon["redoSVG"],
+    icon: OCIcons.redo,
     tooltip: "Redo",
     parent: toolBarElement,
     id: "oc-redo-button",
     action: myPuzzle.redo,
   });
   new OCButton({
-    icon: icon["squareCellSVG"],
+    icon: OCIcons.squareCell,
     tooltip: "Make cell",
     parent: toolBarElement,
-    action: () => {myPuzzle.transformSquares("cell");},
+    action: () => { myPuzzle.transformSquares("cell"); },
   });
   new OCButton({
-    icon: icon["squareBlockSVG"],
+    icon: OCIcons.squareBlock,
     tooltip: "Make block",
     parent: toolBarElement,
     action: () => {
@@ -682,7 +666,7 @@ function populateToolBar() {
     },
   });
   new OCButton({
-    icon: icon["squareInvisibleSVG"],
+    icon: OCIcons.squareInvisible,
     tooltip: "Make invisible",
     parent: toolBarElement,
     action: () => {
@@ -690,7 +674,7 @@ function populateToolBar() {
     },
   });
   new OCButton({
-    icon: icon["insertSVG"],
+    icon: OCIcons.insert,
     tooltip: "Insert" + "…",
     parent: toolBarElement,
     action: () => {
@@ -698,7 +682,7 @@ function populateToolBar() {
     },
   });
   new OCButton({
-    icon:  icon["sharePuzzleSVG"],
+    icon: OCIcons.share,
     tooltip: "Share" + "…",
     parent: toolBarElement,
     action: () => {
@@ -706,7 +690,7 @@ function populateToolBar() {
     },
   });
   new OCButton({
-    icon: icon["downloadPuzzleSVG"],
+    icon: OCIcons.download,
     tooltip: "Download puzzle JSON file",
     parent: toolBarElement,
     action: () => {
@@ -714,7 +698,7 @@ function populateToolBar() {
     },
   });
   new OCButton({
-    icon: icon["playSVG"],
+    icon: OCIcons.play,
     tooltip: "Play puzzle in new tab" + "…",
     parent: toolBarElement,
     action: async () => {
@@ -722,7 +706,7 @@ function populateToolBar() {
     },
   });
   new OCButton({
-    icon: icon["searchSVG"],
+    icon: OCIcons.search,
     tooltip: "Word helper" + "…",
     parent: toolBarElement,
     action: () => {
@@ -764,7 +748,7 @@ function displayWordHelperDialog() {
   frame.src = `${document.baseURI}frames/word-helper.html`;
   let dialogCloseButton = new ControlButton(
     "Close",
-    icon["closeSVG"],
+    OCIcons.close,
     dialogTitleBar,
   );
   dialogCloseButton.element.onclick = () => {
@@ -791,7 +775,7 @@ function displayInsertDialog() {
   frame.name = "oc-insert-frame";
   let dialogCloseButton = new ControlButton(
     "Close",
-    icon["closeSVG"],
+    OCIcons.close,
     dialogTitleBar,
   );
   dialogCloseButton.element.onclick = () => {
@@ -1010,7 +994,7 @@ function refreshDisabledButtons() {
 }
 
 async function startOCEditor() {
-  String.prototype.toQueryString = function () {
+  String.prototype.toQueryString = function() {
     // Remove all characters that precede "?"
     return this.substring(this.indexOf("?"));
   };

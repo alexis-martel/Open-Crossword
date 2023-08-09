@@ -2,6 +2,7 @@ import decompressAndDecode from "./compression/decompress.js";
 import Grid from "./grid/grid.js";
 import GridSquare from "./grid/grid-square.js";
 import OCButton from "./ui/ui-button.js";
+import OCIcons from "./ui/ui-icons.js";
 
 ("use strict");
 
@@ -136,8 +137,7 @@ class Puzzle extends Grid {
     new InfoItem("Language".i18n(), this.obj["info"]["language"], infoList); // Language
     new InfoItem(
       "Puzzle Copyright".i18n(),
-      `© ${this.obj["info"]["date_published"].split("-")[0]} ${
-        this.obj["info"]["author"]
+      `© ${this.obj["info"]["date_published"].split("-")[0]} ${this.obj["info"]["author"]
       }`,
       infoList,
     );
@@ -235,13 +235,13 @@ class Puzzle extends Grid {
               square.y === this.selectedSquare.y &&
               square.x < this.selectedSquare.x,
           )
-          [
-            this.squares.filter(
-              (square) =>
-                square.y === this.selectedSquare.y &&
-                square.x < this.selectedSquare.x,
-            ).length - 1
-          ].select();
+        [
+          this.squares.filter(
+            (square) =>
+              square.y === this.selectedSquare.y &&
+              square.x < this.selectedSquare.x,
+          ).length - 1
+        ].select();
       }
     } else if (this.selectionDirection === "down") {
       // Filters the squares array to the same x value as the selected square and a smaller x value
@@ -273,13 +273,13 @@ class Puzzle extends Grid {
               square.x === this.selectedSquare.x &&
               square.y < this.selectedSquare.y,
           )
-          [
-            this.squares.filter(
-              (square) =>
-                square.x === this.selectedSquare.x &&
-                square.y < this.selectedSquare.y,
-            ).length - 1
-          ].select();
+        [
+          this.squares.filter(
+            (square) =>
+              square.x === this.selectedSquare.x &&
+              square.y < this.selectedSquare.y,
+          ).length - 1
+        ].select();
       }
     }
   }
@@ -474,7 +474,7 @@ class ClueBar {
     this.element.appendChild(this.controlWrapper);
 
     new OCButton({
-      icon: icon["chevronPreviousSVG"],
+      icon: OCIcons.chevronLeft,
       tooltip: "Previous Clue".i18n(),
       parent: this.controlWrapper,
       action: () => {
@@ -490,7 +490,7 @@ class ClueBar {
       },
     });
     new OCButton({
-      icon: icon["chevronNextSVG"],
+      icon: OCIcons.chevronRight,
       tooltip: "Next Clue".i18n(),
       parent: this.controlWrapper,
       action: () => {
@@ -536,13 +536,11 @@ class ClueBar {
     } else {
       try {
         document.getElementById("oc-puzzle-title").style.display = "none"; // Hides the title once solving begins
-      } catch {}
+      } catch { }
       this.element.style.display = "flex";
-      this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${
-        puzzle.selectedClue.number
-      }-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${
-        puzzle.selectedClue.HTMLContent
-      }`;
+      this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number
+        }-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${puzzle.selectedClue.HTMLContent
+        }`;
     }
   }
 
@@ -616,28 +614,6 @@ class InfoTag {
   }
 }
 
-const icon = {
-  pauseSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M28.25 38V10H36v28ZM12 38V10h7.75v28Z"/></svg>`,
-  resetSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M24 44q-3.75 0-7.025-1.4-3.275-1.4-5.725-3.85Q8.8 36.3 7.4 33.025 6 29.75 6 26h3q0 6.25 4.375 10.625T24 41q6.25 0 10.625-4.375T39 26q0-6.25-4.25-10.625T24.25 11H23.1l3.65 3.65-2.05 2.1-7.35-7.35 7.35-7.35 2.05 2.05-3.9 3.9H24q3.75 0 7.025 1.4 3.275 1.4 5.725 3.85 2.45 2.45 3.85 5.725Q42 22.25 42 26q0 3.75-1.4 7.025-1.4 3.275-3.85 5.725-2.45 2.45-5.725 3.85Q27.75 44 24 44Z"/></svg>`,
-  revealSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M24 31.5q3.55 0 6.025-2.475Q32.5 26.55 32.5 23q0-3.55-2.475-6.025Q27.55 14.5 24 14.5q-3.55 0-6.025 2.475Q15.5 19.45 15.5 23q0 3.55 2.475 6.025Q20.45 31.5 24 31.5Zm0-2.9q-2.35 0-3.975-1.625T18.4 23q0-2.35 1.625-3.975T24 17.4q2.35 0 3.975 1.625T29.6 23q0 2.35-1.625 3.975T24 28.6Zm0 9.4q-7.3 0-13.2-4.15Q4.9 29.7 2 23q2.9-6.7 8.8-10.85Q16.7 8 24 8q7.3 0 13.2 4.15Q43.1 16.3 46 23q-2.9 6.7-8.8 10.85Q31.3 38 24 38Zm0-15Zm0 12q6.05 0 11.125-3.275T42.85 23q-2.65-5.45-7.725-8.725Q30.05 11 24 11t-11.125 3.275Q7.8 17.55 5.1 23q2.7 5.45 7.775 8.725Q17.95 35 24 35Z"/></svg>`,
-  shareSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11 46q-1.2 0-2.1-.9Q8 44.2 8 43V17.55q0-1.2.9-2.1.9-.9 2.1-.9h8.45v3H11V43h26V17.55h-8.55v-3H37q1.2 0 2.1.9.9.9.9 2.1V43q0 1.2-.9 2.1-.9.9-2.1.9Zm11.45-15.35V7.8l-4.4 4.4-2.15-2.15L23.95 2 32 10.05l-2.15 2.15-4.4-4.4v22.85Z"/></svg>`,
-  verifySVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/></svg>`,
-  circleSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/></svg>`,
-  chevronNextSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z"/></svg>`,
-  chevronPreviousSVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M28.05 36 16 23.95 28.05 11.9l2.15 2.15-9.9 9.9 9.9 9.9Z"/></svg>`,
-  editSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M180-180h44l443-443-44-44-443 443v44Zm614-486L666-794l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248-120H120v-128l504-504 128 128Zm-107-21-22-22 44 44-22-22Z"/></svg>`,
-  helpSVG: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24.2 35.65q.8 0 1.35-.55t.55-1.35q0-.8-.55-1.35t-1.35-.55q-.8 0-1.35.55t-.55 1.35q0 .8.55 1.35t1.35.55Zm-1.75-7.3h2.95q0-1.3.325-2.375T27.75 23.5q1.55-1.3 2.2-2.55.65-1.25.65-2.75 0-2.65-1.725-4.25t-4.575-1.6q-2.45 0-4.325 1.225T17.25 16.95l2.65 1q.55-1.4 1.65-2.175 1.1-.775 2.6-.775 1.7 0 2.75.925t1.05 2.375q0 1.1-.65 2.075-.65.975-1.9 2.025-1.5 1.3-2.225 2.575-.725 1.275-.725 3.375ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/></svg>`,
-  copySVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M180 975q-24 0-42-18t-18-42V312h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42V235q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440V235H300v560Zm0 0V235v560Z"/></svg>`,
-  embedSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M320 814 80 574l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg>`,
-  closeSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>`,
-  printSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M658-648v-132H302v132h-60v-192h476v192h-60Zm-518 60h680-680Zm599 95q12 0 21-9t9-21q0-12-9-21t-21-9q-12 0-21 9t-9 21q0 12 9 21t21 9Zm-81 313v-192H302v192h356Zm60 60H242v-176H80v-246q0-45.05 30.5-75.525Q141-648 186-648h588q45.05 0 75.525 30.475Q880-587.05 880-542v246H718v176Zm102-236v-186.215Q820-562 806.775-575 793.55-588 774-588H186q-19.55 0-32.775 13.225Q140-561.55 140-542v186h102v-76h476v76h102Z"/></svg>`,
-  moreSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M207.858-432Q188-432 174-446.142q-14-14.141-14-34Q160-500 174.142-514q14.141-14 34-14Q228-528 242-513.858q14 14.141 14 34Q256-460 241.858-446q-14.141 14-34 14Zm272 0Q460-432 446-446.142q-14-14.141-14-34Q432-500 446.142-514q14.141-14 34-14Q500-528 514-513.858q14 14.141 14 34Q528-460 513.858-446q-14.141 14-34 14Zm272 0Q732-432 718-446.142q-14-14.141-14-34Q704-500 718.142-514q14.141-14 34-14Q772-528 786-513.858q14 14.141 14 34Q800-460 785.858-446q-14.141 14-34 14Z"/></svg>`,
-  cellSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M264-240h67l45-124h209l45 124h66L512-720h-65L264-240Zm133-179 82-230h2l82 230H397ZM140-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h680q24 0 42 18t18 42v680q0 24-18 42t-42 18H140Zm1-60h680v-680H141v680Zm0-680v680-680Z"/></svg>`,
-  wordSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M667-360q-15 0-24.5-9.5T633-394v-172q0-15 9.5-24.5T667-600h139q15 0 24.5 9.5T840-566v46h-48v-32H681v144h111v-32h48v46q0 15-9.5 24.5T806-360H667Zm-287 0v-240h173q15 0 24.5 9.5T587-566v52q0 15-9.5 24.5T553-480q15 0 24.5 9.5T587-446v52q0 15-9.5 24.5T553-360H380Zm48-144h111v-48H428v48Zm0 96h111v-48H428v48Zm-308 48v-206q0-15 9.5-24.5T154-600h139q15 0 24.5 9.5T327-566v206h-48v-77H168v77h-48Zm48-125h111v-67H168v67Z"/></svg>`,
-  puzzleSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M386-140h187v-186H386v186ZM140-386h186v-187H140v187Zm246 0h187v-187H386v187Zm247 0h187v-187H633v187Zm0-247h187v-187H633v187ZM326-80v-246H80v-307h493v-247h307v554H633v246H326Z"/></svg>`,
-  insertSVG: `<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M439-120v-60h83v60h-83Zm0-660v-60h83v60h-83Zm170 660v-60h83v60h-83Zm0-660v-60h83v60h-83Zm171 660v-60h60v60h-60Zm0-660v-60h60v60h-60ZM120-120v-60h86v-600h-86v-60h231v60h-85v600h85v60H120Zm574-214-42-42 73-74H414v-60h311l-73-74 42-42 146 146-146 146Z"/></svg>`,
-};
-
 function displayControlButtons() {
   // Display the control buttons beneath the puzzle grid (e.g. "Check", "Reveal", "Pause", "Reset", "Share", "Settings")
   let controlButtons = document.createElement("nav");
@@ -645,8 +621,7 @@ function displayControlButtons() {
   puzzleContainer.appendChild(controlButtons);
 
   new OCButton({
-    icon: icon["verifySVG"],
-    tooltip: "Verify".i18n(),
+    icon: OCIcons.check,
     parent: controlButtons,
     action: verifyPuzzle,
   });
@@ -655,12 +630,12 @@ function displayControlButtons() {
   revealButton.classList.add("oc-drop-down-button");
   let revealButtonSummary = document.createElement("summary");
   revealButtonSummary.title = "Reveal".i18n();
-  revealButtonSummary.innerHTML = icon["revealSVG"];
+  revealButtonSummary.innerHTML = OCIcons.reveal;
   let revealOptions = document.createElement("nav");
   revealOptions.classList.add("oc-drop-down-button-options");
   let revealPuzzleButton = new ControlButton(
     "Reveal Puzzle".i18n() + "…",
-    icon["puzzleSVG"],
+    OCIcons.crossword,
     revealOptions,
   );
   revealPuzzleButton.element.innerHTML += "Puzzle".i18n() + "…";
@@ -670,7 +645,7 @@ function displayControlButtons() {
   };
   let revealWordButton = new ControlButton(
     "Reveal Word".i18n(),
-    icon["wordSVG"],
+    OCIcons.abc,
     revealOptions,
   );
   revealWordButton.element.innerHTML += "Word".i18n();
@@ -680,7 +655,7 @@ function displayControlButtons() {
   };
   let revealSquareButton = new ControlButton(
     "Reveal Square".i18n(),
-    icon["cellSVG"],
+    OCIcons.squareCell,
     revealOptions,
   );
   revealSquareButton.element.innerHTML += "Square".i18n();
@@ -692,19 +667,19 @@ function displayControlButtons() {
   revealButton.appendChild(revealOptions);
   controlButtons.appendChild(revealButton);
   new OCButton({
-    icon: icon["resetSVG"],
+    icon: OCIcons.replay,
     tooltip: "Reset".i18n(),
     parent: controlButtons,
     action: resetPuzzle,
   });
   new OCButton({
-    icon: icon["insertSVG"],
+    icon: OCIcons.insert,
     tooltip: "Insert".i18n(),
     parent: controlButtons,
     action: displayInsertDialog,
   });
   new OCButton({
-    icon: icon["shareSVG"],
+    icon: OCIcons.share,
     tooltip: "Share".i18n(),
     parent: controlButtons,
     action: () => {
@@ -712,7 +687,7 @@ function displayControlButtons() {
     },
   });
   new OCButton({
-    icon: icon["editSVG"],
+    icon: OCIcons.edit,
     tooltip: "Remix".i18n(),
     parent: controlButtons,
     action: () => {
@@ -725,12 +700,12 @@ function displayControlButtons() {
   moreButton.classList.add("oc-drop-down-button");
   let moreButtonSummary = document.createElement("summary");
   moreButtonSummary.title = "More".i18n();
-  moreButtonSummary.innerHTML = icon["moreSVG"];
+  moreButtonSummary.innerHTML = OCIcons.more;
   let moreOptions = document.createElement("nav");
   moreOptions.classList.add("oc-drop-down-button-options");
   let printButton = new ControlButton(
     "Print".i18n() + "…",
-    icon["printSVG"],
+    OCIcons.print,
     moreOptions,
   );
   printButton.element.innerHTML += "Print".i18n() + "…";
@@ -740,7 +715,7 @@ function displayControlButtons() {
   };
   let copyLinkButton = new ControlButton(
     "Copy Link".i18n(),
-    icon["copySVG"],
+    OCIcons.copy,
     moreOptions,
   );
   copyLinkButton.element.innerHTML += "Copy Link".i18n();
@@ -759,7 +734,7 @@ function displayControlButtons() {
   };
   let copyEmbedCodeButton = new ControlButton(
     "Copy Embed Code".i18n(),
-    icon["embedSVG"],
+    OCIcons.code,
     moreOptions,
   );
   copyEmbedCodeButton.element.innerHTML += "Embed".i18n();
@@ -788,7 +763,7 @@ function displayControlButtons() {
   moreButton.appendChild(moreOptions);
   controlButtons.appendChild(moreButton);
   new OCButton({
-    icon: icon["helpSVG"],
+    icon: OCIcons.help,
     tooltip: "Shortcuts Help".i18n(),
     parent: controlButtons,
     action: () => {
@@ -804,7 +779,7 @@ function displayControlButtons() {
     },
   });
   let pauseButton = new OCButton({
-    icon: icon["pauseSVG"],
+    icon: OCIcons.pause,
     tooltip: "Pause".i18n(),
     parent: controlButtons,
     action: pauseGame,
@@ -833,7 +808,7 @@ function verifyPuzzle() {
     if (square.style === "cell") {
       if (
         square.textElement.value.toUpperCase() !==
-          square.answer.toUpperCase() &&
+        square.answer.toUpperCase() &&
         square.textElement.value !== ""
       ) {
         square.element.classList.add("oc-cell-invalid");
@@ -860,7 +835,7 @@ function revealWord() {
     if (square.element.classList.contains("highlighted")) {
       try {
         square.textElement.value = square.answer;
-      } catch {}
+      } catch { }
     }
   }
 }
@@ -930,7 +905,7 @@ function showSolvedScreen() {
   }
   let dialogCloseButton = new ControlButton(
     "Close".i18n(),
-    icon["closeSVG"],
+    OCIcons.close,
     dialogTitleBar,
   );
   dialogCloseButton.element.onclick = () => {
@@ -995,7 +970,7 @@ function displayInsertDialog() {
   frame.src = `${document.baseURI}frames/insert.html`;
   let dialogCloseButton = new ControlButton(
     "Close".i18n(),
-    icon["closeSVG"],
+    OCIcons.close,
     dialogTitleBar,
   );
   dialogCloseButton.element.onclick = () => {
@@ -1023,7 +998,7 @@ function displayInsertDialog() {
   };
 }
 
-Number.prototype.toFormattedTime = function () {
+Number.prototype.toFormattedTime = function() {
   let hours = Math.floor(this / 3600);
   let minutes = Math.floor((this - hours * 3600) / 60);
   let seconds = this - hours * 3600 - minutes * 60;
@@ -1044,11 +1019,11 @@ Number.prototype.toFormattedTime = function () {
   }
 };
 
-String.prototype.toCapitalized = function () {
+String.prototype.toCapitalized = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-String.prototype.i18n = function () {
+String.prototype.i18n = function() {
   // Translates the string to the current language, if available
   if (l[`${this}`]) {
     return l[`${this}`];
@@ -1080,12 +1055,10 @@ function showSplashScreen(obj) {
             <button onclick="history.back()">${"‹" + "Back".i18n()}</button>
             <h1>OpenCrossword<br>Player</h1>
         </div>
-        <p><b>${obj["info"]["title"]} - ${obj["info"]["author"]}</b><br>${
-          obj["info"]["description"]
-        }</p>
-        <img alt="OpenCrossword banner" src="${
-          document.baseURI
-        }images/splash-screen.jpg">
+        <p><b>${obj["info"]["title"]} - ${obj["info"]["author"]}</b><br>${obj["info"]["description"]
+    }</p>
+        <img alt="OpenCrossword banner" src="${document.baseURI
+    }images/splash-screen.jpg">
     </div>
     <form method="dialog">
         <input autofocus class="oc-splash-screen-info-input" type="submit" value="${"Play".i18n()}">
