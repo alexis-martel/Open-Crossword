@@ -2,6 +2,7 @@ import decompressAndDecode from "./compression/decompress.js";
 import Grid from "./grid/grid.js";
 import GridSquare from "./grid/grid-square.js";
 import OCButton from "./ui/ui-button.js";
+import OCDialog from "./ui/ui-dialog.js";
 import OCIcons from "./ui/ui-icons.js";
 
 ("use strict");
@@ -137,7 +138,8 @@ class Puzzle extends Grid {
     new InfoItem("Language".i18n(), this.obj["info"]["language"], infoList); // Language
     new InfoItem(
       "Puzzle Copyright".i18n(),
-      `© ${this.obj["info"]["date_published"].split("-")[0]} ${this.obj["info"]["author"]
+      `© ${this.obj["info"]["date_published"].split("-")[0]} ${
+        this.obj["info"]["author"]
       }`,
       infoList,
     );
@@ -235,13 +237,13 @@ class Puzzle extends Grid {
               square.y === this.selectedSquare.y &&
               square.x < this.selectedSquare.x,
           )
-        [
-          this.squares.filter(
-            (square) =>
-              square.y === this.selectedSquare.y &&
-              square.x < this.selectedSquare.x,
-          ).length - 1
-        ].select();
+          [
+            this.squares.filter(
+              (square) =>
+                square.y === this.selectedSquare.y &&
+                square.x < this.selectedSquare.x,
+            ).length - 1
+          ].select();
       }
     } else if (this.selectionDirection === "down") {
       // Filters the squares array to the same x value as the selected square and a smaller x value
@@ -273,13 +275,13 @@ class Puzzle extends Grid {
               square.x === this.selectedSquare.x &&
               square.y < this.selectedSquare.y,
           )
-        [
-          this.squares.filter(
-            (square) =>
-              square.x === this.selectedSquare.x &&
-              square.y < this.selectedSquare.y,
-          ).length - 1
-        ].select();
+          [
+            this.squares.filter(
+              (square) =>
+                square.x === this.selectedSquare.x &&
+                square.y < this.selectedSquare.y,
+            ).length - 1
+          ].select();
       }
     }
   }
@@ -536,11 +538,13 @@ class ClueBar {
     } else {
       try {
         document.getElementById("oc-puzzle-title").style.display = "none"; // Hides the title once solving begins
-      } catch { }
+      } catch {}
       this.element.style.display = "flex";
-      this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${puzzle.selectedClue.number
-        }-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${puzzle.selectedClue.HTMLContent
-        }`;
+      this.clueContentWrapper.innerHTML = `<span class="oc-clue-bar-number-direction">${
+        puzzle.selectedClue.number
+      }-${puzzle.selectedClue.direction.toCapitalized().i18n()}</span> ${
+        puzzle.selectedClue.HTMLContent
+      }`;
     }
   }
 
@@ -625,7 +629,6 @@ function displayControlButtons() {
     parent: controlButtons,
     action: verifyPuzzle,
   });
-
   let revealButton = document.createElement("details");
   revealButton.classList.add("oc-drop-down-button");
   let revealButtonSummary = document.createElement("summary");
@@ -808,7 +811,7 @@ function verifyPuzzle() {
     if (square.style === "cell") {
       if (
         square.textElement.value.toUpperCase() !==
-        square.answer.toUpperCase() &&
+          square.answer.toUpperCase() &&
         square.textElement.value !== ""
       ) {
         square.element.classList.add("oc-cell-invalid");
@@ -835,7 +838,7 @@ function revealWord() {
     if (square.element.classList.contains("highlighted")) {
       try {
         square.textElement.value = square.answer;
-      } catch { }
+      } catch {}
     }
   }
 }
@@ -886,14 +889,7 @@ function checkPuzzle() {
 function showSolvedScreen() {
   // Display a "game over" alert
   endStopwatch();
-  let dialog = document.createElement("dialog");
-  dialog.classList.add("oc-dialog");
-  let dialogTitleBar = document.createElement("div");
-  let dialogTitle = document.createElement("h2");
-  dialogTitle.textContent = "Congratulations".i18n();
-  let titleBarSeparator = document.createElement("hr");
   let solveMessageContainer = document.createElement("div");
-  solveMessageContainer.classList.add("oc-dialog-content");
   let solveParagraph = document.createElement("p");
   solveParagraph.textContent = "You solved the puzzle in:";
   let solveTimeContainer = document.createElement("div");
@@ -903,39 +899,26 @@ function showSolvedScreen() {
     square.textContent = character;
     solveTimeContainer.appendChild(square);
   }
-  let dialogCloseButton = new ControlButton(
-    "Close".i18n(),
-    OCIcons.close,
-    dialogTitleBar,
-  );
-  dialogCloseButton.element.onclick = () => {
-    dialog.close();
-    dialog.remove();
-  };
   solveMessageContainer.append(solveParagraph);
   solveMessageContainer.appendChild(solveTimeContainer);
-  dialogTitleBar.appendChild(dialogTitle);
-  dialog.appendChild(dialogTitleBar);
-  dialog.appendChild(titleBarSeparator);
   new OCButton({
     tooltip: "Share Time".i18n() + "…",
     title: "Share Time".i18n() + "…",
     parent: solveMessageContainer,
     action: () => {
-      navigator
-        .share({
-          text: "I solved %a, by %b, in %c!"
-            .i18n()
-            .replace("%a", puzzle.obj["info"]["title"])
-            .replace("%b", puzzle.obj["info"]["author"])
-            .replace("%c", puzzle.puzzleSeconds.toFormattedTime()),
-        })
-        .catch(console.error);
+      navigator.share({
+        text: "I solved %a, by %b, in %c!"
+          .i18n()
+          .replace("%a", puzzle.obj["info"]["title"])
+          .replace("%b", puzzle.obj["info"]["author"])
+          .replace("%c", puzzle.puzzleSeconds.toFormattedTime()),
+      });
     },
   });
-  dialog.appendChild(solveMessageContainer);
-  document.body.appendChild(dialog);
-  dialog.showModal();
+  new OCDialog({
+    title: "Congratulations".i18n(),
+    content: solveMessageContainer,
+  });
 }
 
 function showNotSolvedScreen() {
@@ -960,37 +943,19 @@ function populate(obj) {
 }
 
 function displayInsertDialog() {
-  let dialog = document.createElement("dialog");
-  dialog.classList.add("oc-dialog");
-  let dialogTitleBar = document.createElement("div");
-  let dialogTitle = document.createElement("h2");
-  dialogTitle.textContent = "Insert".i18n();
-  let titleBarSeparator = document.createElement("hr");
   let frame = document.createElement("iframe");
   frame.src = `${document.baseURI}frames/insert.html`;
-  let dialogCloseButton = new ControlButton(
-    "Close".i18n(),
-    OCIcons.close,
-    dialogTitleBar,
-  );
-  dialogCloseButton.element.onclick = () => {
-    dialog.close();
-    dialog.remove();
-  };
-  dialogTitleBar.appendChild(dialogTitle);
-  dialog.appendChild(dialogTitleBar);
-  dialog.appendChild(titleBarSeparator);
-  dialog.appendChild(frame);
-  document.body.appendChild(dialog);
-  dialog.showModal();
-
-  // Implement inserting functionality
+  let insertDialog = new OCDialog({
+    title: "Insert".i18n(),
+    content: frame,
+  });
+  // Inserting functionality
   frame.onload = () => {
     frame.contentWindow.document.getElementById("oc-insert-form").onsubmit = (
       e,
     ) => {
       e.preventDefault();
-      dialog.close();
+      insertDialog.element.close();
       puzzle.insertText(
         frame.contentWindow.document.getElementById("oc-insert-field").value,
       );
@@ -998,7 +963,7 @@ function displayInsertDialog() {
   };
 }
 
-Number.prototype.toFormattedTime = function() {
+Number.prototype.toFormattedTime = function () {
   let hours = Math.floor(this / 3600);
   let minutes = Math.floor((this - hours * 3600) / 60);
   let seconds = this - hours * 3600 - minutes * 60;
@@ -1019,11 +984,11 @@ Number.prototype.toFormattedTime = function() {
   }
 };
 
-String.prototype.toCapitalized = function() {
+String.prototype.toCapitalized = function () {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-String.prototype.i18n = function() {
+String.prototype.i18n = function () {
   // Translates the string to the current language, if available
   if (l[`${this}`]) {
     return l[`${this}`];
@@ -1055,10 +1020,12 @@ function showSplashScreen(obj) {
             <button onclick="history.back()">${"‹" + "Back".i18n()}</button>
             <h1>OpenCrossword<br>Player</h1>
         </div>
-        <p><b>${obj["info"]["title"]} - ${obj["info"]["author"]}</b><br>${obj["info"]["description"]
-    }</p>
-        <img alt="OpenCrossword banner" src="${document.baseURI
-    }images/splash-screen.jpg">
+        <p><b>${obj["info"]["title"]} - ${obj["info"]["author"]}</b><br>${
+          obj["info"]["description"]
+        }</p>
+        <img alt="OpenCrossword banner" src="${
+          document.baseURI
+        }images/splash-screen.jpg">
     </div>
     <form method="dialog">
         <input autofocus class="oc-splash-screen-info-input" type="submit" value="${"Play".i18n()}">

@@ -4,6 +4,7 @@ import GridSquare from "./grid/grid-square.js";
 import Grid from "./grid/grid.js";
 import OCButton from "./ui/ui-button.js";
 import OCIcons from "./ui/ui-icons.js";
+import OCDialog from "./ui/ui-dialog.js";
 
 ("use strict");
 
@@ -307,7 +308,7 @@ class EditorGrid extends Grid {
       classes: ["oc-builder-clue-list-button"],
       action: () => {
         this.acrossClues.push(new PuzzleClue("across", acrossClues));
-      }
+      },
     });
     new OCButton({
       icon: OCIcons.remove,
@@ -317,7 +318,7 @@ class EditorGrid extends Grid {
       action: () => {
         acrossClues.removeChild(acrossClues.lastChild);
         this.acrossClues.pop();
-      }
+      },
     });
 
     let downLabel = document.createElement("h2");
@@ -336,7 +337,7 @@ class EditorGrid extends Grid {
       classes: ["oc-builder-clue-list-button"],
       action: () => {
         this.downClues.push(new PuzzleClue("across", acrossClues));
-      }
+      },
     });
     new OCButton({
       icon: OCIcons.remove,
@@ -346,7 +347,7 @@ class EditorGrid extends Grid {
       action: () => {
         acrossClues.removeChild(acrossClues.lastChild);
         this.downClues.pop();
-      }
+      },
     });
     // Display a form for entering puzzle metadata
     let infoHeader = document.createElement("h2");
@@ -427,7 +428,7 @@ class EditorGrid extends Grid {
         this.tagsInput.inputElement.value =
           this.tagsInput.inputElement.value.slice(0, -2);
         this.languageInput.value = obj["info"]["language"];
-      } catch { }
+      } catch {}
       for (const clue of Object.entries(obj["clues"]["across"])) {
         let NewClue = new PuzzleClue("across", acrossClues);
         NewClue.textElement.value = clue[1]["content"].toString();
@@ -558,7 +559,7 @@ class EditorGridSquare extends GridSquare {
       this.element.appendChild(this.numberInput);
       try {
         this.clueElement.remove();
-      } catch { }
+      } catch {}
       this.numberInput.onclick = (e) => {
         e.stopPropagation();
       };
@@ -568,12 +569,12 @@ class EditorGridSquare extends GridSquare {
     }
     try {
       this.textElement.value = answer;
-    } catch { }
+    } catch {}
     try {
       this.textElement.addEventListener("input", () => {
         document.onchange();
       });
-    } catch { }
+    } catch {}
     if (this.style !== "cell") {
       this.element.onclick = () => {
         this.checkboxElement.checked = !this.checkboxElement.checked;
@@ -620,15 +621,6 @@ class PuzzleInfo {
   }
 }
 
-class ControlButton {
-  constructor(title, icon, parentElement) {
-    this.element = document.createElement("button");
-    this.element.title = title;
-    this.element.innerHTML = icon;
-    parentElement.appendChild(this.element);
-  }
-}
-
 function populateToolBar() {
   const UIContainer = document.createElement("div");
   UIContainer.classList.add("oc-builder-ui-container");
@@ -655,7 +647,9 @@ function populateToolBar() {
     icon: OCIcons.squareCell,
     tooltip: "Make cell",
     parent: toolBarElement,
-    action: () => { myPuzzle.transformSquares("cell"); },
+    action: () => {
+      myPuzzle.transformSquares("cell");
+    },
   });
   new OCButton({
     icon: OCIcons.squareBlock,
@@ -738,64 +732,28 @@ async function displayShareDialog() {
 }
 
 function displayWordHelperDialog() {
-  let dialog = document.createElement("dialog");
-  dialog.classList.add("oc-dialog");
-  let dialogTitleBar = document.createElement("div");
-  let dialogTitle = document.createElement("h2");
-  dialogTitle.textContent = "Word Helper";
-  let titleBarSeparator = document.createElement("hr");
   let frame = document.createElement("iframe");
   frame.src = `${document.baseURI}frames/word-helper.html`;
-  let dialogCloseButton = new ControlButton(
-    "Close",
-    OCIcons.close,
-    dialogTitleBar,
-  );
-  dialogCloseButton.element.onclick = () => {
-    dialog.close();
-    dialog.remove();
-  };
-  dialogTitleBar.appendChild(dialogTitle);
-  dialog.appendChild(dialogTitleBar);
-  dialog.appendChild(titleBarSeparator);
-  dialog.appendChild(frame);
-  document.body.appendChild(dialog);
-  dialog.showModal();
+  new OCDialog({
+    title: "Word Helper",
+    content: frame,
+  });
 }
 
 function displayInsertDialog() {
-  let dialog = document.createElement("dialog");
-  dialog.classList.add("oc-dialog");
-  let dialogTitleBar = document.createElement("div");
-  let dialogTitle = document.createElement("h2");
-  dialogTitle.textContent = "Insert";
-  let titleBarSeparator = document.createElement("hr");
   let frame = document.createElement("iframe");
   frame.src = `${document.baseURI}frames/insert.html`;
-  frame.name = "oc-insert-frame";
-  let dialogCloseButton = new ControlButton(
-    "Close",
-    OCIcons.close,
-    dialogTitleBar,
-  );
-  dialogCloseButton.element.onclick = () => {
-    dialog.close();
-    dialog.remove();
-  };
-  dialogTitleBar.appendChild(dialogTitle);
-  dialog.appendChild(dialogTitleBar);
-  dialog.appendChild(titleBarSeparator);
-  dialog.appendChild(frame);
-  document.body.appendChild(dialog);
-  dialog.showModal();
-
+  let insertDialog = new OCDialog({
+    title: "Insert",
+    content: frame,
+  });
   // Inserting functionality
   frame.onload = () => {
     frame.contentWindow.document.getElementById("oc-insert-form").onsubmit = (
       e,
     ) => {
       e.preventDefault();
-      dialog.close();
+      insertDialog.element.close();
       myPuzzle.insertText(
         frame.contentWindow.document.getElementById("oc-insert-field").value,
       );
@@ -994,7 +952,7 @@ function refreshDisabledButtons() {
 }
 
 async function startOCEditor() {
-  String.prototype.toQueryString = function() {
+  String.prototype.toQueryString = function () {
     // Remove all characters that precede "?"
     return this.substring(this.indexOf("?"));
   };

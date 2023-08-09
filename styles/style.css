@@ -706,12 +706,7 @@ label > * {
 
 .oc-dialog iframe {
   border: none;
-  height: 50%;
-}
-
-.oc-dialog div {
-  display: flex;
-  align-items: center;
+  height: 50vh;
 }
 
 .oc-insert-preview {
