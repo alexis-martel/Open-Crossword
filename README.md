@@ -1,16 +1,16 @@
 # [The OpenCrossword Project](https://alexis-martel.github.io/Open-Crossword/)
 
-## An open-source crossword platform for every cruciverbalist.
+## An open-source crossword platform
 
 [![Deploy static content to Pages](https://github.com/alexis-martel/Open-Crossword/actions/workflows/pages.yml/badge.svg)](https://github.com/alexis-martel/Open-Crossword/actions/workflows/pages.yml) [![CodeQL](https://github.com/alexis-martel/Open-Crossword/actions/workflows/codeql.yml/badge.svg)](https://github.com/alexis-martel/Open-Crossword/actions/workflows/codeql.yml)
 
 ### Features
 
-- Play and create crosswords on your computer, tablet, or phone
-- Browse a list of crosswords authored by the creators of OpenCrossword
-- Compose your own crosswords with a simple, intuitive interface
-- Share your puzzles with anyone using a simple link
-- Remix existing crosswords with the click of a button
+- Play and create crosswords on your computer, tablet, or phone;
+- Browse a list of crosswords authored by the creators of OpenCrossword;
+- Compose your own crosswords with a simple, intuitive interface;
+- Share your puzzles with anyone using a simple link;
+- Remix existing crosswords with the click of a button.
 
 ### How to submit a crossword
 
