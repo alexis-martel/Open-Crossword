@@ -1,5 +1,5 @@
-import OCButton from "./ui-button";
-import OCIcons from "./ui-icons";
+import OCButton from "./ui-button.js";
+import OCIcons from "./ui-icons.js";
 
 ("use strict");
 
