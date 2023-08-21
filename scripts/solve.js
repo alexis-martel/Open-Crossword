@@ -475,7 +475,7 @@ class ClueBar {
     this.element.appendChild(this.clueContentWrapper);
     this.element.appendChild(this.controlWrapper);
 
-    new OCButton({
+    this.previousButton = new OCButton({
       icon: OCIcons.chevronLeft,
       tooltip: "Previous Clue".i18n(),
       parent: this.controlWrapper,
@@ -491,7 +491,7 @@ class ClueBar {
         this.selectFirstBlankSquareInWord();
       },
     });
-    new OCButton({
+    this.nextButton = new OCButton({
       icon: OCIcons.chevronRight,
       tooltip: "Next Clue".i18n(),
       parent: this.controlWrapper,
