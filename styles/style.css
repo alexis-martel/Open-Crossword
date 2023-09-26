@@ -445,7 +445,8 @@ label > * {
 .oc-clue-bar {
   display: none;
   grid-row: span;
-  margin-bottom: 5px; /* To remedy margin collapse */
+  margin-bottom: 5px;
+  /* To remedy margin collapse */
 
   border: var(--main-border-width) solid var(--foreground-colour);
   align-items: center;
@@ -619,7 +620,8 @@ label > * {
 }
 
 .oc-builder-square-checkbox:checked {
-  display: block; /* Always show when checked */
+  display: block;
+  /* Always show when checked */
 }
 
 @media (hover: hover) {
@@ -748,8 +750,8 @@ label > * {
   box-sizing: border-box;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   border: none;
   margin: 0;
   padding: 8px;
