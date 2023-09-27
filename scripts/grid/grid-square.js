@@ -98,7 +98,7 @@ export default class GridSquare {
         );
         for (const square of rowSquares) {
           square.element.classList.add("highlighted");
-          if (square.style === "block") {
+          if (square.style !== "cell") {
             break;
           }
         }
