@@ -2,6 +2,8 @@ import decompressAndDecode from "./compression/decompress.js";
 import Grid from "./grid/grid.js";
 import GridSquare from "./grid/grid-square.js";
 import OCButton from "./ui/ui-button.js";
+import OCDropDownButton from "./ui/ui-drop-down-button.js";
+import OCDropDownButtonItem from "./ui/ui-drop-down-button-item.js";
 import OCDialog from "./ui/ui-dialog.js";
 import OCIcons from "./ui/ui-icons.js";
 
@@ -626,49 +628,42 @@ function displayControlButtons() {
 
   new OCButton({
     icon: OCIcons.check,
+    tooltip: "Verify".i18n(),
     parent: controlButtons,
     action: verifyPuzzle,
   });
-  let revealButton = document.createElement("details");
-  revealButton.classList.add("oc-drop-down-button");
-  let revealButtonSummary = document.createElement("summary");
-  revealButtonSummary.title = "Reveal".i18n();
-  revealButtonSummary.innerHTML = OCIcons.reveal;
-  let revealOptions = document.createElement("nav");
-  revealOptions.classList.add("oc-drop-down-button-options");
-  let revealPuzzleButton = new ControlButton(
-    "Reveal Puzzle".i18n() + "…",
-    OCIcons.crossword,
-    revealOptions,
-  );
-  revealPuzzleButton.element.innerHTML += "Puzzle".i18n() + "…";
-  revealPuzzleButton.element.onclick = () => {
-    revealPuzzle();
-    revealButton.removeAttribute("open");
-  };
-  let revealWordButton = new ControlButton(
-    "Reveal Word".i18n(),
-    OCIcons.abc,
-    revealOptions,
-  );
-  revealWordButton.element.innerHTML += "Word".i18n();
-  revealWordButton.element.onclick = () => {
-    revealWord();
-    revealButton.removeAttribute("open");
-  };
-  let revealSquareButton = new ControlButton(
-    "Reveal Square".i18n(),
-    OCIcons.squareCell,
-    revealOptions,
-  );
-  revealSquareButton.element.innerHTML += "Square".i18n();
-  revealSquareButton.element.onclick = () => {
-    revealSquare();
-    revealButton.removeAttribute("open");
-  };
-  revealButton.appendChild(revealButtonSummary);
-  revealButton.appendChild(revealOptions);
-  controlButtons.appendChild(revealButton);
+
+  new OCDropDownButton({
+    icon: OCIcons.reveal,
+    tooltip: "Reveal".i18n(),
+    parent: controlButtons,
+    items: [
+      new OCDropDownButtonItem({
+        icon: OCIcons.crossword,
+        title: "Puzzle".i18n() + "…",
+        tooltip: "Reveal Puzzle".i18n() + "…",
+        action: () => {
+          revealPuzzle();
+        },
+      }),
+      new OCDropDownButtonItem({
+        icon: OCIcons.abc,
+        title: "Word".i18n(),
+        tooltip: "Reveal Word".i18n(),
+        action: () => {
+          revealWord();
+        },
+      }),
+      new OCDropDownButtonItem({
+        icon: OCIcons.squareCell,
+        title: "Square".i18n(),
+        tooltip: "Reveal Square".i18n(),
+        action: () => {
+          revealSquare();
+        },
+      }),
+    ],
+  });
   new OCButton({
     icon: OCIcons.replay,
     tooltip: "Reset".i18n(),
@@ -698,73 +693,63 @@ function displayControlButtons() {
       window.open(`${document.baseURI}compose.html?l=${encodedPuzzleLink}`);
     },
   });
-
-  let moreButton = document.createElement("details");
-  moreButton.classList.add("oc-drop-down-button");
-  let moreButtonSummary = document.createElement("summary");
-  moreButtonSummary.title = "More".i18n();
-  moreButtonSummary.innerHTML = OCIcons.more;
-  let moreOptions = document.createElement("nav");
-  moreOptions.classList.add("oc-drop-down-button-options");
-  let printButton = new ControlButton(
-    "Print".i18n() + "…",
-    OCIcons.print,
-    moreOptions,
-  );
-  printButton.element.innerHTML += "Print".i18n() + "…";
-  printButton.element.onclick = () => {
-    window.print();
-    moreButton.removeAttribute("open");
-  };
-  let copyLinkButton = new ControlButton(
-    "Copy Link".i18n(),
-    OCIcons.copy,
-    moreOptions,
-  );
-  copyLinkButton.element.innerHTML += "Copy Link".i18n();
-  copyLinkButton.element.onclick = () => {
-    navigator.clipboard.writeText(window.location.href).then(
-      () => {
-        /* clipboard successfully set */
-        window.alert("Link copied to clipboard".i18n());
-      },
-      () => {
-        /* clipboard write failed */
-        window.alert("Failed to copy link to clipboard".i18n());
-      },
-    );
-    moreButton.removeAttribute("open");
-  };
-  let copyEmbedCodeButton = new ControlButton(
-    "Copy Embed Code".i18n(),
-    OCIcons.code,
-    moreOptions,
-  );
-  copyEmbedCodeButton.element.innerHTML += "Embed".i18n();
-  copyEmbedCodeButton.element.onclick = () => {
-    let transformedLink = window.location.href.replace(
-      "/solve",
-      "/frames/player-embed",
-    );
-    navigator.clipboard
-      .writeText(
-        `<iframe width="100%" height="300px" src="${transformedLink}"/>`,
-      )
-      .then(
-        () => {
-          /* clipboard successfully set */
-          window.alert("Code copied to clipboard".i18n());
+  new OCDropDownButton({
+    icon: OCIcons.more,
+    tooltip: "More".i18n() + "…",
+    parent: controlButtons,
+    items: [
+      new OCDropDownButtonItem({
+        icon: OCIcons.print,
+        tooltip: "Print".i18n() + "…",
+        title: "Print".i18n() + "…",
+        action: () => {
+          window.print();
         },
-        () => {
-          /* clipboard write failed */
-          window.alert("Failed to copy code to clipboard".i18n());
+      }),
+      new OCDropDownButtonItem({
+        icon: OCIcons.copy,
+        tooltip: "Copy Link".i18n(),
+        title: "Copy Link".i18n(),
+        action: () => {
+          navigator.clipboard.writeText(window.location.href).then(
+            () => {
+              /* clipboard successfully set */
+              window.alert("Link copied to clipboard".i18n());
+            },
+            () => {
+              /* clipboard write failed */
+              window.alert("Failed to copy link to clipboard".i18n());
+            },
+          );
         },
-      );
-    moreButton.removeAttribute("open");
-  };
-  moreButton.appendChild(moreButtonSummary);
-  moreButton.appendChild(moreOptions);
-  controlButtons.appendChild(moreButton);
+      }),
+      new OCDropDownButtonItem({
+        icon: OCIcons.code,
+        tooltip: "Copy Embed Code".i18n(),
+        title: "Embed".i18n(),
+        action: () => {
+          let transformedLink = window.location.href.replace(
+            "/solve",
+            "/frames/player-embed",
+          );
+          navigator.clipboard
+            .writeText(
+              `<iframe width="100%" height="300px" src="${transformedLink}"/>`,
+            )
+            .then(
+              () => {
+                /* clipboard successfully set */
+                window.alert("Code copied to clipboard".i18n());
+              },
+              () => {
+                /* clipboard write failed */
+                window.alert("Failed to copy code to clipboard".i18n());
+              },
+            );
+        },
+      }),
+    ],
+  });
   new OCButton({
     icon: OCIcons.help,
     tooltip: "Shortcuts Help".i18n(),
@@ -891,7 +876,7 @@ function showSolvedScreen() {
   endStopwatch();
   let solveMessageContainer = document.createElement("div");
   let solveParagraph = document.createElement("p");
-  solveParagraph.textContent = "You solved the puzzle in:";
+  solveParagraph.textContent = "You solved the puzzle in:".i18n();
   let solveTimeContainer = document.createElement("div");
   for (const character of puzzle.puzzleSeconds.toFormattedTime()) {
     let square = document.createElement("span");

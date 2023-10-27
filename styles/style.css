@@ -354,7 +354,7 @@ label > * {
   display: none;
 }
 
-.oc-drop-down-button-options {
+.oc-drop-down-button nav {
   position: absolute;
   display: block;
   background-color: var(--background-colour);
@@ -362,7 +362,7 @@ label > * {
   min-width: max-content;
 }
 
-.oc-drop-down-button-options button {
+.oc-drop-down-button nav button {
   margin-top: calc(-1 * var(--main-border-width)) !important;
   width: 100%;
   text-align: left;
