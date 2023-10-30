@@ -26,4 +26,4 @@
 
 ### About
 
-The OpenCrossword Project first started on the evening of July 9, 2022, while I was bored at my grandma's house. Its goal now is to become the standard crossword editing program and file format.
+The OpenCrossword Project first started on the evening of July 9, 2022, while I was bored at my grandma's house. It was born out of an obsession over crossword puzzles and a critical viewpoint towards the current state of cruciverbalist software.
