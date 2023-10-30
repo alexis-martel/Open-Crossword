@@ -401,15 +401,9 @@ class EditorGrid extends Grid {
     this.languageInput = document.createElement("select");
     this.languageInput.options.add(new Option("English", "en"));
     this.languageInput.options.add(new Option("Français", "fr"));
-    this.languageInput.options.add(
-      new Option("Deutsch (UI support coming soon)", "de"),
-    );
-    this.languageInput.options.add(
-      new Option("Italian (UI support coming soon)", "it"),
-    );
-    this.languageInput.options.add(
-      new Option("Spanish (UI support coming soon)", "es"),
-    );
+    this.languageInput.options.add(new Option("Deutsch", "de"));
+    this.languageInput.options.add(new Option("Italiano", "it"));
+    this.languageInput.options.add(new Option("Español", "es"));
     this.languageInput.options.add(new Option("Other", null));
     infoForm.appendChild(document.createElement("label"));
     infoForm.lastChild.textContent = "Language";
