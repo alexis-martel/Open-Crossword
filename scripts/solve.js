@@ -443,15 +443,6 @@ class InfoItem {
   }
 }
 
-class ControlButton {
-  constructor(title, icon, parentElement) {
-    this.element = document.createElement("button");
-    this.element.title = title;
-    this.element.innerHTML = icon;
-    parentElement.appendChild(this.element);
-  }
-}
-
 class ControlInput {
   constructor(type, title, label, parentElement, id) {
     this.labelElement = document.createElement("label");
