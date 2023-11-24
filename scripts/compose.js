@@ -336,7 +336,7 @@ class EditorGrid extends Grid {
       parent: infoContainer,
       classes: ["oc-builder-clue-list-button"],
       action: () => {
-        this.downClues.push(new PuzzleClue("across", acrossClues));
+        this.downClues.push(new PuzzleClue("down", downClues));
       },
     });
     new OCButton({
@@ -345,7 +345,7 @@ class EditorGrid extends Grid {
       parent: infoContainer,
       classes: ["oc-builder-clue-list-button"],
       action: () => {
-        acrossClues.removeChild(acrossClues.lastChild);
+        downClues.removeChild(downClues.lastChild);
         this.downClues.pop();
       },
     });
