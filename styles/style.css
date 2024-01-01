@@ -1,6 +1,105 @@
+/* Font loading */
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-thin.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-thin-italic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-extralight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-extralight-italic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-light.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-light-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-regular.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-semibold-italic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-bold-italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-extrabold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-extrabold-italic.woff2") format("woff2");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-heavy.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-heavy-italic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Root styling */
 :root {
-  --main-font: "Times New Roman", Times, serif;
-  --main-border-width: 2px;
+  --main-font: "Overpass", sans-serif;
+  --main-border-width: 1.5pt;
   --empty-clue-list-text: "No clues";
   color-scheme: light dark;
 }
@@ -62,6 +161,7 @@
   }
 }
 
+/* Content styling */
 body {
   background-color: var(--background-colour);
   color: var(--foreground-colour);
@@ -73,7 +173,7 @@ body {
 }
 
 hr {
-  height: 2px;
+  height: var(--main-border-width);
   border: none;
   background-color: var(--foreground-colour);
   margin-top: 3px;
@@ -93,9 +193,11 @@ header {
 
 header h1 {
   display: inline;
+  font-weight: 400;
+  font-size: x-large;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 450px) {
   header h1 {
     display: none;
   }
@@ -131,7 +233,7 @@ input[type="submit"],
 .oc-drop-down-button summary {
   padding: 2px;
   font-family: var(--main-font);
-  font-size: initial;
+  font-size: small;
   border: var(--main-border-width) solid var(--foreground-colour);
   background-color: transparent;
   color: var(--foreground-colour);
@@ -172,6 +274,14 @@ a {
   color: var(--foreground-colour);
 }
 
+h2 {
+  font-weight: 400;
+}
+
+p {
+  font-weight: 300;
+}
+
 nav {
   display: flex;
   gap: 4px;
@@ -203,7 +313,8 @@ label > * {
 
 .oc-featured-item {
   border: var(--main-border-width) solid var(--foreground-colour);
-  padding: 20px;
+  padding: 15px;
+  margin-trim: block;
   display: inline-block;
   margin: 5px;
   text-align: center;
@@ -223,6 +334,10 @@ label > * {
   width: 100px;
   fill: var(--foreground-colour);
   display: block;
+}
+
+.oc-featured-item h3 {
+  font-weight: 500;
 }
 
 .oc-home-menu {
@@ -369,9 +484,10 @@ label > * {
   padding: 4px;
 }
 
-.oc-stopwatch {
+.oc-stopwatch > span {
   display: inline-block;
-  vertical-align: middle;
+  width: 1ch; /* Magic number */
+  text-align: center;
 }
 
 .oc-info-container {
@@ -388,7 +504,12 @@ label > * {
 
 .oc-clue-tag {
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: var(--main-border-width);
+}
+
+.oc-clue-tag::after {
+  content: "—";
+  margin-left: var(--main-border-width);
 }
 
 .oc-clue {

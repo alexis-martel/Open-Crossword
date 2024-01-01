@@ -773,7 +773,7 @@ function populate(obj, original) {
   if (original) myPuzzle.pushToMemento(); // Push the initial state to the memento stack;
 }
 
-function showSplashScreen() {
+function () {
   let splashScreen = document.createElement("dialog");
   splashScreen.id = "oc-splash-screen";
   splashScreen.classList.add("oc-splash-screen");

@@ -766,7 +766,7 @@ function displayControlButtons() {
   let stopwatch = document.createElement("span");
   stopwatch.classList.add("oc-stopwatch");
   stopwatch.id = "oc-stopwatch";
-  stopwatch.textContent = "00:00";
+  stopwatch.innerHTML = "00:00".toDistributedSpans();
   pauseButton.element.appendChild(stopwatch);
   let verifyAutomaticallyCheckbox = new ControlInput(
     "checkbox",
@@ -973,10 +973,20 @@ String.prototype.i18n = function () {
   }
 };
 
+String.prototype.toDistributedSpans = function () {
+  // Places each character in its own HTML `<span>`
+  let output = "";
+  for (const character of this) {
+    output += `<span>${character}</span>`;
+  }
+  return output;
+};
+
 function incrementStopwatchTime() {
   puzzle.puzzleSeconds += 1;
-  document.getElementById("oc-stopwatch").textContent =
-    puzzle.puzzleSeconds.toFormattedTime();
+  document.getElementById("oc-stopwatch").innerHTML = puzzle.puzzleSeconds
+    .toFormattedTime()
+    .toDistributedSpans();
 }
 
 function endStopwatch() {
@@ -1022,7 +1032,7 @@ async function getPuzzleObject(URLParams) {
   } else if (URLParams.has("d")) {
     obj = JSON.parse(await URLParams.get("d").toString());
   } else if (URLParams.has("dc")) {
-    if (!"CompressionStream" in window)
+    if ((!"CompressionStream") in window)
       throw new Error("CompressionStream not supported");
     obj = JSON.parse(await decompressAndDecode(URLParams.get("dc").toString()));
   } else {
