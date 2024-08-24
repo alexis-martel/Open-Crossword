@@ -48,6 +48,9 @@ globalNavView.innerHTML = `<header>
     </li>
     <hr>
     <li>
+      <a href="https://graphe.me/" rel="noopener noreferrer nofollow" target="_blank">Grapheme</a>
+    </li>
+    <li>
       <a href="https://github.com/alexis-martel/Open-Crossword" rel="noopener noreferrer nofollow" target="_blank">GitHub Repository</a>
     </li>
   </ul>

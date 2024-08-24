@@ -1,4 +1,4 @@
-# [The OpenCrossword Project](https://alexis-martel.github.io/Open-Crossword/)
+# [The OpenCrossword Project](https://graphe.me/Open-Crossword/)
 
 ## An open-source crossword platform
 
