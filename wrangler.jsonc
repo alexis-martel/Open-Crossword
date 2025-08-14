@@ -1,0 +1,9 @@
+{
+    "name": "open-crossword",
+    "compatibility_date": "2025-08-14",
+    "assets": {
+        "directory": "./src",
+        "html_handling": "force-trailing-slash",
+        "not_found_handling": "404-page"
+    }
+}
