@@ -1,4 +1,4 @@
-# [The OpenCrossword Project](https://graphe.me/Open-Crossword/)
+# [The OpenCrossword Project](https://opencrossword.graphe.me)
 
 ## An open-source crossword platform
 
