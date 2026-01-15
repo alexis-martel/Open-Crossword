@@ -1,7 +1,16 @@
+/* Begin import font */
+@font-face {
+    font-family: interalia;
+    src: url("/fonts/InterAlia-VF.otf")
+}
+/* End import font */
+
 :root {
-  --main-font: "Times New Roman", Times, serif;
+  --main-font: interalia;
   --main-border-width: 2px;
   --empty-clue-list-text: "No clues";
+  --font-weight-regular: 266;
+  --font-weight-bold: 333;
   color-scheme: light dark;
 }
 
@@ -67,9 +76,14 @@ body {
   color: var(--foreground-colour);
   font-family: var(--main-font);
   font-size: medium;
+  font-weight: var(--font-weight-regular);
   print-color-adjust: exact !important;
   margin: 0;
   padding: 8px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-regular);
 }
 
 hr {
@@ -95,7 +109,7 @@ header h1 {
   display: inline;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 530px) {
   header h1 {
     display: none;
   }
@@ -131,6 +145,7 @@ input[type="submit"],
 .oc-drop-down-button summary {
   padding: 2px;
   font-family: var(--main-font);
+  font-weight: var(--font-weight-normal);
   font-size: initial;
   border: var(--main-border-width) solid var(--foreground-colour);
   background-color: transparent;
@@ -269,7 +284,7 @@ label > * {
 }
 
 .oc-splash-screen h1 {
-  font-weight: normal;
+  font-weight: var(--font-weight-regular);
   color: white;
   font-size: xx-large;
   margin-top: 0;
@@ -286,7 +301,7 @@ label > * {
 .oc-splash-screen p {
   margin-top: 10px;
   margin-left: 10px;
-  font-weight: normal;
+  font-weight: var(--font-weight-regular);
   position: absolute;
   bottom: 0;
   color: white;
@@ -387,7 +402,7 @@ label > * {
 }
 
 .oc-clue-tag {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   margin-right: 5px;
 }
 
@@ -409,7 +424,7 @@ label > * {
 }
 
 .oc-info-label {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 }
 
 .oc-info-text {
@@ -425,7 +440,7 @@ label > * {
 }
 
 .oc-info-tag {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   font-size: small;
   background-color: var(--highlight-colour);
   border-radius: 6px;
@@ -468,7 +483,7 @@ label > * {
 }
 
 .oc-clue-bar-number-direction {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 }
 
 .oc-clue-content-wrapper {
@@ -553,7 +568,7 @@ label > * {
 
 .oc-puzzle-square-text {
   font-size: 50px;
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -726,7 +741,7 @@ label > * {
   height: 1em;
   /* min-height: 1em; */
   display: inline-block;
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   font-size: 30px;
   text-align: center;
 }
@@ -765,7 +780,7 @@ label > * {
 
 .oc-global-navigation li {
   font-size: x-large;
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   margin-top: 8px;
   margin-bottom: 8px;
 }

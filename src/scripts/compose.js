@@ -404,6 +404,7 @@ class EditorGrid extends Grid {
     this.languageInput.options.add(new Option("Deutsch", "de"));
     this.languageInput.options.add(new Option("Italiano", "it"));
     this.languageInput.options.add(new Option("Español", "es"));
+    this.languageInput.options.add(new Option("English (Shavian)", "en-shaw"));
     this.languageInput.options.add(new Option("Other", null));
     infoForm.appendChild(document.createElement("label"));
     infoForm.lastChild.textContent = "Language";
