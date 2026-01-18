@@ -265,6 +265,7 @@ label > * {
 .oc-puzzle-browser td,
 .oc-puzzle-browser th {
   padding: 8px;
+  font-weight: var(--font-weight-bold);
 }
 
 .oc-game-view {
