@@ -344,12 +344,10 @@ class PuzzleSquare extends GridSquare {
     if (this.textElement) {
       this.textElement.oninput = (e) => {
         parentGrid.selectedSquare.element.classList.remove("oc-cell-invalid");
-        if (e.data) {
-          parentGrid.selectNextSquare();
-          checkPuzzle();
-          if (document.getElementById("oc-verify-automatically").checked)
-            verifyPuzzle();
-        }
+        this.handleInput(e);
+        checkPuzzle();
+        if (document.getElementById("oc-verify-automatically").checked)
+          verifyPuzzle();
       };
     }
   }
@@ -1022,7 +1020,7 @@ async function getPuzzleObject(URLParams) {
   } else if (URLParams.has("d")) {
     obj = JSON.parse(await URLParams.get("d").toString());
   } else if (URLParams.has("dc")) {
-    if (!"CompressionStream" in window)
+    if ((!"CompressionStream") in window)
       throw new Error("CompressionStream not supported");
     obj = JSON.parse(await decompressAndDecode(URLParams.get("dc").toString()));
   } else {

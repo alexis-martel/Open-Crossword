@@ -34,7 +34,6 @@ export default class GridSquare {
       this.element.classList.add("oc-cell");
       this.textElement = document.createElement("input");
       this.textElement.type = "text";
-      this.textElement.maxLength = 1;
       this.textElement.spellcheck = false;
       this.textElement.enterKeyHint = "next";
       this.textElement.setAttribute("autocorrect", "off");
@@ -50,9 +49,7 @@ export default class GridSquare {
       this.textElement.classList.add("oc-puzzle-square-text");
       if (this.answer) this.answer = this.answer.toUpperCase();
       this.textElement.oninput = (e) => {
-        if (e.data) {
-          parentGrid.selectNextSquare();
-        }
+        this.handleInput(e);
       };
       this.element.onclick = () => {
         if (this.selected) {
@@ -69,6 +66,18 @@ export default class GridSquare {
       };
     } else if (this.style === "invisible") {
       this.element.classList.add("oc-invisible", "oc-block");
+    }
+  }
+
+  handleInput(e) {
+    if (e.data) {
+      const code = e.data.charCodeAt(0);
+      if (code >= 0xd800 && code <= 0xdbff) {
+        return;
+      } else {
+        this.parentGrid.selectNextSquare();
+        this.parentGrid.selectedSquare.select();
+      }
     }
   }
 
