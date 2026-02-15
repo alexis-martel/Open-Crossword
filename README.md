@@ -2,8 +2,6 @@
 
 ## An open-source crossword platform
 
-[![Deploy static content to Pages](https://github.com/alexis-martel/Open-Crossword/actions/workflows/pages.yml/badge.svg)](https://github.com/alexis-martel/Open-Crossword/actions/workflows/pages.yml) [![CodeQL](https://github.com/alexis-martel/Open-Crossword/actions/workflows/codeql.yml/badge.svg)](https://github.com/alexis-martel/Open-Crossword/actions/workflows/codeql.yml)
-
 ### Features
 
 - Play and create crosswords on your computer, tablet, or phone;
