@@ -1,0 +1,51 @@
+{
+  "clues": {
+    "across": {
+      "1": { "content": "____ Finder used for remodelling" },
+      "5": { "content": "An SPF softwood" },
+      "6": { "content": "Leave out" },
+      "7": { "content": "Typical elevation, to a T" }
+    },
+    "down": {
+      "1": { "content": "\"X marks the ____\"" },
+      "2": { "content": "On the clock" },
+      "3": { "content": "Meter, for example" },
+      "4": { "content": "Detail, abbreviated" }
+    }
+  },
+  "grid": [
+    [
+      { "answer": "s", "clueNumber": 1, "type": "cell" },
+      { "answer": "t", "clueNumber": 2, "type": "cell" },
+      { "answer": "u", "clueNumber": 3, "type": "cell" },
+      { "answer": "d", "clueNumber": 4, "type": "cell" }
+    ],
+    [
+      { "answer": "p", "clueNumber": 5, "type": "cell" },
+      { "answer": "i", "type": "cell" },
+      { "answer": "n", "type": "cell" },
+      { "answer": "e", "type": "cell" }
+    ],
+    [
+      { "answer": "o", "clueNumber": 6, "type": "cell" },
+      { "answer": "m", "type": "cell" },
+      { "answer": "i", "type": "cell" },
+      { "answer": "t", "type": "cell" }
+    ],
+    [
+      { "answer": "t", "clueNumber": 7, "type": "cell" },
+      { "answer": "e", "type": "cell" },
+      { "answer": "t", "type": "cell" },
+      { "type": "block" }
+    ]
+  ],
+  "info": {
+    "title": "Renovation (4sqm)",
+    "author": "Nick Bors",
+    "contact": "nick@nickbors.cc",
+    "description": "A 4x4 crossword for the home remodeller's lunch break.",
+    "tags": ["medium", "4x4", "easy"],
+    "date_published": "2026-08-11",
+    "language": "en"
+  }
+}
